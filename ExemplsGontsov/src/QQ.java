@@ -1,4 +1,3 @@
-//sdfsdfsdfsdfdsf
 public class QQ 
 {
 	public static void main(String[] args)
