@@ -13,4 +13,6 @@ git status
 git add .
 git commit -m "бла бла бла"
 git push original master
+git pull origin
+git fetch origin master - ???????
 git remote add new_original https://github.com/nickhammerk20/****.git
