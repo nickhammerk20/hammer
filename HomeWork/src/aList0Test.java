@@ -30,7 +30,6 @@ public class aList0Test {
 	@Test
 	public void test_clear_03() {
 		int [] arrTest = {0,2,5,7,9};
-		int [] arrExp = {};				
 		aList0 list = new aList0();
 		list.init(arrTest);
 		list.clear();

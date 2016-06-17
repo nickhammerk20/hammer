@@ -1,401 +1,319 @@
 package BsTree;
 
-public class BsTree //implements EBsTree
+public class BsTree 
 {
-	String str = "";
-	int count = 0;
-	int size = 0;
-	int countNode = 0;
+
 	int leftHeight = 0;
 	int rightHeight = 0;
-	int [] array;
-	int arraySize = 0;
 
-	class Node
+	class Node 
 	{
 		int val;
-		Node left = null;
-		Node right = null;
+		Node left;
+		Node right;
 
-		public Node (int val)
+		public Node(int val) 
 		{
 			this.val = val;
 		}
 	}
-	Node root = null;
 
-	//@Override
-	public void print()/*готово*/
+	protected Node root = null;
+
+	//Печать в консоль
+	public void print() 
 	{
-		printNode (root);
+		printNode(root);
 	}
-	private void printNode (Node p)/*готово*/
+
+	private void printNode(Node p) 
 	{
-		if (p ==null)
+		if (p == null)
 			return;
 
-		printNode(p.left);
-		System.out.print(p.val+", ");
-		printNode(p.right);
+		printNode(p.left);              //L
+		System.out.print(p.val + ",");  //V
+		printNode(p.right);             //R
 	}
 
-	//@Override
-	public void add(int val) /*готово*/
+	//Инициализация
+	public void init(int[] ini) 
 	{
-		if (root == null)
+		if (ini == null)
+			ini = new int[0];
+
+		for (int i = 0; i < ini.length; i++) 
+		{
+			add(ini[i]);
+		}
+	}
+
+	//Добавление узла со значением
+	public void add(int val) 
+	{
+		if (root == null) 
 		{
 			root = new Node(val);
 			return;
 		}
 		addNode(root, val);
 	}
-	private void addNode(Node p, int val)/*готово*/
+
+	private void addNode(Node p, int val) 
 	{
-		if(val<p.val)
+		if (val < p.val) 
 		{
-			if(p.left == null)
-				p.left=new Node(val);
+			if (p.left == null)
+				p.left = new Node(val);
 			else
 				addNode(p.left, val);
-		}
-		else
+		} 
+		else 
 		{
-			if(p.right == null)
-				p.right=new Node(val);
+			if (p.right == null)
+				p.right = new Node(val);
 			else
-				addNode(p.right, val);			
+				addNode(p.right, val);
 		}
 	}
 
-	//@Override
-	public int size()/*готово*/
-	{
-		return sizeNode(root);
-	}
-	private int sizeNode (Node p)/*готово*/
-	{
-		if (p==null)
-			return 0;
-
-		/*первый вариант подсчета
-		 * 	return 1 + sizeNode(p.left) + sizeNode(p.right);
-		 */
-		// второй вариант
-		int ret = 0;
-		ret += sizeNode(p.left);
-		ret +=1;
-		ret += sizeNode(p.right);
-		return ret;
-	}
-
-	//@Override
-	public void clear()/*готово*/ 
+	//Очистка дерева	
+	public void clear() 
 	{
 		root = null;
 	}
 
-	//@Override
-	public void init(int[] in) /*готово*/
+	//Получить количество всех узлов в дереве (с потомками и без)
+	public int size() 
 	{
-		//		if (in == null)
-		//			in = new int[0];
-		//		for (int i = 0; i < in.length; i++) 
-		//		{
-		//			add(in[i]);
-		//		}
+		return sizeNode( root );
+	}
 
+	private int sizeNode(Node p) 
+	{
+		if (p == null)
+			return 0;
 
-		if (in == null)
-		{
-			in = new int[0];
+		return sizeNode(p.left) + 1 + sizeNode(p.right);
+	}
+
+	//Получить количество листьев
+	public int leaves()
+	{
+		return nodeLeaves(root);
+	}
+
+	private int nodeLeaves(Node p) 
+	{
+		if (p == null)
+			return 0;
+
+		int ret = 0;
+
+		ret += nodeLeaves(p.left);			
+		if (p.left == null && p.right == null)
+			ret++;
+		ret += nodeLeaves(p.right);
+
+		return ret;
+	}
+
+	//Получить количество узлов (хотя бы 1 потомок)	
+	public int nodes()
+	{
+		return nodeNodes(root);
+	}
+
+	private int nodeNodes(Node p) 
+	{
+		if (p == null)
+			return 0;
+
+		int ret = 0;
+
+		ret += nodeNodes(p.left);			
+		if (p.left != null || p.right != null)
+			ret++;
+		ret += nodeNodes(p.right);
+
+		return ret;
+	}
+	//Получить количество уровней (высота дерева)
+	public int height() 
+	{
+		return nodeHeight(root);
+	}
+
+	private int nodeHeight(Node p) 
+	{
+		if (p == null)
+			return 0;
+
+		return 1 + Math.max(nodeHeight(p.left), nodeHeight(p.right));
+	}
+
+	//Ширина дерева (максимальное количество узлов на любом уровне)	
+	public int width() 
+	{
+		int[] ar = new int[height()];
+		nodeWidth(root, ar, 0);
+		return max(ar);
+	}
+
+	private void nodeWidth(Node p, int[] ar, int level) 
+	{
+		if (p == null)
 			return;
-		}
-		for (int i = 0; i < in.length; i++) 
+
+		nodeWidth(p.left,  ar, level+1);
+		ar[level]++;
+		nodeWidth(p.right, ar, level+1);
+	}
+	private int max(int[] array)
+	{
+		int max=0;
+		max = array[0];
+
+		for (int i : array) 
 		{
-			add(in[i]);
+			if (i>max)
+				max=i;
 		}
+
+		return max;
 	}
 
-	//@Override
-	public String toString() /*готово*/
+
+	//Получить String через LVR дерева
+	@Override
+	public String toString() 
 	{
-		String rez = toStringNode(root);
-		System.out.println("toString() "+ rez);
-		return rez;
+		return toString(root);
 	}
-	private String toStringNode(Node p) /*готово*/
+
+	private String toString(Node p) 
 	{
 		if (p == null)
 			return "";
 
-		toStringNode(p.left);
-		str += p.val+", ";
-		System.out.println("toStringNode(Node p)"+str);
-		toStringNode(p.right);	
-
-		return str;
+		return toString(p.left) + p.val + ", " + toString(p.right);
 	}
 
-	//@Override
-	public int [] toArray() /*готово*/
+	//Получить массив через LVR дерева
+	private class Counter
 	{
-		array = new int [size()];
-		toArrayNode(root);
-		arraySize = 0;
-		return array;
+		int index = 0;
 	}
-	private int [] toArrayNode(Node p) /*готово*/
+	public int[] toArray() 
+	{
+		int[] ar = new int[size()];
+		nodeToArray(root, ar, new Counter());
+		return ar;
+	}
+
+	private void nodeToArray(Node p, int[] ar, Counter ii) 
 	{
 		if (p == null)
+			return;
+
+		nodeToArray(p.left,  ar, ii);
+		ar[ii.index++] = p.val;
+		nodeToArray(p.right, ar, ii);
+	}
+
+	//Зеркально пересадить дерево
+	public void reverse()
+	{
+		reverseNode(root);
+	}
+
+	private void reverseNode(Node p) 
+	{
+		if (root == null)
+			return;
+
+		Node tmp = p.left;
+		p.left = p.right;
+		p.right = tmp;
+		
+		reverseNode(p.left);
+		reverseNode(p.right);
+	}
+
+	public void del(int key) 
+	{
+		Node current = root;
+		Node parent = root;
+		boolean isleft = true;
+
+		while (current.val != key) 
 		{
-			return array;
+			parent = current;
+			if (key < current.val) 
+			{
+				isleft = true;
+				current = current.left;
+			} 
+			else 
+			{
+				isleft = false;
+				current = current.right;
+			}
+			if (current == null)
+				return;
 		}
-		toArrayNode(p.left);
-		System.out.println("значение "+p.val+" индекс массива "+ arraySize );
-		array[arraySize] = p.val;
-		arraySize++;
-		toArrayNode(p.right);	
-
-		return array;
-	}
-
-	//@Override
-	// считает кол-во листьев
-	public int leaves() /*готово*/
-	{
-		return leavesNode(root);
-	}
-	private int leavesNode(Node p) /*готово*/
-	{
-		if (p==null)
+		if (current.left == null && current.right == null) 
 		{
-			return 0;
-		}
-		leavesNode(p.left);
-		leavesNode(p.right);
-		if(p.left == null && p.right == null)
+			if (current == root)
+				root = null;
+			else if (isleft)
+				parent.left = null;
+			else
+				parent.right = null;
+		} 
+		else if (current.right == null)
+			if (current == root)
+				root = current.left;
+			else if (isleft)
+				parent.left = current.left;
+			else
+				parent.right = current.left;
+		else if (current.left == null)
+			if (current == root)
+				root = current.right;
+			else if (isleft)
+				parent.left = current.right;
+			else
+				parent.right = current.right;
+		else 
 		{
-			count ++;
+			Node successor = getSuccessor(current);
+			if (current == root)
+				root = successor;
+			else if (isleft)
+				parent.left = successor;
+			else
+				parent.right = successor;
+			successor.left = current.left;
 		}
-		return count;
 	}
 
-	//@Override
-	// считает кол-во узлов (у кого есть хоть 1 потомок)
-	public int nodes() /*готово*/
+	private Node getSuccessor(Node delNode) 
 	{
-		return nodesNode(root);
-	}
-	private int nodesNode(Node p) /*готово*/
-	{
-		if (p==null)
+		Node successorParent = delNode;
+		Node successor = delNode;
+		Node current = delNode.right;
+		while (current != null) 
 		{
-			return 0;
+			successorParent = successor;
+			successor = current;
+			current = current.left;
 		}
-		leavesNode(p.left);
-		if(p.left != null && p.right != null)
+		if (successor != delNode.right) 
 		{
-			count ++;
+			successorParent.left = successor.right;
+			successor.right = delNode.right;
 		}
-		leavesNode(p.right);
-
-		return count;
+		return successor;
 	}
-
-	//@Override
-	// считает кол-во уровней самой большой ветки
-	public int height() 
-	{
-		return 0;
-	}
-
-	//@Override
-	// ширина, масксимальное кол-во элементов на любом уровне
-	public int width() 
-	{
-		return 0;
-	}
-
-	//@Override
-	public void revers()
-	{
-
-	}
-
-	//@Override
-	//удалить элемент не ломая дерева
-//	public boolean del(int key) // Удаление узла с заданным ключом
-//	{ // (предполагается, что дерево не пусто)
-//		Node current = root;
-//		Node parent = root;
-//		boolean isLeft = true;
-//		while(current.val != key) // Поиск узла
-//		{
-//			parent = current;
-//			if(key < current.val) // Двигаться налево?
-//			{
-//				isLeft = true;
-//				current = current.left;
-//			}
-//			else // Или направо?
-//			{
-//				isLeft = false;
-//				current = current.right;
-//			}
-//			if(current == null) // Конец цепочки
-//				return false; // Узел не найден
-//		}
-//		// Удаляемый узел найден
-//		// Продолжение...
-//		//	}
-//		// Продолжение delete()...
-//		// Если узел не имеет потомков, он просто удаляется.
-//		if(current.left==null &&
-//				current.right==null)
-//		{
-//			if(current == root) // Если узел является корневым,
-//				root = null; // дерево очищается
-//			else if(isLeft)
-//				parent.left = null; // Узел отсоединяется
-//			else // от родителя
-//				parent.right = null;
-//		}
-//		// Продолжение...
-//		//	}
-//		// Продолжение delete()...
-//		// Если нет правого потомка, узел заменяется левым поддеревом
-//		else if(current.right==null)
-//			if(current == root)
-//				root = current.left;
-//			else if(isLeft) // Левый потомок родителя
-//				parent.left = current.left;
-//			else // Правый потомок родителя
-//				parent.right = current.left;
-//		// Если нет левого потомка, узел заменяется правым поддеревом
-//		else if(current.left==null)
-//			if(current == root)
-//				root = current.right;
-//			else if(isLeft) // Левый потомок родителя
-//				parent.left = current.right;
-//			else // Правый потомок родителя
-//				parent.right = current.right;
-//		// Продолжение...
-//	}
-//
-//	private Node getSuccessor(Node delNode)
-//	{
-//		Node successorParent = delNode;
-//		Node successor = delNode;
-//		Node current = delNode.right; // Переход к правому потомку
-//		while(current != null) // Пока остаются левые потомки
-//		{
-//			successorParent = successor;
-//			successor = current;
-//			current = current.left; // Переход к левому потомку
-//		}
-//		// Если преемник не является
-//		if(successor != delNode.right) // правым потомком,
-//		{ // создать связи между узлами
-//			successorParent.left = successor.right;
-//			successor.right = delNode.right;
-//		}
-//		return successor;
-//	}
-	
-	 public boolean del(int key) // delete node with given key
-     {                           // (assumes non-empty list)
-     Node current = root;
-     Node parent = root;
-     boolean isLeft = true;
-
-     while(current.val != key)        // search for node
-        {
-        parent = current;
-        if(key < current.val)         // go left?
-           {
-           isLeft = true;
-           current = current.left;
-           }
-        else                            // or go right?
-           {
-           isLeft = false;
-           current = current.right;
-           }
-        if(current == null)             // end of the line,
-           return false;                // didn't find it
-        }  // end while
-     // found node to delete
-
-     // if no ren, simply delete it
-     if(current.left==null &&
-                                  current.right==null)
-        {
-        if(current == root)             // if root,
-           root = null;                 // tree is empty
-        else if(isLeft)
-           parent.left = null;     // disconnect
-        else                            // from parent
-           parent.right = null;
-        }
-
-     // if no right , replace with left subtree
-     else if(current.right==null)
-        if(current == root)
-           root = current.left;
-        else if(isLeft)
-           parent.left = current.left;
-        else
-           parent.right = current.left;
-
-     // if no left , replace with right subtree
-     else if(current.left==null)
-        if(current == root)
-           root = current.right;
-        else if(isLeft)
-           parent.left = current.right;
-        else
-           parent.right = current.right;
-
-     else  // two ren, so replace with inorder successor
-        {
-        // get successor of node to delete (current)
-        Node successor = getSuccessor(current);
-
-        // connect parent of current to successor instead
-        if(current == root)
-           root = successor;
-        else if(isLeft)
-           parent.left = successor;
-        else
-           parent.right = successor;
-
-        // connect successor to current's left 
-        successor.left = current.left;
-        }  // end else two ren
-     // (successor cannot have a left )
-     return true;                                // success
-     }  // end delete()
-//-------------------------------------------------------------
-  // returns node with next-highest value after delNode
-  // goes to right , then right 's left descendents
-  private Node getSuccessor(Node delNode)
-     {
-     Node successorParent = delNode;
-     Node successor = delNode;
-     Node current = delNode.right;   // go to right 
-     while(current != null)               // until no more
-        {                                 // left ren,
-        successorParent = successor;
-        successor = current;
-        current = current.left;      // go to left 
-        }
-                                          // if successor not
-     if(successor != delNode.right)  // right ,
-        {                                 // make connections
-        successorParent.left = successor.right;
-        successor.right = delNode.right;
-        }
-     return successor;
-     }
-
 }
