@@ -1,0 +1,2 @@
+# hammer
+my java training
