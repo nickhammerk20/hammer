@@ -1,11 +1,11 @@
 package BsTree;
 
-public class BsTree 
+public class BsTree implements EBsTree
 {
 
 	int leftHeight = 0;
 	int rightHeight = 0;
-
+	
 	class Node 
 	{
 		int val;
@@ -17,15 +17,14 @@ public class BsTree
 			this.val = val;
 		}
 	}
-
 	protected Node root = null;
 
-	//Печать в консоль
+	//Печать в консоль ++
+	@Override
 	public void print() 
 	{
 		printNode(root);
 	}
-
 	private void printNode(Node p) 
 	{
 		if (p == null)
@@ -36,7 +35,8 @@ public class BsTree
 		printNode(p.right);             //R
 	}
 
-	//Инициализация
+	//Инициализация ++
+	@Override
 	public void init(int[] ini) 
 	{
 		if (ini == null)
@@ -48,7 +48,8 @@ public class BsTree
 		}
 	}
 
-	//Добавление узла со значением
+	//Добавление узла со значением ++
+	@Override
 	public void add(int val) 
 	{
 		if (root == null) 
@@ -58,7 +59,6 @@ public class BsTree
 		}
 		addNode(root, val);
 	}
-
 	private void addNode(Node p, int val) 
 	{
 		if (val < p.val) 
@@ -77,18 +77,19 @@ public class BsTree
 		}
 	}
 
-	//Очистка дерева	
+	//Очистка дерева ++
+	@Override
 	public void clear() 
 	{
 		root = null;
 	}
 
-	//Получить количество всех узлов в дереве (с потомками и без)
+	//Получить количество всех узлов в дереве (с потомками и без) ++
+	@Override
 	public int size() 
 	{
 		return sizeNode( root );
 	}
-
 	private int sizeNode(Node p) 
 	{
 		if (p == null)
@@ -97,12 +98,12 @@ public class BsTree
 		return sizeNode(p.left) + 1 + sizeNode(p.right);
 	}
 
-	//Получить количество листьев
+	//Получить количество листьев++
+	@Override
 	public int leaves()
 	{
 		return nodeLeaves(root);
 	}
-
 	private int nodeLeaves(Node p) 
 	{
 		if (p == null)
@@ -118,12 +119,12 @@ public class BsTree
 		return ret;
 	}
 
-	//Получить количество узлов (хотя бы 1 потомок)	
+	//Получить количество узлов (хотя бы 1 потомок)	++
+	@Override
 	public int nodes()
 	{
 		return nodeNodes(root);
 	}
-
 	private int nodeNodes(Node p) 
 	{
 		if (p == null)
@@ -138,12 +139,13 @@ public class BsTree
 
 		return ret;
 	}
-	//Получить количество уровней (высота дерева)
+	
+	//Получить количество уровней (высота дерева)++
+	@Override
 	public int height() 
 	{
 		return nodeHeight(root);
 	}
-
 	private int nodeHeight(Node p) 
 	{
 		if (p == null)
@@ -153,13 +155,15 @@ public class BsTree
 	}
 
 	//Ширина дерева (максимальное количество узлов на любом уровне)	
+	@Override
 	public int width() 
 	{
+		if (size() == 0)
+			return 0;
 		int[] ar = new int[height()];
 		nodeWidth(root, ar, 0);
 		return max(ar);
 	}
-
 	private void nodeWidth(Node p, int[] ar, int level) 
 	{
 		if (p == null)
@@ -185,12 +189,11 @@ public class BsTree
 
 
 	//Получить String через LVR дерева
-	@Override
+		@Override
 	public String toString() 
 	{
 		return toString(root);
 	}
-
 	private String toString(Node p) 
 	{
 		if (p == null)
@@ -200,17 +203,17 @@ public class BsTree
 	}
 
 	//Получить массив через LVR дерева
-	private class Counter
+		private class Counter
 	{
 		int index = 0;
 	}
+	@Override
 	public int[] toArray() 
 	{
 		int[] ar = new int[size()];
 		nodeToArray(root, ar, new Counter());
 		return ar;
 	}
-
 	private void nodeToArray(Node p, int[] ar, Counter ii) 
 	{
 		if (p == null)
@@ -222,11 +225,11 @@ public class BsTree
 	}
 
 	//Зеркально пересадить дерево
-	public void reverse()
+	@Override
+	public void revers()
 	{
 		reverseNode(root);
 	}
-
 	private void reverseNode(Node p) 
 	{
 		if (root == null)
@@ -239,7 +242,9 @@ public class BsTree
 		reverseNode(p.left);
 		reverseNode(p.right);
 	}
-
+	
+	//Удаление элемента по ключу
+		@Override
 	public void del(int key) 
 	{
 		Node current = root;
@@ -297,7 +302,6 @@ public class BsTree
 			successor.left = current.left;
 		}
 	}
-
 	private Node getSuccessor(Node delNode) 
 	{
 		Node successorParent = delNode;

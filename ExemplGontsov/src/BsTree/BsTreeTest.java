@@ -42,7 +42,7 @@ public class BsTreeTest
 	// toString							//
 	//==================================//
 	@Test
-	public void toString_many() 
+	public void test_toString_many() 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
@@ -51,7 +51,7 @@ public class BsTreeTest
 		assertEquals(exp, act);
 	}
 	@Test
-	public void toString_two() 
+	public void test_toString_two() 
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
@@ -60,7 +60,7 @@ public class BsTreeTest
 		assertEquals(exp, act);
 	}
 	@Test
-	public void toString_one() 
+	public void test_toString_one() 
 	{
 		int[] ini = {10};
 		obj.init(ini);
@@ -69,7 +69,7 @@ public class BsTreeTest
 		assertEquals(exp, act);
 	}
 	@Test
-	public void toString_empty() 
+	public void test_toString_empty() 
 	{
 		int[] ini = {};
 		obj.init(ini);
@@ -129,7 +129,7 @@ public class BsTreeTest
 	// init
 	//================================
 	@Test
-	public void init_many() 
+	public void test_init_many() 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
@@ -138,7 +138,7 @@ public class BsTreeTest
 		assertArrayEquals(exp, act);
 	}
 	@Test
-	public void init_two() 
+	public void test_init_two() 
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
@@ -147,7 +147,7 @@ public class BsTreeTest
 		assertArrayEquals(exp, act);
 	}
 	@Test
-	public void init_one() 
+	public void test_init_one() 
 	{
 		int[] ini = {10};
 		obj.init(ini);
@@ -156,7 +156,7 @@ public class BsTreeTest
 		assertArrayEquals(exp, act);
 	}
 	@Test
-	public void init_empty() 
+	public void test_init_empty() 
 	{
 		int[] ini = {};
 		obj.init(ini);

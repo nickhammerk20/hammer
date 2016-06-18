@@ -1,6 +1,6 @@
 package BsTree;
 
-public class BsTree2MyWork implements EBsTree
+public class BsTree2MyBadWork implements EBsTree
 {
 	String str = "";
 	int count = 0;

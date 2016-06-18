@@ -19,6 +19,3 @@ interface EBsTree
 	public String toString(); 
 	public int [] toArray(); 
 }
-
-
-
