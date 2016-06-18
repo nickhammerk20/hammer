@@ -37,9 +37,9 @@ public class BsTreeGUI extends BsTree
 		printNodeGUI(p.right,	grap,  	x , 	right, 	level+1, 	dy);             	//Right
 	}
 	
-//	private void printLineGUI(int pLeft, int pRight, int level, int x, int y, int dy )
+//	private void printLineGUI(int left, int right, int level, int x, int y, int dy )
 //	{
-//		if (pleft != null)
+//		if (pLeft != null)
 //		{
 //			int xLine = ( (left + x)/2+15 );
 //			int yLine = ( dy * ( level + 1 ));
