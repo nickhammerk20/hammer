@@ -36,5 +36,20 @@ public class BsTreeGUI extends BsTree
 		printNodeGUI(p.left, 	grap, 	left , 	x , 	level+1,	dy);          		//Left
 		printNodeGUI(p.right,	grap,  	x , 	right, 	level+1, 	dy);             	//Right
 	}
-
+	
+//	private void printLineGUI(int pLeft, int pRight, int level, int x, int y, int dy )
+//	{
+//		if (pleft != null)
+//		{
+//			int xLine = ( (left + x)/2+15 );
+//			int yLine = ( dy * ( level + 1 ));
+//			grap.drawLine(xLine, yLine, x+15, y+30);
+//		}
+//		if (p.right != null)
+//		{
+//			int xLine = ( (right + x)/2+15 );
+//			int yLine = ( dy * ( level + 1 ));
+//			grap.drawLine(xLine, yLine, x+15, y+30);
+//		}
+//	}
 }

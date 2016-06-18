@@ -449,5 +449,111 @@ public class BsTreeTest
 		int [] exp = {50};
 		assertArrayEquals(exp, act);
 	}
+	//================================
+	// del
+	//================================
+	@Test
+	public void test_del_many1() 
+	{
+		int[] ini = {50,25,40,20,11,24,30,66,75,100,60,45,22,43,77};
+		obj.init(ini);
+		obj.del(66);
+		int [] act = obj.toArray();
+		int [] exp = {11,20,22,24,25,30,40,43,45,50,60,75,77,100};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_del_many2() 
+	{
+		int[] ini = {10,20,77,11,100,24,82};
+		obj.init(ini);
+		obj.del(100);
+		int [] act = obj.toArray();
+		int [] exp = {10, 11, 20, 24, 77, 82};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_del_two() 
+	{
+		int[] ini = {20,77};
+		obj.init(ini);
+		obj.del(20);
+		int [] act = obj.toArray();
+		int [] exp = {77};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_del_one() 
+	{
+		int[] ini = {20};
+		obj.init(ini);
+		obj.del(20);
+		int [] act = obj.toArray();
+		int [] exp = {};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_del_empty() 
+	{
+		int[] ini = {};
+		obj.init(ini);
+		obj.del(50);
+		int [] act = obj.toArray();
+		int [] exp = {50};
+		assertArrayEquals(exp, act);
+	}
+	//================================
+	// revers
+	//================================
+	@Test
+	public void test_revers_many1() 
+	{
+		int[] ini = {50,25,40,20,11,24,30,66,75,100,60,45,22,43,77};
+		obj.init(ini);
+		obj.revers();
+		int [] act = obj.toArray();
+		int [] exp = {11,20,22,24,25,30,40,43,45,50,60,66,75,77,100};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_revers_many2() 
+	{
+		int[] ini = {10,20,77,11,100,24,82};
+		obj.init(ini);
+		obj.revers();
+		int [] act = obj.toArray();
+		int [] exp = {10, 11, 20, 24, 77, 82,100};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_revers_two() 
+	{
+		int[] ini = {20,77};
+		obj.init(ini);
+		obj.revers();
+		int [] act = obj.toArray();
+		int [] exp = {20,77};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_revers_one() 
+	{
+		int[] ini = {20};
+		obj.init(ini);
+		obj.revers();
+		int [] act = obj.toArray();
+		int [] exp = {20};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_revers_empty() 
+	{
+		int[] ini = {};
+		obj.init(ini);
+		obj.revers();
+		int [] act = obj.toArray();
+		int [] exp = {};
+		assertArrayEquals(exp, act);
+	}
 }
 
