@@ -164,6 +164,16 @@ public class BsTreeTest
 		int[] exp = {};
 		assertArrayEquals(exp, act);
 	}
+	@Test
+	public void test_init_null() 
+	{
+		int[] ini = null;
+		obj.init(ini);
+		int[] act = obj.toArray();
+		int[] exp = {};
+		assertEquals(0, obj.size());
+		assertArrayEquals(exp, act);
+	}
 	//================================
 	// size
 	//================================
@@ -512,7 +522,7 @@ public class BsTreeTest
 		obj.init(ini);
 		obj.revers();
 		int [] act = obj.toArray();
-		int [] exp = {11,20,22,24,25,30,40,43,45,50,60,66,75,77,100};
+		int [] exp = {100,77,75,66,60,50,45,43,40,30,25,24,22,20,11};
 		assertArrayEquals(exp, act);
 	}
 	@Test
