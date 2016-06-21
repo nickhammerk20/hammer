@@ -57,6 +57,14 @@ public class XZPanel extends JPanel implements MouseListener, FocusListener, Key
 			gg.drawOval(5, 5, getWidth()-5, getHeight()-5);
 		}
 	}
+	@Override
+	public void keyTyped(KeyEvent e) 
+	{
+		str += e.getKeyChar();
+		repaint();
+//		Graphics2D gg = (Graphics2D) getGraphics();
+//		gg.drawOval(5, 5, getWidth()-5, getHeight()-5);
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) 
@@ -75,17 +83,11 @@ public class XZPanel extends JPanel implements MouseListener, FocusListener, Key
 
 	@Override
 	public void mouseReleased(MouseEvent e) {}
-	@Override
-	public void keyPressed(KeyEvent e) {}
-	@Override
-	public void keyReleased(KeyEvent e) {}
 	
 	@Override
-	public void keyTyped(KeyEvent e) 
-	{
-		str += e.getKeyChar();
-		repaint();
-//		Graphics2D gg = (Graphics2D) getGraphics();
-//		gg.drawOval(5, 5, getWidth()-5, getHeight()-5);
-	}
+	public void keyPressed(KeyEvent e) {}
+	
+	@Override
+	public void keyReleased(KeyEvent e) {}
+		
 }
