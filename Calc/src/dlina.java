@@ -1,6 +1,7 @@
 // конвертор дистанции
 
-public class dlina{
+public class dlina
+{
 	public static void main(String [] args)
 	{
 		double km=100;

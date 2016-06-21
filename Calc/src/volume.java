@@ -1,7 +1,8 @@
 
 public class volume {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		double litr=50;
 		double res=barell(litr);
 		System.out.println("”казанный объем: "+litr+" литров, \nсоответсвует:");

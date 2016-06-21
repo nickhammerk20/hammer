@@ -2,7 +2,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class dlinatest {
+public class dlinatest 
+{
 
 	@Test
 	public void testdlinamile() {
