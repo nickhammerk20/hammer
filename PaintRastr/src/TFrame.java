@@ -10,5 +10,7 @@ public class TFrame extends JFrame
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		add (new TPanel() );
 		setVisible(true);
+		
+		
 	}
 }

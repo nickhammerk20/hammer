@@ -11,6 +11,9 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 public class TPanel extends JPanel implements MouseListener, MouseMotionListener
@@ -27,6 +30,19 @@ public class TPanel extends JPanel implements MouseListener, MouseMotionListener
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		
+		JMenuBar menuBar = new JMenuBar();
+		add(menuBar);
+		
+		JMenu newMenu = new JMenu("New");
+		add(newMenu);
+		
+		JMenu fileMenu = new JMenu("File");
+        add(fileMenu);
+		
+        JMenuItem openItem = new JMenuItem("Open");
+        add(openItem);
+        
+        						
 		JButton width2 = new JButton ("2");
 		width2.setBounds(10, 50, 50, 20);
 		add(width2);
@@ -40,14 +56,17 @@ public class TPanel extends JPanel implements MouseListener, MouseMotionListener
 		add(width4);
 		
 		JButton colorRed = new JButton ("R");
+		colorRed.setForeground(Color.RED);
 		colorRed.setBounds(10, 130, 50, 20);
 		add(colorRed);
 		
 		JButton colorGreen = new JButton ("G");
+		colorGreen.setForeground(Color.green);
 		colorGreen.setBounds(10, 160, 50, 20);
 		add(colorGreen);
 		
 		JButton colorBlue = new JButton ("B");
+		colorBlue.setForeground(Color.blue);
 		colorBlue.setBounds(10, 190, 50, 20);
 		add(colorBlue);
 		
