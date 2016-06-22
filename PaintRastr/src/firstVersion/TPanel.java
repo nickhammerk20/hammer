@@ -1,3 +1,4 @@
+package firstVersion;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -12,18 +13,17 @@ import javax.swing.JPanel;
 public class TPanel extends JPanel implements MouseListener, MouseMotionListener
 {
 
-//	int x = 0;
-//	int y = 0;
+	int x = 0;
+	int y = 0;
 
-//	BufferedImage bi = new BufferedImage(1200, 600, BufferedImage.TYPE_INT_ARGB);
+	BufferedImage bi = new BufferedImage(1200, 600, BufferedImage.TYPE_INT_ARGB);
 			
 	public TPanel() 
 	{
 		setLayout(null);
-		add( new XZPanel() );
-//		setVisible(true);
-//		addMouseListener(this);
-//		addMouseMotionListener(this);
+		
+		addMouseListener(this);
+		addMouseMotionListener(this);
 
 		JButton width2 = new JButton ("2");
 		width2.setBounds(10, 50, 50, 20);
@@ -55,9 +55,29 @@ public class TPanel extends JPanel implements MouseListener, MouseMotionListener
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {}
+	public void paint(Graphics g) {
+		super.paint(g);
+		Graphics2D gg = (Graphics2D) g;
+		gg.drawImage(bi, 0, 0, null);
+	}
+
 	@Override
-	public void mouseDragged(MouseEvent e) {}
+	public void mousePressed(MouseEvent e) 
+	{
+		x = e.getX();
+		y = e.getY();
+	}
+	@Override
+	public void mouseDragged(MouseEvent e) 
+	{
+		Graphics2D gg = (Graphics2D) bi.getGraphics();
+		gg.setColor(Color.red);
+		gg.drawLine(x, y, e.getX(), e.getY());
+		x = e.getX();
+		y = e.getY();
+		repaint();
+	}	
+
 	@Override
 	public void mouseReleased(MouseEvent e) {}
 	@Override
