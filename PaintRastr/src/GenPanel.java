@@ -1,29 +1,17 @@
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.awt.image.BufferedImage;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class TPanel extends JPanel implements MouseListener, MouseMotionListener
+public class GenPanel extends JPanel implements MouseListener, MouseMotionListener
 {
-
-//	int x = 0;
-//	int y = 0;
-
-//	BufferedImage bi = new BufferedImage(1200, 600, BufferedImage.TYPE_INT_ARGB);
-			
-	public TPanel() 
+	public GenPanel( PCommand cmd) 
 	{
 		setLayout(null);
-		add( new XZPanel() );
-//		setVisible(true);
-//		addMouseListener(this);
-//		addMouseMotionListener(this);
+		add( new PPanel( cmd ) );
 
 		JButton width2 = new JButton ("2");
 		width2.setBounds(10, 50, 50, 20);

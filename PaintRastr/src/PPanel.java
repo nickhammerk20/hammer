@@ -1,32 +1,30 @@
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.SwingUtilities;
 
-public class XZPanel extends JPanel implements MouseListener, MouseMotionListener
+public class PPanel extends JPanel implements MouseListener, MouseMotionListener
 {
 
 	int x = 0;
 	int y = 0;
+	PData pd = null;
 	
-	JPopupMenu popup;
-	JLabel label;
-
 	BufferedImage bi = new BufferedImage(1200, 600, BufferedImage.TYPE_INT_ARGB);
 
-	public XZPanel() 
+	public PPanel(PCommand cmd) 
 	{
+		this.pd = cmd.pd;
+		cmd.pp = this;
+		
+		setComponentPopupMenu( new PContext(cmd) );
 		setLayout(null);
 		setBounds(70, 0, 1110, 540);
 		setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
@@ -42,11 +40,7 @@ public class XZPanel extends JPanel implements MouseListener, MouseMotionListene
 		gg.drawImage(bi, 0, 0, null);
 	}
 
-	@Override
-	public void mouseClicked(MouseEvent e) 
-	{
-
-	}
+	
 	@Override
 	public void mousePressed(MouseEvent e) 
 	{
@@ -57,12 +51,15 @@ public class XZPanel extends JPanel implements MouseListener, MouseMotionListene
 	public void mouseDragged(MouseEvent e)
 	{
 		Graphics2D gg = (Graphics2D) bi.getGraphics();
-		gg.setColor(Color.red);
+		gg.setStroke(new BasicStroke( pd.width ));
+		gg.setColor( pd.color );
 		gg.drawLine(x, y, e.getX(), e.getY());
 		x = e.getX();
 		y = e.getY();
 		repaint();
 	}
+	@Override
+	public void mouseClicked(MouseEvent e) {}
 	@Override
 	public void mouseEntered(MouseEvent e) {}
 	@Override

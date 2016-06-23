@@ -1,34 +1,66 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
-public class PComand 
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
+
+public class PCommand 
 {
 	PData pd = new PData();
-	
+	PPanel pp = null;
+
 	ActionFileOpen 	aOpen 	= new ActionFileOpen();
 	ActionFileSave 	aSave 	= new ActionFileSave();
 	ActionColor 	aColor 	= new ActionColor();
 	ActionWidth 	aWidth 	= new ActionWidth();
-			
-	
+
+
 	class ActionFileOpen implements ActionListener
 	{
 		@Override
 		public void actionPerformed(ActionEvent e) 
 		{
-		
+			try 
+			{
+				JFileChooser fd = new JFileChooser();
+				if ( fd.showOpenDialog(pp) == JFileChooser.APPROVE_OPTION)
+				{
+					//pp.bi.setData();
+					pp.bi = ImageIO.read(fd.getSelectedFile());
+					pp.repaint();
+				}
+			} 
+			catch (IOException e1) 
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
-		class ActionFileSave implements ActionListener
+
+	class ActionFileSave implements ActionListener
 	{
 		@Override
 		public void actionPerformed(ActionEvent e) 
 		{
-		
+			try 
+			{
+				JFileChooser fd = new JFileChooser();
+				if ( fd.showSaveDialog(pp) == JFileChooser.APPROVE_OPTION)
+				{
+					ImageIO.write(pp.bi, "jpg", fd.getSelectedFile());
+				}
+			} 
+			catch (IOException e1) 
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
-		class ActionWidth implements ActionListener
+	class ActionWidth implements ActionListener
 	{
 		@Override
 		public void actionPerformed(ActionEvent e) 
@@ -42,7 +74,7 @@ public class PComand
 			}
 		}
 	}
-		class ActionColor implements ActionListener
+	class ActionColor implements ActionListener
 	{
 		@Override
 		public void actionPerformed(ActionEvent e) 

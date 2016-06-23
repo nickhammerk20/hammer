@@ -1,17 +1,17 @@
-
 import javax.swing.JFrame;
 
-public class TFrame extends JFrame
+public class PFrame extends JFrame
 {
-	public TFrame()
+	public PFrame()
 	{
 		setTitle("Pain on RASTR");
 		setBounds(100, 100, 1200, 600);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		setJMenuBar(new PMenu() );
+		PCommand cmd = new PCommand();
+		setJMenuBar(new PMenu( cmd) );
 		
-		add (new TPanel() );
+		add (new GenPanel( cmd ) );
 		setVisible(true);
 	}
 }
