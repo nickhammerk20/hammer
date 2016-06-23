@@ -45,18 +45,7 @@ public class XZPanel extends JPanel implements MouseListener, MouseMotionListene
 	@Override
 	public void mouseClicked(MouseEvent e) 
 	{
-		JPanel panel = new JPanel();
-		panel.add(label);
-		popup = new JPopupMenu();
-		popup.add(new JMenuItem("open"));
-		popup.add(new JMenuItem("save"));
-		label.addMouseListener(new MouseAdapter(){
-			public void mouseClicked(MouseEvent event) {
-				if (SwingUtilities.isRightMouseButton(event))
-					popup.show(label, event.getX(), event.getY());
-			}
-		});
-		setContentPane(panel);	
+
 	}
 	@Override
 	public void mousePressed(MouseEvent e) 
