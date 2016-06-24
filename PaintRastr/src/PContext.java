@@ -9,8 +9,8 @@ public class PContext extends JPopupMenu
 		JMenuItem mw5 = new JMenuItem("Width 5");
 		JMenuItem mw10 = new JMenuItem("Width 10");		
 		mw1.setActionCommand("w1");
-		mw1.setActionCommand("w5");
-		mw1.setActionCommand("w10");
+		mw5.setActionCommand("w5");
+		mw10.setActionCommand("w10");
 		
 		JMenuItem mcRed = new JMenuItem("Color RED");
 		JMenuItem mcGreen = new JMenuItem("Color GREEN");

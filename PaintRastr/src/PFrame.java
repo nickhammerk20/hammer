@@ -9,9 +9,11 @@ public class PFrame extends JFrame
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		PCommand cmd = new PCommand();
-		setJMenuBar(new PMenu( cmd) );
-		
+		setJMenuBar(new PMenu ( cmd ) );
+				
+		add (new PToolBar ( cmd ) );
 		add (new GenPanel( cmd ) );
+		
 		setVisible(true);
 	}
 }

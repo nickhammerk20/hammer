@@ -17,16 +17,20 @@ public class PPanel extends JPanel implements MouseListener, MouseMotionListener
 	int y = 0;
 	PData pd = null;
 	
-	BufferedImage bi = new BufferedImage(1200, 600, BufferedImage.TYPE_INT_ARGB);
+	BufferedImage bi = new BufferedImage(1200, 600, BufferedImage.TYPE_INT_RGB);
 
 	public PPanel(PCommand cmd) 
 	{
+		Graphics2D gg = (Graphics2D) bi.getGraphics();
+		gg.setBackground(Color.white);
+		gg.fillRect(0, 0, 1110, 500);
+		
 		this.pd = cmd.pd;
 		cmd.pp = this;
 		
 		setComponentPopupMenu( new PContext(cmd) );
 		setLayout(null);
-		setBounds(70, 0, 1110, 540);
+		setBounds(70, 0, 1110, 500);
 		setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 		setBackground(Color.WHITE);
 		addMouseListener(this);
