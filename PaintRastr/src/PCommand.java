@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -27,8 +28,8 @@ public class PCommand
 				JFileChooser fd = new JFileChooser();
 				if ( fd.showOpenDialog(pp) == JFileChooser.APPROVE_OPTION)
 				{
-					//pp.bi.setData();
-					pp.bi = ImageIO.read(fd.getSelectedFile());
+//					pp.bi = ImageIO.read(fd.getSelectedFile());
+					BufferedImage input = ImageIO.read(fd.getSelectedFile());
 					pp.repaint();
 				}
 			} 
