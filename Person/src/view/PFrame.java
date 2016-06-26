@@ -5,9 +5,11 @@ public class PFrame extends JFrame
 {
 	public PFrame()
 	{
-		setTitle("Pain on RASTR");
+		setTitle("Person");
 		setBounds(100, 100, 600, 600);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		add (new PPanel());
 		
 		setVisible(true);
 	}
