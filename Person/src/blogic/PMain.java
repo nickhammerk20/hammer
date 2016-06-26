@@ -1,20 +1,24 @@
 package blogic;
 
-import java.sql.Statement;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import dal.PersonDAO;
+import dal.PersonDAO_H2;
+import dal.PersonDAO_Mock;
+import dal.PersonDAO_MySQL;
 
 public class PMain 
 {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException 
 	{
-		ArrayList<Person> pp = initFromH2();
+		
+		PersonDAO pd = new PersonDAO_Mock();
+//		PersonDAO pd = new PersonDAO_MySQL();
+//		PersonDAO pd = new PersonDAO_H2();
+		ArrayList<Person> pp = pd.read();
 
-		print (pp);
-
+				print (pp);
 		//		print18_45( pp );
 		//		print_5( pp );
 		//		print_chet_ID( pp );
@@ -47,67 +51,6 @@ public class PMain
 		{
 			System.out.println( p );
 		}
-	}
-
-	// Инициализация из базы H2 
-	public static ArrayList<Person> initFromH2() throws ClassNotFoundException, SQLException
-	{
-		ArrayList<Person> pp = new ArrayList<Person>();
-
-		Class.forName("org.h2.Driver");
-		Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
-		Statement st = con.createStatement();
-		ResultSet rs =  st.executeQuery("SELECT * FROM PERSON");
-		while (rs.next () )
-		{
-//			System.out.println( rs.getString(2));
-			pp.add( new Person(rs.getInt("id"), rs.getString("lname"), rs.getString("fname"),rs.getInt(4)) );
-		}
-		return pp;
-	}
-
-	// Инициализация из списка в методе 
-	public static ArrayList<Person> init()
-	{
-		ArrayList<Person> pp = new ArrayList<Person>();
-
-		pp.add( new Person(10, "Vasia", 	"Pupkin", 		23) );
-		pp.add( new Person(14, "Kasia", 	"Lupkin", 		27) );
-		pp.add( new Person(17, "Masia",		"Gupkin",		19) );
-		pp.add( new Person(33, "Gasia", 	"Hupkin", 		56) );
-		pp.add( new Person(60, "Lasia", 	"Jupkin", 		99) );
-		pp.add( new Person(71, "Andrey",	"Petrishe",  	12) );
-		pp.add( new Person(12, "Volodya",	"Kovalevskij", 	23) );
-		pp.add( new Person(34, "Sergey",	"Shevchenko", 	25) );
-		pp.add( new Person(22, "Aleksey",	"Abrosimov", 	62) );
-		pp.add( new Person(18, "Evgenii",	"Lopateckii", 	75) );
-		pp.add( new Person(62, "Anton",		"Kobilko", 		82) );
-		pp.add( new Person(51, "boris",		"Tkachuk", 		17) );
-		pp.add( new Person(82, "Daniil",	"Bova", 		18) );
-		pp.add( new Person(11, "Ivan",		"Pulinec", 		19) );
-		pp.add( new Person(44, "Aleksei",	"kuts", 		18) );
-		pp.add( new Person(50, "Wasilij",	"Palivoda",		65) );
-		pp.add( new Person(55, "Artem",		"Palivoda",		25) );
-		pp.add( new Person(56, "Dasilij",	"Palivoda",		65) );
-		pp.add( new Person(51, "Gasilij",	"Palivoda",		65) );
-		pp.add( new Person(57, "Basilij",	"Pabivoda",		65) );
-		pp.add( new Person(66, "Jurii",		"Malyarchuk", 	40) );
-		pp.add( new Person(91, "Anna", 		"trembach",		30) );
-		pp.add( new Person(74, "Sveta",		"Gavrilenko",	31) );
-		pp.add( new Person(86, "nastja",	"Hitraja",		30) );
-		pp.add( new Person(28, "Natalja",	"Bondarjuk", 	27) );
-		pp.add( new Person(39, "Fedor",		"Kirik", 		62) );
-		pp.add( new Person(69, "Jin",		"Fusenko",		54) );
-		pp.add( new Person(77, "kin",		"Antosjuk", 	36) );
-		pp.add( new Person(96, "prutkin",	"Onichenko", 	77) );
-		pp.add( new Person(74, "rupki", 	"Mironjuk", 	56) );
-		pp.add( new Person(65, "Fupki",  	"Pogodina",		54) );
-		pp.add( new Person(19, "zupki",  	"Gadjukov", 	45) );
-		pp.add( new Person(39, "Shlupkin",	"Jakovlev", 	66) );
-		pp.add( new Person(40, "Fantoci",	"Jakovlev", 	60) );
-		pp.add( new Person(99, "Dupkin",	"Cherevatij", 	35) );
-
-		return pp;
 	}
 
 	// Все у которых возраст кратен "5" (юбиляры)

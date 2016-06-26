@@ -2,10 +2,10 @@ package blogic;
 
 public class Person 
 {
-	int id;
-	String fname;
-	String lname;
-	int age;
+	public int id;
+	public String fname;
+	public String lname;
+	public int age;
 
 	public Person()
 	{

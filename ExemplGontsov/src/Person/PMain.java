@@ -1,5 +1,10 @@
 package Person;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class PMain 
@@ -40,7 +45,32 @@ public class PMain
 			System.out.println( p );
 		}
 	}
+	
+	// Инициализация из базы H2 
+	public static ArrayList<Person> initFromH2() throws ClassNotFoundException, SQLException
+	{
+		ArrayList<Person> pp = new ArrayList<Person>();
 
+		Class.forName("org.h2.Driver");
+		Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+		Statement st = con.createStatement();
+		ResultSet rs =  st.executeQuery("SELECT * FROM PERSON");
+		while (rs.next () )
+		{
+			//			System.out.println( rs.getString(2));
+			pp.add( new Person(rs.getInt("id"), rs.getString("lname"), rs.getString("fname"),rs.getInt(4)) );
+		}
+		return pp;
+	}
+	
+	//  Удаление из базы H2 
+	public static void deleteFromH2(Person p) throws ClassNotFoundException, SQLException
+	{
+		Class.forName("org.h2.Driver");
+		Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+		Statement st = con.createStatement();
+		st.executeUpdate("delete from Person where id="+p.id);
+	}
 	// Инициализация из списка в методе 
 	public static ArrayList<Person> init()
 	{
