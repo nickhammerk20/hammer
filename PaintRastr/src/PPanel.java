@@ -18,12 +18,12 @@ public class PPanel extends JPanel implements MouseListener, MouseMotionListener
 	PData pd = null;
 	
 	BufferedImage bi = new BufferedImage(1200, 600, BufferedImage.TYPE_INT_RGB);
-
+	
 	public PPanel(PCommand cmd) 
 	{
 		Graphics2D gg = (Graphics2D) bi.getGraphics();
 		gg.setBackground(Color.white);
-		gg.fillRect(0, 0, 1110, 500);
+		gg.fillRect(0, 0, 1000, 500);
 		
 		this.pd = cmd.pd;
 		cmd.pp = this;
@@ -31,8 +31,8 @@ public class PPanel extends JPanel implements MouseListener, MouseMotionListener
 		setComponentPopupMenu( new PContext(cmd) );
 		setLayout(null);
 		setBounds(70, 0, 1110, 500);
-		setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 		setBackground(Color.WHITE);
+		setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 		addMouseListener(this);
 		addMouseMotionListener(this);
 	}
@@ -43,7 +43,6 @@ public class PPanel extends JPanel implements MouseListener, MouseMotionListener
 		Graphics2D gg = (Graphics2D) g;
 		gg.drawImage(bi, 0, 0, null);
 	}
-
 	
 	@Override
 	public void mousePressed(MouseEvent e) 

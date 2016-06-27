@@ -62,7 +62,7 @@ public class PersonDAO_Mock implements PersonDAO
 	@Override
 	public void update(Person p) 
 	{
-
+		//pp.set(p);
 	}
 
 	@Override

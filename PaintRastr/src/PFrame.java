@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 
 public class PFrame extends JFrame
 {
@@ -10,9 +11,9 @@ public class PFrame extends JFrame
 		
 		PCommand cmd = new PCommand();
 		setJMenuBar(new PMenu ( cmd ) );
-				
-		add (new PToolBar ( cmd ) );
-		add (new GenPanel( cmd ) );
+		add (new PToolBar ( cmd ) );		
+		
+		getContentPane().add (new GenPanel ( cmd ) );
 		
 		setVisible(true);
 	}
