@@ -46,10 +46,10 @@ public class PersonDM extends AbstractTableModel
 
 		switch (col)
 		{
-		case 0: ret = p.id; break;
-		case 1: ret = p.fname; break;
-		case 2: ret = p.lname; break;
-		case 3: ret = p.age; break;
+			case 0: ret = p.id; break;
+			case 1: ret = p.fname; break;
+			case 2: ret = p.lname; break;
+			case 3: ret = p.age; break;
 		}
 		return ret;
 	}

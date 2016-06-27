@@ -11,8 +11,9 @@ public class GenPanel extends JPanel implements MouseListener, MouseMotionListen
 	public GenPanel( PCommand cmd ) 
 	{
 		setLayout(null);
-		add( new PPanel( cmd ) );
-
+//		add( new PPanel( cmd ) );
+		add( new PTabbedPane( cmd ) );
+		
 		JButton width1 = new JButton ("1");
 		width1.setBounds(10, 50, 50, 20);
 		width1.setActionCommand("w1");

@@ -28,8 +28,7 @@ public class PCommand
 				JFileChooser fd = new JFileChooser();
 				if ( fd.showOpenDialog(pp) == JFileChooser.APPROVE_OPTION)
 				{
-//					pp.bi = ImageIO.read(fd.getSelectedFile());
-					BufferedImage input = ImageIO.read(fd.getSelectedFile());
+					pp.bi = ImageIO.read(fd.getSelectedFile());
 					pp.repaint();
 				}
 			} 
