@@ -8,10 +8,8 @@ public class PButton extends JPanel
 {
 	public PButton ( PCommand cmd ) 
 	{
-		//setLayout(null);
-						
 		JPanel panelButton = new JPanel();
-		setBounds(7, 7, 80, 500);
+		setBounds(7, 3, 80, 500);
 		
 		BoxLayout bl = new BoxLayout(panelButton, BoxLayout.Y_AXIS);
 		panelButton.setLayout(bl);
@@ -22,9 +20,7 @@ public class PButton extends JPanel
 		
 		add(panelButton);
 		panelButton.setBorder(BorderFactory.createEtchedBorder());
-		
-		
+				
 		setVisible(true);
-		
 	}
 }

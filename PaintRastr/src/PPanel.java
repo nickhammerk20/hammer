@@ -12,22 +12,21 @@ import javax.swing.JPanel;
 
 public class PPanel extends JPanel implements MouseListener, MouseMotionListener
 {
-
 	int x = 0;
 	int y = 0;
 	PData pd = null;
-	
+
 	BufferedImage bi = new BufferedImage(1200, 600, BufferedImage.TYPE_INT_RGB);
-	
+
 	public PPanel(PCommand cmd) 
 	{
 		Graphics2D gg = (Graphics2D) bi.getGraphics();
 		gg.setBackground(Color.white);
 		gg.fillRect(0, 0, 1000, 500);
-		
+
 		this.pd = cmd.pd;
 		cmd.pp = this;
-		
+
 		setComponentPopupMenu( new PContext(cmd) );
 		setLayout(null);
 		setBounds(70, 0, 1110, 500);
@@ -42,8 +41,7 @@ public class PPanel extends JPanel implements MouseListener, MouseMotionListener
 		super.paint(g);
 		Graphics2D gg = (Graphics2D) g;
 		gg.drawImage(bi, 0, 0, null);
-	}
-	
+	}	
 	@Override
 	public void mousePressed(MouseEvent e) 
 	{

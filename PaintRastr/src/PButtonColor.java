@@ -33,6 +33,5 @@ public class PButtonColor extends JPanel
 		panelButton.add(colorBlue);
 		
 		add(panelButton);
-	}
-	
+	}	
 }

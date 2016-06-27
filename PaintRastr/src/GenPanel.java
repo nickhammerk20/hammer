@@ -65,8 +65,7 @@ public class GenPanel extends JPanel implements MouseListener, MouseMotionListen
 //		bSave.setBounds(10, 260, 50, 20);
 //		bSave.setActionCommand("blue");
 //		bSave.addActionListener(cmd.aSave);
-//		add(bSave);
-		
+//		add(bSave);		
 	}
 
 	@Override

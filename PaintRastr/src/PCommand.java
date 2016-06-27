@@ -17,7 +17,6 @@ public class PCommand
 	ActionColor 	aColor 	= new ActionColor();
 	ActionWidth 	aWidth 	= new ActionWidth();
 
-
 	class ActionFileOpen implements ActionListener
 	{
 		@Override

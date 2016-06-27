@@ -7,7 +7,6 @@ public class PButtonFile extends JPanel
 {
 	public PButtonFile(PCommand cmd) 
 	{
-		
 		JPanel panelButton = new JPanel();
 		setBorder(BorderFactory.createEtchedBorder());
 		BoxLayout bl = new BoxLayout(panelButton, BoxLayout.Y_AXIS);
