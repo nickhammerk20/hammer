@@ -54,8 +54,8 @@ public class PPanel extends JPanel implements MouseListener, MouseMotionListener
 	{
 		PLine p = new PLine(x, y, e.getX(), e.getY(), pd.color, pd.width);
 		
-		p.color = pd.color;
-		p.width = pd.width;
+//		p.color = pd.color;
+//		p.width = pd.width;
 		
 		x = e.getX();
 		y = e.getY();

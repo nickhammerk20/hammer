@@ -10,6 +10,8 @@ public class PLine
 	int y2;
 	Color color;
 	int width;
+	
+	PData pd = new PData();
 
 	public PLine(int x1, int y1, int x2, int y2, Color color, int width) 
 	{
