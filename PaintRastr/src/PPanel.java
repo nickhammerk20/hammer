@@ -16,7 +16,7 @@ public class PPanel extends JPanel implements MouseListener, MouseMotionListener
 	int y = 0;
 	PData pd = null;
 
-	BufferedImage bi = new BufferedImage(1200, 600, BufferedImage.TYPE_INT_RGB);
+	BufferedImage bi = new BufferedImage(1000, 500, BufferedImage.TYPE_INT_RGB);
 
 	public PPanel(PCommand cmd) 
 	{

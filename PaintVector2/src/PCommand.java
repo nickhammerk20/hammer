@@ -1,17 +1,14 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 
 public class PCommand 
 {
 	PData pd = new PData();
 	PPanel pp = null;
-
+	
 	ActionFileOpen 	aOpen 	= new ActionFileOpen();
 	ActionFileSave 	aSave 	= new ActionFileSave();
 	ActionColor 	aColor 	= new ActionColor();
@@ -22,18 +19,9 @@ public class PCommand
 		@Override
 		public void actionPerformed(ActionEvent e) 
 		{
-			try 
+			JFileChooser fd = new JFileChooser();
+			if ( fd.showOpenDialog(pp) == JFileChooser.APPROVE_OPTION)
 			{
-				JFileChooser fd = new JFileChooser();
-				if ( fd.showOpenDialog(pp) == JFileChooser.APPROVE_OPTION)
-				{
-					pp.bi = ImageIO.read(fd.getSelectedFile());
-					pp.repaint();
-				}
-			} 
-			catch (IOException e1) 
-			{
-				e1.printStackTrace();
 			}
 		}
 	}
@@ -43,17 +31,9 @@ public class PCommand
 		@Override
 		public void actionPerformed(ActionEvent e) 
 		{
-			try 
+			JFileChooser fd = new JFileChooser();
+			if ( fd.showSaveDialog(pp) == JFileChooser.APPROVE_OPTION)
 			{
-				JFileChooser fd = new JFileChooser();
-				if ( fd.showSaveDialog(pp) == JFileChooser.APPROVE_OPTION)
-				{
-					ImageIO.write(pp.bi, "jpg", fd.getSelectedFile());
-				}
-			} 
-			catch (IOException e1) 
-			{
-				e1.printStackTrace();
 			}
 		}
 	}
@@ -69,6 +49,7 @@ public class PCommand
 			case "w5": pd.width = 5; break;
 			case "w10": pd.width = 10; break;
 			}
+			System.out.println(str);
 		}
 	}
 	class ActionColor implements ActionListener
@@ -83,6 +64,7 @@ public class PCommand
 			case "green": pd.color = Color.green; break;
 			case "blue": pd.color = Color.blue; break;
 			}
+			System.out.println(str);
 		}
 	}
 }

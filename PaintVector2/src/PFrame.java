@@ -7,7 +7,7 @@ public class PFrame extends JFrame
 {
 	public PFrame()
 	{
-		setTitle("Pain on RASTR");
+		setTitle("Pain on VECTOR");
 		setBounds(100, 100, 1110, 603);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
