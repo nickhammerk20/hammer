@@ -8,7 +8,7 @@ public class PCommand
 {
 	PData pd = new PData();
 	PPanel pp = null;
-	
+		
 	ActionFileOpen 	aOpen 	= new ActionFileOpen();
 	ActionFileSave 	aSave 	= new ActionFileSave();
 	ActionColor 	aColor 	= new ActionColor();
