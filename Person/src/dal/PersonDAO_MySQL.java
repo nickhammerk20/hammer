@@ -16,10 +16,10 @@ public class PersonDAO_MySQL implements PersonDAO
 	{
 		try
 		{
-			Class.forName("org.h2.Driver");
-			Connection con = DriverManager.getConnection("jdbc:h2:~/test","sa","");
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydbtest?autoReconnect=true&useSSL=false", "root" ,"1225");
 			Statement st = con.createStatement();
-			st.executeUpdate("INSERT INTO Person " + "VALUES (" + p.id + ",'" + p.fname + "','" + p.lname + "','" + p.age + ")");
+			st.executeUpdate("INSERT INTO `mydbtest`.`person` " + "VALUES ('" + p.id + "','" + p.fname + "','" + p.lname + "','" + p.age + "')");
 		}
 		catch (ClassNotFoundException | SQLException e)
 		{
@@ -34,9 +34,9 @@ public class PersonDAO_MySQL implements PersonDAO
 
 		try
 		{
-			Class.forName("org.h2.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 
-			Connection con = DriverManager.getConnection("jdbc:h2:~/test","sa","");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydbtest?autoReconnect=true&useSSL=false", "root" ,"1225");
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM PERSON");
 			while (rs.next() )
@@ -56,8 +56,8 @@ public class PersonDAO_MySQL implements PersonDAO
 	{
 		try
 		{
-			Class.forName("org.h2.Driver");
-			Connection con = DriverManager.getConnection("jdbc:h2:~/test","sa","");
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydbtest?autoReconnect=true&useSSL=false", "root" ,"1225");
 			Statement st = con.createStatement();
 			st.executeUpdate("UPDATE Person SET Age = " + p.age + " WHERE id =" +p.id);
 		}
@@ -72,10 +72,10 @@ public class PersonDAO_MySQL implements PersonDAO
 	{
 		try
 		{
-			Class.forName("org.h2.Driver");
-			Connection con = DriverManager.getConnection("jdbc:h2:~/test","sa","");
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydbtest?autoReconnect=true&useSSL=false", "root" ,"1225");
 			Statement st = con.createStatement();
-			st.executeUpdate("delete from Person where id="+p.id);
+			st.executeUpdate("delete from person where id=" + p.id);
 		}
 		catch (ClassNotFoundException | SQLException e)
 		{

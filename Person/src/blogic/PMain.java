@@ -13,8 +13,8 @@ public class PMain
 	public static void main(String[] args) throws ClassNotFoundException, SQLException 
 	{
 		
-		PersonDAO pd = new PersonDAO_Mock();
-//		PersonDAO pd = new PersonDAO_MySQL();
+//		PersonDAO pd = new PersonDAO_Mock();
+		PersonDAO pd = new PersonDAO_MySQL();
 //		PersonDAO pd = new PersonDAO_H2();
 		ArrayList<Person> pp = pd.read();
 
