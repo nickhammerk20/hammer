@@ -8,7 +8,7 @@ import dal.PersonDAO_H2;
 import dal.PersonDAO_Mock;
 import dal.PersonDAO_MySQL;
 
-public class PMain 
+public class PMainConsole 
 {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException 
 	{

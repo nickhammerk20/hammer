@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
 
 import dal.PersonDAO;
@@ -14,7 +15,7 @@ public class PersonDM extends AbstractTableModel
 {
 	PersonDAO pd = null;
 	ArrayList<Person> pp = null;
-	public String titleName = null;
+	public String titleName = "55";
 		
 	public ActionCreate aCreate = new ActionCreate();
 	public ActionRead aRead = new ActionRead();
@@ -25,14 +26,17 @@ public class PersonDM extends AbstractTableModel
 	{
 		@Override
 		public void actionPerformed(ActionEvent e) 
-		{
+		{			
 			PDialog dd = new PDialog();	
-			titleName = "Create";
+			dd.setTitle("Create");
 			dd.setModal(true);
 			dd.setVisible(true);
 			if(dd.ret.equals("Ok"))
 			{
 				pd.create(dd.getPerson());
+				pp = pd.read();
+				fireTableDataChanged();	
+				System.out.println("start OK - Create");
 			}
 		}		
 	}
@@ -51,11 +55,15 @@ public class PersonDM extends AbstractTableModel
 		public void actionPerformed(ActionEvent e) 
 		{
 			PDialog dd = new PDialog();	
-			titleName = "Update";
+			dd.setTitle("Update");
 			dd.setModal(true);
 			dd.setVisible(true);
 			if(dd.ret.equals("Ok"))
 			{
+				//pd.update(dd.setPerson());
+				pp = pd.read();
+				fireTableDataChanged();	
+				System.out.println("start OK - Update");
 				
 			}
 		}		
@@ -65,13 +73,18 @@ public class PersonDM extends AbstractTableModel
 		@Override
 		public void actionPerformed(ActionEvent e) 
 		{
-			PDialog dd = new PDialog();		
-			titleName = "Delete";
+			PDialog dd = new PDialog();	
+			dd.setTitle("Delete");
 			dd.setModal(true);
 			dd.setVisible(true);
+			
 			if(dd.ret.equals("Ok"))
 			{
-			
+				System.out.println("start OK - Delete");
+				//pd.delete(this);
+				
+				pp = pd.read();
+				fireTableDataChanged();	
 			}
 		}		
 	}
