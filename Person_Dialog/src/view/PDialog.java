@@ -2,6 +2,7 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -20,10 +21,12 @@ public class PDialog extends JDialog
 	JTextField textLName = null;
 	JTextField textAge = null;
 
+	ArrayList<Person> pp = null;
 	public String ret = "Cancel";
-	PersonDM dm = new PersonDM();
+	PersonDM dm = null;
 	Boolean visible = false;
-	
+	JButton btnOk = null;
+
 	public PDialog() 
 	{
 		setLayout(null);
@@ -34,7 +37,6 @@ public class PDialog extends JDialog
 		add(tID);
 
 		textID = new JTextField();
-		//		textID.setText("ID");
 		textID.getDocument().addDocumentListener(documentListener);
 		textID.setBounds(10, 40, 200, 20);
 		add(textID);
@@ -44,7 +46,6 @@ public class PDialog extends JDialog
 		add(tFN);
 
 		textFName = new JTextField();
-		//		textFName.setText("First Name");
 		textFName.getDocument().addDocumentListener(documentListener);
 		textFName.setBounds(10, 90, 200, 20);
 		add(textFName);
@@ -54,7 +55,6 @@ public class PDialog extends JDialog
 		add(tLN);
 
 		textLName = new JTextField();
-		//		textLName.setText("Last Name");
 		textLName.getDocument().addDocumentListener(documentListener);
 		textLName.setBounds(10, 140, 200, 20);
 		add(textLName);
@@ -64,14 +64,13 @@ public class PDialog extends JDialog
 		add(tAge);
 
 		textAge = new JTextField();
-		//		textAge.setText("Age");
 		textAge.getDocument().addDocumentListener(documentListener);
 		textAge.setBounds(10, 190, 200, 20);
 		add(textAge);
 
-		JButton btnOk = new JButton("Ok");
+		btnOk = new JButton("Ok");
 		btnOk.setBounds(20, 230, 75 , 25);
-		//btnOk.setEnabled(visible);
+		btnOk.setEnabled(false);
 		add(btnOk);
 		btnOk.addActionListener(new ActionListener() 
 		{
@@ -98,7 +97,7 @@ public class PDialog extends JDialog
 			}
 		});
 	}
-	
+
 	DocumentListener documentListener = new DocumentListener()
 	{
 		public void check(JTextField textID, JTextField textFName, JTextField textLName, JTextField textAge)
@@ -107,14 +106,12 @@ public class PDialog extends JDialog
 			if (textID.getText().equals("") || textFName.getText().equals("") ||  textLName.getText().equals("") ||  textAge.getText().equals(""))
 			{
 				System.out.println("visible = false;");
-				visible = false;
-//				btnOk.setEnabled(false);
-				}
+				btnOk.setEnabled(false);
+			}
 			else 
 			{
 				System.out.println("visible = true;");
-				visible = true;
-//				btnOk.setEnabled(true);
+				btnOk.setEnabled(true);
 			}
 		}
 		@Override
@@ -133,15 +130,13 @@ public class PDialog extends JDialog
 			check(textID, textFName, textLName, textAge);	
 		}		
 	};	
-	
-	private void setPerson(Person p) 
+
+	public void setPerson(Person p) 
 	{
-		
 		textID.setText(""+p.id);
 		textFName.setText(p.fname);
 		textLName.setText(p.lname);
 		textAge.setText(""+p.age);
-
 	}
 	public Person getPerson()
 	{

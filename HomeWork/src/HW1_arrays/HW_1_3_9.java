@@ -69,9 +69,7 @@ public class HW_1_3_9{
 				ar[j]= ar[j+arlen];
 				ar[j+arlen] = temp;
 			}
-		}
-		
-		
+		}		
 		return ret;
 	}
 }

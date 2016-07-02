@@ -10,13 +10,16 @@ import javax.swing.table.AbstractTableModel;
 import dal.PersonDAO;
 import dal.PersonDAO_Mock;
 import view.PDialog;
+import view.PPanel;
 
 public class PersonDM extends AbstractTableModel
 {
 	PersonDAO pd = null;
 	ArrayList<Person> pp = null;
-	public String titleName = "55";
-		
+	PPanel ppGen = null;
+	public String titleName = "";
+	public int row;
+
 	public ActionCreate aCreate = new ActionCreate();
 	public ActionRead aRead = new ActionRead();
 	public ActionUpdate aUpdate = new ActionUpdate();
@@ -55,16 +58,28 @@ public class PersonDM extends AbstractTableModel
 		public void actionPerformed(ActionEvent e) 
 		{
 			PDialog dd = new PDialog();	
+			System.out.println("запустили - ActionUpdate");
 			dd.setTitle("Update");
 			dd.setModal(true);
+			
+			int i = row;
+			Person p = null;
+			System.out.println(i);
+			if ( i >= 0)
+			{
+				p = pp.get(i);
+				dd.setPerson(p);
+				System.out.println("input "+p.id +" "+ p.fname +" "+ p.lname +" "+ p.age);
+			}
 			dd.setVisible(true);
 			if(dd.ret.equals("Ok"))
 			{
-				//pd.update(dd.setPerson());
+				System.out.println("start OK - Update");
+				pd.update(dd.getPerson());
+				System.out.println("output "+p.id +" "+ p.fname +" "+ p.lname +" "+ p.age);
+				System.out.println("Обновление ActionUpdate после нажатия OK");
 				pp = pd.read();
 				fireTableDataChanged();	
-				System.out.println("start OK - Update");
-				
 			}
 		}		
 	}
@@ -73,23 +88,34 @@ public class PersonDM extends AbstractTableModel
 		@Override
 		public void actionPerformed(ActionEvent e) 
 		{
-			PDialog dd = new PDialog();	
+			PDialog dd = new PDialog();
+			System.out.println("запустили - ActionDelete");
 			dd.setTitle("Delete");
 			dd.setModal(true);
-			dd.setVisible(true);
 			
+			int i = row;
+			Person p = null;
+			System.out.println(i);
+			if ( i >= 0)
+			{
+				p = pp.get(i);
+				dd.setPerson(p);
+				System.out.println("input "+p.id +" "+ p.fname +" "+ p.lname +" "+ p.age);
+			}
+			dd.setVisible(true);
 			if(dd.ret.equals("Ok"))
 			{
 				System.out.println("start OK - Delete");
-				//pd.delete(this);
+				pd.delete(dd.getPerson());
+				System.out.println("Обновление ActionDelete после нажатия OK");
 				
 				pp = pd.read();
 				fireTableDataChanged();	
 			}
 		}		
 	}
-	
-	public PersonDM() 
+
+	public PersonDM(PPanel pPanel) 
 	{
 		pd = new PersonDAO_Mock();
 		pp = pd.read();
@@ -122,10 +148,10 @@ public class PersonDM extends AbstractTableModel
 
 		switch (col)
 		{
-			case 0: ret = p.id; break;
-			case 1: ret = p.fname; break;
-			case 2: ret = p.lname; break;
-			case 3: ret = p.age; break;
+		case 0: ret = p.id; break;
+		case 1: ret = p.fname; break;
+		case 2: ret = p.lname; break;
+		case 3: ret = p.age; break;
 		}
 		return ret;
 	}

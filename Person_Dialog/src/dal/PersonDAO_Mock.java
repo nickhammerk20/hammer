@@ -47,6 +47,7 @@ public class PersonDAO_Mock implements PersonDAO
 		//		pp.add( new Person(99, "Dupkin",	"Cherevatij", 	35) );
 		
 		print(pp);
+		System.out.println("\n******загружено******");
 	}
 
 	@Override
@@ -64,14 +65,31 @@ public class PersonDAO_Mock implements PersonDAO
 	@Override
 	public void update(Person p) 
 	{
-		//pp.p.set();
+		int size = pp.size();
+		for(int i = 0 ; i< size; i++)
+		{
+			if (p.id == pp.get(i).id)
+			{
+			pp.get(i).fname=p.fname;
+			pp.get(i).lname=p.lname;
+			pp.get(i).age=p.age;
+			}
+		}
 	}
 
 	@Override
 	public void delete(Person p) 
 	{
-		pp.remove(p);
+		int size = pp.size();
+		for(int i = 0 ; i< size-1; i++)
+		{
+			if (p.id == pp.get(i).id)
+			{
+				pp.remove(i);	
+			}
+		}
 	}
+	
 	public static void print(ArrayList<Person> pp)
 	{
 		for (Person p : pp) 

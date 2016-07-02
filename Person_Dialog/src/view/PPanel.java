@@ -11,13 +11,16 @@ import blogic.PersonDM;
 
 public class PPanel extends JPanel 
 {
+	public String setID = "";
+	public int realRow;
+	public JTable tbl = null;
 	
 	public PPanel() 
 	{
 		setLayout(null);
 		
-		PersonDM dm = new PersonDM();
-		JTable tbl = new JTable(dm);
+		PersonDM dm = new PersonDM(this);
+		tbl = new JTable(dm);
 		tbl.addMouseListener(new MouseAdapter() 
 		{
 			@Override
@@ -28,11 +31,13 @@ public class PPanel extends JPanel
 					int row = tbl.rowAtPoint(e.getPoint());
 		            if (row > -1)
 		            {
-		                int realRow = tbl.convertRowIndexToModel(row);
-		                System.out.println("строка = " + realRow);
+		                realRow = tbl.convertRowIndexToModel(row);
+		                dm.row = realRow;
+		                setID = ""+tbl.getValueAt(realRow, 0);;
+		                System.out.println("строка = " + realRow + " ID = " + setID);
+		                
 		            }
 				}
-				//super.mouseClicked(e);
 			}
 		});
 		JScrollPane scr = new JScrollPane(tbl);
