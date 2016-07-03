@@ -13,12 +13,12 @@ public class PButtonFile extends JPanel
 		panelButton.setLayout(bl);
 		
 		JButton bLoad = new JButton ("Load");
-		bLoad.setActionCommand("blue");
+		//bLoad.setActionCommand("blue");
 		bLoad.addActionListener(cmd.aOpen);
 		panelButton.add(bLoad);
 		
 		JButton bSave = new JButton ("Save");
-		bSave.setActionCommand("blue");
+		//bSave.setActionCommand("blue");
 		bSave.addActionListener(cmd.aSave);
 		panelButton.add(bSave);
 		

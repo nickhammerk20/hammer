@@ -35,16 +35,16 @@ public class PersonDAO_Mock implements PersonDAO
 		pp.add( new Person(74, "Sveta",		"Gavrilenko",	31) );
 		pp.add( new Person(86, "nastja",	"Hitraja",		30) );
 		pp.add( new Person(28, "Natalja",	"Bondarjuk", 	27) );
-		//		pp.add( new Person(39, "Fedor",		"Kirik", 		62) );
-		//		pp.add( new Person(69, "Jin",		"Fusenko",		54) );
-		//		pp.add( new Person(77, "kin",		"Antosjuk", 	36) );
-		//		pp.add( new Person(96, "prutkin",	"Onichenko", 	77) );
-		//		pp.add( new Person(74, "rupki", 	"Mironjuk", 	56) );
-		//		pp.add( new Person(65, "Fupki",  	"Pogodina",		54) );
-		//		pp.add( new Person(19, "zupki",  	"Gadjukov", 	45) );
-		//		pp.add( new Person(39, "Shlupkin",	"Jakovlev", 	66) );
-		//		pp.add( new Person(40, "Fantoci",	"Jakovlev", 	60) );
-		//		pp.add( new Person(99, "Dupkin",	"Cherevatij", 	35) );
+//				pp.add( new Person(39, "Fedor",		"Kirik", 		62) );
+//				pp.add( new Person(69, "Jin",		"Fusenko",		54) );
+//				pp.add( new Person(77, "kin",		"Antosjuk", 	36) );
+//				pp.add( new Person(96, "prutkin",	"Onichenko", 	77) );
+//				pp.add( new Person(74, "rupki", 	"Mironjuk", 	56) );
+//				pp.add( new Person(65, "Fupki",  	"Pogodina",		54) );
+//				pp.add( new Person(19, "zupki",  	"Gadjukov", 	45) );
+//				pp.add( new Person(39, "Shlupkin",	"Jakovlev", 	66) );
+//				pp.add( new Person(40, "Fantoci",	"Jakovlev", 	60) );
+//				pp.add( new Person(99, "Dupkin",	"Cherevatij", 	35) );
 		
 		print(pp);
 		System.out.println("\n******загружено******");
