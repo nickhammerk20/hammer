@@ -19,7 +19,7 @@ public class PersonDAO_MySQL implements PersonDAO
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydbtest?autoReconnect=true&useSSL=false", "root" ,"1225");
 			Statement st = con.createStatement();
-			st.executeUpdate("INSERT INTO `mydbtest`.`person` " + "VALUES ('" + p.id + "','" + p.fname + "','" + p.lname + "','" + p.age + "')");
+			st.executeUpdate("INSERT INTO `mydbtest`.`person` " + "VALUES ('" + p.id + "','" + p.fname + "','" + p.lname + "','" + p.age + "','" + p.telNumber + "')");
 		}
 		catch (ClassNotFoundException | SQLException e)
 		{
@@ -41,7 +41,7 @@ public class PersonDAO_MySQL implements PersonDAO
 			ResultSet rs = st.executeQuery("SELECT * FROM PERSON");
 			while (rs.next() )
 			{
-				pp.add( new Person( rs.getInt("id"), rs.getString(2), rs.getString("lname"), rs.getInt(4)) );
+				pp.add( new Person( rs.getInt("id"), rs.getString(2), rs.getString("lname"), rs.getInt(4), rs.getString("phone")) );
 			}
 		}
 		catch (ClassNotFoundException | SQLException e)
