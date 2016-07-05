@@ -46,7 +46,6 @@ public class PersonDM extends AbstractTableModel
 				System.out.println("start OK - Create");
 			}
 			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}		

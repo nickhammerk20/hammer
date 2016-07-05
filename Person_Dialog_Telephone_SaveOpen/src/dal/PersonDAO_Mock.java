@@ -28,7 +28,7 @@ public class PersonDAO_Mock implements PersonDAO
 		pp.add( new Person(50, "Wasilij",	"Palivoda",		65, "80505553344") );
 		pp.add( new Person(55, "Artem",		"Palivoda",		25, "80505553344") );
 		pp.add( new Person(56, "Dasilij",	"Palivoda",		65, "80505553344") );
-		pp.add( new Person(51, "Gasilij",	"Palivoda",		65, "80505553344") );
+		pp.add( new Person(53, "Gasilij",	"Palivoda",		65, "80505553344") );
 		pp.add( new Person(57, "Basilij",	"Pabivoda",		65, "80505553344") );
 		pp.add( new Person(66, "Jurii",		"Malyarchuk", 	40, "80505553344") );
 		pp.add( new Person(91, "Anna", 		"trembach",		30, "80505553344") );

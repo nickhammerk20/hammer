@@ -57,9 +57,9 @@ public class PPanel extends JPanel
 		btnDelete.setBounds(440, 160, 110 , 25);
 
 		JButton btnSaveToFile = new JButton("Save File");
-		btnSaveToFile.setBounds(440, 220, 110 , 25);
+		btnSaveToFile.setBounds(440, 260, 110 , 25);
 		JButton btnOpenFile = new JButton("Open File");
-		btnOpenFile.setBounds(440, 260, 110 , 25);
+		btnOpenFile.setBounds(440, 300, 110 , 25);
 				
 		
 		btnCreate.addActionListener(dm.aCreate);
@@ -67,8 +67,8 @@ public class PPanel extends JPanel
 		btnUpdate.addActionListener(dm.aUpdate);
 		btnDelete.addActionListener(dm.aDelete);
 		
-		btnSaveToFile.addActionListener(DAO.fSave);
-		btnOpenFile.addActionListener(DAO.fOpen);
+		btnSaveToFile.addActionListener(dm.fSave);
+		btnOpenFile.addActionListener(dm.fOpen);
 		
 		add(btnCreate);
 		add(btnRead);
