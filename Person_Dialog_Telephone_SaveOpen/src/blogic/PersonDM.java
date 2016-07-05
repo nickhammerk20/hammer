@@ -16,6 +16,7 @@ import dal.PersonDAO_CSV;
 import dal.PersonDAO_JSON;
 import dal.PersonDAO_Mock;
 import dal.PersonDAO_XML;
+import dal.PersonDAO_YAML;
 import view.PDialog;
 import view.PPanel;
 
@@ -24,7 +25,8 @@ public class PersonDM extends AbstractTableModel
 	PersonDAO pd = null;
 //	PersonDAO_CSV pdFile = null;
 //	PersonDAO_JSON pdFile = new PersonDAO_JSON();
-	PersonDAO_XML pdFile = new PersonDAO_XML();
+//	PersonDAO_XML pdFile = new PersonDAO_XML();
+	PersonDAO_YAML pdFile = new PersonDAO_YAML();
 	ArrayList<Person> pp = null;
 	PPanel ppGen = null;
 	public String titleName = "";

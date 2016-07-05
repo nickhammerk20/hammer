@@ -10,19 +10,15 @@ public class PersonDAO_YAML implements PersonDAO
 
 	public String fileSave(ArrayList<Person> pp)
 	{
-		String str = "<Persons>\n";
+		String str = "Persons: ";
 		for (Person p : pp) 
 		{
-			str +="<Person>\n"+
-					"<ID>" + p.id + "</ID>\n" +
-					"<firstName>" + p.fname + "</firstName>\n" +
-					"<lastName>" + p.lname + "</lastName>\n" +
-					"<age>" + p.age + "</age>\n" +
-					"<phone>" + p.telNumber + "</phone>\n"+
-					"</Person>\n";
-			
+			str +="\n - \n   ID: " + p.id +
+					"\n  firstName: " + p.fname +
+					"\n  lastName: " + p.lname +
+					"\n  age: " + p.age +
+					"\n  phone: " + p.telNumber;
 		}
-		str += "</Persons>";
 		System.out.println(str);
 		return str;
 	}	
