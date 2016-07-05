@@ -8,20 +8,23 @@ import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
-import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.AbstractTableModel;
 
 import dal.PersonDAO;
 import dal.PersonDAO_CSV;
+import dal.PersonDAO_JSON;
 import dal.PersonDAO_Mock;
+import dal.PersonDAO_XML;
 import view.PDialog;
 import view.PPanel;
 
 public class PersonDM extends AbstractTableModel
 {
 	PersonDAO pd = null;
-	PersonDAO_CSV pdCSV = null;
+//	PersonDAO_CSV pdFile = null;
+//	PersonDAO_JSON pdFile = new PersonDAO_JSON();
+	PersonDAO_XML pdFile = new PersonDAO_XML();
 	ArrayList<Person> pp = null;
 	PPanel ppGen = null;
 	public String titleName = "";
@@ -97,9 +100,8 @@ public class PersonDM extends AbstractTableModel
 					pp = pd.read();
 					fireTableDataChanged();	
 				}
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			} catch (ParseException ex) {
+				ex.printStackTrace();
 			}	
 		}		
 	}
@@ -135,9 +137,8 @@ public class PersonDM extends AbstractTableModel
 					pp = pd.read();
 					fireTableDataChanged();	
 				}
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			} catch (ParseException ex) {
+				ex.printStackTrace();
 			}
 		}		
 	}
@@ -150,20 +151,27 @@ public class PersonDM extends AbstractTableModel
 		@Override
 		public void actionPerformed(ActionEvent e) 
 		{
-
-			FileNameExtensionFilter filter = new FileNameExtensionFilter("*.CSV");
+			
+			FileNameExtensionFilter filterCSV = new FileNameExtensionFilter("CSV files","csv");
+			FileNameExtensionFilter filterXML = new FileNameExtensionFilter("XML files","XML");
+			FileNameExtensionFilter filterJSON = new FileNameExtensionFilter("JSON files","JSON");
+			FileNameExtensionFilter filterYAML = new FileNameExtensionFilter("YAML files","YAML");
 			JFileChooser fc = new JFileChooser();
-			fc.setFileFilter(filter);
+			fc.setFileFilter(filterXML);
+			fc.setFileFilter(filterJSON);
+			fc.setFileFilter(filterYAML);
+			fc.setFileFilter(filterCSV);
 			if ( fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION)
 			{
 				System.out.println("сохраняем файл");
 				try	( FileWriter fw = new FileWriter(fc.getSelectedFile() ) )
 				{
-					fw.write(pdCSV.fileSave(pp));
+					fw.write(pdFile.fileSave(pp));
+					System.out.println("***сохранение завершено***");
 				} 
-				catch (IOException e1) 
+				catch (IOException ex) 
 				{
-					e1.printStackTrace();
+					ex.printStackTrace();
 				}
 			}
 		}
@@ -178,8 +186,7 @@ public class PersonDM extends AbstractTableModel
 			if ( fd.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
 			{
 				System.out.println("пришли к открытию файла");
-				pdCSV.print(pp);
-
+				
 			}
 		}
 	}
@@ -187,7 +194,7 @@ public class PersonDM extends AbstractTableModel
 	public PersonDM(PPanel pPanel) 
 	{
 		pd = new PersonDAO_Mock();
-		pdCSV = new PersonDAO_CSV(); 
+//		pdFile = new PersonDAO_CSV(); 
 		pp = pd.read();
 	}
 

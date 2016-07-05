@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import blogic.Person;
 
-public class PersonDAO_XML implements PersonDAO
+public class PersonDAO_YAML implements PersonDAO
 {
 	ArrayList<Person> pp = null;
 
