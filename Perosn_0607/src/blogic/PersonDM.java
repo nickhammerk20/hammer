@@ -12,11 +12,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.AbstractTableModel;
 
 import dal.PersonDAO;
-import dal.PersonDAO_CSV;
-import dal.PersonDAO_JSON;
+//import dal.PersonDAO_CSV;
+//import dal.PersonDAO_JSON;
 import dal.PersonDAO_Mock;
-import dal.PersonDAO_XML;
-import dal.PersonDAO_YAML;
+//import dal.PersonDAO_XML;
+//import dal.PersonDAO_YAML;
 import view.PDialog;
 import view.PPanel;
 
@@ -24,7 +24,7 @@ public class PersonDM extends AbstractTableModel
 {
 	PersonDAO pd = null;
 //	PersonDAO_CSV pdFile = null;
-	PersonDAO_JSON pdFile = new PersonDAO_JSON();
+//	PersonDAO_JSON pdFile = new PersonDAO_JSON();
 //	PersonDAO_XML pdFile = new PersonDAO_XML();
 //	PersonDAO_YAML pdFile = new PersonDAO_YAML();
 	ArrayList<Person> pp = null;
@@ -168,7 +168,7 @@ public class PersonDM extends AbstractTableModel
 				System.out.println("сохраняем файл");
 				try	( FileWriter fw = new FileWriter(fc.getSelectedFile() ) )
 				{
-					fw.write(pdFile.fileSave(pp));
+//					fw.write(pdFile.fileSave(pp));
 					System.out.println("***сохранение завершено***");
 				} 
 				catch (IOException ex) 
