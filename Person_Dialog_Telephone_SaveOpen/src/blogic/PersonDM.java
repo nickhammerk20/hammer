@@ -159,6 +159,7 @@ public class PersonDM extends AbstractTableModel
 			FileNameExtensionFilter filterJSON = new FileNameExtensionFilter("JSON files","JSON");
 			FileNameExtensionFilter filterYAML = new FileNameExtensionFilter("YAML files","YAML");
 			JFileChooser fc = new JFileChooser();
+			fc.setAcceptAllFileFilterUsed(false);
 			fc.setFileFilter(filterXML);
 			fc.setFileFilter(filterJSON);
 			fc.setFileFilter(filterYAML);

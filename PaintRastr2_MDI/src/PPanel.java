@@ -1,11 +1,11 @@
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.ArrayList;
+import java.awt.image.BufferedImage;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -14,18 +14,19 @@ public class PPanel extends JPanel implements MouseListener, MouseMotionListener
 {
 	int x = 0;
 	int y = 0;
-	Color color = Color.black;
-	Point z = null;
-	PCommand cmd = null;
-	
-	ArrayList<PLine> pp = new ArrayList<PLine>();
+	PData pd = null;
+
+	BufferedImage bi = new BufferedImage(1000, 500, BufferedImage.TYPE_INT_RGB);
 
 	public PPanel(PCommand cmd) 
-	{		
-		this.cmd=cmd;
-		addMouseListener(this);
-		addMouseMotionListener(this);
-		
+	{
+		Graphics2D gg = (Graphics2D) bi.getGraphics();
+		gg.setBackground(Color.white);
+		gg.fillRect(0, 0, 1000, 500);
+
+		this.pd = cmd.pd;
+		cmd.pp = this;
+
 		setComponentPopupMenu( new PContext(cmd) );
 		setLayout(null);
 		setBounds(70, 0, 1110, 500);
@@ -39,10 +40,7 @@ public class PPanel extends JPanel implements MouseListener, MouseMotionListener
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D gg = (Graphics2D) g;
-		for (PLine x : pp)
-		{
-			x.paint(gg);
-		}	
+		gg.drawImage(bi, 0, 0, null);
 	}	
 	@Override
 	public void mousePressed(MouseEvent e) 
@@ -53,12 +51,12 @@ public class PPanel extends JPanel implements MouseListener, MouseMotionListener
 	@Override
 	public void mouseDragged(MouseEvent e)
 	{
-		PLine p = new PLine(x, y, e.getX(), e.getY(), cmd.pd.color, cmd.pd.width);
-			
+		Graphics2D gg = (Graphics2D) bi.getGraphics();
+		gg.setStroke(new BasicStroke( pd.width ));
+		gg.setColor( pd.color );
+		gg.drawLine(x, y, e.getX(), e.getY());
 		x = e.getX();
 		y = e.getY();
-						
-		pp.add(p);
 		repaint();
 	}
 	@Override
