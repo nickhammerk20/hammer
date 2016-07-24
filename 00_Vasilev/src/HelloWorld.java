@@ -3,7 +3,7 @@ public class HelloWorld {
 
 	public static void main(String[] args) {
 		System.out.println("Hello, World!!!");
-		JOptionPane.showMessageDialog(null, "Всем большой привет!");
+		JOptionPane.showMessageDialog(null, "Р’СЃРµРј Р±РѕР»СЊС€РѕР№ РїСЂРёРІРµС‚!");
 	}
 
 }

@@ -10,8 +10,8 @@ public class MenuExample extends JFrame
 {
 	JPanel contentPane;
 	BorderLayout borderLayout1 = new BorderLayout();
-	JLabel status = new JLabel(" "); //Строка статуса
-	/**Конструктор
+	JLabel status = new JLabel(" "); //РЎС‚СЂРѕРєР° СЃС‚Р°С‚СѓСЃР°
+	/**РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	 */
 	public MenuExample()
 	{
@@ -25,35 +25,35 @@ public class MenuExample extends JFrame
 			e.printStackTrace();
 		}
 	}
-	/**Производим инициализацию компонентов
+	/**РџСЂРѕРёР·РІРѕРґРёРј РёРЅРёС†РёР°Р»РёР·Р°С†РёСЋ РєРѕРјРїРѕРЅРµРЅС‚РѕРІ
 	 */
 	private void jbInit() throws Exception
 	{
 		contentPane = (JPanel) this.getContentPane();
-		//Устанавливаем менеджер размещения компонентов
+		//РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РјРµРЅРµРґР¶РµСЂ СЂР°Р·РјРµС‰РµРЅРёСЏ РєРѕРјРїРѕРЅРµРЅС‚РѕРІ
 		contentPane.setLayout(borderLayout1);
-		//Создаём рамку для строки статуса
+		//РЎРѕР·РґР°С‘Рј СЂР°РјРєСѓ РґР»СЏ СЃС‚СЂРѕРєРё СЃС‚Р°С‚СѓСЃР°
 		Border border = BorderFactory.createEtchedBorder(Color.white,new Color(178, 178, 178));
 		status.setBorder(border);
-		//Делаем фон строки непрозрачным
+		//Р”РµР»Р°РµРј С„РѕРЅ СЃС‚СЂРѕРєРё РЅРµРїСЂРѕР·СЂР°С‡РЅС‹Рј
 		status.setOpaque(true);
-		//Добавляем стоку статуса на панель
+		//Р”РѕР±Р°РІР»СЏРµРј СЃС‚РѕРєСѓ СЃС‚Р°С‚СѓСЃР° РЅР° РїР°РЅРµР»СЊ
 		contentPane.add(status,BorderLayout.SOUTH);
-		//Устанавливаем размер окна
+		//РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЂР°Р·РјРµСЂ РѕРєРЅР°
 		this.setSize(new Dimension(400, 300));
-		//Устанавливаем заголовок окна
+		//РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј Р·Р°РіРѕР»РѕРІРѕРє РѕРєРЅР°
 		this.setTitle("Menu example");
-		//Создаем основное меню
+		//РЎРѕР·РґР°РµРј РѕСЃРЅРѕРІРЅРѕРµ РјРµРЅСЋ
 		JMenuBar menuBar = new JMenuBar();
-		//Создаем три подменю
+		//РЎРѕР·РґР°РµРј С‚СЂРё РїРѕРґРјРµРЅСЋ
 		JMenu menuFile = new JMenu("File");
 		JMenu menuView = new JMenu("View");
 		JMenu menuThread = new JMenu("Thread");
-		//Добавляем к нашем подменю обработчики событий(о них позже)
+		//Р”РѕР±Р°РІР»СЏРµРј Рє РЅР°С€РµРј РїРѕРґРјРµРЅСЋ РѕР±СЂР°Р±РѕС‚С‡РёРєРё СЃРѕР±С‹С‚РёР№(Рѕ РЅРёС… РїРѕР·Р¶Рµ)
 		menuFile.addMouseListener(new MenuExampleMouseAdapter("Menu file"," ",status));
 		menuView.addMouseListener(new MenuExampleMouseAdapter("Menu view"," ",status));
 		menuThread.addMouseListener(new MenuExampleMouseAdapter("Thread"," ",status));
-		//Создаем элементы подменю File с обработчиками событий
+		//РЎРѕР·РґР°РµРј СЌР»РµРјРµРЅС‚С‹ РїРѕРґРјРµРЅСЋ File СЃ РѕР±СЂР°Р±РѕС‚С‡РёРєР°РјРё СЃРѕР±С‹С‚РёР№
 		JMenuItem item1 = new JMenuItem("New");
 		item1.addMouseListener(new MenuExampleMouseAdapter("New file"," ",status));
 		JMenuItem item2 = new JMenuItem("Open");
@@ -66,53 +66,53 @@ public class MenuExample extends JFrame
 		item5.addMouseListener(new MenuExampleMouseAdapter("Close file"," ",status));
 		JMenuItem item6 = new JMenuItem("Exit");
 		item6.addMouseListener(new MenuExampleMouseAdapter("Exit prorgamm"," ",status));
-		//Добавляем обработчик события по нажатию
+		//Р”РѕР±Р°РІР»СЏРµРј РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ РїРѕ РЅР°Р¶Р°С‚РёСЋ
 		item6.addActionListener(new java.awt.event.ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.exit(0);//Выход из системы
+				System.exit(0);//Р’С‹С…РѕРґ РёР· СЃРёСЃС‚РµРјС‹
 			}
 		});
-		//Добавляем созданные элементы подменю File
+		//Р”РѕР±Р°РІР»СЏРµРј СЃРѕР·РґР°РЅРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹ РїРѕРґРјРµРЅСЋ File
 		menuFile.add(item1);
 		menuFile.add(item2);
-		menuFile.addSeparator();//Разделитель
+		menuFile.addSeparator();//Р Р°Р·РґРµР»РёС‚РµР»СЊ
 		menuFile.add(item3);
 		menuFile.add(item4);
-		menuFile.addSeparator();//Разделитель
+		menuFile.addSeparator();//Р Р°Р·РґРµР»РёС‚РµР»СЊ
 		menuFile.add(item5);
-		menuFile.addSeparator();//Разделитель
+		menuFile.addSeparator();//Р Р°Р·РґРµР»РёС‚РµР»СЊ
 		menuFile.add(item6);
-		//Создаем элементы подменю View с обработчиками событий
+		//РЎРѕР·РґР°РµРј СЌР»РµРјРµРЅС‚С‹ РїРѕРґРјРµРЅСЋ View СЃ РѕР±СЂР°Р±РѕС‚С‡РёРєР°РјРё СЃРѕР±С‹С‚РёР№
 		JMenuItem itemv1 = new JMenuItem("BGColor");
 		itemv1.addMouseListener(new MenuExampleMouseAdapter("Change background color"," ",status));
 		itemv1.setAccelerator(KeyStroke.getKeyStroke(67,Event.CTRL_MASK));
-		//Создаём обработчик события по нажатию на элемент itemv1
+		//РЎРѕР·РґР°С‘Рј РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ РїРѕ РЅР°Р¶Р°С‚РёСЋ РЅР° СЌР»РµРјРµРЅС‚ itemv1
 		itemv1.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				//Случайным образом меняем цвет фона панели
+				//РЎР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РјРµРЅСЏРµРј С†РІРµС‚ С„РѕРЅР° РїР°РЅРµР»Рё
 				int r=(int)(Math.random()*255);
 				int g=(int)(Math.random()*255);
 				int b=(int)(Math.random()*255);
 				contentPane.setBackground(new Color(r,g,b));
 			}
 		});
-		//Создаем подменю в подменю View
+		//РЎРѕР·РґР°РµРј РїРѕРґРјРµРЅСЋ РІ РїРѕРґРјРµРЅСЋ View
 		JMenu menuUI = new JMenu("Look & Feel");
 		menuUI.addMouseListener(new MenuExampleMouseAdapter("Change Look & Feel"," ",status));
-		//Создаём элементы подменю View в виде JRadioButton
+		//РЎРѕР·РґР°С‘Рј СЌР»РµРјРµРЅС‚С‹ РїРѕРґРјРµРЅСЋ View РІ РІРёРґРµ JRadioButton
 		JMenuItem itemui1 = new JRadioButtonMenuItem("Windows Look & Feel");
 		JMenuItem itemui2 = new JRadioButtonMenuItem("Metal Look & Feel");
 		JMenuItem itemui3 = new JRadioButtonMenuItem("Motif Look & Feel");
-		//Объединяем их в группу
+		//РћР±СЉРµРґРёРЅСЏРµРј РёС… РІ РіСЂСѓРїРїСѓ
 		ButtonGroup bg = new ButtonGroup();
 		bg.add(itemui1);
 		bg.add(itemui2);
 		bg.add(itemui3);
-		//Создаем обработчики событий
+		//РЎРѕР·РґР°РµРј РѕР±СЂР°Р±РѕС‚С‡РёРєРё СЃРѕР±С‹С‚РёР№
 		itemui1.addMouseListener(new MenuExampleMouseAdapter("Windows Look & Feel"," ",status));
 		itemui2.addMouseListener(new MenuExampleMouseAdapter("Metal Look & Feel"," ",status));
 		itemui3.addMouseListener(new MenuExampleMouseAdapter("Motif Look & Feel"," ",status));
@@ -120,36 +120,36 @@ public class MenuExample extends JFrame
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				setLookAndFeel(1);//Меняем Look & Feel
+				setLookAndFeel(1);//РњРµРЅСЏРµРј Look & Feel
 			}
 		});
 		itemui2.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				setLookAndFeel(2);//Меняем Look & Feel
+				setLookAndFeel(2);//РњРµРЅСЏРµРј Look & Feel
 			}
 		});
 		itemui3.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				setLookAndFeel(3);//Меняем Look & Feel
+				setLookAndFeel(3);//РњРµРЅСЏРµРј Look & Feel
 			}
 		});
-		itemui2.setSelected(true);//Делаем выбранным по умолчанию
-		//Добавляем элементы
+		itemui2.setSelected(true);//Р”РµР»Р°РµРј РІС‹Р±СЂР°РЅРЅС‹Рј РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+		//Р”РѕР±Р°РІР»СЏРµРј СЌР»РµРјРµРЅС‚С‹
 		menuUI.add(itemui1);
 		menuUI.add(itemui2);
 		menuUI.add(itemui3);
 		itemv1.addMouseListener(new MenuExampleMouseAdapter("Change background color"," ",status));
-		//Добавляем "горячею клавишу"
+		//Р”РѕР±Р°РІР»СЏРµРј "РіРѕСЂСЏС‡РµСЋ РєР»Р°РІРёС€Сѓ"
 		itemv1.setAccelerator(KeyStroke.getKeyStroke(67,Event.CTRL_MASK));
-		//Добавляем элемент
+		//Р”РѕР±Р°РІР»СЏРµРј СЌР»РµРјРµРЅС‚
 		menuView.add(itemv1);
-		//Добавляем подменю
+		//Р”РѕР±Р°РІР»СЏРµРј РїРѕРґРјРµРЅСЋ
 		menuView.add(menuUI);
-		//Создаем элементы подменю Thread с обработчиками событий
+		//РЎРѕР·РґР°РµРј СЌР»РµРјРµРЅС‚С‹ РїРѕРґРјРµРЅСЋ Thread СЃ РѕР±СЂР°Р±РѕС‚С‡РёРєР°РјРё СЃРѕР±С‹С‚РёР№
 		JMenuItem itemT1 = new JMenuItem("Add");
 		JMenuItem itemT2 = new JMenuItem("Run");
 		JMenuItem itemT3 = new JMenuItem("Pause");
@@ -158,31 +158,31 @@ public class MenuExample extends JFrame
 		itemT2.addMouseListener(new MenuExampleMouseAdapter("Run thread"," ",status));
 		itemT3.addMouseListener(new MenuExampleMouseAdapter("Pause thread"," ",status));
 		itemT4.addMouseListener(new MenuExampleMouseAdapter("Delete thread"," ",status));
-		//Создаём иконки для элементов меню
+		//РЎРѕР·РґР°С‘Рј РёРєРѕРЅРєРё РґР»СЏ СЌР»РµРјРµРЅС‚РѕРІ РјРµРЅСЋ
 		ImageIcon image1 = new ImageIcon(getToolkit().createImage("images/add.gif"));
 		ImageIcon image2 = new ImageIcon(getToolkit().createImage("images/play.gif"));
 		ImageIcon image3 = new ImageIcon(getToolkit().createImage("images/pause.gif"));
 		ImageIcon image4 = new ImageIcon(getToolkit().createImage("images/delete.gif"));
-		//Назначаем иконки элементам
+		//РќР°Р·РЅР°С‡Р°РµРј РёРєРѕРЅРєРё СЌР»РµРјРµРЅС‚Р°Рј
 		itemT1.setIcon(image1);
 		itemT2.setIcon(image2);
 		itemT3.setIcon(image3);
 		itemT4.setIcon(image4);
-		//Добавляем элементы в подменю Thread
+		//Р”РѕР±Р°РІР»СЏРµРј СЌР»РµРјРµРЅС‚С‹ РІ РїРѕРґРјРµРЅСЋ Thread
 		menuThread.add(itemT1);
-		menuThread.addSeparator();//Разделитель
+		menuThread.addSeparator();//Р Р°Р·РґРµР»РёС‚РµР»СЊ
 		menuThread.add(itemT2);
 		menuThread.add(itemT3);
-		menuThread.addSeparator();//Разделитель
+		menuThread.addSeparator();//Р Р°Р·РґРµР»РёС‚РµР»СЊ
 		menuThread.add(itemT4);
-		//Добавляем подменю в основное меню
+		//Р”РѕР±Р°РІР»СЏРµРј РїРѕРґРјРµРЅСЋ РІ РѕСЃРЅРѕРІРЅРѕРµ РјРµРЅСЋ
 		menuBar.add(menuFile);
 		menuBar.add(menuView);
 		menuBar.add(menuThread);
-		//Устанавливаем полученное меню на окно
+		//РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РїРѕР»СѓС‡РµРЅРЅРѕРµ РјРµРЅСЋ РЅР° РѕРєРЅРѕ
 		this.setJMenuBar(menuBar);
 	}
-	/**Изменяем Look & Feel
+	/**РР·РјРµРЅСЏРµРј Look & Feel
 	 */
 	public void setLookAndFeel(int type)
 	{
@@ -198,9 +198,9 @@ public class MenuExample extends JFrame
 		}
 		try
 		{
-			//Меняем
+			//РњРµРЅСЏРµРј
 			UIManager.setLookAndFeel(laf);
-			//Обновляем
+			//РћР±РЅРѕРІР»СЏРµРј
 			SwingUtilities.updateComponentTreeUI(this);
 		}
 		catch(Exception e)

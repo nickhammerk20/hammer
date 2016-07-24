@@ -1,23 +1,23 @@
 import javax.swing.*;
-// Описание класса:
+// РћРїРёСЃР°РЅРёРµ РєР»Р°СЃСЃР°:
 class MyClass{
 int num;
 char symb;
 String text;
 }
-// Главный класс программы:
+// Р“Р»Р°РІРЅС‹Р№ РєР»Р°СЃСЃ РїСЂРѕРіСЂР°РјРјС‹:
 public class ClassDemo{
 public static void main(String[] args){
 MyClass obj=new MyClass();
-// Заполнение полей объекта:
+// Р—Р°РїРѕР»РЅРµРЅРёРµ РїРѕР»РµР№ РѕР±СЉРµРєС‚Р°:
 obj.num=12;
 obj.symb='A';
-obj.text="Текстовое поле";
-// Текст для отображения в окне сообщения:
-String str="Значения полей объекта:\n";
+obj.text="РўРµРєСЃС‚РѕРІРѕРµ РїРѕР»Рµ";
+// РўРµРєСЃС‚ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РІ РѕРєРЅРµ СЃРѕРѕР±С‰РµРЅРёСЏ:
+String str="Р—РЅР°С‡РµРЅРёСЏ РїРѕР»РµР№ РѕР±СЉРµРєС‚Р°:\n";
 str+="num="+obj.num+"\n";
 str+="symb="+obj.symb+"\n";
 str+="text="+obj.text;
-// Отображение окна:
+// РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РѕРєРЅР°:
 JOptionPane.showMessageDialog(null,str);}
 }

@@ -3,8 +3,8 @@ public abstract class WhatIsYouName {
 
 	public static void main(String[] args) {
 		String Name;
-		Name=JOptionPane.showInputDialog ("Добрый день! Как Вас зовут?");
-				JOptionPane.showMessageDialog(null, "Приятного познакомиться, \n"+Name+"!");
+		Name=JOptionPane.showInputDialog ("Р”РѕР±СЂС‹Р№ РґРµРЅСЊ! РљР°Рє Р’Р°СЃ Р·РѕРІСѓС‚?");
+				JOptionPane.showMessageDialog(null, "РџСЂРёСЏС‚РЅРѕРіРѕ РїРѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ, \n"+Name+"!");
 
 	}
 

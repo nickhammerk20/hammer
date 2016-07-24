@@ -9,12 +9,12 @@ public class MenuExampleMouseAdapter extends MouseAdapter
  String messageExited;
  JLabel status;
  /**
-  * Конструктор
-  * @param messageEntered строка которую выводим в строку 
-  * статуса по входу курсора на элемент
-  * @param messageExited строка которую выводим в строку 
-  * статуса по выходу курсора за пределы элемента
-  * status строка статуса в которую происходит вывод
+  * В РѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+  * @param messageEntered СЃС‚СЂРѕРєР° РєРѕС‚РѕСЂСѓСЋ РІС‹РІРѕРґРёРј РІ СЃС‚СЂРѕРєСѓ 
+  * СЃС‚Р°С‚СѓСЃР° РїРѕ РІС…РѕРґСѓ РєСѓСЂСЃРѕСЂР° РЅР° СЌР»РµРјРµРЅС‚
+  * @param messageExited СЃС‚СЂРѕРєР° РєРѕС‚РѕСЂСѓСЋ РІС‹РІРѕРґРёРј РІ СЃС‚СЂРѕРєСѓ 
+  * СЃС‚Р°С‚СѓСЃР° РїРѕ РІС‹С…РѕРґСѓ РєСѓСЂСЃРѕСЂР° Р·Р° РїСЂРµРґРµР»С‹ СЌР»РµРјРµРЅС‚Р°
+  * status СЃС‚СЂРѕРєР° СЃС‚Р°С‚СѓСЃР° РІ РєРѕС‚РѕСЂСѓСЋ РїСЂРѕРёСЃС…РѕРґРёС‚ РІС‹РІРѕРґ
   */ 
  public MenuExampleMouseAdapter(String messageEntered,String messageExited, JLabel status)
  {

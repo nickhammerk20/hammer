@@ -2,12 +2,12 @@ import javax.swing.JOptionPane;
 public class UsingVar {
 
 	public static void main(String[] args) {
-		String name="Иванов Иван Иванович";
+		String name="РРІР°РЅРѕРІ РРІР°РЅ РРІР°РЅРѕРІРёС‡";
 		int age=60;
 		char category='B';
-		String text="Водитель: "+name;
-		text=text+"\n"+"Возраст: "+age+" лет";
-		text=text+'\n'+"Права категории: "+category;
+		String text="Р’РѕРґРёС‚РµР»СЊ: "+name;
+		text=text+"\n"+"Р’РѕР·СЂР°СЃС‚: "+age+" Р»РµС‚";
+		text=text+'\n'+"РџСЂР°РІР° РєР°С‚РµРіРѕСЂРёРё: "+category;
 		JOptionPane.showMessageDialog(null, text);
 
 	}
