@@ -1,16 +1,16 @@
-package HW1_Operator;
+п»їpackage HW1_Operator;
 //import javax.swing.*;
 //public class HW_1_1_3 {
 //
 //	public static void main(String[] args) {
-//		//Суммы только положительных из трех чисел
+//		//вЂ”СѓРјРјС‹ С‚РѕР»СЊРєРѕ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… РёР· С‚СЂРµС… С‡РёСЃРµР»
 //		double a,b,c;
-//		String title="Итого:";
-//		String text="Сумма только положительных чисел: ";
+//		String title="В»С‚РѕРіРѕ:";
+//		String text="вЂ”СѓРјРјР° С‚РѕР»СЊРєРѕ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… С‡РёСЃРµР»: ";
 //		int type;
-//		a=Double.parseDouble(JOptionPane.showInputDialog("Укажите первое число:"));
-//		b=Double.parseDouble(JOptionPane.showInputDialog("Укажите второе число:"));
-//		c=Double.parseDouble(JOptionPane.showInputDialog("Укажите третье число:"));
+//		a=Double.parseDouble(JOptionPane.showInputDialog("вЂќРєР°Р¶РёС‚Рµ РїРµСЂРІРѕРµ С‡РёСЃР»Рѕ:"));
+//		b=Double.parseDouble(JOptionPane.showInputDialog("вЂќРєР°Р¶РёС‚Рµ РІС‚РѕСЂРѕРµ С‡РёСЃР»Рѕ:"));
+//		c=Double.parseDouble(JOptionPane.showInputDialog("вЂќРєР°Р¶РёС‚Рµ С‚СЂРµС‚СЊРµ С‡РёСЃР»Рѕ:"));
 //		type=JOptionPane.PLAIN_MESSAGE;
 //		if(a<=0){a=0;}
 //		if(b<=0){b=0;}

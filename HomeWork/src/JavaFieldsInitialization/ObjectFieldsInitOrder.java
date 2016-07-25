@@ -1,4 +1,4 @@
-package JavaFieldsInitialization;
+﻿package JavaFieldsInitialization;
 
 public class ObjectFieldsInitOrder {
     static int initialize(String message) {

@@ -1,5 +1,5 @@
-package HW1_Functions;
-// Вводим число (0­999), получаем строку с прописью числа.
+п»їpackage HW1_Functions;
+// В¬РІРѕРґРёРј С‡РёСЃР»Рѕ (0в‰ 999), РїРѕР»СѓС‡Р°РµРј СЃС‚СЂРѕРєСѓ СЃ РїСЂРѕРїРёСЃСЊСЋ С‡РёСЃР»Р°.
 
 import java.util.Stack;
 
@@ -18,7 +18,7 @@ public class HW_1_4_2_network{
 	    if(d == null || d < 0.0) {
 	    	return null;
 	    } else if (d == 0) {
-	    	return "ноль";
+	    	return "РЅРѕР»СЊ";
 	    }
 	    else{
 	    String s = d.toString();
@@ -77,61 +77,61 @@ public class HW_1_4_2_network{
 	            System.out.println("0.3 "+thch.h);
 	            result.append(' ');
 	        }
-	        System.out.println("0 "+thch.d+" только перменная "+d );
+	        System.out.println("0 "+thch.d+" С‚РѕР»СЊРєРѕ РїРµСЂРјРµРЅРЅР°В¤ "+d );
 	        if(thch.d > '0'){
-	        	System.out.println("1 "+thch.d+" только перменная "+d);
+	        	System.out.println("1 "+thch.d+" С‚РѕР»СЊРєРѕ РїРµСЂРјРµРЅРЅР°В¤ "+d);
 	            if(thch.d > '1' || (thch.d == '1' && thch.u == '0')) {result.append(getDecades(thch.d));
-	            System.out.println("2 "+thch.d+" только перменная "+d);}
+	            System.out.println("2 "+thch.d+" С‚РѕР»СЊРєРѕ РїРµСЂРјРµРЅРЅР°В¤ "+d);}
 	            else if(thch.d > '0') {result.append(getTeens(thch.d));
-	            System.out.println("3 "+thch.d+" только перменная "+d);}
+	            System.out.println("3 "+thch.d+" С‚РѕР»СЊРєРѕ РїРµСЂРјРµРЅРЅР°В¤ "+d);}
 	            result.append(' ');
 	        }
 	        if(thch.u > '0' && thch.d != '1'){
 	            result.append(getUnits(thch.u, thch.range == Ranges.THOUSANDS));
-	        //    result.append(' ');  // пробелы в конце цифр перед сотыми
+	        //    result.append(' ');  // РїСЂРѕР±РµР»С‹ РІ РєРѕРЅС†Рµ С†РёС„СЂ РїРµСЂРµРґ СЃРѕС‚С‹РјРё
 	        }
 	        switch(thch.range){
 	            case BILLIONS:
-	                if(thch.d == '1' || thch.u == '0') result.append("миллиардов");
-	                else if(thch.u > '4')result.append("миллиардов");
-	                else if(thch.u > '1')result.append("миллиарда");
-	                else result.append("миллиард");
+	                if(thch.d == '1' || thch.u == '0') result.append("РјРёР»Р»РёР°СЂРґРѕРІ");
+	                else if(thch.u > '4')result.append("РјРёР»Р»РёР°СЂРґРѕРІ");
+	                else if(thch.u > '1')result.append("РјРёР»Р»РёР°СЂРґР°");
+	                else result.append("РјРёР»Р»РёР°СЂРґ");
 	                break;
 	            case MILLIONS:
-	                if(thch.d == '1' || thch.u == '0') result.append("миллионов");
-	                else if(thch.u > '4')result.append("миллионов");
-	                else if(thch.u > '1')result.append("миллиона");
-	                else result.append("миллион");
+	                if(thch.d == '1' || thch.u == '0') result.append("РјРёР»Р»РёРѕРЅРѕРІ");
+	                else if(thch.u > '4')result.append("РјРёР»Р»РёРѕРЅРѕРІ");
+	                else if(thch.u > '1')result.append("РјРёР»Р»РёРѕРЅР°");
+	                else result.append("РјРёР»Р»РёРѕРЅ");
 	                break;
 	            case THOUSANDS:
-	                if(thch.d == '1' || thch.u == '0') result.append("тысяч");
-	                else if(thch.u > '4')result.append("тысяч");
-	                else if(thch.u > '1')result.append("тысячи");
-	                else result.append("тысяча");
+	                if(thch.d == '1' || thch.u == '0') result.append("С‚С‹СЃВ¤С‡");
+	                else if(thch.u > '4')result.append("С‚С‹СЃВ¤С‡");
+	                else if(thch.u > '1')result.append("С‚С‹СЃВ¤С‡Рё");
+	                else result.append("С‚С‹СЃВ¤С‡Р°");
 	                break;
 	            default:
-	                if(thch.d == '1' || thch.u == '0' || thch.u > '4')result.append(""); // гривен - рублей
-	                else if(thch.u > '1')result.append(""); // гривны - рубля
-	                else result.append(""); // гривны - рубль
+	                if(thch.d == '1' || thch.u == '0' || thch.u > '4')result.append(""); // РіСЂРёРІРµРЅ - СЂСѓР±Р»РµР№
+	                else if(thch.u > '1')result.append(""); // РіСЂРёРІРЅС‹ - СЂСѓР±Р»В¤
+	                else result.append(""); // РіСЂРёРІРЅС‹ - СЂСѓР±Р»СЊ
 	        }
-	        //result.append(' '); // добавляем в конце пробелы перед копейками
+	        //result.append(' '); // РґРѕР±Р°РІР»В¤РµРј РІ РєРѕРЅС†Рµ РїСЂРѕР±РµР»С‹ РїРµСЂРµРґ РєРѕРїРµР№РєР°РјРё
 	    }   
-	    // добавление копеек
+	    // РґРѕР±Р°РІР»РµРЅРёРµ РєРѕРїРµРµРє
 //	    result.append(sa[1] + ' ');
 //	    switch(sa[1].charAt(1)){
 //	        case '1': 
-//	            result.append(sa[1].charAt(0) != '1' ? "копейка" : "копеек");
+//	            result.append(sa[1].charAt(0) != '1' ? "РєРѕРїРµР№РєР°" : "РєРѕРїРµРµРє");
 //	            break;
 //	        case '2': 
 //	        case '3': 
 //	        case '4': 
-//	            result.append(sa[1].charAt(0) != '1' ? "копейки" : "копеек");
+//	            result.append(sa[1].charAt(0) != '1' ? "РєРѕРїРµР№РєРё" : "РєРѕРїРµРµРє");
 //	            break;
 //	        default:
-//	            result.append("копеек");
+//	            result.append("РєРѕРїРµРµРє");
 //	    }
 	  //  char first = Character.toUpperCase(result.charAt(0));
-	 //   result.setCharAt(0, first); // первая заглавная буква
+	 //   result.setCharAt(0, first); // РїРµСЂРІР°В¤ Р·Р°РіР»Р°РІРЅР°В¤ Р±СѓРєРІР°
 	    return result.toString();
 	    }
 	}
@@ -139,23 +139,23 @@ public class HW_1_4_2_network{
 	private static String getHundreds(char dig){
 	 switch(dig){
 	     case '1': 
-	         return "сто";
+	         return "СЃС‚Рѕ";
 	     case '2': 
-	         return "двести";
+	         return "РґРІРµСЃС‚Рё";
 	     case '3': 
-	         return "триста";
+	         return "С‚СЂРёСЃС‚Р°";
 	     case '4': 
-	         return "четыреста";
+	         return "С‡РµС‚С‹СЂРµСЃС‚Р°";
 	     case '5': 
-	         return "пятьсот";
+	         return "РїВ¤С‚СЊСЃРѕС‚";
 	     case '6': 
-	         return "шестьсот";
+	         return "С€РµСЃС‚СЊСЃРѕС‚";
 	     case '7': 
-	         return "семсот";
+	         return "СЃРµРјСЃРѕС‚";
 	     case '8': 
-	         return "восемсот";
+	         return "РІРѕСЃРµРјСЃРѕС‚";
 	     case '9': 
-	         return "девятьсот";
+	         return "РґРµРІВ¤С‚СЊСЃРѕС‚";
 	     default: return null;
 	 }      
 	}
@@ -163,23 +163,23 @@ public class HW_1_4_2_network{
 	private static String getDecades(char dig){
 	 switch(dig){
 	     case '1': 
-	         return "десять";
+	         return "РґРµСЃВ¤С‚СЊ";
 	     case '2': 
-	         return "двадцать";
+	         return "РґРІР°РґС†Р°С‚СЊ";
 	     case '3': 
-	         return "тридцать";
+	         return "С‚СЂРёРґС†Р°С‚СЊ";
 	     case '4': 
-	         return "сорок";
+	         return "СЃРѕСЂРѕРє";
 	     case '5': 
-	         return "пятьдесят";
+	         return "РїВ¤С‚СЊРґРµСЃВ¤С‚";
 	     case '6': 
-	         return "шестьдесят";
+	         return "С€РµСЃС‚СЊРґРµСЃВ¤С‚";
 	     case '7': 
-	         return "семьдесят";
+	         return "СЃРµРјСЊРґРµСЃВ¤С‚";
 	     case '8': 
-	         return "восемьдесят";
+	         return "РІРѕСЃРµРјСЊРґРµСЃВ¤С‚";
 	     case '9': 
-	         return "девяносто";
+	         return "РґРµРІВ¤РЅРѕСЃС‚Рѕ";
 	     default: return null;
 	 }      
 	}
@@ -187,23 +187,23 @@ public class HW_1_4_2_network{
 	private static String getUnits(char dig, boolean female){
 	 switch(dig){
 	     case '1': 
-	         return female ? "одна" : "один";
+	         return female ? "РѕРґРЅР°" : "РѕРґРёРЅ";
 	     case '2': 
-	         return female ? "две"  : "два";
+	         return female ? "РґРІРµ"  : "РґРІР°";
 	     case '3': 
-	         return "три";
+	         return "С‚СЂРё";
 	     case '4': 
-	         return "четыре";
+	         return "С‡РµС‚С‹СЂРµ";
 	     case '5': 
-	         return "пять";
+	         return "РїВ¤С‚СЊ";
 	     case '6': 
-	         return "шесть";
+	         return "С€РµСЃС‚СЊ";
 	     case '7': 
-	         return "семь";
+	         return "СЃРµРјСЊ";
 	     case '8': 
-	         return "восемь";
+	         return "РІРѕСЃРµРјСЊ";
 	     case '9': 
-	         return "девять";
+	         return "РґРµРІВ¤С‚СЊ";
 	     default: return null;
 	 }      
 	}
@@ -213,25 +213,25 @@ public class HW_1_4_2_network{
 		String s = "";     
 	 switch(dig){
 	     case '1':
-	         s = "один"; break;
+	         s = "РѕРґРёРЅ"; break;
 	     case '2':
-	         s = "две"; break;
+	         s = "РґРІРµ"; break;
 	     case '3':
-	         s = "три"; break;
+	         s = "С‚СЂРё"; break;
 	     case '4':
-	         s = "четыр"; break;
+	         s = "С‡РµС‚С‹СЂ"; break;
 	     case '5':
-	         s = "пят"; break;
+	         s = "РїВ¤С‚"; break;
 	     case '6':
-	         s = "шест"; break;
+	         s = "С€РµСЃС‚"; break;
 	     case '7':
-	         s = "сем"; break;
+	         s = "СЃРµРј"; break;
 	     case '8':
-	         s = "восем"; break;
+	         s = "РІРѕСЃРµРј"; break;
 	     case '9':
-	         s = "девят"; break;
+	         s = "РґРµРІВ¤С‚"; break;
 	 }
-	 return s + "надцать";
+	 return s + "РЅР°РґС†Р°С‚СЊ";
 	}       
 
 	public static void main(String[] args){

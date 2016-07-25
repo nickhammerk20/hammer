@@ -1,15 +1,15 @@
-package HW1_Operator;
+ï»¿package HW1_Operator;
 //import javax.swing.*;
 //public class HW_1_1_5 {
 //
 //	public static void main(String[] args) {
-//		// Íàïèñàòü ïðîãðàììó îïðåëåíåíèÿ îöåíêè ñòóäåíòà ïî åãî ðåéòèíãó, íà îñíîâå ñëåäóþùèõ ïðàâèë
+//		// ÐÐ°Ð¿Ð¸ÑÐ°Ñ‚ÑŒ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñƒ Ð¾Ð¿Ñ€ÐµÐ»ÐµÐ½ÐµÐ½Ð¸Ñ Ð¾Ñ†ÐµÐ½ÐºÐ¸ ÑÑ‚ÑƒÐ´ÐµÐ½Ñ‚Ð° Ð¿Ð¾ ÐµÐ³Ð¾ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³Ñƒ, Ð½Ð° Ð¾ÑÐ½Ð¾Ð²Ðµ ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ñ… Ð¿Ñ€Ð°Ð²Ð¸Ð»
 //		int r, type;
-//		String text="Îöåíêà ñòóäåíà:"; 
-//		String title="Ñòóäåíò";
-//		r=Integer.parseInt(JOptionPane.showInputDialog("Óêàæèòå ðåéòèíã ñòóäåíà"));
+//		String text="ÐžÑ†ÐµÐ½ÐºÐ° ÑÑ‚ÑƒÐ´ÐµÐ½Ð°:"; 
+//		String title="Ð¡Ñ‚ÑƒÐ´ÐµÐ½Ñ‚";
+//		r=Integer.parseInt(JOptionPane.showInputDialog("Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³ ÑÑ‚ÑƒÐ´ÐµÐ½Ð°"));
 //		if(r>100){text="Error";}
-//			else if(r>=90){text="À";}
+//			else if(r>=90){text="Ð";}
 //			else if(r>=75){text="B";}
 //			else if(r>=60){text="C";}
 //			else if(r>=40){text="D";}

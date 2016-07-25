@@ -1,4 +1,4 @@
-package HW2_Zlatopolskii;
+﻿package HW2_Zlatopolskii;
 import static org.junit.Assert.*;
 
 import org.junit.Test;

@@ -1,4 +1,4 @@
-import javax.swing.JFrame;
+Ôªøimport javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -14,7 +14,7 @@ public class PTabbedPane extends JTabbedPane
 //		add("Paint 3", new PPanel (cmd));
 //		add("Paint 4", new PPanel (cmd));
 		
-		  String str = "ÀËÒÚ " + (++count);
+		  String str = "–ã–∏—Å—Ç " + (++count);
 		  PPanel pp = new PPanel(cmd);
 		  addTab(str, pp);
 		  cmd.pp.add(pp);

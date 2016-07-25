@@ -1,15 +1,15 @@
-package HW2_Zlatopolskii;
-//Дано трехзначное число. Определить, какая из его цифр больше:
-//а) первая или последняя;
-//б) первая или вторая;
-//в) вторая или последняя.
+п»їpackage HW2_Zlatopolskii;
+//Ж’Р°РЅРѕ С‚СЂРµС…Р·РЅР°С‡РЅРѕРµ С‡РёСЃР»Рѕ. СњРїСЂРµРґРµР»РёС‚СЊ, РєР°РєР°В¤ РёР· РµРіРѕ С†РёС„СЂ Р±РѕР»СЊС€Рµ:
+//Р°) РїРµСЂРІР°В¤ РёР»Рё РїРѕСЃР»РµРґРЅВ¤В¤;
+//Р±) РїРµСЂРІР°В¤ РёР»Рё РІС‚РѕСЂР°В¤;
+//РІ) РІС‚РѕСЂР°В¤ РёР»Рё РїРѕСЃР»РµРґРЅВ¤В¤.
 public class HW_2_Zlatopolskii_4_28{
 	public static void main (String [] args){
 		int r=642;
 		String resa=fwhatbiga(r);
 		String resb=fwhatbigb(r);
 		String resc=fwhatbigc(r);
-		System.out.println("a = "+resa+" б = "+resb+" в = "+resc);
+		System.out.println("a = "+resa+" Р± = "+resb+" РІ = "+resc);
 	}
 	public static String fwhatbiga(int r){
 		int a = r/100;
@@ -18,8 +18,8 @@ public class HW_2_Zlatopolskii_4_28{
 			throw new IllegalArgumentException();
 		}
 		String ret="";
-			ret = (a > c) ? "первая" : "последняя";
-//		System.out.println(a+" "+b+" "+c+ " рет = "+ret);
+			ret = (a > c) ? "РїРµСЂРІР°В¤" : "РїРѕСЃР»РµРґРЅВ¤В¤";
+//		System.out.println(a+" "+b+" "+c+ " СЂРµС‚ = "+ret);
 		return ret;
 	}
 	public static String fwhatbigb(int r){
@@ -29,8 +29,8 @@ public class HW_2_Zlatopolskii_4_28{
 			throw new IllegalArgumentException();
 		}
 		String ret="";
-			ret = (a > b) ? "первая" : "вторая";
-//		System.out.println(a+" "+b+" "+c+ " рет = "+ret);
+			ret = (a > b) ? "РїРµСЂРІР°В¤" : "РІС‚РѕСЂР°В¤";
+//		System.out.println(a+" "+b+" "+c+ " СЂРµС‚ = "+ret);
 		return ret;
 	}
 	public static String fwhatbigc(int r){
@@ -40,8 +40,8 @@ public class HW_2_Zlatopolskii_4_28{
 			throw new IllegalArgumentException();
 		}
 		String ret="";
-			ret = (b > c) ? "вторая" : "последняя";
-		System.out.println(b+" "+c+ " рет = "+ret);
+			ret = (b > c) ? "РІС‚РѕСЂР°В¤" : "РїРѕСЃР»РµРґРЅВ¤В¤";
+		System.out.println(b+" "+c+ " СЂРµС‚ = "+ret);
 		return ret;
 	}
 }

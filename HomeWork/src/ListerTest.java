@@ -1,10 +1,10 @@
-import static org.junit.Assert.*;
+п»їimport static org.junit.Assert.*;
 
 import org.junit.Test;
 
 public class ListerTest {
 	   /**
-	     * Тесты метода clear
+	     * РўРµСЃС‚С‹ РјРµС‚РѕРґР° clear
 	     */
 	    @Test
 	    public void testClear_1(){
@@ -41,7 +41,7 @@ public class ListerTest {
 
 	    }
 	    /**
-	     * Тесты метода print
+	     * РўРµСЃС‚С‹ РјРµС‚РѕРґР° print
 	     */
 	    @Test
 	    public void testPrint_1(){

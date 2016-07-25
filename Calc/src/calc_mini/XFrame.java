@@ -6,7 +6,7 @@ public class XFrame extends JFrame
 {
 	public XFrame() 
 	{
-		setTitle("Калькулятор 23.05.16");
+		setTitle("РљР°Р»СЊРєСѓР»СЏС‚РѕСЂ 23.05.16");
 		setBounds(200, 200, 600, 400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		

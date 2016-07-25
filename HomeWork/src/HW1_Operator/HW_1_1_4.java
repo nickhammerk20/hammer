@@ -1,16 +1,16 @@
-package HW1_Operator;
+п»їpackage HW1_Operator;
 //import javax.swing.JOptionPane;
 //public class HW_1_1_4 {
 //
 //	public static void main(String[] args) {
-//		//Посчитать выражение   макс(а*в*с, а+в+с)+3 
+//		//С•РѕСЃС‡РёС‚Р°С‚СЊ РІС‹СЂР°Р¶РµРЅРёРµ   РјР°РєСЃ(Р°*РІ*СЃ, Р°+РІ+СЃ)+3 
 //		double a,b,c;
-//		String title="Итого:";
-//		String text="Результат: ";
+//		String title="В»С‚РѕРіРѕ:";
+//		String text="вЂ“РµР·СѓР»СЊС‚Р°С‚: ";
 //		int type;
-//		a=Double.parseDouble(JOptionPane.showInputDialog("Укажите а:"));
-//		b=Double.parseDouble(JOptionPane.showInputDialog("Укажите в:"));
-//		c=Double.parseDouble(JOptionPane.showInputDialog("Укажите с:"));
+//		a=Double.parseDouble(JOptionPane.showInputDialog("вЂќРєР°Р¶РёС‚Рµ Р°:"));
+//		b=Double.parseDouble(JOptionPane.showInputDialog("вЂќРєР°Р¶РёС‚Рµ РІ:"));
+//		c=Double.parseDouble(JOptionPane.showInputDialog("вЂќРєР°Р¶РёС‚Рµ СЃ:"));
 //		type=JOptionPane.PLAIN_MESSAGE;   
 //		if((a+b+c)<=(a*b*c)){text=text+((a*b*c)+3);}
 //		if((a+b+c)>=(a*b*c)){text=text+((a+b+c)+3);}

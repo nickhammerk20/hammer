@@ -1,4 +1,4 @@
-import javax.swing.*;
+п»їimport javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.DriverManager;
 import java.sql.Connection;
@@ -10,7 +10,7 @@ public class DatabaseTable
 {
     public static void main(String[] args)
     {
-        // инициализация JDBC
+        // РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ JDBC
         Connection conn;
         try
         {
@@ -31,19 +31,19 @@ public class DatabaseTable
             url = url + ip + base;
             conn = DriverManager.getConnection(url);
             Statement st = conn.createStatement();
-            // выполняем запрос
+            // РІС‹РїРѕР»РЅСЏРµРј Р·Р°РїСЂРѕСЃ
             ResultSet rs = st.executeQuery(
                 "select * from INFO");
-            // наша модель
+            // РЅР°С€Р° РјРѕРґРµР»СЊ
             DatabaseTableModel dbm =
                 new DatabaseTableModel(true);
-            // таблица и окно
+            // С‚Р°Р±Р»РёС†Р° Рё РѕРєРЅРѕ
             JTable table = new JTable(dbm);
             JFrame frame = new JFrame("DataBaseTable");
             frame.setSize(400, 300);
             frame.getContentPane().add(new JScrollPane(table));
             frame.setVisible(true);
-            // выводим результат запроса на экран
+            // РІС‹РІРѕРґРёРј СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР° РЅР° СЌРєСЂР°РЅ
             dbm.setDataSource(rs);
             rs.close();
             conn.close();
@@ -51,7 +51,7 @@ public class DatabaseTable
         catch (Exception ex)
         {
             JOptionPane.showMessageDialog(null,
-                ex.getMessage(), "Ошибка подключения к БД!",
+                ex.getMessage(), "РћС€РёР±РєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє Р‘Р”!",
                 JOptionPane.ERROR_MESSAGE);
         }
 

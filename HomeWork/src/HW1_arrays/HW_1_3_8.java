@@ -1,5 +1,5 @@
-package HW1_arrays;
-//Отсортировать массив (пузырьком (Bubble), выбором (Select), вставками (Insert))
+п»їpackage HW1_arrays;
+//РћС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ РјР°СЃСЃРёРІ (РїСѓР·С‹СЂСЊРєРѕРј (Bubble), РІС‹Р±РѕСЂРѕРј (Select), РІСЃС‚Р°РІРєР°РјРё (Insert))
 
 public class HW_1_3_8{
 	public static void main (String [] args){

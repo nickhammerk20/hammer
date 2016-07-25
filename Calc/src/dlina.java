@@ -1,4 +1,4 @@
-// конвертор дистанции
+// РєРѕРЅРІРµСЂС‚РѕСЂ РґРёСЃС‚Р°РЅС†РёРё
 
 public class dlina
 {
@@ -6,16 +6,16 @@ public class dlina
 	{
 		double km=100;
 		double res=mile(km);
-		System.out.println("Длина: "+km+"км. \nравна:");
-		System.out.println(res+" миль,");
+		System.out.println("Ж’Р»РёРЅР°: "+km+"РєРј. \nСЂР°РІРЅР°:");
+		System.out.println(res+" РјРёР»СЊ,");
 		res=jard(km);
-		System.out.println(res+" ярдов,");
+		System.out.println(res+" В¤СЂРґРѕРІ,");
 		res=fut(km);
-		System.out.println(res+" футов,");
+		System.out.println(res+" С„СѓС‚РѕРІ,");
 		res=duim(km);
-		System.out.println(res+" дюймов,");
+		System.out.println(res+" РґСЋР№РјРѕРІ,");
 		res=link(km);
-		System.out.println(res+" линков.");
+		System.out.println(res+" Р»РёРЅРєРѕРІ.");
 	}
 	public static double mile (double x)
 	{

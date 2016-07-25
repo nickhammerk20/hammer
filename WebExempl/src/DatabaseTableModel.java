@@ -1,80 +1,80 @@
-import javax.swing.table.*;
+п»їimport javax.swing.table.*;
 import java.sql.*;
 import java.util.*;
 
 public class DatabaseTableModel 
 	extends AbstractTableModel {
-	// здесь мы будем хранить названия столбцов
+	// Р·РґРµСЃСЊ РјС‹ Р±СѓРґРµРј С…СЂР°РЅРёС‚СЊ РЅР°Р·РІР°РЅРёВ¤ СЃС‚РѕР»Р±С†РѕРІ
 	private ArrayList columnNames = new ArrayList();
-	// список типов столбцов
+	// СЃРїРёСЃРѕРє С‚РёРїРѕРІ СЃС‚РѕР»Р±С†РѕРІ
 	private ArrayList columnTypes = new ArrayList();
-	// хранилище для полученных данных из базы данных
+	// С…СЂР°РЅРёР»РёС‰Рµ РґР»В¤ РїРѕР»СѓС‡РµРЅРЅС‹С… РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹ РґР°РЅРЅС‹С…
 	private ArrayList data = new ArrayList();
 	
-	// конструктор позволяет задать возможность редактирования
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕР·РІРѕР»В¤РµС‚ Р·Р°РґР°С‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёВ¤
 	public DatabaseTableModel(boolean editable) {
 		this.editable = editable;
 	}
 	private boolean editable;
 	
-	// количество строк
+	// РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕРє
 	public int getRowCount() {
 		synchronized (data) {
 			return data.size();
 		}
 	}
-	// количество столбцов
+	// РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚РѕР»Р±С†РѕРІ
 	public int getColumnCount() {
 		return columnNames.size();
 	}
-	// тип данных столбца
+	// С‚РёРї РґР°РЅРЅС‹С… СЃС‚РѕР»Р±С†Р°
 	public Class getColumnClass(int column) {
 		return (Class)columnTypes.get(column);
 	}
-	// название столбца
+	// РЅР°Р·РІР°РЅРёРµ СЃС‚РѕР»Р±С†Р°
 	public String getColumnName(int column) {
 		return (String)columnNames.get(column);
 	}
-	// данные в ячейке
+	// РґР°РЅРЅС‹Рµ РІ В¤С‡РµР№РєРµ
 	public Object getValueAt(int row, int column) {
 		synchronized (data) {
 			return ((ArrayList)data.get(row)).get(column);
 		}
 	}
-	// возможность редактирования
+	// РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёВ¤
 	public boolean isEditable(int row, int column) {
 		return editable;
 	}
-	// замена значения ячейки
+	// Р·Р°РјРµРЅР° Р·РЅР°С‡РµРЅРёВ¤ В¤С‡РµР№РєРё
 	public void setValueAt(
 	 Object value, int row, int column){
 		synchronized (data) {
 			((ArrayList)data.get(row)).set(column, value);
 		}
 	}
-	// получение данных из объекта ResultSet
+	// РїРѕР»СѓС‡РµРЅРёРµ РґР°РЅРЅС‹С… РёР· РѕР±СЉРµРєС‚Р° ResultSet
 	public void setDataSource(
 	 ResultSet rs) throws Exception {
-		// удаляем прежние данные
+		// СѓРґР°Р»В¤РµРј РїСЂРµР¶РЅРёРµ РґР°РЅРЅС‹Рµ
 		data.clear();
 		columnNames.clear();
 		columnTypes.clear();
-		// получаем вспомогательную информацию о столбцах
+		// РїРѕР»СѓС‡Р°РµРј РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃС‚РѕР»Р±С†Р°С…
 		ResultSetMetaData rsmd = rs.getMetaData();
 		int columnCount = rsmd.getColumnCount();
 		for ( int i=0; i<columnCount; i++) {
-			// название столбца
+			// РЅР°Р·РІР°РЅРёРµ СЃС‚РѕР»Р±С†Р°
 			columnNames.add(rsmd.getColumnName(i+1));
-			// тип столбца
+			// С‚РёРї СЃС‚РѕР»Р±С†Р°
 			Class type =
 				Class.forName(rsmd.getColumnClassName(i+1));
 			columnTypes.add(type);
 		}
-		// сообщаем об изменениях в структуре данных
+		// СЃРѕРѕР±С‰Р°РµРј РѕР± РёР·РјРµРЅРµРЅРёВ¤С… РІ СЃС‚СЂСѓРєС‚СѓСЂРµ РґР°РЅРЅС‹С…
 		fireTableStructureChanged();
-		// получаем данные
+		// РїРѕР»СѓС‡Р°РµРј РґР°РЅРЅС‹Рµ
 		while ( rs.next() ) {
-			// здесь будем хранить ячейки одной строки
+			// Р·РґРµСЃСЊ Р±СѓРґРµРј С…СЂР°РЅРёС‚СЊ В¤С‡РµР№РєРё РѕРґРЅРѕР№ СЃС‚СЂРѕРєРё
 			ArrayList row = new ArrayList();
 			for ( int i=0; i<columnCount; i++) {
 				if (columnTypes.get(i) == String.class)
@@ -84,7 +84,7 @@ public class DatabaseTableModel
 			}
 			synchronized (data) {
 				data.add(row);
-				// сообщаем о прибавлении строки
+				// СЃРѕРѕР±С‰Р°РµРј Рѕ РїСЂРёР±Р°РІР»РµРЅРёРё СЃС‚СЂРѕРєРё
 				fireTableRowsInserted(
 					data.size()-1, data.size()-1);
 			}

@@ -1,4 +1,4 @@
-package BsTree;
+Ôªøpackage BsTree;
 
 public class BsTreeMain 
 {
@@ -23,11 +23,11 @@ public class BsTreeMain
 		tr.add(60);
 		tr.add(80);		
 
-		System.out.println("‚ıÓ‰ tr.print();");
+		System.out.println("–≤—Ö–æ–¥ tr.print();");
 		tr.print();
-		System.out.println("\n‚ıÓ‰ tr.toString();");
+		System.out.println("\n–≤—Ö–æ–¥ tr.toString();");
 		System.out.println(tr.toString());
-		System.out.println("‚ıÓ‰ tr.toArray();");
+		System.out.println("–≤—Ö–æ–¥ tr.toArray();");
 
 		int ar [] = tr.toArray(); 
 		for (int i = 0; i < ar.length; i++) 

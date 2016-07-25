@@ -1,5 +1,5 @@
-package HW1_arrays;
-//Найти индекс минимального элемента массива
+п»їpackage HW1_arrays;
+//РќР°Р№С‚Рё РёРЅРґРµРєСЃ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР°
 
 public class HW_1_3_3{
 	public static void main (String [] args){

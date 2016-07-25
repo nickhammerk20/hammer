@@ -1,4 +1,4 @@
-package BsTree;
+﻿package BsTree;
 import javax.swing.JFrame;
 
 public class TFrame extends JFrame

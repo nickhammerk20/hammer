@@ -1,4 +1,4 @@
-import java.awt.Color;
+﻿import java.awt.Color;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;

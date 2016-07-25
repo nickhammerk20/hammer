@@ -1,4 +1,4 @@
-import java.awt.BorderLayout;
+п»їimport java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -15,7 +15,7 @@ public class TestFrame extends JFrame {
  
     public TestFrame() {
  
-        super("Тестовое окно");
+        super("РўРµСЃС‚РѕРІРѕРµ РѕРєРЅРѕ");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  
         Font font = new Font("Verdana", Font.PLAIN, 10);
@@ -28,16 +28,16 @@ public class TestFrame extends JFrame {
         JPanel buttons = new JPanel();
         content.add(buttons, BorderLayout.NORTH);
  
-        JButton add = new JButton("Добавить");
+        JButton add = new JButton("Р”РѕР±Р°РІРёС‚СЊ");
         add.setFont(font);
         add.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                tabbedPane.addTab("Вкладка " + i++, new JPanel());
+                tabbedPane.addTab("Р’РєР»Р°РґРєР° " + i++, new JPanel());
             }
         });
         buttons.add(add);
  
-        JButton remove = new JButton("Удалить");
+        JButton remove = new JButton("РЈРґР°Р»РёС‚СЊ");
         remove.setFont(font);
         remove.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

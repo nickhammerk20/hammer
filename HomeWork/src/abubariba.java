@@ -1,4 +1,4 @@
-
+﻿
 public class abubariba {
 
 	public static void main (String [] args){

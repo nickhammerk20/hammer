@@ -1,4 +1,4 @@
-package BsTree;
+п»їpackage BsTree;
 
 public class BsTree implements EBsTree
 {
@@ -19,7 +19,7 @@ public class BsTree implements EBsTree
 	}
 	protected Node root = null;
 
-	//Печать в консоль ++
+	//РџРµС‡Р°С‚СЊ РІ РєРѕРЅСЃРѕР»СЊ ++
 	@Override
 	public void print() 
 	{
@@ -35,7 +35,7 @@ public class BsTree implements EBsTree
 		printNode(p.right);             //R
 	}
 
-	//Инициализация ++
+	//РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ ++
 	@Override
 	public void init(int[] ini) 
 	{
@@ -48,7 +48,7 @@ public class BsTree implements EBsTree
 		}
 	}
 
-	//Добавление узла со значением ++
+	//Р”РѕР±Р°РІР»РµРЅРёРµ СѓР·Р»Р° СЃРѕ Р·РЅР°С‡РµРЅРёРµРј ++
 	@Override
 	public void add(int val) 
 	{
@@ -77,14 +77,14 @@ public class BsTree implements EBsTree
 		}
 	}
 
-	//Очистка дерева ++
+	//РћС‡РёСЃС‚РєР° РґРµСЂРµРІР° ++
 	@Override
 	public void clear() 
 	{
 		root = null;
 	}
 
-	//Получить количество всех узлов в дереве (с потомками и без) ++
+	//РџРѕР»СѓС‡РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ РІСЃРµС… СѓР·Р»РѕРІ РІ РґРµСЂРµРІРµ (СЃ РїРѕС‚РѕРјРєР°РјРё Рё Р±РµР·) ++
 	@Override
 	public int size() 
 	{
@@ -98,7 +98,7 @@ public class BsTree implements EBsTree
 		return sizeNode(p.left) + 1 + sizeNode(p.right);
 	}
 
-	//Получить количество листьев++
+	//РџРѕР»СѓС‡РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ Р»РёСЃС‚СЊРµРІ++
 	@Override
 	public int leaves()
 	{
@@ -119,7 +119,7 @@ public class BsTree implements EBsTree
 		return ret;
 	}
 
-	//Получить количество узлов (хотя бы 1 потомок)	++
+	//РџРѕР»СѓС‡РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ СѓР·Р»РѕРІ (С…РѕС‚СЏ Р±С‹ 1 РїРѕС‚РѕРјРѕРє)	++
 	@Override
 	public int nodes()
 	{
@@ -140,7 +140,7 @@ public class BsTree implements EBsTree
 		return ret;
 	}
 	
-	//Получить количество уровней (высота дерева)++
+	//РџРѕР»СѓС‡РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ СѓСЂРѕРІРЅРµР№ (РІС‹СЃРѕС‚Р° РґРµСЂРµРІР°)++
 	@Override
 	public int height() 
 	{
@@ -154,7 +154,7 @@ public class BsTree implements EBsTree
 		return 1 + Math.max(nodeHeight(p.left), nodeHeight(p.right));
 	}
 
-	//Ширина дерева (максимальное количество узлов на любом уровне)	
+	//РЁРёСЂРёРЅР° РґРµСЂРµРІР° (РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СѓР·Р»РѕРІ РЅР° Р»СЋР±РѕРј СѓСЂРѕРІРЅРµ)	
 	@Override
 	public int width() 
 	{
@@ -188,7 +188,7 @@ public class BsTree implements EBsTree
 	}
 
 
-	//Получить String через LVR дерева
+	//РџРѕР»СѓС‡РёС‚СЊ String С‡РµСЂРµР· LVR РґРµСЂРµРІР°
 		@Override
 	public String toString() 
 	{
@@ -202,7 +202,7 @@ public class BsTree implements EBsTree
 		return toString(p.left) + p.val + ", " + toString(p.right);
 	}
 
-	//Получить массив через LVR дерева
+	//РџРѕР»СѓС‡РёС‚СЊ РјР°СЃСЃРёРІ С‡РµСЂРµР· LVR РґРµСЂРµРІР°
 		private class Counter
 	{
 		int index = 0;
@@ -224,7 +224,7 @@ public class BsTree implements EBsTree
 		nodeToArray(p.right, ar, ii);
 	}
 
-	//Зеркально пересадить дерево
+	//Р—РµСЂРєР°Р»СЊРЅРѕ РїРµСЂРµСЃР°РґРёС‚СЊ РґРµСЂРµРІРѕ
 	@Override
 	public void revers()
 	{
@@ -243,7 +243,7 @@ public class BsTree implements EBsTree
 		reverseNode(p.right);
 	}
 	
-	//Удаление элемента по ключу
+	//РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РїРѕ РєР»СЋС‡Сѓ
 		@Override
 	public void del(int key) 
 	{

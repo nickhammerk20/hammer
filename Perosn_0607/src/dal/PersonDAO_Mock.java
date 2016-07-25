@@ -1,4 +1,4 @@
-package dal;
+ï»¿package dal;
 
 import java.util.ArrayList;
 
@@ -47,7 +47,7 @@ public class PersonDAO_Mock implements PersonDAO
 //				pp.add( new Person(99, "Dupkin",	"Cherevatij", 	35) );
 		
 		//print(pp);
-		//System.out.println("\n******çàãğóæåíî******");
+		//System.out.println("\n******Ğ·Ğ°Ğ³Ñ€ÑƒĞ¶ĞµĞ½Ğ¾******");
 	}
 
 	@Override

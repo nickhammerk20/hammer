@@ -4,16 +4,16 @@ public class mass {
 	{
 		double kg = 250;
 		double res = funt(kg);
-		System.out.println("Весс "+kg+" килограмм");
-		System.out.println("соответсвует "+res+" фунтов");
+		System.out.println("Р’РµСЃСЃ "+kg+" РєРёР»РѕРіСЂР°РјРј");
+		System.out.println("СЃРѕРѕС‚РІРµС‚СЃРІСѓРµС‚ "+res+" С„СѓРЅС‚РѕРІ");
 		res = pud(kg);
-		System.out.println("соответсвует "+res+" пудов");
+		System.out.println("СЃРѕРѕС‚РІРµС‚СЃРІСѓРµС‚ "+res+" РїСѓРґРѕРІ");
 		res = uncia(kg);
-		System.out.println("соответсвует "+res+" унций");
+		System.out.println("СЃРѕРѕС‚РІРµС‚СЃРІСѓРµС‚ "+res+" СѓРЅС†РёР№");
 		res = mane(kg);
-		System.out.println("соответсвует "+res+" Манэ");
+		System.out.println("СЃРѕРѕС‚РІРµС‚СЃРІСѓРµС‚ "+res+" РњР°РЅСЌ");
 		res = shekel(kg);
-		System.out.println("соответсвует "+res+" шекелей");
+		System.out.println("СЃРѕРѕС‚РІРµС‚СЃРІСѓРµС‚ "+res+" С€РµРєРµР»РµР№");
 	}
 	public static double funt (double x)
 	{

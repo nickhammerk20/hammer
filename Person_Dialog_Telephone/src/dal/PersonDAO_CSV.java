@@ -1,4 +1,4 @@
-package dal;
+п»їpackage dal;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,7 +24,7 @@ public class PersonDAO_CSV implements PersonDAO
 			JFileChooser fd = new JFileChooser();
 			if ( fd.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
 			{
-				System.out.println("пришли к сохранению файла");
+				System.out.println("РїСЂРёС€Р»Рё Рє СЃРѕС…СЂР°РЅРµРЅРёСЋ С„Р°Р№Р»Р°");
 				//pd.print(pp);
 			}
 		}
@@ -38,7 +38,7 @@ public class PersonDAO_CSV implements PersonDAO
 			JFileChooser fd = new JFileChooser();
 			if ( fd.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
 			{
-				System.out.println("пришли к открытию файла");
+				System.out.println("РїСЂРёС€Р»Рё Рє РѕС‚РєСЂС‹С‚РёСЋ С„Р°Р№Р»Р°");
 			
 			}
 		}

@@ -1,4 +1,4 @@
-package HW2_Zlatopolskii;
+п»їpackage HW2_Zlatopolskii;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -8,22 +8,22 @@ public class HW_2_Zlatopolskii_4_20Test {
 	@Test
 	public void testfdelenieMnaN00() {
 		String res = HW_2_Zlatopolskii_4_20.fdelenieMnaN(11, 2);
-		assertEquals(res, "11 на 2 нацело не делится");
+		assertEquals(res, "11 РЅР° 2 РЅР°С†РµР»Рѕ РЅРµ РґРµР»РёС‚СЃСЏ");
 	}
 	@Test
 	public void testfdelenieMnaN01() {
 		String res = HW_2_Zlatopolskii_4_20.fdelenieMnaN(10, 2);
-		assertEquals(res, "частное от деления 5");
+		assertEquals(res, "С‡Р°СЃС‚РЅРѕРµ РѕС‚ РґРµР»РµРЅРёСЏ 5");
 	}
 	@Test
 	public void testfdelenieMnaN02() {
 		String res = HW_2_Zlatopolskii_4_20.fdelenieMnaN(10, -2);
-		assertEquals(res, "частное от деления -5");
+		assertEquals(res, "С‡Р°СЃС‚РЅРѕРµ РѕС‚ РґРµР»РµРЅРёСЏ -5");
 	}
 	@Test
 	public void testfdelenieMnaN03() {
 		String res = HW_2_Zlatopolskii_4_20.fdelenieMnaN(11, -2);
-		assertEquals(res, "11 на -2 нацело не делится");
+		assertEquals(res, "11 РЅР° -2 РЅР°С†РµР»Рѕ РЅРµ РґРµР»РёС‚СЃСЏ");
 	}
 	@Test (expected=IllegalArgumentException.class)
 	public void testfdelenieMnaN04() {

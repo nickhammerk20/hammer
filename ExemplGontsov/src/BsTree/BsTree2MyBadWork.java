@@ -1,4 +1,4 @@
-package BsTree;
+п»їpackage BsTree;
 
 public class BsTree2MyBadWork implements EBsTree
 {
@@ -25,12 +25,12 @@ public class BsTree2MyBadWork implements EBsTree
 	Node root = null;
 
 	@Override
-	public void print()/*готово*/
+	public void print()/*РіРѕС‚РѕРІРѕ*/
 	{
 		printNode (root);
 	}
 
-	private void printNode (Node p)/*готово*/
+	private void printNode (Node p)/*РіРѕС‚РѕРІРѕ*/
 	{
 		if (p ==null)
 			return;
@@ -41,7 +41,7 @@ public class BsTree2MyBadWork implements EBsTree
 	}
 
 	@Override
-	public void add(int val) /*готово*/
+	public void add(int val) /*РіРѕС‚РѕРІРѕ*/
 	{
 		if (root == null)
 		{
@@ -51,7 +51,7 @@ public class BsTree2MyBadWork implements EBsTree
 		addNode(root, val);
 	}
 
-	private void addNode(Node p, int val)/*готово*/
+	private void addNode(Node p, int val)/*РіРѕС‚РѕРІРѕ*/
 	{
 		if(val<p.val)
 		{
@@ -70,20 +70,20 @@ public class BsTree2MyBadWork implements EBsTree
 	}
 
 	@Override
-	public int size()/*готово*/
+	public int size()/*РіРѕС‚РѕРІРѕ*/
 	{
 		return sizeNode(root);
 	}
 
-	private int sizeNode (Node p)/*готово*/
+	private int sizeNode (Node p)/*РіРѕС‚РѕРІРѕ*/
 	{
 		if (p==null)
 			return 0;
 
-		/*первый вариант подсчета
+		/*РїРµСЂРІС‹Р№ РІР°СЂРёР°РЅС‚ РїРѕРґСЃС‡РµС‚Р°
 		 * 	return 1 + sizeNode(p.left) + sizeNode(p.right);
 		 */
-		// второй вариант
+		// РІС‚РѕСЂРѕР№ РІР°СЂРёР°РЅС‚
 		int ret = 0;
 		ret += sizeNode(p.left);
 		ret +=1;
@@ -92,13 +92,13 @@ public class BsTree2MyBadWork implements EBsTree
 	}
 
 	@Override
-	public void clear()/*готово*/ 
+	public void clear()/*РіРѕС‚РѕРІРѕ*/ 
 	{
 		root = null;
 	}
 
 	@Override
-	public void init(int[] in) /*готово*/
+	public void init(int[] in) /*РіРѕС‚РѕРІРѕ*/
 	{
 		//		if (in == null)
 		//			in = new int[0];
@@ -120,14 +120,14 @@ public class BsTree2MyBadWork implements EBsTree
 	}
 
 	@Override
-	public String toString() /*готово*/
+	public String toString() /*РіРѕС‚РѕРІРѕ*/
 	{
 		String rez = toStringNode(root);
 		System.out.println("toString() "+ rez);
 		return rez;
 	}
 
-	private String toStringNode(Node p) /*готово*/
+	private String toStringNode(Node p) /*РіРѕС‚РѕРІРѕ*/
 	{
 		if (p == null)
 			return "";
@@ -141,7 +141,7 @@ public class BsTree2MyBadWork implements EBsTree
 	}
 
 	@Override
-	public int [] toArray() /*готово*/
+	public int [] toArray() /*РіРѕС‚РѕРІРѕ*/
 	{
 		array = new int [size()];
 		toArrayNode(root);
@@ -149,14 +149,14 @@ public class BsTree2MyBadWork implements EBsTree
 		return array;
 	}
 
-	private int [] toArrayNode(Node p) /*готово*/
+	private int [] toArrayNode(Node p) /*РіРѕС‚РѕРІРѕ*/
 	{
 		if (p == null)
 		{
 			return array;
 		}
 		toArrayNode(p.left);
-		System.out.println("значение "+p.val+" индекс массива "+ arraySize );
+		System.out.println("Р·РЅР°С‡РµРЅРёРµ "+p.val+" РёРЅРґРµРєСЃ РјР°СЃСЃРёРІР° "+ arraySize );
 		array[arraySize] = p.val;
 		arraySize++;
 		toArrayNode(p.right);	
@@ -165,12 +165,12 @@ public class BsTree2MyBadWork implements EBsTree
 	}
 
 	@Override
-	// считает кол-во листьев
-	public int leaves() /*готово*/
+	// СЃС‡РёС‚Р°РµС‚ РєРѕР»-РІРѕ Р»РёСЃС‚СЊРµРІ
+	public int leaves() /*РіРѕС‚РѕРІРѕ*/
 	{
 		return leavesNode(root);
 	}
-	private int leavesNode(Node p) /*готово*/
+	private int leavesNode(Node p) /*РіРѕС‚РѕРІРѕ*/
 	{
 		if (p==null)
 		{
@@ -187,12 +187,12 @@ public class BsTree2MyBadWork implements EBsTree
 	
 
 	@Override
-	// считает кол-во узлов (у кого есть хоть 1 потомок)
+	// СЃС‡РёС‚Р°РµС‚ РєРѕР»-РІРѕ СѓР·Р»РѕРІ (Сѓ РєРѕРіРѕ РµСЃС‚СЊ С…РѕС‚СЊ 1 РїРѕС‚РѕРјРѕРє)
 	public int nodes() 
 	{
 		return nodesNode(root);
 	}
-	private int nodesNode(Node p) /*готово*/
+	private int nodesNode(Node p) /*РіРѕС‚РѕРІРѕ*/
 	{
 		if (p==null)
 		{
@@ -208,14 +208,14 @@ public class BsTree2MyBadWork implements EBsTree
 		return count;
 	}
 	@Override
-	// считает кол-во уровней самой большой ветки
+	// СЃС‡РёС‚Р°РµС‚ РєРѕР»-РІРѕ СѓСЂРѕРІРЅРµР№ СЃР°РјРѕР№ Р±РѕР»СЊС€РѕР№ РІРµС‚РєРё
 	public int height() 
 	{
 		return 0;
 	}
 
 	@Override
-	// ширина, масксимальное кол-во элементов на любом уровне
+	// С€РёСЂРёРЅР°, РјР°СЃРєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»-РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РЅР° Р»СЋР±РѕРј СѓСЂРѕРІРЅРµ
 	public int width() 
 	{
 		return 0;
@@ -228,7 +228,7 @@ public class BsTree2MyBadWork implements EBsTree
 	}
 
 	@Override
-	//удалить элемент не ломая дерева
+	//СѓРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚ РЅРµ Р»РѕРјР°СЏ РґРµСЂРµРІР°
 	public void del(int val)
 	{
 				

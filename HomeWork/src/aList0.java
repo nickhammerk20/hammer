@@ -1,12 +1,12 @@
-
+п»ї
 public class aList0 {
 
 	int [] ar = new int [0]; 
 	
 	
-	public int min() /* ок */{
+	public int min() /* РѕРє */{
 		if (ar==null || ar.length==0) {
-			throw new IllegalArgumentException("краш метода min");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° min");
 		}
 		int ret = ar[0];
 		for(int i=1; i<ar.length; i++){
@@ -16,9 +16,9 @@ public class aList0 {
 		}
 		return ret;
 	}
-	public int max() /* ок */{
+	public int max() /* РѕРє */{
 		if (ar==null || ar.length==0) {
-			throw new IllegalArgumentException("краш метода max");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° max");
 		}
 		int ret = ar[0];
 		for(int i=1; i<ar.length; i++){
@@ -28,9 +28,9 @@ public class aList0 {
 		}
 		return ret;		
 	}
-	public int minPos() /* ок */{
+	public int minPos() /* РѕРє */{
 		if (ar==null || ar.length==0) {
-			throw new IllegalArgumentException("краш метода minPos");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° minPos");
 		}
 		int ret = 0;
 		int min = ar[0];
@@ -42,9 +42,9 @@ public class aList0 {
 		}
 		return ret;
 	}
-	public int maxPos() /* ок */{
+	public int maxPos() /* РѕРє */{
 		if (ar==null || ar.length==0) {
-			throw new IllegalArgumentException("краш метода maxPos");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° maxPos");
 		}
 		int ret = 0;
 		int max = ar[0];
@@ -76,9 +76,9 @@ public class aList0 {
 				}
 			}
 		}
-	public void revers() /* ок */{
+	public void revers() /* РѕРє */{
 		if (ar==null || ar.length==0) {
-			throw new IllegalArgumentException("краш метода revers");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° revers");
 		}	
 		for (int i=0; ar.length/2>i ; i++){
 			int temp = ar[i];
@@ -87,9 +87,9 @@ public class aList0 {
 		}
 		
 	}
-	public void halfRevers() /* ок */{
+	public void halfRevers() /* РѕРє */{
 		if (ar==null || ar.length==0) {
-			throw new IllegalArgumentException("краш метода halfRevers");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° halfRevers");
 		}
 		int arrlength = ar.length/2;
 		int arrhalf = ar.length - arrlength;
@@ -103,39 +103,39 @@ public class aList0 {
 	}
 	public int get(int pos) /* ok */{
 		if(ar == null || ar.length == 0 || pos>ar.length){
-			throw new IllegalArgumentException("краш метода get");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° get");
 		}
 		int ret = ar[pos];
 		return ret;		
 	}
 	public void set(int pos, int val) /* ok */ {
 		if(ar == null || ar.length == 0 || pos>ar.length){
-			throw new IllegalArgumentException("краш метода set");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° set");
 		}
 		ar[pos] = val;		
 	}
-	public void clear() /* нужно тестировать */
+	public void clear() /* РЅСѓР¶РЅРѕ С‚РµСЃС‚РёСЂРѕРІР°С‚СЊ */
 	{
 		ar = new int [0];
 	}
 	public void init(int [] rr) /* ok */{
-			// инициировать необходимый массив в наш массив "ar[]"
+			// РёРЅРёС†РёРёСЂРѕРІР°С‚СЊ РЅРµРѕР±С…РѕРґРёРјС‹Р№ РјР°СЃСЃРёРІ РІ РЅР°С€ РјР°СЃСЃРёРІ "ar[]"
 		if(rr == null ){
-			throw new IllegalArgumentException("краш метода init");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° init");
 		}
 		ar = rr;		
 		
 	}
-	public int [] toArray() /* ок */{
+	public int [] toArray() /* РѕРє */{
 		if(ar == null || ar.length == 0){
-			throw new IllegalArgumentException("краш метода toArray");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° toArray");
 		}
 		int [] ret = ar;
 		return ret;		
 	}
 	public String print() /* ok */{
 		if(ar == null || ar.length == 0){
-			throw new IllegalArgumentException("краш метода print");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° print");
 		}
 		String ret = "";
 		for(int i = 0; i<ar.length; i++){
@@ -146,27 +146,27 @@ public class aList0 {
 	}
 	public int size() /* ok */{
 		if(ar == null || ar.length == 0){
-			throw new IllegalArgumentException("краш метода size");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° size");
 		}
 		int ret = ar.length;
 		return ret;		
 	}
-	public void addStart(int val)/* нужно тестировать */ {
+	public void addStart(int val)/* РЅСѓР¶РЅРѕ С‚РµСЃС‚РёСЂРѕРІР°С‚СЊ */ {
 		if(ar == null){
-			throw new IllegalArgumentException("краш метода addStart");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° addStart");
 		}
 		int [] tmp = new int [ar.length+1];
-		for (int i=0; i<ar.length; i++){ //смещаем исходный массив на 1 элемент вправо
+		for (int i=0; i<ar.length; i++){ //СЃРјРµС‰Р°РµРј РёСЃС…РѕРґРЅС‹Р№ РјР°СЃСЃРёРІ РЅР° 1 СЌР»РµРјРµРЅС‚ РІРїСЂР°РІРѕ
 			tmp[i+1] = ar[i];
 			}
 		tmp[0]=val;
 		ar=tmp;		
 	}
-	public void addEnd(int val)/* нужно тестировать */ {
+	public void addEnd(int val)/* РЅСѓР¶РЅРѕ С‚РµСЃС‚РёСЂРѕРІР°С‚СЊ */ {
 		if(ar == null ){
-			throw new IllegalArgumentException("краш метода addEnd");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° addEnd");
 		}
-		/*пример Вадима от 11.05.16*/
+		/*РїСЂРёРјРµСЂ Р’Р°РґРёРјР° РѕС‚ 11.05.16*/
 		int [] tmp = new int [ar.length+1];
 		for (int i=0; i<ar.length; i++){
 			tmp[i] = ar[i];
@@ -174,9 +174,9 @@ public class aList0 {
 		tmp[ar.length]=val;
 		ar=tmp;					
 	}
-	public void addPos(int pos, int val) /* нужно тестировать */ {
+	public void addPos(int pos, int val) /* РЅСѓР¶РЅРѕ С‚РµСЃС‚РёСЂРѕРІР°С‚СЊ */ {
 		if(ar == null ){
-			throw new IllegalArgumentException("краш метода addPos");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° addPos");
 		}
 				int [] tmp = new int [ar.length+1];
 		for (int i = 0; i<pos; i++){
@@ -188,9 +188,9 @@ public class aList0 {
 		tmp[pos]=val;
 		ar=tmp;
 	}
-	public int delStart() /* нужно тестировать */ {
+	public int delStart() /* РЅСѓР¶РЅРѕ С‚РµСЃС‚РёСЂРѕРІР°С‚СЊ */ {
 		if(ar == null || ar.length == 0){
-			throw new IllegalArgumentException("краш метода delStart");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° delStart");
 		}
 		int ret = ar[0];
 		int [] tmp = new int [ar.length-1];
@@ -200,9 +200,9 @@ public class aList0 {
 		ar=tmp;
 		return ret;		
 	}
-	public int delEnd() /* нужно тестировать */ {
+	public int delEnd() /* РЅСѓР¶РЅРѕ С‚РµСЃС‚РёСЂРѕРІР°С‚СЊ */ {
 		if(ar == null || ar.length == 0){
-			throw new IllegalArgumentException("краш метода delEnd");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° delEnd");
 		}
 		int ret = ar[ar.length-1];
 		int [] tmp = new int [ar.length-1];
@@ -212,9 +212,9 @@ public class aList0 {
 		ar=tmp;
 		return ret;		
 	}
-	public int delPos(int pos) /* нужно тестировать */ {
+	public int delPos(int pos) /* РЅСѓР¶РЅРѕ С‚РµСЃС‚РёСЂРѕРІР°С‚СЊ */ {
 		if(ar == null || ar.length == 0 || pos < 0|| pos > ar.length){
-			throw new IllegalArgumentException("краш метода delPos");
+			throw new IllegalArgumentException("РєСЂР°С€ РјРµС‚РѕРґР° delPos");
 		}
 		int ret = ar[pos];
 		int [] tmp = new int [ar.length-1];

@@ -1,4 +1,4 @@
-package view;
+Ôªøpackage view;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -35,7 +35,7 @@ public class PPanel extends JPanel
 		                realRow = tbl.convertRowIndexToModel(row);
 		                dm.row = realRow;
 		                setID = ""+tbl.getValueAt(realRow, 0);;
-		                System.out.println("ÒÚÓÍ‡ = " + realRow + " ID = " + setID);		                
+		                System.out.println("—Å—Ç—Ä–æ–∫–∞ = " + realRow + " ID = " + setID);		                
 		            }
 				}
 			}

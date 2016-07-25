@@ -1,5 +1,5 @@
-/**
- *  пример от Лещенко Юры))))
+п»ї/**
+ *  РїСЂРёРјРµСЂ РѕС‚ Р‹РµС‰РµРЅРєРѕ С‘СЂС‹))))
  */
 
 
@@ -85,7 +85,7 @@ public class Lister {
      */
         public int min(){
             if(index == 0){
-                throw new IllegalArgumentException("в методе min index == 0");
+                throw new IllegalArgumentException("РІ РјРµС‚РѕРґРµ min index == 0");
             }
             int min = 0;
             for (int i = 1; i < arr.length; i++) {
@@ -102,7 +102,7 @@ public class Lister {
      */
     public int max(){
             if(index == 0){
-                throw new IllegalArgumentException("в методе max index == 0");
+                throw new IllegalArgumentException("РІ РјРµС‚РѕРґРµ max index == 0");
             }
             int max = 0;
             for (int i = 0; i < arr.length; i++) {

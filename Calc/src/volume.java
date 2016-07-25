@@ -5,16 +5,16 @@ public class volume {
 	{
 		double litr=50;
 		double res=barell(litr);
-		System.out.println("Указанный объем: "+litr+" литров, \nсоответсвует:");
-		System.out.println(res+" барель,");
+		System.out.println("РЈРєР°Р·Р°РЅРЅС‹Р№ РѕР±СЉРµРј: "+litr+" Р»РёС‚СЂРѕРІ, \nСЃРѕРѕС‚РІРµС‚СЃРІСѓРµС‚:");
+		System.out.println(res+" Р±Р°СЂРµР»СЊ,");
 		res=galon(litr);
-		System.out.println(res+" галонов,");
+		System.out.println(res+" РіР°Р»РѕРЅРѕРІ,");
 		res=pinta(litr);
-		System.out.println(res+" пинт,");
+		System.out.println(res+" РїРёРЅС‚,");
 		res=kvarta(litr);
-		System.out.println(res+" кварты,");
+		System.out.println(res+" РєРІР°СЂС‚С‹,");
 		res=kubduim(litr);
-		System.out.println(res+" кубических дюймов.");
+		System.out.println(res+" РєСѓР±РёС‡РµСЃРєРёС… РґСЋР№РјРѕРІ.");
 	}
 	public static double barell (double x)
 	{
@@ -33,7 +33,7 @@ public class volume {
 	}
 	public static double kvarta (double x)
 	{
-		double res = x/0.9463; //1 американская кварта для жидкостей = 0,9463 л.
+		double res = x/0.9463; //1 Р°РјРµСЂРёРєР°РЅСЃРєР°СЏ РєРІР°СЂС‚Р° РґР»СЏ Р¶РёРґРєРѕСЃС‚РµР№ = 0,9463 Р».
 		return res;
 	}
 	public static double kubduim (double x)

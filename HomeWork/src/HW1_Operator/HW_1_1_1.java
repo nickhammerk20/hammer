@@ -1,29 +1,29 @@
-package HW1_Operator;
+п»їpackage HW1_Operator;
 //import javax.swing.*;
 //public class HW_1_1_1 {
 //	public static void main(String[] args){
-//		// Определить какой четверти принадлежит точка с коринатами (х,у)
+//		// СњРїСЂРµРґРµР»РёС‚СЊ РєР°РєРѕР№ С‡РµС‚РІРµСЂС‚Рё РїСЂРёРЅР°РґР»РµР¶РёС‚ С‚РѕС‡РєР° СЃ РєРѕСЂРёРЅР°С‚Р°РјРё (С…,Сѓ)
 //	double x, y;
-//	String title="Определение четверти";
-//	String text="Координата находится";
+//	String title="СњРїСЂРµРґРµР»РµРЅРёРµ С‡РµС‚РІРµСЂС‚Рё";
+//	String text="В РѕРѕСЂРґРёРЅР°С‚Р° РЅР°С…РѕРґРёС‚СЃВ¤";
 //	int type;
-//	x=Double.parseDouble(JOptionPane.showInputDialog("Координата х ="));
-//	y=Double.parseDouble(JOptionPane.showInputDialog("Координата у ="));
-//	if ((x!=0)&(y!=0)){ type=JOptionPane.PLAIN_MESSAGE;// проверить, возможно условие должно сработать при таком написании ((x!=0)&(y!=0))
-//		if ((x>=0)&(y>=0)){text=text+" в первой четверти!";}
-//		if ((x<=0)&(y>=0)){text=text+" во второй четверти!";}
-//		if ((x<=0)&(y<=0)){text=text+" в третьей четверти!";}
-//		if ((x>=0)&(y<=0)){text=text+" в четвёртой четверти!";}
+//	x=Double.parseDouble(JOptionPane.showInputDialog("В РѕРѕСЂРґРёРЅР°С‚Р° С… ="));
+//	y=Double.parseDouble(JOptionPane.showInputDialog("В РѕРѕСЂРґРёРЅР°С‚Р° Сѓ ="));
+//	if ((x!=0)&(y!=0)){ type=JOptionPane.PLAIN_MESSAGE;// РїСЂРѕРІРµСЂРёС‚СЊ, РІРѕР·РјРѕР¶РЅРѕ СѓСЃР»РѕРІРёРµ РґРѕР»Р¶РЅРѕ СЃСЂР°Р±РѕС‚Р°С‚СЊ РїСЂРё С‚Р°РєРѕРј РЅР°РїРёСЃР°РЅРёРё ((x!=0)&(y!=0))
+//		if ((x>=0)&(y>=0)){text=text+" РІ РїРµСЂРІРѕР№ С‡РµС‚РІРµСЂС‚Рё!";}
+//		if ((x<=0)&(y>=0)){text=text+" РІРѕ РІС‚РѕСЂРѕР№ С‡РµС‚РІРµСЂС‚Рё!";}
+//		if ((x<=0)&(y<=0)){text=text+" РІ С‚СЂРµС‚СЊРµР№ С‡РµС‚РІРµСЂС‚Рё!";}
+//		if ((x>=0)&(y<=0)){text=text+" РІ С‡РµС‚РІР„СЂС‚РѕР№ С‡РµС‚РІРµСЂС‚Рё!";}
 //		}		
 //	else{type=JOptionPane.ERROR_MESSAGE;
-//	text=text+"на оси! Смежные четверти!";}
+//	text=text+"РЅР° РѕСЃРё! вЂ”РјРµР¶РЅС‹Рµ С‡РµС‚РІРµСЂС‚Рё!";}
 //	JOptionPane.showMessageDialog(null,text,title,type);
 //	}
 //}
 
 public class HW_1_1_1 {
 	public static void main(String[] args){
-	//Определить какой четверти принадлежит точка с коринатами (х,у) после урока Вадима
+	//СњРїСЂРµРґРµР»РёС‚СЊ РєР°РєРѕР№ С‡РµС‚РІРµСЂС‚Рё РїСЂРёРЅР°РґР»РµР¶РёС‚ С‚РѕС‡РєР° СЃ РєРѕСЂРёРЅР°С‚Р°РјРё (С…,Сѓ) РїРѕСЃР»Рµ СѓСЂРѕРєР° В¬Р°РґРёРјР°
 		{
 			int x=10;
 			int y=20;

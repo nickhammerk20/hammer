@@ -1,4 +1,4 @@
-package BsTree;
+п»їpackage BsTree;
 
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -12,7 +12,7 @@ public class TPanel extends JPanel
 	public TPanel() 
 	{
 		setLayout(null);
-		JButton btn = new JButton ("посадить дерево");
+		JButton btn = new JButton ("РїРѕСЃР°РґРёС‚СЊ РґРµСЂРµРІРѕ");
 		btn.setBounds(10, 10, 200, 20);
 		add(btn);
 		btn.addActionListener(new ActionListener() 

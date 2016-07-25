@@ -1,44 +1,44 @@
-import javax.swing.*;
+п»їimport javax.swing.*;
 public class HW_20160420_1 {
 
 	public static void main(String[] args) {
-		// 4 класса, на каждый по 5 функций (метр, градус, объем, вес)
-		double metr, jard, fut, link, mile, duim; //изм. расстояния
-		double cels, farengeit, kelvin, njuton, rankin, delilu; //изм. температур
-		double litr, gallon, pinta, barrel, kvarta, kubduim; //изм. объема
-		double gram, pud, funt, uncia, mane, shekel; //изм веса
-		metr=Double.parseDouble(JOptionPane.showInputDialog("Укажите длину в метрах:"));
-		cels=Double.parseDouble(JOptionPane.showInputDialog("Укажите температуру в градусах цельсия:"));
-		litr=Double.parseDouble(JOptionPane.showInputDialog("Укажите объем в литрах:"));
-		gram=Double.parseDouble(JOptionPane.showInputDialog("Укажите вес в граммах:"));
-		String text="Указанные величины в других системах измерения соответсвуют следующим единицам: \n";
-		String strmetr="Расстояние: "+metr+"м. = ";
-		String strcels="Температура: "+cels+"С. = ";
-		String strlitr="Объем: "+litr+"литр. = ";
-		String strgram="Вес: "+gram+"гр. = ";
-		// перевод расстояния
-			jard=(metr/0.9144); // 1 Ярд = 91,44 см
+		// 4 РєР»Р°СЃСЃР°, РЅР° РєР°Р¶РґС‹Р№ РїРѕ 5 С„СѓРЅРєС†РёР№ (РјРµС‚СЂ, РіСЂР°РґСѓСЃ, РѕР±СЉРµРј, РІРµСЃ)
+		double metr, jard, fut, link, mile, duim; //РёР·Рј. СЂР°СЃСЃС‚РѕСЏРЅРёСЏ
+		double cels, farengeit, kelvin, njuton, rankin, delilu; //РёР·Рј. С‚РµРјРїРµСЂР°С‚СѓСЂ
+		double litr, gallon, pinta, barrel, kvarta, kubduim; //РёР·Рј. РѕР±СЉРµРјР°
+		double gram, pud, funt, uncia, mane, shekel; //РёР·Рј РІРµСЃР°
+		metr=Double.parseDouble(JOptionPane.showInputDialog("РЈРєР°Р¶РёС‚Рµ РґР»РёРЅСѓ РІ РјРµС‚СЂР°С…:"));
+		cels=Double.parseDouble(JOptionPane.showInputDialog("РЈРєР°Р¶РёС‚Рµ С‚РµРјРїРµСЂР°С‚СѓСЂСѓ РІ РіСЂР°РґСѓСЃР°С… С†РµР»СЊСЃРёСЏ:"));
+		litr=Double.parseDouble(JOptionPane.showInputDialog("РЈРєР°Р¶РёС‚Рµ РѕР±СЉРµРј РІ Р»РёС‚СЂР°С…:"));
+		gram=Double.parseDouble(JOptionPane.showInputDialog("РЈРєР°Р¶РёС‚Рµ РІРµСЃ РІ РіСЂР°РјРјР°С…:"));
+		String text="РЈРєР°Р·Р°РЅРЅС‹Рµ РІРµР»РёС‡РёРЅС‹ РІ РґСЂСѓРіРёС… СЃРёСЃС‚РµРјР°С… РёР·РјРµСЂРµРЅРёСЏ СЃРѕРѕС‚РІРµС‚СЃРІСѓСЋС‚ СЃР»РµРґСѓСЋС‰РёРј РµРґРёРЅРёС†Р°Рј: \n";
+		String strmetr="Р Р°СЃСЃС‚РѕСЏРЅРёРµ: "+metr+"Рј. = ";
+		String strcels="РўРµРјРїРµСЂР°С‚СѓСЂР°: "+cels+"РЎ. = ";
+		String strlitr="РћР±СЉРµРј: "+litr+"Р»РёС‚СЂ. = ";
+		String strgram="Р’РµСЃ: "+gram+"РіСЂ. = ";
+		// РїРµСЂРµРІРѕРґ СЂР°СЃСЃС‚РѕСЏРЅРёСЏ
+			jard=(metr/0.9144); // 1 РЇСЂРґ = 91,44 СЃРј
 				jard=jard*100;
 				int i = (int) (jard);
 				jard= (double)i/100;
-			fut=metr/0.3048; // 1 Фут = 30,48 см
+			fut=metr/0.3048; // 1 Р¤СѓС‚ = 30,48 СЃРј
 				fut=fut*100;
 				i = (int) (fut);
 				fut= (double)i/100;
-			link=metr/0.201168; // 1 Линк = 20,1168 см
+			link=metr/0.201168; // 1 Р›РёРЅРє = 20,1168 СЃРј
 				link=link*100;
 				i = (int) (link);
 				link= (double)i/100;
-			mile=metr/1609.344; // 1 Миля = 1,609344 км = 1609.344мет
+			mile=metr/1609.344; // 1 РњРёР»СЏ = 1,609344 РєРј = 1609.344РјРµС‚
 				mile=mile*1000;
 				i = (int) (mile);
 				mile= (double)i/1000;
-			duim=metr/0.0254; //1 Дюйм = 2,54 см = 0,0254 метра
+			duim=metr/0.0254; //1 Р”СЋР№Рј = 2,54 СЃРј = 0,0254 РјРµС‚СЂР°
 				duim=duim*100;
 				i = (int) (duim);
 				duim= (double)i/100;
 			
-		// перевод температур
+		// РїРµСЂРµРІРѕРґ С‚РµРјРїРµСЂР°С‚СѓСЂ
 			farengeit=(9.0/5.0*cels)+32;
 				farengeit+=32;
 				farengeit=farengeit*100; 
@@ -63,54 +63,54 @@ public class HW_20160420_1 {
 				i = (int) (delilu);
 				delilu= (double)i/10;
 			
-		// перевод объема
-			gallon=litr/3.78541178; // Американский галлон равен 3,78541178 литра
+		// РїРµСЂРµРІРѕРґ РѕР±СЉРµРјР°
+			gallon=litr/3.78541178; // РђРјРµСЂРёРєР°РЅСЃРєРёР№ РіР°Р»Р»РѕРЅ СЂР°РІРµРЅ 3,78541178 Р»РёС‚СЂР°
 				gallon=gallon*100;
 				i = (int) (gallon);
 				gallon= (double)i/100;
-			pinta=litr*1000/473.176473; //1 американская пинта = 473,176473 миллилитра)
+			pinta=litr*1000/473.176473; //1 Р°РјРµСЂРёРєР°РЅСЃРєР°СЏ РїРёРЅС‚Р° = 473,176473 РјРёР»Р»РёР»РёС‚СЂР°)
 				pinta=pinta*100;
 				i = (int) (pinta);
 				pinta= (double)i/100;
-			barrel=litr/158.988; //Америкнский нефтянй бррель — единица измерения объёма нефти, равная 42 галлонам или 158,988 литрам.
+			barrel=litr/158.988; //РђРјРµСЂРёРєРЅСЃРєРёР№ РЅРµС„С‚СЏРЅР№ Р±СЂСЂРµР»СЊ вЂ” РµРґРёРЅРёС†Р° РёР·РјРµСЂРµРЅРёСЏ РѕР±СЉС‘РјР° РЅРµС„С‚Рё, СЂР°РІРЅР°СЏ 42 РіР°Р»Р»РѕРЅР°Рј РёР»Рё 158,988 Р»РёС‚СЂР°Рј.
 				barrel=barrel*1000;
 				i = (int) (barrel);
 				barrel= (double)i/1000;
-			kvarta=gallon/4; //1 кварта = 2 пинты = 1/4 галлона.
+			kvarta=gallon/4; //1 РєРІР°СЂС‚Р° = 2 РїРёРЅС‚С‹ = 1/4 РіР°Р»Р»РѕРЅР°.
 				kvarta=fut*100;
 				i = (int) (kvarta);
 				kvarta= (double)i/100;
-			kubduim=litr*100/2.54; // равный 2,54 см.
+			kubduim=litr*100/2.54; // СЂР°РІРЅС‹Р№ 2,54 СЃРј.
 				kubduim=kubduim*100;
 				i = (int) (kubduim);
 				kubduim= (double)i/100;
 
-		// перевод веса
-			pud=gram/1000/16.3804815; //Пуд = 1/10 берковца = 40 фунтам = 1280 лотам = 3840 золотникам = 368 640 долям = 16,3804815 кг
+		// РїРµСЂРµРІРѕРґ РІРµСЃР°
+			pud=gram/1000/16.3804815; //РџСѓРґ = 1/10 Р±РµСЂРєРѕРІС†Р° = 40 С„СѓРЅС‚Р°Рј = 1280 Р»РѕС‚Р°Рј = 3840 Р·РѕР»РѕС‚РЅРёРєР°Рј = 368 640 РґРѕР»СЏРј = 16,3804815 РєРі
 				pud=pud*10000;
 				i = (int) (pud);
 				pud= (double)i/10000;
-			funt=gram/453.59237; //фунт — 453,59237 г (точное и официальное значение) 
+			funt=gram/453.59237; //С„СѓРЅС‚ вЂ” 453,59237 Рі (С‚РѕС‡РЅРѕРµ Рё РѕС„РёС†РёР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ) 
 				funt=funt*100;
 				i = (int) (funt);
 				funt= (double)i/100;
-			uncia=gram/28.349523125; //Унция — 1/16 фунта, или 1/224 стоуна, или 28,349523125 г
+			uncia=gram/28.349523125; //РЈРЅС†РёСЏ вЂ” 1/16 С„СѓРЅС‚Р°, РёР»Рё 1/224 СЃС‚РѕСѓРЅР°, РёР»Рё 28,349523125 Рі
 				uncia=uncia*100;
 				i = (int) (uncia);
 				uncia= (double)i/100;
-			mane=gram/1000/2.28; //Манэ = 2,28 кг
+			mane=gram/1000/2.28; //РњР°РЅСЌ = 2,28 РєРі
 				mane=mane*100;
 				i = (int) (mane);
 				mane= (double)i/100;
-			shekel=gram/14; //Шекель = 14 г
+			shekel=gram/14; //РЁРµРєРµР»СЊ = 14 Рі
 				shekel=shekel*100;
 				i = (int) (shekel);
 				shekel= (double)i/100;
-		//вывод результата
-		text+=strmetr+jard+"Ярдов, "+fut+"Футов = "+link+"Линков = "+mile+"Миль = "+duim+"Дюймов.\n";
+		//РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р°
+		text+=strmetr+jard+"РЇСЂРґРѕРІ, "+fut+"Р¤СѓС‚РѕРІ = "+link+"Р›РёРЅРєРѕРІ = "+mile+"РњРёР»СЊ = "+duim+"Р”СЋР№РјРѕРІ.\n";
 		text+=strcels+farengeit+"F = "+kelvin+"K = "+njuton+"N = "+rankin+"Ra = "+delilu+"D.\n";
-		text+=strlitr+gallon+"галлон = "+pinta+"пинта = "+barrel+"баррель = "+kvarta+"кварта = "+kubduim+"кубических дюймов.\n";
-		text+=strgram+pud+"Пуд = "+funt+"Фунтов = "+uncia+"Унций = "+mane+"Манэ = "+shekel+"Шекель.";
+		text+=strlitr+gallon+"РіР°Р»Р»РѕРЅ = "+pinta+"РїРёРЅС‚Р° = "+barrel+"Р±Р°СЂСЂРµР»СЊ = "+kvarta+"РєРІР°СЂС‚Р° = "+kubduim+"РєСѓР±РёС‡РµСЃРєРёС… РґСЋР№РјРѕРІ.\n";
+		text+=strgram+pud+"РџСѓРґ = "+funt+"Р¤СѓРЅС‚РѕРІ = "+uncia+"РЈРЅС†РёР№ = "+mane+"РњР°РЅСЌ = "+shekel+"РЁРµРєРµР»СЊ.";
 		JOptionPane.showMessageDialog(null, text);
 	}
 

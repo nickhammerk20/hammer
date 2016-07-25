@@ -1,4 +1,4 @@
-//
+﻿//
 //public class cut_on_lesson_20160423 {
 //
 //	public static void main(String[] args) {

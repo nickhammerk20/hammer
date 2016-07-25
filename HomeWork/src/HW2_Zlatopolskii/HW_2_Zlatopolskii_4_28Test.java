@@ -1,4 +1,4 @@
-package HW2_Zlatopolskii;
+п»їpackage HW2_Zlatopolskii;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -16,22 +16,22 @@ public class HW_2_Zlatopolskii_4_28Test {
 	@Test
 	public void testfwhatbiga02() {
 		String res = HW_2_Zlatopolskii_4_28.fwhatbiga (123);
-		assertEquals(res, "последняя");
+		assertEquals(res, "РїРѕСЃР»РµРґРЅВ¤В¤");
 	}
 	@Test
 	public void testfwhatbiga03() {
 		String res = HW_2_Zlatopolskii_4_28.fwhatbiga (321);
-		assertEquals(res, "первая");
+		assertEquals(res, "РїРµСЂРІР°В¤");
 	}
 	@Test
 	public void testfwhatbiga04() {
 		String res = HW_2_Zlatopolskii_4_28.fwhatbiga (351);
-		assertEquals(res, "первая");
+		assertEquals(res, "РїРµСЂРІР°В¤");
 	}
 	@Test
 	public void testfwhatbiga05() {
 		String res = HW_2_Zlatopolskii_4_28.fwhatbiga (153);
-		assertEquals(res, "последняя");
+		assertEquals(res, "РїРѕСЃР»РµРґРЅВ¤В¤");
 	}
 	
 	
@@ -46,22 +46,22 @@ public class HW_2_Zlatopolskii_4_28Test {
 	@Test
 	public void testfwhatbigb02() {
 		String res = HW_2_Zlatopolskii_4_28.fwhatbigb (123);
-		assertEquals(res, "вторая");
+		assertEquals(res, "РІС‚РѕСЂР°В¤");
 	}
 	@Test
 	public void testfwhatbigb03() {
 		String res = HW_2_Zlatopolskii_4_28.fwhatbigb (321);
-		assertEquals(res, "первая");
+		assertEquals(res, "РїРµСЂРІР°В¤");
 	}
 	@Test
 	public void testfwhatbigb04() {
 		String res = HW_2_Zlatopolskii_4_28.fwhatbigb (315);
-		assertEquals(res, "первая");
+		assertEquals(res, "РїРµСЂРІР°В¤");
 	}
 	@Test
 	public void testfwhatbigb05() {
 		String res = HW_2_Zlatopolskii_4_28.fwhatbigb (135);
-		assertEquals(res, "вторая");
+		assertEquals(res, "РІС‚РѕСЂР°В¤");
 	}
 	
 	@Test (expected=IllegalArgumentException.class)
@@ -75,21 +75,21 @@ public class HW_2_Zlatopolskii_4_28Test {
 	@Test
 	public void testfwhatbigc02() {
 		String res = HW_2_Zlatopolskii_4_28.fwhatbigc (132);
-		assertEquals(res, "вторая");
+		assertEquals(res, "РІС‚РѕСЂР°В¤");
 	}
 	@Test
 	public void testfwhatbigc03() {
 		String res = HW_2_Zlatopolskii_4_28.fwhatbigc (312);
-		assertEquals(res, "последняя");
+		assertEquals(res, "РїРѕСЃР»РµРґРЅВ¤В¤");
 	}
 	@Test
 	public void testfwhatbigc04() {
 		String res = HW_2_Zlatopolskii_4_28.fwhatbigc (531);
-		assertEquals(res, "вторая");
+		assertEquals(res, "РІС‚РѕСЂР°В¤");
 	}
 	@Test
 	public void testfwhatbigc05() {
 		String res = HW_2_Zlatopolskii_4_28.fwhatbigc (513);
-		assertEquals(res, "последняя");
+		assertEquals(res, "РїРѕСЃР»РµРґРЅВ¤В¤");
 	}
 }

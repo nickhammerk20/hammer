@@ -1,6 +1,6 @@
-package HW1_Cycles;
-// Найти корень натурального числа с точностью до целого (рассмотреть вариант
-// последовательного подбора и метод бинарного поиска)
+п»їpackage HW1_Cycles;
+// РќР°Р№С‚Рё РєРѕСЂРµРЅСЊ РЅР°С‚СѓСЂР°Р»СЊРЅРѕРіРѕ С‡РёСЃР»Р° СЃ С‚РѕС‡РЅРѕСЃС‚СЊСЋ РґРѕ С†РµР»РѕРіРѕ (СЂР°СЃСЃРјРѕС‚СЂРµС‚СЊ РІР°СЂРёР°РЅС‚
+// РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕРіРѕ РїРѕРґР±РѕСЂР° Рё РјРµС‚РѕРґ Р±РёРЅР°СЂРЅРѕРіРѕ РїРѕРёСЃРєР°)
 
 public class HW_1_2_3{
 	public static void main (String [] args){
@@ -8,8 +8,8 @@ public class HW_1_2_3{
 		int res=fkorennatchisla(r);
 		System.out.println(res);
 	}
-	public static int fkorennatchisla(int a){ // метод подбора
-		if (a<=0) { //если цифра меньше "0" то выдает ошибку
+	public static int fkorennatchisla(int a){ // РјРµС‚РѕРґ РїРѕРґР±РѕСЂР°
+		if (a<=0) { //РµСЃР»Рё С†РёС„СЂР° РјРµРЅСЊС€Рµ "0" С‚Рѕ РІС‹РґР°РµС‚ РѕС€РёР±РєСѓ
 			throw new IllegalArgumentException();}
 		int ret = 0;
 		for( int i = 1 ; ret==0; i++){
@@ -22,15 +22,15 @@ public class HW_1_2_3{
 	}
 	
 	
-	public static int fkorennatchisla000(int a){ // не доделал
-		if (a<=0) { //если цифра меньше "0" то выдает ошибку
+	public static int fkorennatchisla000(int a){ // РЅРµ РґРѕРґРµР»Р°Р»
+		if (a<=0) { //РµСЃР»Рё С†РёС„СЂР° РјРµРЅСЊС€Рµ "0" С‚Рѕ РІС‹РґР°РµС‚ РѕС€РёР±РєСѓ
 			throw new IllegalArgumentException();}
 		double ret=1;
 		if(a>=100){
 			int count = (int)Math.log10(a)-1;
 			ret=a/Math.pow(10, count);
 			for(int b=9; b == 1; b--){
-				// мысль как сделать ушла...
+				// РјС‹СЃР»СЊ РєР°Рє СЃРґРµР»Р°С‚СЊ СѓС€Р»Р°...
 			}
 		}
 		else{

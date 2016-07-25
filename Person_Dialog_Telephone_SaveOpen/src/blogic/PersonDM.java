@@ -1,4 +1,4 @@
-package blogic;
+п»їpackage blogic;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -79,7 +79,7 @@ public class PersonDM extends AbstractTableModel
 			try {
 				dd = new PDialog();
 
-				System.out.println("запустили - ActionUpdate");
+				System.out.println("Р·Р°РїСѓСЃС‚РёР»Рё - ActionUpdate");
 				dd.setTitle("Update");
 				dd.setModal(true);
 
@@ -98,7 +98,7 @@ public class PersonDM extends AbstractTableModel
 					System.out.println("start OK - Update");
 					pd.update(dd.getPerson());
 					System.out.println("output "+p.id +" "+ p.fname +" "+ p.lname +" "+ p.age);
-					System.out.println("Обновление ActionUpdate после нажатия OK");
+					System.out.println("СњР±РЅРѕРІР»РµРЅРёРµ ActionUpdate РїРѕСЃР»Рµ РЅР°Р¶Р°С‚РёВ¤ OK");
 					pp = pd.read();
 					fireTableDataChanged();	
 				}
@@ -116,7 +116,7 @@ public class PersonDM extends AbstractTableModel
 			try {
 				dd = new PDialog();
 
-				System.out.println("запустили - ActionDelete");
+				System.out.println("Р·Р°РїСѓСЃС‚РёР»Рё - ActionDelete");
 				dd.setTitle("Delete");
 				dd.setModal(true);
 
@@ -134,7 +134,7 @@ public class PersonDM extends AbstractTableModel
 				{
 					System.out.println("start OK - Delete");
 					pd.delete(dd.getPerson());
-					System.out.println("Обновление ActionDelete после нажатия OK");
+					System.out.println("СњР±РЅРѕРІР»РµРЅРёРµ ActionDelete РїРѕСЃР»Рµ РЅР°Р¶Р°С‚РёВ¤ OK");
 
 					pp = pd.read();
 					fireTableDataChanged();	
@@ -166,11 +166,11 @@ public class PersonDM extends AbstractTableModel
 			fc.setFileFilter(filterCSV);
 			if ( fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION)
 			{
-				System.out.println("сохраняем файл");
+				System.out.println("СЃРѕС…СЂР°РЅВ¤РµРј С„Р°Р№Р»");
 				try	( FileWriter fw = new FileWriter(fc.getSelectedFile() ) )
 				{
 					fw.write(pdFile.fileSave(pp));
-					System.out.println("***сохранение завершено***");
+					System.out.println("***СЃРѕС…СЂР°РЅРµРЅРёРµ Р·Р°РІРµСЂС€РµРЅРѕ***");
 				} 
 				catch (IOException ex) 
 				{
@@ -188,7 +188,7 @@ public class PersonDM extends AbstractTableModel
 			JFileChooser fd = new JFileChooser();
 			if ( fd.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
 			{
-				System.out.println("пришли к открытию файла");
+				System.out.println("РїСЂРёС€Р»Рё Рє РѕС‚РєСЂС‹С‚РёСЋ С„Р°Р№Р»Р°");
 				
 			}
 		}

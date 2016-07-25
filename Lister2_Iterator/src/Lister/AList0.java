@@ -1,4 +1,4 @@
-package Lister;
+﻿package Lister;
 public class AList0 implements EList
 {
 	int[] ar = new int[0];

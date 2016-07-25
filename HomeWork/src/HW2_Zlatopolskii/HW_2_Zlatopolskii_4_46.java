@@ -1,5 +1,5 @@
-package HW2_Zlatopolskii;
-//Определить, является ли треугольник со сторонами a, b, c равносторонним.
+п»їpackage HW2_Zlatopolskii;
+//РћРїСЂРµРґРµР»РёС‚СЊ, СЏРІР»СЏРµС‚СЃСЏ Р»Рё С‚СЂРµСѓРіРѕР»СЊРЅРёРє СЃРѕ СЃС‚РѕСЂРѕРЅР°РјРё a, b, c СЂР°РІРЅРѕСЃС‚РѕСЂРѕРЅРЅРёРј.
 public class HW_2_Zlatopolskii_4_46{
 	public static void main (String [] args){
 		int r=0;

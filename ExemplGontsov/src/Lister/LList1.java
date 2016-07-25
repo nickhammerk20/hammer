@@ -1,4 +1,4 @@
-package Lister;
+п»їpackage Lister;
 
 public class LList1 implements EList
 {
@@ -63,7 +63,7 @@ public class LList1 implements EList
 	@Override
 	public String toString() 
 	{
-		//		вывод напрямую из LList
+		//		РІС‹РІРѕРґ РЅР°РїСЂСЏРјСѓСЋ РёР· LList
 		//		String str = "";
 		//		Node p = root;
 		//		do
@@ -78,7 +78,7 @@ public class LList1 implements EList
 		//		}
 		//		while(p.next != null);
 
-		//		вывод через toArray
+		//		РІС‹РІРѕРґ С‡РµСЂРµР· toArray
 		String str = "";
 		int [] ar = toArray();
 		for (int i = 0; i < ar.length; i++) 
@@ -207,7 +207,7 @@ public class LList1 implements EList
 		}
 
 		/*
-		 * говнокод через массив
+		 * РіРѕРІРЅРѕРєРѕРґ С‡РµСЂРµР· РјР°СЃСЃРёРІ
 		int [] ar = toArray();
 		for (int i = 0; i < ar.length-1; i++) 
 		{

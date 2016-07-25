@@ -137,7 +137,6 @@ public class Xpanel extends JPanel
 			public void actionPerformed(ActionEvent e) 
 			{
 				input.setText(e.getActionCommand());
-				//System.out.println("פûגפûגפûג   "+input);
 			}
 		});
 	}

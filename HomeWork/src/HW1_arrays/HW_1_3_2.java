@@ -1,5 +1,5 @@
-package HW1_arrays;
-//Найти максимальный элемент массива
+п»їpackage HW1_arrays;
+//РќР°Р№С‚Рё РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР°
 
 public class HW_1_3_2{
 	public static void main (String [] args)

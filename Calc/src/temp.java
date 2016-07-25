@@ -4,16 +4,16 @@ public class temp {
 	{
 		double cels = 40;
 		double res = faring(cels);
-		System.out.println("Температура "+cels+" градусов Цельсия");
-		System.out.println("соответсвует "+res+" по градусам Фарингейту");
+		System.out.println("РўРµРјРїРµСЂР°С‚СѓСЂР° "+cels+" РіСЂР°РґСѓСЃРѕРІ Р¦РµР»СЊСЃРёСЏ");
+		System.out.println("СЃРѕРѕС‚РІРµС‚СЃРІСѓРµС‚ "+res+" РїРѕ РіСЂР°РґСѓСЃР°Рј Р¤Р°СЂРёРЅРіРµР№С‚Сѓ");
 		res = kelvin(cels);
-		System.out.println("соответсвует "+res+" градусам Кельвин");
+		System.out.println("СЃРѕРѕС‚РІРµС‚СЃРІСѓРµС‚ "+res+" РіСЂР°РґСѓСЃР°Рј РљРµР»СЊРІРёРЅ");
 		res = njuton(cels);
-		System.out.println("соответсвует "+res+" градусам Ньютона");
+		System.out.println("СЃРѕРѕС‚РІРµС‚СЃРІСѓРµС‚ "+res+" РіСЂР°РґСѓСЃР°Рј РќСЊСЋС‚РѕРЅР°");
 		res = rankin(cels);
-		System.out.println("соответсвует "+res+" градусам Ранкина");
+		System.out.println("СЃРѕРѕС‚РІРµС‚СЃРІСѓРµС‚ "+res+" РіСЂР°РґСѓСЃР°Рј Р Р°РЅРєРёРЅР°");
 		res = guk(cels);
-		System.out.println("соответсвует "+res+" градусам Гука");
+		System.out.println("СЃРѕРѕС‚РІРµС‚СЃРІСѓРµС‚ "+res+" РіСЂР°РґСѓСЃР°Рј Р“СѓРєР°");
 	}
 	public static double faring (double x)
 	{

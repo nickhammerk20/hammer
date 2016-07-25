@@ -1,22 +1,22 @@
-package HW1_Cycles;
-// Посчитать сумму цифр заданного числа
+п»їpackage HW1_Cycles;
+// РџРѕСЃС‡РёС‚Р°С‚СЊ СЃСѓРјРјСѓ С†РёС„СЂ Р·Р°РґР°РЅРЅРѕРіРѕ С‡РёСЃР»Р°
 
 public class HW_1_2_5{
 	public static void main (String [] args){
 		int r=3456789;
 		int res=fsumcifr(r);
-		System.out.println("на выходе  "+res);
+		System.out.println("РЅР° РІС‹С…РѕРґРµ  "+res);
 	}
 	public static int fsumcifr(int a){
-		if (a<=0) { //если цифра меньше "0" то выдает ошибку
+		if (a<=0) { //РµСЃР»Рё С†РёС„СЂР° РјРµРЅСЊС€Рµ "0" С‚Рѕ РІС‹РґР°РµС‚ РѕС€РёР±РєСѓ
 			throw new IllegalArgumentException();
 		}
 		int ret=0;
 		int count = (int)Math.log10(a)+1;
-		if ( count == 1 ){ // если в указанной цифре 1 знак то = цифре
+		if ( count == 1 ){ // РµСЃР»Рё РІ СѓРєР°Р·Р°РЅРЅРѕР№ С†РёС„СЂРµ 1 Р·РЅР°Рє С‚Рѕ = С†РёС„СЂРµ
 			ret=a;
 		}
-		else { // както много переменных у меня вышло
+		else { // РєР°РєС‚Рѕ РјРЅРѕРіРѕ РїРµСЂРµРјРµРЅРЅС‹С… Сѓ РјРµРЅСЏ РІС‹С€Р»Рѕ
 			int b = 1;
 			int ret1=0;
 			int ret2=0;

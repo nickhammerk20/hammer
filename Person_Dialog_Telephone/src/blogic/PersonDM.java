@@ -1,4 +1,4 @@
-package blogic;
+п»їpackage blogic;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -68,7 +68,7 @@ public class PersonDM extends AbstractTableModel
 			try {
 				dd = new PDialog();
 			
-			System.out.println("запустили - ActionUpdate");
+			System.out.println("Р·Р°РїСѓСЃС‚РёР»Рё - ActionUpdate");
 			dd.setTitle("Update");
 			dd.setModal(true);
 			
@@ -87,7 +87,7 @@ public class PersonDM extends AbstractTableModel
 				System.out.println("start OK - Update");
 				pd.update(dd.getPerson());
 				System.out.println("output "+p.id +" "+ p.fname +" "+ p.lname +" "+ p.age);
-				System.out.println("Обновление ActionUpdate после нажатия OK");
+				System.out.println("РћР±РЅРѕРІР»РµРЅРёРµ ActionUpdate РїРѕСЃР»Рµ РЅР°Р¶Р°С‚РёСЏ OK");
 				pp = pd.read();
 				fireTableDataChanged();	
 			}
@@ -106,7 +106,7 @@ public class PersonDM extends AbstractTableModel
 			try {
 				dd = new PDialog();
 			
-			System.out.println("запустили - ActionDelete");
+			System.out.println("Р·Р°РїСѓСЃС‚РёР»Рё - ActionDelete");
 			dd.setTitle("Delete");
 			dd.setModal(true);
 			
@@ -124,7 +124,7 @@ public class PersonDM extends AbstractTableModel
 			{
 				System.out.println("start OK - Delete");
 				pd.delete(dd.getPerson());
-				System.out.println("Обновление ActionDelete после нажатия OK");
+				System.out.println("РћР±РЅРѕРІР»РµРЅРёРµ ActionDelete РїРѕСЃР»Рµ РЅР°Р¶Р°С‚РёСЏ OK");
 				
 				pp = pd.read();
 				fireTableDataChanged();	

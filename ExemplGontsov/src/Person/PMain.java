@@ -1,4 +1,4 @@
-package Person;
+п»їpackage Person;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,10 +26,10 @@ public class PMain
 		print_sortByName ( pp );
 	}
 
-	// Все у кого возраст от 18 до 45
+	// Р’СЃРµ Сѓ РєРѕРіРѕ РІРѕР·СЂР°СЃС‚ РѕС‚ 18 РґРѕ 45
 	public static void print18_45(ArrayList<Person> pp)
 	{
-		System.out.println( "\nВсе у кого возраст от 18 до 45" );
+		System.out.println( "\nР’СЃРµ Сѓ РєРѕРіРѕ РІРѕР·СЂР°СЃС‚ РѕС‚ 18 РґРѕ 45" );
 		for (Person p : pp) 
 		{
 			if(p.age >=18 && p.age <= 45)
@@ -37,7 +37,7 @@ public class PMain
 		}
 	}
 
-	// Печать всего списка
+	// РџРµС‡Р°С‚СЊ РІСЃРµРіРѕ СЃРїРёСЃРєР°
 	public static void print(ArrayList<Person> pp)
 	{
 		for (Person p : pp) 
@@ -46,7 +46,7 @@ public class PMain
 		}
 	}
 	
-	// Инициализация из базы H2 
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РёР· Р±Р°Р·С‹ H2 
 	public static ArrayList<Person> initFromH2() throws ClassNotFoundException, SQLException
 	{
 		ArrayList<Person> pp = new ArrayList<Person>();
@@ -63,7 +63,7 @@ public class PMain
 		return pp;
 	}
 	
-	//  Удаление из базы H2 
+	//  РЈРґР°Р»РµРЅРёРµ РёР· Р±Р°Р·С‹ H2 
 	public static void deleteFromH2(Person p) throws ClassNotFoundException, SQLException
 	{
 		Class.forName("org.h2.Driver");
@@ -71,7 +71,7 @@ public class PMain
 		Statement st = con.createStatement();
 		st.executeUpdate("delete from Person where id="+p.id);
 	}
-	// Инициализация из списка в методе 
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РёР· СЃРїРёСЃРєР° РІ РјРµС‚РѕРґРµ 
 	public static ArrayList<Person> init()
 	{
 		ArrayList<Person> pp = new ArrayList<Person>();
@@ -115,10 +115,10 @@ public class PMain
 		return pp;
 	}
 
-	// Все у которых возраст кратен "5" (юбиляры)
+	// Р’СЃРµ Сѓ РєРѕС‚РѕСЂС‹С… РІРѕР·СЂР°СЃС‚ РєСЂР°С‚РµРЅ "5" (СЋР±РёР»СЏСЂС‹)
 	public static void print_5(ArrayList<Person> pp)
 	{
-		System.out.println( "\nВсе у которых возраст кратен 5 (юбиляры)" );
+		System.out.println( "\nР’СЃРµ Сѓ РєРѕС‚РѕСЂС‹С… РІРѕР·СЂР°СЃС‚ РєСЂР°С‚РµРЅ 5 (СЋР±РёР»СЏСЂС‹)" );
 		for (Person p : pp) 
 		{
 			if(p.age %5 ==0)
@@ -126,10 +126,10 @@ public class PMain
 		}
 	}
 
-	// все у кого четные ID
+	// РІСЃРµ Сѓ РєРѕРіРѕ С‡РµС‚РЅС‹Рµ ID
 	public static void print_chet_ID(ArrayList<Person> pp)
 	{
-		System.out.println( "\nВсе у кого четные ID" );
+		System.out.println( "\nР’СЃРµ Сѓ РєРѕРіРѕ С‡РµС‚РЅС‹Рµ ID" );
 		for (Person p : pp) 
 		{
 			if(p.id %2 ==0)
@@ -137,10 +137,10 @@ public class PMain
 		}
 	}
 
-	// у кого в середине фамилии содержится буква "j" "g"
+	// Сѓ РєРѕРіРѕ РІ СЃРµСЂРµРґРёРЅРµ С„Р°РјРёР»РёРё СЃРѕРґРµСЂР¶РёС‚СЃСЏ Р±СѓРєРІР° "j" "g"
 	public static void print_have_J_G(ArrayList<Person> pp)
 	{
-		System.out.println( "\nВсе у кого в середине фамилии содержится буква j, g" );
+		System.out.println( "\nР’СЃРµ Сѓ РєРѕРіРѕ РІ СЃРµСЂРµРґРёРЅРµ С„Р°РјРёР»РёРё СЃРѕРґРµСЂР¶РёС‚СЃСЏ Р±СѓРєРІР° j, g" );
 		for (Person p : pp) 
 		{
 			char [] lnameChar = p.lname.toCharArray();
@@ -152,10 +152,10 @@ public class PMain
 		}
 	}
 
-	// все с фамилиями оканчивыающимися на "ko"
+	// РІСЃРµ СЃ С„Р°РјРёР»РёСЏРјРё РѕРєР°РЅС‡РёРІС‹Р°СЋС‰РёРјРёСЃСЏ РЅР° "ko"
 	public static void print_last_ko(ArrayList<Person> pp)
 	{
-		System.out.println( "\nВсе с фамилиями оканчивыающимися на ko" );
+		System.out.println( "\nР’СЃРµ СЃ С„Р°РјРёР»РёСЏРјРё РѕРєР°РЅС‡РёРІС‹Р°СЋС‰РёРјРёСЃСЏ РЅР° ko" );
 		for (Person p : pp) 
 		{
 			char [] lnameChar = p.lname.toCharArray();
@@ -164,10 +164,10 @@ public class PMain
 		}
 	}
 
-	// все у кого 1 буква имени или фамилии является прописной
+	// РІСЃРµ Сѓ РєРѕРіРѕ 1 Р±СѓРєРІР° РёРјРµРЅРё РёР»Рё С„Р°РјРёР»РёРё СЏРІР»СЏРµС‚СЃСЏ РїСЂРѕРїРёСЃРЅРѕР№
 	public static void print_first_litl(ArrayList<Person> pp)
 	{
-		System.out.println( "\nВсе у кого 1 буква имени или фамилии является прописной" );
+		System.out.println( "\nР’СЃРµ Сѓ РєРѕРіРѕ 1 Р±СѓРєРІР° РёРјРµРЅРё РёР»Рё С„Р°РјРёР»РёРё СЏРІР»СЏРµС‚СЃСЏ РїСЂРѕРїРёСЃРЅРѕР№" );
 		for (Person p : pp) 
 		{
 			char lch = p.lname.charAt(0);
@@ -177,10 +177,10 @@ public class PMain
 		}
 	}
 
-	// длина имени = 6 
+	// РґР»РёРЅР° РёРјРµРЅРё = 6 
 	public static void print_lenght_6(ArrayList<Person> pp)
 	{
-		System.out.println( "\nДлина имени = 6" );
+		System.out.println( "\nР”Р»РёРЅР° РёРјРµРЅРё = 6" );
 		for (Person p : pp) 
 		{
 			if(p.fname.length()==6)
@@ -188,10 +188,10 @@ public class PMain
 		}
 	}
 
-	// отсортировать персоны по возрасту и вывести
+	// РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ РїРµСЂСЃРѕРЅС‹ РїРѕ РІРѕР·СЂР°СЃС‚Сѓ Рё РІС‹РІРµСЃС‚Рё
 	public static void print_age_1_to_100(ArrayList<Person> pp)
 	{
-		System.out.println( "\nОтсортировать персоны по возрасту и вывести" );
+		System.out.println( "\nРћС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ РїРµСЂСЃРѕРЅС‹ РїРѕ РІРѕР·СЂР°СЃС‚Сѓ Рё РІС‹РІРµСЃС‚Рё" );
 		Person tmp = null;
 		for (int i = 0; i < pp.size()-1; i++) 
 		{
@@ -210,10 +210,10 @@ public class PMain
 			System.out.println( p );
 		}
 	}
-	// отсортировать персоны по фамилии-имени и вывести AB...YZab...yz
+	// РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ РїРµСЂСЃРѕРЅС‹ РїРѕ С„Р°РјРёР»РёРё-РёРјРµРЅРё Рё РІС‹РІРµСЃС‚Рё AB...YZab...yz
 	public static void print_sortByName(ArrayList<Person> pp)
 	{
-		System.out.println( "\nОтсортировать персоны по фамилии-имени и вывести AB...YZab...yz" );
+		System.out.println( "\nРћС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ РїРµСЂСЃРѕРЅС‹ РїРѕ С„Р°РјРёР»РёРё-РёРјРµРЅРё Рё РІС‹РІРµСЃС‚Рё AB...YZab...yz" );
 		Person tmp = null;
 		for (int i = 0; i < pp.size()-1; i++) 
 		{
@@ -251,10 +251,10 @@ public class PMain
 		}				 		
 	}
 
-	// вывести пары персон у которых совпадают фамилии
+	// РІС‹РІРµСЃС‚Рё РїР°СЂС‹ РїРµСЂСЃРѕРЅ Сѓ РєРѕС‚РѕСЂС‹С… СЃРѕРІРїР°РґР°СЋС‚ С„Р°РјРёР»РёРё
 	public static void print_two_fname(ArrayList<Person> pp)
 	{
-		System.out.println( "\nВывести пары персон у которых совпадают фамилии" );
+		System.out.println( "\nР’С‹РІРµСЃС‚Рё РїР°СЂС‹ РїРµСЂСЃРѕРЅ Сѓ РєРѕС‚РѕСЂС‹С… СЃРѕРІРїР°РґР°СЋС‚ С„Р°РјРёР»РёРё" );
 		for (Person p1 : pp) 
 		{			
 			for (Person p2 : pp)

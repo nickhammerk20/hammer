@@ -1,15 +1,15 @@
-package HW1_Cycles;
+п»їpackage HW1_Cycles;
 //import javax.swing.*;
 //public class HW_1_2_1 {
 //
 //	public static void main(String[] args) {
-//		// Найти сумму чётных чисел и их кол-во в диапазоне от 1 до 99
+//		// РќР°Р№С‚Рё СЃСѓРјРјСѓ С‡С‘С‚РЅС‹С… С‡РёСЃРµР» Рё РёС… РєРѕР»-РІРѕ РІ РґРёР°РїР°Р·РѕРЅРµ РѕС‚ 1 РґРѕ 99
 //		int countmin, countmax, i, s=0, k=0;
-//		countmin=Integer.parseInt(JOptionPane.showInputDialog("ввести нижнюю границу диапазона"));
-//		countmax=Integer.parseInt(JOptionPane.showInputDialog("ввести верхнюю границу диапазона"));
-//		String text="Сумма и кол-во четных чисел от "+countmin+" до "+countmax+".\n";
-//		String strsum="Сумма: ";
-//		String strkol="Кол-во: ";
+//		countmin=Integer.parseInt(JOptionPane.showInputDialog("РІРІРµСЃС‚Рё РЅРёР¶РЅСЋСЋ РіСЂР°РЅРёС†Сѓ РґРёР°РїР°Р·РѕРЅР°"));
+//		countmax=Integer.parseInt(JOptionPane.showInputDialog("РІРІРµСЃС‚Рё РІРµСЂС…РЅСЋСЋ РіСЂР°РЅРёС†Сѓ РґРёР°РїР°Р·РѕРЅР°"));
+//		String text="РЎСѓРјРјР° Рё РєРѕР»-РІРѕ С‡РµС‚РЅС‹С… С‡РёСЃРµР» РѕС‚ "+countmin+" РґРѕ "+countmax+".\n";
+//		String strsum="РЎСѓРјРјР°: ";
+//		String strkol="РљРѕР»-РІРѕ: ";
 //		i=countmin;
 //		do{
 //			if(i%2==0){
@@ -26,13 +26,13 @@ package HW1_Cycles;
 //
 //}
 public class HW_1_2_1{
-	// Найти сумму чётных чисел и их кол-во в диапазоне от 1 до 99
+	// РќР°Р№С‚Рё СЃСѓРјРјСѓ С‡С‘С‚РЅС‹С… С‡РёСЃРµР» Рё РёС… РєРѕР»-РІРѕ РІ РґРёР°РїР°Р·РѕРЅРµ РѕС‚ 1 РґРѕ 99
 	public static void main (String [] args){
 		int dmin=1;
 		int dmax=99;
 		int resk=kol(dmin,dmax);
 		int ress=sum(dmin,dmax);
-		System.out.println("кол-во "+resk+", сумма "+ress);
+		System.out.println("РєРѕР»-РІРѕ "+resk+", СЃСѓРјРјР° "+ress);
 	}
 	public static int kol(int a, int b){
 		int ret=0;

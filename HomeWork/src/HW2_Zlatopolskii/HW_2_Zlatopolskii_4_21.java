@@ -1,5 +1,5 @@
-package HW2_Zlatopolskii;
-//Определить, является ли число a делителем числа b?
+п»їpackage HW2_Zlatopolskii;
+//СњРїСЂРµРґРµР»РёС‚СЊ, В¤РІР»В¤РµС‚СЃВ¤ Р»Рё С‡РёСЃР»Рѕ a РґРµР»РёС‚РµР»РµРј С‡РёСЃР»Р° b?
 public class HW_2_Zlatopolskii_4_21{
 	public static void main (String [] args){
 		int a=2;

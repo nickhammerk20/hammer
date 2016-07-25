@@ -1,11 +1,11 @@
-import static org.junit.Assert.*;
+п»їimport static org.junit.Assert.*;
 
 import org.junit.Test;
 
 public class aList0Test {
 
 
-	/*тест метода clear*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° clear*/
 	@Test
 	public void test_clear_01() {
 		int [] ini = {1};
@@ -51,7 +51,7 @@ public class aList0Test {
 		list.init(arrTest);
 		list.clear();
 	}
-	/*тест метода init*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° init*/
 	@Test
 	public void test_init_01() {
 		int [] arrTest = {1};
@@ -90,7 +90,7 @@ public class aList0Test {
 		aList0 list = new aList0();
 		list.init(arrTest);
 	}
-	/*тест метода print*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° print*/
 	@Test
 	public void test_print_01() {
 		int [] arrTest = {1};
@@ -129,7 +129,7 @@ public class aList0Test {
 		list.init(arrTest);
 		list.print();
 	}
-	/*тест метода size*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° size*/
 	@Test
 	public void test_size_01() {
 		int [] arrTest = {1};
@@ -171,7 +171,7 @@ public class aList0Test {
 		list.init(arrTest);
 		list.size();
 	}
-	/*тест метода addStart*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° addStart*/
 	@Test
 	public void test_addStart01() {
 		int [] arrTest = {1};
@@ -215,7 +215,7 @@ public class aList0Test {
 		list.init(arrTest);
 		list.addStart(9);
 	}
-	/*тест метода addEnd*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° addEnd*/
 	@Test
 	public void test_addEnd01() {
 		int [] arrTest = {1};
@@ -259,7 +259,7 @@ public class aList0Test {
 		list.init(arrTest);
 		list.addEnd(9);
 	}
-	/*тест метода addPos*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° addPos*/
 	@Test
 	public void test_addPos01() {
 		int [] arrTest = {1};
@@ -303,7 +303,7 @@ public class aList0Test {
 		list.init(arrTest);
 		list.addPos(0,9);
 	}
-	/*тест метода delPos*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° delPos*/
 	@Test
 	public void test_delPos01() {
 		int [] arrTest = {1,9};
@@ -352,7 +352,7 @@ public class aList0Test {
 		list.delPos(0);
 		
 	}
-	/*тест метода delPos*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° delPos*/
 	@Test
 	public void test_delStart01() {
 		int [] arrTest = {1,9};
@@ -400,7 +400,7 @@ public class aList0Test {
 		list.init(arrTest);
 		list.delStart();
 	}
-	/*тест метода delPos*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° delPos*/
 	@Test
 	public void test_delEnd01() {
 		int [] arrTest = {1,9};
@@ -448,7 +448,7 @@ public class aList0Test {
 		list.init(arrTest);
 		list.delEnd();
 	}
-	/*тест метода toArray*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° toArray*/
 	@Test(expected=IllegalArgumentException.class)
 	public void test_toArray01() {
 		int [] arrIn = {};
@@ -483,7 +483,7 @@ public class aList0Test {
 		aList0 list = new aList0();
 		list.init(arrIn);
 	}
-	/*тест метода get*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° get*/
 	@Test(expected=IllegalArgumentException.class)
 	public void test_get01() {
 		int [] arrIn = {};
@@ -520,7 +520,7 @@ public class aList0Test {
 		list.init(arrIn);
 		
 	}
-	/*тест метода set*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° set*/
 	@Test(expected=IllegalArgumentException.class)
 	public void test_set01() {
 		int [] arrIn = {};
@@ -563,7 +563,7 @@ public class aList0Test {
 		list.set(1, 1);
 		
 	}
-	/*тест метода min*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° min*/
 	@Test(expected=IllegalArgumentException.class)
 	public void test_min01() {
 		int [] arrIn = {};
@@ -599,7 +599,7 @@ public class aList0Test {
 		list.init(arrIn);
 		list.min();
 	}
-	/*тест метода max*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° max*/
 	@Test(expected=IllegalArgumentException.class)
 	public void test_max01() {
 		int [] arrIn = null;
@@ -635,7 +635,7 @@ public class aList0Test {
 		list.init(arrIn);
 		list.max();
 	}
-	/*тест метода minPos*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° minPos*/
 	@Test(expected=IllegalArgumentException.class)
 	public void test_minPos01() {
 		int [] arrIn = {};
@@ -671,7 +671,7 @@ public class aList0Test {
 		list.init(arrIn);
 		list.minPos();
 	}
-	/*тест метода maxPos*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° maxPos*/
 	@Test(expected=IllegalArgumentException.class)
 	public void test_maxPos01() {
 		int [] arrIn = null;
@@ -707,7 +707,7 @@ public class aList0Test {
 		list.init(arrIn);
 		list.maxPos();
 	}
-	/*тест метода revers*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° revers*/
 	@Test(expected=IllegalArgumentException.class)
 	public void test_revers01() {
 		int [] arrIn = null;
@@ -749,7 +749,7 @@ public class aList0Test {
 		list.revers();	
 		assertArrayEquals(arrExp, arrIn);
 	}
-	/*тест метода halfRevers*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° halfRevers*/
 	@Test(expected=IllegalArgumentException.class)
 	public void test_halfRevers01() {
 		int [] arrIn = null;
@@ -791,7 +791,7 @@ public class aList0Test {
 		list.halfRevers();	
 		assertArrayEquals(arrExp, arrIn);
 	}
-	/*тест метода halfRevers*/
+	/*С‚РµСЃС‚ РјРµС‚РѕРґР° halfRevers*/
 	@Test
 	public void test_sort01() {
 		int [] arrIn = {1};

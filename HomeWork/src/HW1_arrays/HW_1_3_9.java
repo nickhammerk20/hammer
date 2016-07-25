@@ -1,5 +1,5 @@
-package HW1_arrays;
-// Отсортировать массив (Quick, Merge, Shell, Heap)
+п»їpackage HW1_arrays;
+// СњС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ РјР°СЃСЃРёРІ (Quick, Merge, Shell, Heap)
 
 public class HW_1_3_9{
 	public static void main (String [] args){

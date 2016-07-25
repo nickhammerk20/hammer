@@ -1,4 +1,4 @@
-public class Task9_Bubble 
+﻿public class Task9_Bubble 
 {
 	public static void Bubble(int Mas[])
 	{

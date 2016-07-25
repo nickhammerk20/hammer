@@ -1,5 +1,5 @@
-package HW1_Cycles;
-// Вычислить факториал числа n. n! = 1*2*...*n­1*n;!
+п»їpackage HW1_Cycles;
+// Р’С‹С‡РёСЃР»РёС‚СЊ С„Р°РєС‚РѕСЂРёР°Р» С‡РёСЃР»Р° n. n! = 1*2*...*nВ­1*n;!
 
 public class HW_1_2_4{
 	public static void main (String [] args){
@@ -8,7 +8,7 @@ public class HW_1_2_4{
 		System.out.println(res);
 	}
 	public static int ffactorial(int a){
-		if (a<=1) { //если цифра меньше "0" то выдает ошибку
+		if (a<=1) { //РµСЃР»Рё С†РёС„СЂР° РјРµРЅСЊС€Рµ "0" С‚Рѕ РІС‹РґР°РµС‚ РѕС€РёР±РєСѓ
 			throw new IllegalArgumentException();}
 		int ret=1;
 		int i=1;

@@ -1,4 +1,4 @@
-package HW1_Cycles;
+﻿package HW1_Cycles;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
