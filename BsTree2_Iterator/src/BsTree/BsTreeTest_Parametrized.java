@@ -1,12 +1,36 @@
-package BsTree;
-
+﻿package BsTree;
 import static org.junit.Assert.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
-public class BsTreeTest 
+import BsTree.EBsTree;
+
+@RunWith(Parameterized.class)
+public class BsTreeTest_Parametrized 
 {
-	BsTree2 obj = new BsTree2();
+	EBsTree obj = null;
+
+	@Parameters
+	public static Collection<Object[]> EBsTree()
+	{
+		return Arrays.asList(new Object[][]
+				{
+			{ new BsTree()},
+			{ new BsTree2()}, 
+				});
+	}
+
+	public BsTreeTest_Parametrized (EBsTree Paramet) 
+	{
+		obj = Paramet;
+	}
 
 	@Before
 	public void start()

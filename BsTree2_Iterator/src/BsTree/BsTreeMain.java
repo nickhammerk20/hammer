@@ -5,38 +5,40 @@ public class BsTreeMain
 	public static void main (String[] args)
 	{
 
-		BsTree tr = new BsTree();
+		BsTree2 tree = new BsTree2();
 
-		tr.add(10);
-		tr.add(15);
-		tr.add(20);
-		tr.add(14);
-		tr.add(77);
-		tr.add(22);
-		tr.add(50);
-		tr.add(25);
-		tr.add(15);
-		tr.add(20);
-		tr.add(7);
-		tr.add(40);
-		tr.add(75);
-		tr.add(60);
-		tr.add(80);		
+		tree.add(10);
+		tree.add(15);
+		tree.add(20);
+		tree.add(14);
+		tree.add(77);
+		tree.add(22);
+		tree.add(50);
+		tree.add(25);
+		tree.add(16);
+		tree.add(21);
+		tree.add(7);
+		tree.add(40);
+		tree.add(75);
+		tree.add(60);
+		tree.add(80);		
 
 		System.out.println("вход tr.print();");
-		tr.print();
+		tree.print();
 		System.out.println("\nвход tr.toString();");
-		System.out.println(tr.toString());
+		System.out.println(tree.toString());
 		System.out.println("вход tr.toArray();");
 
-		int ar [] = tr.toArray(); 
+		int ar [] = tree.toArray(); 
 		for (int i = 0; i < ar.length; i++) 
 		{
 			System.out.print(ar[i]);
 			if(i < ar.length-1)
 				System.out.print(",");
 		}
-		System.out.println("\nSizeVizitor "+tr.size());
-		System.out.println("\nNodeVizitor "+tr.nodes());
+		System.out.println("\n*****new******");
+		System.out.println("SizeVizitor (всего) = "+tree.size());
+		System.out.println("NodeVizitor (узлы) = "+tree.nodes());
+		System.out.println("LeavesVisitor (листья) = "+tree.leaves());
 	}
 }

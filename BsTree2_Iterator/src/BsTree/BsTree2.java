@@ -1,11 +1,11 @@
 ﻿package BsTree;
 
-public class BsTree implements EBsTree
+public class BsTree2 implements EBsTree
 {
 
 	int leftHeight = 0;
 	int rightHeight = 0;
-	
+
 	class Node 
 	{
 		int val;
@@ -19,7 +19,7 @@ public class BsTree implements EBsTree
 	}
 	protected Node root = null;
 
-	//Печать в консоль ++
+	//Печать в консоль 
 	@Override
 	public void print() 
 	{
@@ -35,7 +35,7 @@ public class BsTree implements EBsTree
 		printNode(p.right);             //R
 	}
 
-	//Инициализация ++
+	//Инициализация 
 	@Override
 	public void init(int[] ini) 
 	{
@@ -48,7 +48,7 @@ public class BsTree implements EBsTree
 		}
 	}
 
-	//Добавление узла со значением ++
+	//Добавление узла со значением 
 	@Override
 	public void add(int val) 
 	{
@@ -77,70 +77,93 @@ public class BsTree implements EBsTree
 		}
 	}
 
-	//Очистка дерева ++
+	//Очистка дерева
 	@Override
 	public void clear() 
 	{
 		root = null;
 	}
 
-	//Получить количество всех узлов в дереве (с потомками и без) ++
+	/****************************/
+	/**********//*NEW*//*********/
+	/****************************/
+	
+	private interface Visitor
+	{
+		void action(Node p);
+	}
+
+	private void visit(Node p, Visitor v) 
+	{
+		if (p == null)
+			return;
+
+		visit (p.left, v);
+		v.action(p);
+		visit (p.right, v);
+	}
+
+	//Получить количество всех узлов в дереве (с потомками и без) 
+	private class SizeVisitor implements Visitor
+	{
+		int count = 0;
+		@Override
+		public void action(Node p) 
+		{
+			count++;
+		}		
+	}
 	@Override
 	public int size() 
 	{
-		return sizeNode( root );
-	}
-	private int sizeNode(Node p) 
-	{
-		if (p == null)
-			return 0;
-
-		return sizeNode(p.left) + 1 + sizeNode(p.right);
+		SizeVisitor v = new SizeVisitor();
+		visit(root, v);
+		return v.count;
 	}
 
-	//Получить количество листьев++
+	//Получить количество листьев
 	@Override
 	public int leaves()
 	{
-		return nodeLeaves(root);
+		LeavesVisitor v = new LeavesVisitor();
+		visit(root, v);
+		return v.count;
 	}
-	private int nodeLeaves(Node p) 
+	private class LeavesVisitor implements Visitor
 	{
-		if (p == null)
-			return 0;
-
-		int ret = 0;
-
-		ret += nodeLeaves(p.left);			
-		if (p.left == null && p.right == null)
-			ret++;
-		ret += nodeLeaves(p.right);
-
-		return ret;
+		int count = 0;
+		@Override
+		public void action(Node p) 
+		{
+			if(p.left == null && p.right == null)
+			{
+				count++;	
+			}			
+		}		
 	}
 
-	//Получить количество узлов (хотя бы 1 потомок)	++
+	//Получить количество узлов (хотя бы 1 потомок)	
 	@Override
 	public int nodes()
 	{
-		return nodeNodes(root);
+		NodeVisitor v = new NodeVisitor();
+		visit(root, v);
+		return v.count;
 	}
-	private int nodeNodes(Node p) 
+	private class NodeVisitor implements Visitor
 	{
-		if (p == null)
-			return 0;
-
-		int ret = 0;
-
-		ret += nodeNodes(p.left);			
-		if (p.left != null || p.right != null)
-			ret++;
-		ret += nodeNodes(p.right);
-
-		return ret;
+		int count = 0;
+		@Override
+		public void action(Node p) 
+		{
+			if(p.left != null || p.right != null)
+			{
+				count++;	
+			}			
+		}		
 	}
-	
-	//Получить количество уровней (высота дерева)++
+
+	//Получить количество уровней (высота дерева)
 	@Override
 	public int height() 
 	{
@@ -183,13 +206,12 @@ public class BsTree implements EBsTree
 			if (i>max)
 				max=i;
 		}
-
 		return max;
 	}
 
 
 	//Получить String через LVR дерева
-		@Override
+	@Override
 	public String toString() 
 	{
 		return toString(root);
@@ -203,7 +225,7 @@ public class BsTree implements EBsTree
 	}
 
 	//Получить массив через LVR дерева
-		private class Counter
+	private class Counter
 	{
 		int index = 0;
 	}
@@ -238,13 +260,13 @@ public class BsTree implements EBsTree
 		Node tmp = p.left;
 		p.left = p.right;
 		p.right = tmp;
-		
+
 		reverseNode(p.left);
 		reverseNode(p.right);
 	}
-	
+
 	//Удаление элемента по ключу
-		@Override
+	@Override
 	public void del(int key) 
 	{
 		Node current = root;
