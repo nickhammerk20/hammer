@@ -40,5 +40,11 @@ public class BsTreeMain
 		System.out.println("SizeVizitor (всего) = "+tree.size());
 		System.out.println("NodeVizitor (узлы) = "+tree.nodes());
 		System.out.println("LeavesVisitor (листья) = "+tree.leaves());
+		
+		System.out.print("tree = ");
+		for(Integer i : tree)
+		{
+			System.out.print( i + ", ");
+		}
 	}
 }

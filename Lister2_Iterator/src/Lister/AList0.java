@@ -1,5 +1,10 @@
 ﻿package Lister;
-public class AList0 implements EList
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.ListIterator;
+
+public class AList0 implements EList, Iterable<Integer>
 {
 	int[] ar = new int[0];
 	
@@ -240,5 +245,38 @@ public class AList0 implements EList
 			}
 		ar=tmp;
 		return ret;			
+	}
+	@Override
+	public Iterator<Integer> iterator() 
+	{
+		return null;
+	}
+	class MyIter implements Iterator<Integer>
+	{
+		int[] ar = null;
+		public MyIter(int[] ar)
+		{
+			this.ar = ar;
+		}
+		
+		Iterator<Integer> itr = ar.iterator();
+		
+		@Override
+		public boolean hasNext() 
+		{
+			boolean ret = false;
+			while (itr.hasNext()) 
+			{
+				ret = true;
+			}
+			return ret;
+		}
+
+		@Override
+		public Integer next() 
+		{
+			
+			return null;
+		}
 	}
 }

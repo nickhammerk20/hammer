@@ -1,6 +1,8 @@
 ﻿package Lister;
 
-public class LList2 implements EList
+import java.util.Iterator;
+
+public class LList2 implements EList, Iterable<Integer>
 {
 	class Node
 	{
@@ -354,5 +356,34 @@ public class LList2 implements EList
 
 		}
 	}
+
+	@Override
+	public Iterator<Integer> iterator() 
+	{
+		return new MyIter(root);
+	}
+	class MyIter implements Iterator<Integer>
+	{
+		Node p = null;
+		public MyIter(Node p) 
+		{
+			this.p = p;
+		}
+		@Override
+		public boolean hasNext() 
+		{
+			return p != null;
+		}
+
+		@Override
+		public Integer next() 
+		{
+			int ret = p.val;
+			p = p.next;
+			return ret;
+		}		
+	}
+	
+	
 
 }
