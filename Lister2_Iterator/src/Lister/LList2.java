@@ -17,7 +17,7 @@ public class LList2 implements EList, Iterable<Integer>
 
 	Node start = null;
 	Node end = null;
-	
+
 
 	@Override
 	public void clear() 
@@ -201,20 +201,22 @@ public class LList2 implements EList, Iterable<Integer>
 	@Override
 	public void revers() 
 	{
-		Node tmp = start;
-		Node r = null;
+		if(start == null)
+			return;
 
-		while (tmp != null)
+		LList2 obj = new LList2();
+		Node tmp = end;
+		int size = size();
+
+		for (int i=0; i < size; i++)
 		{
-			r = tmp.next;
-			tmp.next = tmp.prev;
-			tmp.prev = r;
+			obj.addEnd(tmp.val);
 			tmp = tmp.prev;
 		}
 
-		r = start;
-		start = end;
-		end = r;
+		start = obj.start;
+		end = obj.end; 
+
 	}
 
 	@Override
@@ -223,7 +225,7 @@ public class LList2 implements EList, Iterable<Integer>
 		// TODO Auto-generated method stub
 
 	}
-	
+
 
 	@Override
 	public int delStart()
@@ -298,10 +300,30 @@ public class LList2 implements EList, Iterable<Integer>
 	@Override
 	public void addStart(int val) 
 	{
-		Node p = new Node (val);
-		p.next = start;
-		p.prev = end;
-		start = p;
+		//		if ( start == null)
+		//		{
+		//			start = new Node(val);
+		//			end = start;
+		//		}
+		//		else
+		//		{
+		//			Node p = new Node (val);
+		//			p.next = start;
+		//			start.prev = p;
+		//			start = p;
+		//		}
+
+		Node tmp = new Node(val);
+
+		if (start != null)
+			start.prev = tmp;
+		else
+			end = tmp;
+
+		tmp.next = start;
+		start = tmp; 
+
+
 	}
 
 	@Override
@@ -311,15 +333,14 @@ public class LList2 implements EList, Iterable<Integer>
 		if ( p == null)
 		{
 			start = new Node(val);
+			end = start;
 		}
 		else
 		{
 			Node tmp = new Node (val);
-			while (p.next != null)
-			{
-				p = p.next;
-			}		
-			p.next = tmp;
+			end.next = tmp;
+			tmp.prev = end;
+			end = tmp;
 		}
 	}
 

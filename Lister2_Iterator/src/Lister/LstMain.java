@@ -49,9 +49,10 @@ public class LstMain {
 		LList2 lst2 = new LList2();
 		lst2.init(ini);
 		System.out.print("lst2 = ");
+		
 		for(Integer i : lst2)
 		{
 			System.out.print( i + ", ");
-		}
+		}	
 	}
 }
