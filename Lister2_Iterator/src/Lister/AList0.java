@@ -1,8 +1,6 @@
 ﻿package Lister;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.ListIterator;
 
 public class AList0 implements EList, Iterable<Integer>
 {
@@ -246,37 +244,36 @@ public class AList0 implements EList, Iterable<Integer>
 		ar=tmp;
 		return ret;			
 	}
+	
+	/***********************/
+	/*****add Iterator******/
+	/***********************/
 	@Override
 	public Iterator<Integer> iterator() 
 	{
-		return null;
+		return new MyIter(ar);
 	}
 	class MyIter implements Iterator<Integer>
 	{
 		int[] ar = null;
+		int i = 0;
 		public MyIter(int[] ar)
 		{
 			this.ar = ar;
 		}
-		
-		Iterator<Integer> itr = ar.iterator();
-		
+					
 		@Override
 		public boolean hasNext() 
 		{
-			boolean ret = false;
-			while (itr.hasNext()) 
-			{
-				ret = true;
-			}
-			return ret;
+			return i < ar.length;
 		}
 
 		@Override
 		public Integer next() 
 		{
-			
-			return null;
+			int ret = ar[i];
+			i++;
+			return ret;
 		}
 	}
 }

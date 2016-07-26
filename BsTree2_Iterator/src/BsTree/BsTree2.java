@@ -367,11 +367,6 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 				root = root.left;
 			}
 		}
-//		Node p = null;
-//		public MyIter(Node p) 
-//		{
-//			this.p = p;
-//		}
 		
 		@Override
 		public boolean hasNext() 

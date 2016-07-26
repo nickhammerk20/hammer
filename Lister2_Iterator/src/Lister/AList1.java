@@ -1,7 +1,12 @@
 ﻿package Lister;
-public class AList1 implements EList
+
+import java.util.Iterator;
+
+import Lister.AList0.MyIter;
+
+public class AList1 implements EList, Iterable<Integer>
 {
-	int[] ar = new int[10];
+	int[] ar = new int[20];
 	int index = 0;
 	
 	@Override
@@ -220,5 +225,37 @@ public class AList1 implements EList
 			}
 		index--;
 		return ret;			
+	}
+
+	/***********************/
+	/*****add Iterator******/
+	/***********************/
+	@Override
+	public Iterator<Integer> iterator() 
+	{
+		return new MyIter(ar);
+	}
+	class MyIter implements Iterator<Integer>
+	{
+		int[] ar = null;
+		int i = 0;
+		public MyIter(int[] ar)
+		{
+			this.ar = ar;
+		}
+		@Override
+		public boolean hasNext() 
+		{
+			return i < index;
+		}
+
+		@Override
+		public Integer next() 
+		{
+			int ret = ar[i];
+			i++;
+			return ret;
+		}
+		
 	}
 }
