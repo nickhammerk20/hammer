@@ -574,26 +574,26 @@ public class EListTestParamet
 		int[] exp = {10};
 		assertArrayEquals(exp, act);
 	}
-//	@Test
-//	public void test_Revers_2() 
-//	{
-//		int[] ini = {77,11};
-//		obj.init(ini);
-//		obj.revers();
-//		int[] act = obj.toArray();
-//		int[] exp = {11,77};
-//		assertArrayEquals(exp, act);
-//	}
-//	@Test
-//	public void test_Revers_many() 
-//	{
-//		int[] ini = {10,20,77,11,24,82};
-//		obj.init(ini);
-//		obj.revers();
-//		int[] act = obj.toArray();
-//		int[] exp = {82,24,11,77,20,10};
-//		assertArrayEquals(exp, act);
-//	}
+	@Test
+	public void test_Revers_2() 
+	{
+		int[] ini = {77,11};
+		obj.init(ini);
+		obj.revers();
+		int[] act = obj.toArray();
+		int[] exp = {11,77};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_Revers_many() 
+	{
+		int[] ini = {10,20,77,11,24,82};
+		obj.init(ini);
+		obj.revers();
+		int[] act = obj.toArray();
+		int[] exp = {82,24,11,77,20,10};
+		assertArrayEquals(exp, act);
+	}
 	//================================
 	// halfRevers
 	//================================

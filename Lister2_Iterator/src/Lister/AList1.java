@@ -2,8 +2,6 @@
 
 import java.util.Iterator;
 
-import Lister.AList0.MyIter;
-
 public class AList1 implements EList, Iterable<Integer>
 {
 	int[] ar = new int[20];

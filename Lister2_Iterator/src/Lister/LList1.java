@@ -231,12 +231,30 @@ public class LList1 implements EList, Iterable<Integer>
 	@Override
 	public void revers() 
 	{
-		Node p = root;
-		while(p.next != null) 
-			{
-				p.next.next = p.next;
-				p = p.next;
-			}
+		//		Node reversP = null;
+		//		Node currentP = root;
+		//		while(currentP != null) 
+		//			{
+		//				Node next = currentP.next;
+		//				currentP.next = reversP;
+		//				reversP = currentP;
+		//				currentP = next;
+		//			}
+		//		
+		//		root = reversP;
+
+		Node temp = null;
+		Node next = null;
+		while(root != null)
+		{
+			next = root.next;
+			root.next = temp;
+			temp = root;
+			root = next;
+		}
+		root = temp;	
+
+
 	}
 
 	@Override

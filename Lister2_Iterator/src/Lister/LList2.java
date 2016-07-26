@@ -15,12 +15,15 @@ public class LList2 implements EList, Iterable<Integer>
 		}
 	}
 
-	Node root = null;
+	Node start = null;
+	Node end = null;
+	
 
 	@Override
 	public void clear() 
 	{
-		root = null;
+		start = null;
+		end = null;
 	}
 
 	@Override
@@ -28,7 +31,7 @@ public class LList2 implements EList, Iterable<Integer>
 	{
 		int count = 0;
 
-		Node p = root;
+		Node p = start;
 		while (p!= null)
 		{
 			count++;
@@ -55,7 +58,7 @@ public class LList2 implements EList, Iterable<Integer>
 	public int[] toArray()
 	{
 		int[] ret = new int [size()];
-		Node p = root;
+		Node p = start;
 		for (int i = 0; i < ret.length; i++) 
 		{
 			ret [i] = p.val;
@@ -67,22 +70,6 @@ public class LList2 implements EList, Iterable<Integer>
 	@Override
 	public String toString() 
 	{
-		//		вывод напрямую из LList
-		//		String str = "";
-		//		Node p = root;
-		//		do
-		//		{
-		//			str += p.val;
-		//			p = p.next;
-		//			if(p.next != null)
-		//			{
-		//				str += ",";
-		//			}
-		//			System.out.println(str);
-		//		}
-		//		while(p.next != null);
-
-		//		вывод через toArray
 		String str = "";
 		int [] ar = toArray();
 		for (int i = 0; i < ar.length; i++) 
@@ -98,10 +85,10 @@ public class LList2 implements EList, Iterable<Integer>
 	@Override
 	public int get(int pos) 
 	{
-		if(pos<0||pos>=size()||root == null)
+		if(pos<0||pos>=size()||start == null)
 			throw new IllegalArgumentException();
 		int ret;
-		Node tmp = root;
+		Node tmp = start;
 		for (int i=0; i<pos; i++)
 		{
 			tmp = tmp.next;
@@ -114,10 +101,10 @@ public class LList2 implements EList, Iterable<Integer>
 	@Override
 	public void set(int pos, int val)
 	{
-		if(pos<0||pos>=size()||root == null)
+		if(pos<0||pos>=size()||start == null)
 			throw new IllegalArgumentException();
 
-		Node tmp = root;
+		Node tmp = start;
 		for (int i=0; i<pos; i++)
 		{
 			tmp = tmp.next;
@@ -128,7 +115,7 @@ public class LList2 implements EList, Iterable<Integer>
 	@Override
 	public int min() 
 	{
-		Node p = root;
+		Node p = start;
 		for(int i=0; i<minPos(); i++)
 		{
 			p = p.next;
@@ -139,7 +126,7 @@ public class LList2 implements EList, Iterable<Integer>
 	@Override
 	public int max()
 	{
-		Node p = root;
+		Node p = start;
 		for(int i=0; i<maxPos(); i++)
 		{
 			p = p.next;
@@ -154,7 +141,7 @@ public class LList2 implements EList, Iterable<Integer>
 		{
 			throw new IllegalArgumentException();
 		}
-		Node p = root;
+		Node p = start;
 		int val = p.val;
 		int ret = 0;
 		for(int i=0; i<size(); i++)
@@ -176,7 +163,7 @@ public class LList2 implements EList, Iterable<Integer>
 		{
 			throw new IllegalArgumentException();
 		}
-		Node p = root;
+		Node p = start;
 		int val = p.val;
 		int ret = 0;
 		for(int i=0; i<size(); i++)
@@ -194,7 +181,7 @@ public class LList2 implements EList, Iterable<Integer>
 	@Override
 	public void sort() 
 	{
-		Node p = root;
+		Node p = start;
 		for (int i = 0; i < size()-1; i++) 
 		{
 			while(p.next != null) 
@@ -207,24 +194,27 @@ public class LList2 implements EList, Iterable<Integer>
 				}
 				p = p.next;
 			}
-			p=root;
+			p=start;
 		}
 	}
 
 	@Override
 	public void revers() 
 	{
-		/*
-		Node curent = root;
-		Node newNode = null;
-		while(curent.next != null)
+		Node tmp = start;
+		Node r = null;
+
+		while (tmp != null)
 		{
-			Node p = new Node (curent.val);
-			p.next = root;
-			root = p;
-			
+			r = tmp.next;
+			tmp.next = tmp.prev;
+			tmp.prev = r;
+			tmp = tmp.prev;
 		}
-		 */
+
+		r = start;
+		start = end;
+		end = r;
 	}
 
 	@Override
@@ -241,9 +231,9 @@ public class LList2 implements EList, Iterable<Integer>
 		if( size() == 0){
 			throw new IllegalArgumentException();
 		} 
-		Node p = root;
+		Node p = start;
 		int tmp = p.val; 
-		root = p.next;
+		start = p.next;
 		return tmp;
 	}
 
@@ -260,13 +250,13 @@ public class LList2 implements EList, Iterable<Integer>
 		} 
 		else
 		{
-			Node p = root;
+			Node p = start;
 			while (p.next != null)
 			{
 				p = p.next;
 			}
 			int tmp = p.val;
-			p = root;
+			p = start;
 			for (int i = 1; i < size()-1; i++)
 			{
 				p = p.next;
@@ -279,7 +269,7 @@ public class LList2 implements EList, Iterable<Integer>
 	@Override
 	public int delPos(int pos) 
 	{
-		if (root == null)
+		if (start == null)
 		{
 			throw new IllegalArgumentException();
 		}
@@ -290,7 +280,7 @@ public class LList2 implements EList, Iterable<Integer>
 		}
 		else
 		{
-			Node prev = root;
+			Node prev = start;
 			int count = 1;
 			while( count < pos )
 			{
@@ -300,7 +290,6 @@ public class LList2 implements EList, Iterable<Integer>
 			Node curent = prev.next;
 			prev.next = curent.next;
 			ret = curent.val;
-
 		}
 		return ret;
 	}
@@ -310,17 +299,18 @@ public class LList2 implements EList, Iterable<Integer>
 	public void addStart(int val) 
 	{
 		Node p = new Node (val);
-		p.next = root;
-		root = p;
+		p.next = start;
+		p.prev = end;
+		start = p;
 	}
 
 	@Override
 	public void addEnd(int val)
 	{
-		Node p = root;
+		Node p = start;
 		if ( p == null)
 		{
-			root = new Node(val);
+			start = new Node(val);
 		}
 		else
 		{
@@ -343,7 +333,7 @@ public class LList2 implements EList, Iterable<Integer>
 		else
 		{
 			Node newNode = new Node (val);
-			Node prev = root;
+			Node prev = start;
 			int count = 1;
 			while( count < pos )
 			{
@@ -353,14 +343,13 @@ public class LList2 implements EList, Iterable<Integer>
 			Node curent = prev.next;
 			newNode.next = curent;
 			prev.next = newNode;
-
 		}
 	}
 
 	@Override
 	public Iterator<Integer> iterator() 
 	{
-		return new MyIter(root);
+		return new MyIter(start);
 	}
 	class MyIter implements Iterator<Integer>
 	{
@@ -383,7 +372,4 @@ public class LList2 implements EList, Iterable<Integer>
 			return ret;
 		}		
 	}
-	
-	
-
 }

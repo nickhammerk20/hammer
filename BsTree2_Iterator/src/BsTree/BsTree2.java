@@ -22,21 +22,7 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 	}
 	protected Node root = null;
 
-	//Печать в консоль 
-	@Override
-	public void print() 
-	{
-		printNode(root);
-	}
-	private void printNode(Node p) 
-	{
-		if (p == null)
-			return;
 
-		printNode(p.left);              //L
-		System.out.print(p.val + ",");  //V
-		printNode(p.right);             //R
-	}
 
 	//Инициализация 
 	@Override
@@ -90,7 +76,7 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 	/****************************/
 	/**********//*NEW*//*********/
 	/****************************/
-	
+
 	private interface Visitor
 	{
 		void action(Node p);
@@ -105,7 +91,25 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 		v.action(p);
 		visit (p.right, v);
 	}
-
+	
+	//Печать в консоль 
+	@Override
+	public void print() 
+	{
+		PrintVizitor v = new PrintVizitor();
+		visit(root, v);
+		System.out.print(v.str);
+	}
+	private class PrintVizitor implements Visitor
+	{
+		String str = "";
+		@Override
+		public void action(Node p) 
+		{
+			str += p.val+", ";
+		}		
+	}
+	
 	//Получить количество всех узлов в дереве (с потомками и без) 
 	private class SizeVisitor implements Visitor
 	{
@@ -166,6 +170,24 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 		}		
 	}
 
+	//Получить String через LVR дерева
+	@Override
+	public String toString() 
+	{
+		ToStringVisitor v = new ToStringVisitor();
+		visit(root, v);
+		return v.str;
+	}
+	private class ToStringVisitor implements Visitor
+	{
+		String str = "";
+		@Override
+		public void action(Node p) 
+		{
+			str += p.val+", ";
+		}		
+	}
+
 	//Получить количество уровней (высота дерева)
 	@Override
 	public int height() 
@@ -210,21 +232,6 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 				max=i;
 		}
 		return max;
-	}
-
-
-	//Получить String через LVR дерева
-	@Override
-	public String toString() 
-	{
-		return toString(root);
-	}
-	private String toString(Node p) 
-	{
-		if (p == null)
-			return "";
-
-		return toString(p.left) + p.val + ", " + toString(p.right);
 	}
 
 	//Получить массив через LVR дерева
@@ -367,7 +374,7 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 				root = root.left;
 			}
 		}
-		
+
 		@Override
 		public boolean hasNext() 
 		{
@@ -379,19 +386,19 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 		{
 			Node node = stack.pop();
 			int result = node.val;
-//			if (node.right != null) 
-//			{
-//				node = node.right;
-//				while (node != null) 
-//				{
-//					stack.push(node);
-//					node = node.left;
-//				}
-//			}
+			//			if (node.right != null) 
+			//			{
+			//				node = node.right;
+			//				while (node != null) 
+			//				{
+			//					stack.push(node);
+			//					node = node.left;
+			//				}
+			//			}
 			Node child = node.right;
 			while (child != null) {
-			    stack.push(child);
-			    child = child.left;
+				stack.push(child);
+				child = child.left;
 			}			
 			return result;
 		}		
