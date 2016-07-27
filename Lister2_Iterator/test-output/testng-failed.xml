@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="Lister.LListTestNG">
+        <methods>
+          <include name="test_DelStart_2"/>
+          <include name="test_DelStart_1"/>
+          <include name="test_AddStart_0"/>
+          <include name="test_Min_0"/>
+          <include name="test_Size_many"/>
+          <include name="test_toArray_many"/>
+          <include name="test_DelStart_many"/>
+          <include name="test_Min_2"/>
+          <include name="test_DelStart_0"/>
+          <include name="test_Size_0"/>
+          <include name="test_addPos_2"/>
+          <include name="test_addPos_1"/>
+          <include name="test_init_2"/>
+          <include name="test_addPos_0"/>
+          <include name="test_MaxPos_0"/>
+          <include name="test_Set_1"/>
+          <include name="test_MaxPos_1"/>
+          <include name="test_Set_0"/>
+          <include name="test_Set_2"/>
+          <include name="test_toArray_1"/>
+          <include name="test_DelPos_Expc"/>
+          <include name="test_Size_2"/>
+          <include name="test_toArray_0"/>
+          <include name="test_MinPos_Ex"/>
+          <include name="test_toArray_2"/>
+          <include name="test_DelPos_many_end"/>
+          <include name="test_Size_1"/>
+          <include name="test_Size_null"/>
+          <include name="test_DelPos_0"/>
+          <include name="test_Get_0"/>
+          <include name="test_ToString_many"/>
+          <include name="test_Revers_many"/>
+          <include name="test_AddStart_2"/>
+          <include name="test_DelPos_2"/>
+          <include name="test_MaxPos_2"/>
+          <include name="test_DelPos_1"/>
+          <include name="test_Min_Ex"/>
+          <include name="test_AddStart_1"/>
+          <include name="test_toArray_null"/>
+          <include name="test_Sort_2"/>
+          <include name="test_DelEnd_many"/>
+          <include name="test_Sort_0"/>
+          <include name="test_addPos_many"/>
+          <include name="test_AddStart_many"/>
+          <include name="test_Revers_1"/>
+          <include name="test_Revers_2"/>
+          <include name="test_Revers_0"/>
+          <include name="test_AddEnd_many"/>
+          <include name="test_init_null"/>
+          <include name="test_halfRevers_2"/>
+          <include name="test_halfRevers_1"/>
+          <include name="test_Sort_1"/>
+          <include name="test_halfRevers_many"/>
+          <include name="test_Set_many"/>
+          <include name="test_MinPos_0"/>
+          <include name="test_MinPos_2"/>
+          <include name="test_MinPos_many"/>
+          <include name="test_ToString_2"/>
+          <include name="test_ToString_1"/>
+          <include name="test_Sort_many"/>
+          <include name="test_ToString_0"/>
+          <include name="test_addPos_many_end"/>
+          <include name="test_init_many"/>
+          <include name="test_AddEnd_2"/>
+          <include name="test_Max_1"/>
+          <include name="test_AddEnd_1"/>
+          <include name="test_Max_2"/>
+          <include name="test_DelPos_many"/>
+          <include name="test_Max_0"/>
+        </methods>
+      </class> <!-- Lister.LListTestNG -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

@@ -356,7 +356,7 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 	/***********************/
 	/*****add Iterator******/
 	/***********************/
-	/*http://www.programcreek.com/2014/04/leetcode-binary-search-tree-iterator-java/*/
+	
 	@Override
 	public Iterator<Integer> iterator() 
 	{
@@ -386,15 +386,6 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 		{
 			Node node = stack.pop();
 			int result = node.val;
-			//			if (node.right != null) 
-			//			{
-			//				node = node.right;
-			//				while (node != null) 
-			//				{
-			//					stack.push(node);
-			//					node = node.left;
-			//				}
-			//			}
 			Node child = node.right;
 			while (child != null) {
 				stack.push(child);

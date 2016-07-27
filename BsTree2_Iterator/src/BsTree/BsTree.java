@@ -1,5 +1,8 @@
 ﻿package BsTree;
 
+import java.util.Iterator;
+import java.util.Stack;
+
 public class BsTree implements EBsTree
 {
 
@@ -319,5 +322,55 @@ public class BsTree implements EBsTree
 			successor.right = delNode.right;
 		}
 		return successor;
+	}
+	/***********************/
+	/*****add Iterator******/
+	/***********************/
+	/*http://www.programcreek.com/2014/04/leetcode-binary-search-tree-iterator-java/*/
+	@Override
+	public Iterator<Integer> iterator() 
+	{
+		return new MyIter(root);
+	}
+	class MyIter implements Iterator<Integer>
+	{
+		Stack<Node> stack;
+		public MyIter(Node root) 
+		{
+			stack = new Stack<Node>();
+			while (root != null) 
+			{
+				stack.push(root);
+				root = root.left;
+			}
+		}
+
+		@Override
+		public boolean hasNext() 
+		{
+			return !stack.isEmpty();
+		}
+
+		@Override
+		public Integer next() 
+		{
+			Node node = stack.pop();
+			int result = node.val;
+			//			if (node.right != null) 
+			//			{
+			//				node = node.right;
+			//				while (node != null) 
+			//				{
+			//					stack.push(node);
+			//					node = node.left;
+			//				}
+			//			}
+			Node child = node.right;
+			while (child != null) {
+				stack.push(child);
+				child = child.left;
+			}			
+			return result;
+		}		
 	}
 }

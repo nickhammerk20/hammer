@@ -1,6 +1,6 @@
 ﻿package BsTree;
 
-interface EBsTree
+interface EBsTree extends Iterable<Integer>
 {
 	public void init(int[] in); 
 	public void print();	

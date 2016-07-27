@@ -14,31 +14,31 @@ import org.junit.runners.Parameterized.Parameters;
 public class EListTestParamet 
 {
 	EList obj = null;
-	
+
 	@Parameters
 	public static Collection<Object[]> Elist()
 	{
 		return Arrays.asList(new Object[][]
-		{
+				{
 			{ new AList0()},
 			{ new AList1()}, 
 			{ new AList2()},
 			{ new LList1()},
 			{ new LList2()}
-		});
+				});
 	}
-	
+
 	public EListTestParamet(EList Paramet) 
 	{
 		obj = Paramet;
 	}
-		
+
 	@Before
 	public void start()
 	{
 		obj.clear();
 	}
-	
+
 	//================================
 	// init
 	//================================
@@ -81,14 +81,14 @@ public class EListTestParamet
 	}
 	@Test
 	public void test_init_many() 
-		{
-			int[] ini = {10,20,77,11,24,82};
-			obj.init(ini);
-			int[] act = obj.toArray();
-			int[] exp = {10,20,77,11,24,82};
-			assertArrayEquals(exp, act);
-		}
-	
+	{
+		int[] ini = {10,20,77,11,24,82};
+		obj.init(ini);
+		int[] act = obj.toArray();
+		int[] exp = {10,20,77,11,24,82};
+		assertArrayEquals(exp, act);
+	}
+
 	//================================
 	// size
 	//================================
@@ -448,7 +448,7 @@ public class EListTestParamet
 		obj.init(ini);
 		assertEquals(10, obj.min());
 	}
-	
+
 	//================================
 	// max
 	//================================
@@ -518,7 +518,7 @@ public class EListTestParamet
 		obj.init(ini);
 		assertEquals(3, obj.minPos());
 	}
-	
+
 	//================================
 	// maxPos
 	//================================
@@ -550,7 +550,7 @@ public class EListTestParamet
 		obj.init(ini);
 		assertEquals(5, obj.maxPos());
 	}
-	
+
 	//================================
 	// revers
 	//================================
@@ -711,13 +711,13 @@ public class EListTestParamet
 	//================================
 	// addPos
 	//================================
-//	@Test(expected=IllegalArgumentException.class)
-//	public void test_addPos_Except() 
-//	{
-//		int[] ini = {};
-//		obj.init(ini);
-//		obj.addPos(2,100);
-//	}
+	/**	@Test(expected=IllegalArgumentException.class)
+		public void test_addPos_Except() 
+		{
+			int[] ini = {};
+			obj.init(ini);
+			obj.addPos(2,100);
+		}**/
 	@Test
 	public void test_addPos_0() 
 	{
@@ -783,7 +783,7 @@ public class EListTestParamet
 		int[] ini = {};
 		obj.init(ini);
 		obj.delPos(1);
-		
+
 	}
 	@Test(expected=IllegalArgumentException.class)
 	public void test_DelPos_0() 
@@ -795,7 +795,7 @@ public class EListTestParamet
 		int[] exp = {};
 		assertEquals(0, obj.size());
 		assertArrayEquals(exp, act);
-		
+
 	}
 	@Test
 	public void test_DelPos_1() 
@@ -852,7 +852,7 @@ public class EListTestParamet
 	public void test_DelStart_0() 
 	{
 		int[] ini = {};
-		
+
 		obj.init(ini);
 		obj.delStart();
 		int[] act = obj.toArray();
@@ -938,7 +938,104 @@ public class EListTestParamet
 		assertArrayEquals(exp, act);
 		assertEquals(82, del);
 	}
+
+	//================================
+	// Iterator
+	//================================
+	/** принцип тестов итератора для ХЛистов:
+			- инициализируешь объект хЛиста
+			- пройтись по объекту с помощью for each
+		варианты проверки:
+			- сравнивать поэлементно внутри for each
+			- загнать все элементы из хЛиста во временный массив, сравнить массивы **/
+
+	@Test
+	public void test_Iterator_0() 
+	{
+		int[] ini = {};
+//		String exp = "";
+		obj.init(ini);
+		String act = obj.toString();
+//		assertEquals(exp, act);
+		int [] ar = obj.toArray();
+		String str = "";
+		int j = 0;
+		for(Integer i : obj)
+		{
+			str +=( i );
+			if(j < ar.length-1)
+				str += ",";
+			assertEquals(i.intValue(), ar[j]);
+			j++;
+		}
+		assertEquals(str, act);
+	}
 	
+	@Test
+	public void test_Iterator_1() 
+	{
+		int[] ini = {10};
+//		String exp = "10";
+		obj.init(ini);
+		String act = obj.toString();
+//		assertEquals(exp, act);
+		int [] ar = obj.toArray();
+		String str = "";
+		int j = 0;
+		for(Integer i : obj)
+		{
+			str +=( i );
+			if(j < ar.length-1)
+				str += ",";
+			assertEquals(i.intValue(), ar[j]);
+			j++;
+		}
+		assertEquals(str, act);
+	}
+	
+	@Test
+	public void test_Iterator_2() 
+	{
+		int[] ini = {10,20};
+//		String exp = "10,20";
+		obj.init(ini);
+		String act = obj.toString();
+//		assertEquals(exp, act);
+		int [] ar = obj.toArray();
+		String str = "";
+		int j = 0;
+		for(Integer i : obj)
+		{
+			str +=( i );
+			if(j < ar.length-1)
+				str += ",";
+			assertEquals(i.intValue(), ar[j]);
+			j++;
+		}
+		assertEquals(str, act);
+	}
+	
+	@Test
+	public void test_Iterator_many() 
+	{
+		int[] ini = {10,20,77,11,24,82};
+//		String exp = "10,20,77,11,24,82";
+		obj.init(ini);
+		String act = obj.toString();
+//		assertEquals(exp, act);
+		int [] ar = obj.toArray();
+		String str = "";
+		int j = 0;
+		for(Integer i : obj)
+		{
+			str +=( i );
+			if(j < ar.length-1)
+				str += ",";
+			assertEquals(i.intValue(), ar[j]);
+			j++;
+		}
+		assertEquals(str, act);
+	}
 }
 
 
