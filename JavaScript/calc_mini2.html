@@ -1,0 +1,38 @@
+<form name="calc1">
+<input type="text" id = "txt1" /><p>
+<input type="text" id = "OP" /><p>
+<input type="text" id = "txt3" /><p>
+<input type="text" id = "Res" /><p>
+<input type="button" value="Click" onclick="ff()" />
+
+
+<script>
+	function ff()
+	{
+		var a = parseInt ( txt1.value )
+		var b = parseInt ( txt3.value )
+		
+		var res = 0;
+		
+		if (OP.value == '+')
+			{
+				Res.value = (a + b);
+			}
+		else if (OP.value == '*')
+			{
+				Res.value = (a * b);
+			}
+		else if (OP.value == '/')
+			{
+				Res.value = (a / b);
+			}
+		else if (OP.value == '-')
+			{
+				Res.value = (a - b);
+			}
+		A.value = "";
+		OP.value = "";
+		B.value = "";
+	}
+
+</script>

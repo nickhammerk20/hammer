@@ -1,0 +1,113 @@
+<form name="calc">
+     <table class="tblCalc" cellpadding=4 cellspacing=4>
+     <tr>
+         <td colspan=5 align=middle>
+         	<input id="editWide" name="ReadOut" type="Text"
+              	size=20 value="0" width="250px">
+         </td>
+     </tr>
+     <tr>
+         <td><input name="btnSeven" type="Button"
+          	value="7" onclick="NumPressed(7)"></td>
+         <td><input name="btnEight" type="Button"
+          	value="8" onclick="NumPressed(8)"></td>
+         <td><input name="btnNine" type="Button"
+          	value="9" onclick="NumPressed(9)"></td>
+         <td><input name="btnPlus" type="Button"
+          	value="+" onclick="Operation('+')" /></td>
+     </tr>
+     <tr>
+         <td><input name="btnFour" type="Button"
+          	value="4" onclick="NumPressed(4)"></td>
+         <td><input name="btnFive" type="Button"
+          	value="5" onclick="NumPressed(5)"></td>
+         <td><input name="btnSix" type="Button"
+          	value="6" onclick="NumPressed(6)"></td>
+         <td><input name="btnMinus" type="Button"
+          	value="-" onclick="Operation('-')" /></td>
+     </tr>
+     <tr>
+         <td><input name="btnOne" type="Button"
+          	value="1" onclick="NumPressed(1)"></td>
+         <td><input name="btnTwo" type="Button"
+          	value="2" onclick="NumPressed(2)"></td>
+         <td><input name="btnThree" type="Button"
+          	value="3" onclick="NumPressed(3)"></td>
+         <td><input name="btnMultiply" type="Button"
+          	value="*" onclick="Operation('*')" /></td>
+     </tr>
+     <tr>
+         <td><input name="btnZero" type="Button"
+          	value="0" onclick="NumPressed(0)"></td>
+         <td><input name="btnClear" type="Button"
+          	value="C" onclick="Clear()" /></td>
+         <td><input id="btnWide" name="btnEquals"
+          	type="Button" value="=" onclick="Operation('=')"></td>
+         <td><input name="btnDivide" type="Button"
+          	value=" / " onclick="Operation('/')" /></td>
+     </tr>
+     </table>
+</form>
+
+<script language="JavaScript">
+var Fcalc = document.calc;
+var Currents = 0;
+var FlagNewNum = false;
+var PendingOp = "";
+
+
+// обработчик нажатия цифровой кнопки
+function NumPressed (Num) 
+{
+		if (FlagNewNum) 
+		{
+			Fcalc.ReadOut.value = Num;
+			FlagNewNum = false;
+		}	
+		else 
+		{
+			if (Fcalc.ReadOut.value == "0")
+				Fcalc.ReadOut.value = Num;
+			else
+				Fcalc.ReadOut.value += Num;
+		}
+}
+	
+// обработчик нажатия кнопки действия
+function Operation (Op) 
+{
+		var Readout = Fcalc.ReadOut.value;
+		if (FlagNewNum && PendingOp != "=")
+		{
+			Fcalc.ReadOut.value = Currents;
+		}
+		else
+		{
+			FlagNewNum = true;
+			if ( '+' == PendingOp )
+				Currents += parseFloat(Readout);
+			else if ( '-' == PendingOp )
+				Currents -= parseFloat(Readout);
+			else if ( '/' == PendingOp )
+				Currents /= parseFloat(Readout);
+			else if ( '*' == PendingOp )
+				Currents *= parseFloat(Readout);
+			else
+				Currents = parseFloat(Readout);
+			Fcalc.ReadOut.value = Currents;
+			PendingOp = Op;
+		}
+}
+// Очистка поля
+function ClearEntry () 
+{
+		Fcalc.ReadOut.value = "0";
+		FlagNewNum = true;
+}
+function Clear () 
+{
+		Currents = 0;
+		PendingOp = "";
+		ClearEntry();
+}
+</script>

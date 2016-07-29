@@ -1,0 +1,59 @@
+<input type="text" id = "input" /><p>
+<input type="button" value="1" onclick="fPress(this)" />
+<input type="button" value="2" onclick="fPress(this)" />
+<input type="button" value="3" onclick="fPress(this)" />
+<input type="button" value="*" onclick="fOperator(this)" /><p>
+<input type="button" value="4" onclick="fPress(this)" />
+<input type="button" value="5" onclick="fPress(this)" />
+<input type="button" value="6" onclick="fPress(this)" />
+<input type="button" value="/" onclick="fOperator(this)" /><p>
+<input type="button" value="7" onclick="fPress(this)" />
+<input type="button" value="8" onclick="fPress(this)" />
+<input type="button" value="9" onclick="fPress(this)" />
+<input type="button" value="-" onclick="fOperator(this)" /><p>
+<input type="button" value="0" onclick="fPress(this)" />
+<input type="button" value="," onclick="" />
+<input type="button" value="+" onclick="fOperator(this)" />
+<input type="button" value="=" onclick="fOperator(this)" /><p>
+
+<script>
+	var num1;
+	var oper;
+	
+	//нажатие кнопок
+	function fPress (num)
+	{
+		input.value = input.value + num.value;
+	}
+	///функция переключения на заполнение второго значения и действия
+	function fOperator (num)
+	{
+		if (num.value == "=")
+		{
+			var a = parseInt (num1);	
+			var b = parseInt (input.value);	
+			input.value = fRezult (a, b, oper);
+		}
+		else
+		{
+			num1 = input.value;
+			oper = num.value;
+			input.value = "";
+		}		
+	}
+	//вычисление
+	function fRezult (a, b, operator)
+	{
+		var res = 0;
+		
+		switch (operator)
+		{
+			case '+': res = a + b;	break;
+			case '-': res = a - b;	break;
+			case '*': res = a * b; 	break;
+			case '/': res = a / b; 	break;
+		}
+		return res;
+	}
+	
+</script>

@@ -59,11 +59,11 @@ public class LListTestNGParamet extends Assert
 	@Test(dataProvider = "Lister", groups={"init"})
 	public void test_init_2(EList obj) 
 	{
-		obj.clear();
+//		obj.clear();
 		int[] ini = {10,20};
 		obj.init(ini);
 		int[] act = obj.toArray();
-		System.out.println(obj.toString());
+//		System.out.println(obj.toString());
 		int[] exp = {10,20};
 		assertArrayEquals(exp, act);
 	}

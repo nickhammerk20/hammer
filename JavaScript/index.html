@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head >
+    <meta charset="utf-8">
+    <title>Пляж, однако</title>
+    <link  rel="stylesheet" href="css/main.css">
+  	  <style>
+		html 
+		{
+			height: 100%; 
+		} /*задаем высоту для страницы равную 100% от высоты области просмотра для того,
+	  		чтобы картинка позиционироваласть относительно окна браузера, а не области с контентом.*/
+		body 
+		  {
+        	/*background-image: url('img/bg.gif');*/
+			background-image: url('http://99px.ru/sstorage/86/2015/08/image_860408151316539920374.gif');
+        	background-size: cover;
+			padding-right: 5px; /*отступ от правого края равный ширине картинки*/
+      	  }
+		header
+		  {
+			opacity: 0.8; /* Полупрозрачность элемента */
+			/*background-image: url('img/081_2.gif');*/
+			background-image: url('http://evgen-rubaev.ru/wp-content/uploads/2014/12/-%D1%84%D0%B0%D0%B9%D0%BB%D1%8B5-e1420569471242.jpg');
+			background-size: 100%;
+			height: 70pt;
+		  }
+		b 
+		  {
+			color: crimson;  
+		  }
+	   td {
+    		text-align: center; /* Выравниваем текст по центру ячейки */
+   		  }
+	   .kk
+		  {
+			padding-top: 75px;	  
+		  }  
+    </style>
+</head>
+<header>
+	<center><p >Это шапка!</p></center>
+	<table width="100%">
+		<tr>
+			<td><a href="#"><input type="button" value=" Кнопка 1 " style="bt1" id="btn1" /></a></td>
+			<td><a href="#"><input type="button" value=" Кнопка 2 " style="bt1" id="btn1" /></a></td>
+			<td><a href="#"><input type="button" value=" Кнопка 3 " style="bt1" id="btn1" /></a></td>
+		</tr>
+	</table>
+</header>	
+
+  <body>
+	<div class="kk">
+		<p>
+			<b>Ваше имя:</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+			<input type="text" size="40">
+			<input type="button" value=" Кнопка 4 " style="bt2" id="btn4">
+  		</p>
+	
+		<p>
+			<b>Ваша фамилия:</b>
+			<input type="text" size="40">
+			<input type="button" value=" Кнопка 5 " style="bt2" id="btn5">
+  		</p>
+	</div> 
+	</body>
+</html>

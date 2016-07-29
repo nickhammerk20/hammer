@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<svg id="mySVG" width="500" height="500" style="border:3px solid #c3c3c3;">
+</svg>
+</body>
+
+<script>
+    var draw = 
+    {
+		tool:'pen', // Инструмент
+		size:'1',  // Толщина
+	}
+
+	draw.init = function() //Иницилизация канвас
+	{ 
+		this.canvas = document.getElementById('canvas');
+		//this.ctx = this.canvas.getContext('2d');
+	};
+
+	draw.drawing = function(tool)
+	{
+		var x1=(Math.PI/180)*200;
+		var x2=(Math.PI/180)*360;
+
+		if(this.startDraw)
+    	{
+			this.ctx.strokeStyle = '#1a00ff';
+        	this.ctx.fillStyle =  '#1a00ff';
+			this.ctx.lineWidth = this.size;
+			this.ctx.lineCap = 'round';
+    		switch(tool)
+            {
+			case 'pen':
+               	this.ctx.beginPath();
+               	this.ctx.arc(this.x, this.y, 15, x1, x2)
+               	this.ctx.fill();
+               	this.ctx.stroke();
+				break;
+			}
+		}
+	}
+
+	draw.init();
+	draw.canvas.addEventListener('mousedown', function(e)
+    {
+		draw.startDraw = true;
+		draw.drawing('pen');
+	}, false);
+	draw.canvas.addEventListener('mousemove', function(e)
+    {
+		draw.x = e.pageX - draw.canvas.offsetLeft; //Координата X
+		draw.y = e.pageY - draw.canvas.offsetTop; //Координата Y
+		draw.drawing('pen');
+	}, false);
+	draw.canvas.addEventListener('mouseup', function()
+    {
+		draw.startDraw = false;
+	}, false);
+
+</script>
+
+</html>
