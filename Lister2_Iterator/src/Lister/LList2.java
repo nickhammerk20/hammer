@@ -367,30 +367,35 @@ public class LList2 implements EList, Iterable<Integer>
 		}
 	}
 
+	/** 
+	 * Еще один вариант Итератора, 
+	 * данный итератор нельзя использовать при многопоточности
+	 * */
+
 	@Override
 	public Iterator<Integer> iterator() 
 	{
-		return new MyIter(start);
+		return new MyIter(toArray());
 	}
 	class MyIter implements Iterator<Integer>
 	{
-		Node p = null;
-		public MyIter(Node p) 
+		int[] ar;
+		int i = 0;
+
+		public MyIter(int[] ar) 
 		{
-			this.p = p;
+			this.ar = ar;
 		}
 		@Override
 		public boolean hasNext() 
 		{
-			return p != null;
+			return i < ar.length;
 		}
 
 		@Override
 		public Integer next() 
 		{
-			int ret = p.val;
-			p = p.next;
-			return ret;
+			return ar[i++];
 		}		
 	}
 }

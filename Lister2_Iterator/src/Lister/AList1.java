@@ -231,15 +231,19 @@ public class AList1 implements EList, Iterable<Integer>
 	@Override
 	public Iterator<Integer> iterator() 
 	{
-		return new MyIter(ar);
+		return new MyIter(ar, index);
 	}
 	class MyIter implements Iterator<Integer>
 	{
-		int[] ar = null;
-		int i = 0;
-		public MyIter(int[] ar)
+		int[] ar;
+		int i;
+		int index;
+		
+		public MyIter(int[] ar, int index)
 		{
 			this.ar = ar;
+			this.index = index;
+			
 		}
 		@Override
 		public boolean hasNext() 
@@ -250,9 +254,13 @@ public class AList1 implements EList, Iterable<Integer>
 		@Override
 		public Integer next() 
 		{
-			int ret = ar[i];
-			i++;
+			/**
+			 * как вариант тоже рабочее
+			 * int ret = ar[i];
+			i++; 
 			return ret;
+			*/
+			return ar[i++];
 		}
 		
 	}

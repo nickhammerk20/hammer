@@ -276,29 +276,30 @@ public class AList2 implements EList, Iterable<Integer>
 	@Override
 	public Iterator<Integer> iterator() 
 	{
-		return new MyIter(ar);
+		return new MyIter( ar , start , end );
 	}
 	class MyIter implements Iterator<Integer>
 	{
 		int[] ar = null;
-		int i = start;
+		int start;
+		int end;
 		
-		public MyIter(int[] ar)
+		public MyIter(int[] ar, int start, int end)
 		{
 			this.ar = ar;
+			this.start = start;
+			this.end = end;
 		}
 		@Override
 		public boolean hasNext() 
 		{
-			return i < end;
+			return start < end;
 		}
 
 		@Override
 		public Integer next() 
 		{
-			int ret = ar[i];
-			i++;
-			return ret;
+			return ar[start++];
 		}
 		
 	}

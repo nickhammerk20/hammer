@@ -22,8 +22,6 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 	}
 	protected Node root = null;
 
-
-
 	//Инициализация 
 	@Override
 	public void init(int[] ini) 
@@ -91,7 +89,7 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 		v.action(p);
 		visit (p.right, v);
 	}
-	
+
 	//Печать в консоль 
 	@Override
 	public void print() 
@@ -109,7 +107,7 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 			str += p.val+", ";
 		}		
 	}
-	
+
 	//Получить количество всех узлов в дереве (с потомками и без) 
 	private class SizeVisitor implements Visitor
 	{
@@ -188,6 +186,29 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 		}		
 	}
 
+	//Получить массив через LVR дерева
+	@Override
+	public int[] toArray() 
+	{
+		ToArrayVisitor v = new ToArrayVisitor();
+		visit( root , v );
+		return v.rez;
+	}
+	private class ToArrayVisitor implements Visitor
+	{
+		int[] rez = new int [size()];
+		int i = 0;
+		@Override
+		public void action(Node p) 
+		{
+			rez[i++] = p.val;	
+		}			
+	}
+
+	/******************************/
+	/********OLD*******************/
+	/******************************/
+
 	//Получить количество уровней (высота дерева)
 	@Override
 	public int height() 
@@ -232,28 +253,6 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 				max=i;
 		}
 		return max;
-	}
-
-	//Получить массив через LVR дерева
-	private class Counter
-	{
-		int index = 0;
-	}
-	@Override
-	public int[] toArray() 
-	{
-		int[] ar = new int[size()];
-		nodeToArray(root, ar, new Counter());
-		return ar;
-	}
-	private void nodeToArray(Node p, int[] ar, Counter ii) 
-	{
-		if (p == null)
-			return;
-
-		nodeToArray(p.left,  ar, ii);
-		ar[ii.index++] = p.val;
-		nodeToArray(p.right, ar, ii);
 	}
 
 	//Зеркально пересадить дерево
@@ -356,7 +355,7 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 	/***********************/
 	/*****add Iterator******/
 	/***********************/
-	
+
 	@Override
 	public Iterator<Integer> iterator() 
 	{

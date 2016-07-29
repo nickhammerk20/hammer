@@ -1,5 +1,6 @@
 package test;
 
+import static org.junit.Assert.assertEquals;
 import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -7,6 +8,7 @@ import org.testng.annotations.Test;
 import Lister.AList0;
 import Lister.AList1;
 import Lister.AList2;
+import Lister.AList3_MonoIterator;
 import Lister.EList;
 import Lister.LList1;
 import Lister.LList2;
@@ -20,6 +22,7 @@ public class LListTestNGParamet extends Assert
 			{ new AList0()},
 			{ new AList1()}, 
 			{ new AList2()},
+			{ new AList3_MonoIterator()},
 			{ new LList1()},
 			{ new LList2()}						
 		};
@@ -936,8 +939,8 @@ public class LListTestNGParamet extends Assert
 	{
 		int[] ini = {};
 		obj.init(ini);
-		String act = obj.toString();
 		int [] ar = obj.toArray();
+		String act = obj.toString();
 		String str = "";
 		int j = 0;
 		for(Integer i : obj)
@@ -945,18 +948,18 @@ public class LListTestNGParamet extends Assert
 			str +=( i );
 			if(j < ar.length-1)
 				str += ",";
-			Assert.assertEquals(i.intValue(), ar[j]);
+			assertEquals(i.intValue(), ar[j]);
 			j++;
 		}
-		Assert.assertEquals(str, act);
+		assertEquals(str, act);
 	}
 	@Test(dataProvider = "Lister", groups={"Iterator"})
 	public void test_Iterator_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
-		String act = obj.toString();
 		int [] ar = obj.toArray();
+		String act = obj.toString();
 		String str = "";
 		int j = 0;
 		for(Integer i : obj)
@@ -964,18 +967,18 @@ public class LListTestNGParamet extends Assert
 			str +=( i );
 			if(j < ar.length-1)
 				str += ",";
-			Assert.assertEquals(i.intValue(), ar[j]);
+			assertEquals(i.intValue(), ar[j]);
 			j++;
 		}
-		Assert.assertEquals(str, act);
+		assertEquals(str, act);
 	}
 	@Test(dataProvider = "Lister", groups={"Iterator"})
 	public void test_Iterator_2(EList obj) 
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
-		String act = obj.toString();
 		int [] ar = obj.toArray();
+		String act = obj.toString();
 		String str = "";
 		int j = 0;
 		for(Integer i : obj)
@@ -983,18 +986,18 @@ public class LListTestNGParamet extends Assert
 			str +=( i );
 			if(j < ar.length-1)
 				str += ",";
-			Assert.assertEquals(i.intValue(), ar[j]);
+			assertEquals(i.intValue(), ar[j]);
 			j++;
 		}
-		Assert.assertEquals(str, act);
+		assertEquals(str, act);
 	}
 	@Test(dataProvider = "Lister", groups={"Iterator"})
 	public void test_Iterator_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
-		String act = obj.toString();
 		int [] ar = obj.toArray();
+		String act = obj.toString();
 		String str = "";
 		int j = 0;
 		for(Integer i : obj)
@@ -1002,10 +1005,10 @@ public class LListTestNGParamet extends Assert
 			str +=( i );
 			if(j < ar.length-1)
 				str += ",";
-			Assert.assertEquals(i.intValue(), ar[j]);
+			assertEquals(i.intValue(), ar[j]);
 			j++;
 		}
-		Assert.assertEquals(str, act);
+		assertEquals(str, act);
 	}
 
 }

@@ -1,8 +1,8 @@
-﻿package Lister;
+package Lister;
 
 import java.util.Iterator;
 
-public class AList0 implements EList, Iterable<Integer>
+public class AList3_MonoIterator implements EList, Iterable<Integer>, Iterator<Integer>
 {
 	int[] ar = new int[0];
 	
@@ -245,34 +245,30 @@ public class AList0 implements EList, Iterable<Integer>
 		return ret;			
 	}
 	
-	/***********************/
-	/*****add Iterator******/
-	/***********************/
+	/** 
+	 * МОНОПРОЦЕСС
+	 * изначальный Итератор ни чем не отличается от LList1, 
+	 * но в этом примере используется итератор через массив как пример из AList0
+	 * */
+
 	@Override
 	public Iterator<Integer> iterator() 
 	{
-		return new MyIter(ar);
+		i = 0;
+		return this;
 	}
-	class MyIter implements Iterator<Integer>
-	{
-		int[] ar;
-		int i = 0;
-		public MyIter(int[] ar)
-		{
-			this.ar = ar;
-		}
-					
-		@Override
-		public boolean hasNext() 
-		{
-			return i < ar.length;
-		}
+	
+	int i = 0;
 
-		@Override
-		public Integer next() 
-		{
-			
-			return ar[i++];
-		}
+	@Override
+	public boolean hasNext() 
+	{
+		return i < ar.length;
 	}
+
+	@Override
+	public Integer next() 
+	{
+		return ar[i++];
+	}		
 }

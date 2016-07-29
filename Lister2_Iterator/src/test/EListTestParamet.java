@@ -13,6 +13,7 @@ import org.junit.runners.Parameterized.Parameters;
 import Lister.AList0;
 import Lister.AList1;
 import Lister.AList2;
+import Lister.AList3_MonoIterator;
 import Lister.EList;
 import Lister.LList1;
 import Lister.LList2;
@@ -30,6 +31,7 @@ public class EListTestParamet
 			{ new AList0()},
 			{ new AList1()}, 
 			{ new AList2()},
+			{ new AList3_MonoIterator()},
 			{ new LList1()},
 			{ new LList2()}
 				});
@@ -1026,11 +1028,9 @@ public class EListTestParamet
 	public void test_Iterator_many() 
 	{
 		int[] ini = {10,20,77,11,24,82};
-//		String exp = "10,20,77,11,24,82";
 		obj.init(ini);
-		String act = obj.toString();
-//		assertEquals(exp, act);
 		int [] ar = obj.toArray();
+		String act = obj.toString();
 		String str = "";
 		int j = 0;
 		for(Integer i : obj)
