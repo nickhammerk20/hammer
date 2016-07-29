@@ -1,22 +1,35 @@
-package Lister;
+package test;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-
+import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import Lister.AList0;
+import Lister.AList1;
+import Lister.AList2;
+import Lister.EList;
+import Lister.LList1;
+import Lister.LList2;
 
-
-
-public class LListTestNG 
+public class LListTestNGParamet extends Assert
 {
-	EList obj = new LList1();
+	@DataProvider
+	public Object[][] Lister() {
+		return new Object[][]{
+			{ new AList0()},
+			{ new AList1()}, 
+			{ new AList2()},
+			{ new LList1()},
+			{ new LList2()}						
+		};
+	}
 
 	//================================
 	// init
 	//================================
 
-	@Test
-	public void test_init_null() 
+	@Test(dataProvider = "Lister", groups={"init"})
+	public void test_init_null(EList obj) 
 	{
 		int[] ini = null;
 		obj.init(ini);
@@ -24,8 +37,8 @@ public class LListTestNG
 		int[] exp = {};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_init_0() 
+	@Test(dataProvider = "Lister", groups={"init"})
+	public void test_init_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
@@ -33,8 +46,8 @@ public class LListTestNG
 		int[] exp = {};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_init_1() 
+	@Test(dataProvider = "Lister", groups={"init"})
+	public void test_init_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
@@ -42,17 +55,19 @@ public class LListTestNG
 		int[] exp = {10};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_init_2() 
+	@Test(dataProvider = "Lister", groups={"init"})
+	public void test_init_2(EList obj) 
 	{
+		obj.clear();
 		int[] ini = {10,20};
 		obj.init(ini);
 		int[] act = obj.toArray();
+		System.out.println(obj.toString());
 		int[] exp = {10,20};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_init_many() 
+	@Test(dataProvider = "Lister", groups={"init"})
+	public void test_init_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
@@ -65,46 +80,46 @@ public class LListTestNG
 	// size
 	//================================
 
-	@Test
-	public void test_Size_null() 
+	@Test(dataProvider = "Lister", groups={"size"})
+	public void test_Size_null(EList obj) 
 	{
 		int[] ini = null;
 		obj.init(ini);
-		assertEquals(0, obj.size());
+		Assert.assertEquals(0, obj.size());
 	}
-	@Test
-	public void test_Size_0() 
+	@Test(dataProvider = "Lister", groups={"size"})
+	public void test_Size_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
-		assertEquals(0, obj.size());
+		Assert.assertEquals(0, obj.size());
 	}
-	@Test
-	public void test_Size_1() 
+	@Test(dataProvider = "Lister", groups={"size"})
+	public void test_Size_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
-		assertEquals(1, obj.size());
+		Assert.assertEquals(1, obj.size());
 	}
-	@Test
-	public void test_Size_2() 
+	@Test(dataProvider = "Lister", groups={"size"})
+	public void test_Size_2(EList obj) 
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
-		assertEquals(2, obj.size());
+		Assert.assertEquals(2, obj.size());
 	}
-	@Test
-	public void test_Size_many() 
+	@Test(dataProvider = "Lister", groups={"size"})
+	public void test_Size_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
-		assertEquals(6, obj.size());
+		Assert.assertEquals(6, obj.size());
 	}
 	//================================
 	// toArray
 	//================================
-	@Test
-	public void test_toArray_null() 
+	@Test(dataProvider = "Lister", groups={"toArray"})
+	public void test_toArray_null(EList obj) 
 	{
 		int[] ini = null;
 		obj.init(ini);
@@ -112,8 +127,8 @@ public class LListTestNG
 		int[] exp = {};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_toArray_0() 
+	@Test(dataProvider = "Lister", groups={"toArray"})
+	public void test_toArray_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
@@ -121,8 +136,8 @@ public class LListTestNG
 		int[] exp = {};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_toArray_1() 
+	@Test(dataProvider = "Lister", groups={"toArray"})
+	public void test_toArray_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
@@ -130,8 +145,8 @@ public class LListTestNG
 		int[] exp = {10};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_toArray_2() 
+	@Test(dataProvider = "Lister", groups={"toArray"})
+	public void test_toArray_2(EList obj) 
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
@@ -139,8 +154,8 @@ public class LListTestNG
 		int[] exp = {10,20};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_toArray_many() 
+	@Test(dataProvider = "Lister", groups={"toArray"})
+	public void test_toArray_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82,44};
 		obj.init(ini);
@@ -151,57 +166,57 @@ public class LListTestNG
 	//================================
 	// clear
 	//================================
-	@Test
-	public void test_Clear_null() 
+	@Test(dataProvider = "Lister", groups={"clear"})
+	public void test_Clear_null(EList obj) 
 	{
 		int[] ini = null;
 		obj.init(ini);
 		obj.clear();
-		assertEquals(0, obj.size());
+		Assert.assertEquals(0, obj.size());
 		int[] act = obj.toArray();
 		int[] exp = {};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_Clear_0() 
+	@Test(dataProvider = "Lister", groups={"clear"})
+	public void test_Clear_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
 		obj.clear();
-		assertEquals(0, obj.size());
+		Assert.assertEquals(0, obj.size());
 		int[] act = obj.toArray();
 		int[] exp = {};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_Clear_1() 
+	@Test(dataProvider = "Lister", groups={"clear"})
+	public void test_Clear_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
 		obj.clear();
-		assertEquals(0, obj.size());
+		Assert.assertEquals(0, obj.size());
 		int[] act = obj.toArray();
 		int[] exp = {};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_Clear_2() 
+	@Test(dataProvider = "Lister", groups={"clear"})
+	public void test_Clear_2(EList obj) 
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
 		obj.clear();
-		assertEquals(0, obj.size());
+		Assert.assertEquals(0, obj.size());
 		int[] act = obj.toArray();
 		int[] exp = {};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_Clear_many() 
+	@Test(dataProvider = "Lister", groups={"clear"})
+	public void test_Clear_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
 		obj.clear();
-		assertEquals(0, obj.size());
+		Assert.assertEquals(0, obj.size());
 		int[] act = obj.toArray();
 		int[] exp = {};
 		assertArrayEquals(exp, act);
@@ -209,46 +224,46 @@ public class LListTestNG
 	//================================
 	// addStart
 	//================================
-	@Test
-	public void test_AddStart_0() 
+	@Test(dataProvider = "Lister", groups={"addStart"})
+	public void test_AddStart_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
 		obj.addStart(99);
-		assertEquals(1, obj.size());
+		Assert.assertEquals(1, obj.size());
 		int[] act = obj.toArray();
 		int[] exp = {99};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_AddStart_1() 
+	@Test(dataProvider = "Lister", groups={"addStart"})
+	public void test_AddStart_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
 		obj.addStart(99);
-		assertEquals(2, obj.size());
+		Assert.assertEquals(2, obj.size());
 		int[] act = obj.toArray();
 		int[] exp = {99,10};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_AddStart_2() 
+	@Test(dataProvider = "Lister", groups={"addStart"})
+	public void test_AddStart_2(EList obj) 
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
 		obj.addStart(99);
-		assertEquals(3, obj.size());
+		Assert.assertEquals(3, obj.size());
 		int[] act = obj.toArray();
 		int[] exp = {99,10,20};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_AddStart_many() 
+	@Test(dataProvider = "Lister", groups={"addStart"})
+	public void test_AddStart_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
 		obj.addStart(99);
-		assertEquals(7, obj.size());
+		Assert.assertEquals(7, obj.size());
 		int[] act = obj.toArray();
 		int[] exp = {99,10,20,77,11,24,82};
 		assertArrayEquals(exp, act);
@@ -256,46 +271,46 @@ public class LListTestNG
 	//================================
 	// addEnd
 	//================================
-	@Test
-	public void test_AddEnd_0() 
+	@Test(dataProvider = "Lister", groups={"addEnd"})
+	public void test_AddEnd_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
 		obj.addEnd(99);
-		assertEquals(1, obj.size());
+		Assert.assertEquals(1, obj.size());
 		int[] act = obj.toArray();
 		int[] exp = {99};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_AddEnd_1() 
+	@Test(dataProvider = "Lister", groups={"addEnd"})
+	public void test_AddEnd_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
 		obj.addEnd(99);
-		assertEquals(2, obj.size());
+		Assert.assertEquals(2, obj.size());
 		int[] act = obj.toArray();
 		int[] exp = {10,99};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_AddEnd_2() 
+	@Test(dataProvider = "Lister", groups={"addEnd"})
+	public void test_AddEnd_2(EList obj) 
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
 		obj.addEnd(99);
-		assertEquals(3, obj.size());
+		Assert.assertEquals(3, obj.size());
 		int[] act = obj.toArray();
 		int[] exp = {10,20,99};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_AddEnd_many() 
+	@Test(dataProvider = "Lister", groups={"addEnd"})
+	public void test_AddEnd_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
 		obj.addEnd(99);
-		assertEquals(7, obj.size());
+		Assert.assertEquals(7, obj.size());
 		int[] act = obj.toArray();
 		int[] exp = {10,20,77,11,24,82,99};
 		assertArrayEquals(exp, act);
@@ -303,8 +318,8 @@ public class LListTestNG
 	//================================
 	// sort
 	//================================
-	@Test
-	public void test_Sort_0() 
+	@Test(dataProvider = "Lister", groups={"sort"})
+	public void test_Sort_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
@@ -313,8 +328,8 @@ public class LListTestNG
 		int[] exp = {};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_Sort_1() 
+	@Test(dataProvider = "Lister", groups={"sort"})
+	public void test_Sort_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
@@ -323,8 +338,8 @@ public class LListTestNG
 		int[] exp = {10};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_Sort_2() 
+	@Test(dataProvider = "Lister", groups={"sort"})
+	public void test_Sort_2(EList obj) 
 	{
 		int[] ini = {30,20};
 		obj.init(ini);
@@ -333,8 +348,8 @@ public class LListTestNG
 		int[] exp = {20,30};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_Sort_many() 
+	@Test(dataProvider = "Lister", groups={"sort"})
+	public void test_Sort_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
@@ -346,188 +361,188 @@ public class LListTestNG
 	//================================
 	// toString
 	//================================
-	@Test
-	public void test_ToString_0() 
+	@Test(dataProvider = "Lister", groups={"toString"})
+	public void test_ToString_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
 		String act = obj.toString();
 		String exp = "";
-		assertEquals(exp, act);
+		Assert.assertEquals(exp, act);
 	}
-	@Test
-	public void test_ToString_1() 
+	@Test(dataProvider = "Lister", groups={"toString"})
+	public void test_ToString_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
 		String act = obj.toString();
 		String exp = "10";
-		assertEquals(exp, act);
+		Assert.assertEquals(exp, act);
 	}
-	@Test
-	public void test_ToString_2() 
+	@Test(dataProvider = "Lister", groups={"toString"})
+	public void test_ToString_2(EList obj) 
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
 		String act = obj.toString();
 		String exp = "10,20";
-		assertEquals(exp, act);
+		Assert.assertEquals(exp, act);
 	}
-	@Test
-	public void test_ToString_many() 
+	@Test(dataProvider = "Lister", groups={"toString"})
+	public void test_ToString_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
 		String act = obj.toString();
 		String exp = "10,20,77,11,24,82";
-		assertEquals(exp, act);
+		Assert.assertEquals(exp, act);
 	}
 	//================================
 	// min
 	//================================
-	@Test(expectedExceptions = IllegalArgumentException.class)
-	public void test_Min_Ex() 
+	@Test(dataProvider = "Lister", groups={"min"}, expectedExceptions = IllegalArgumentException.class)
+	public void test_Min_Ex(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
-		assertEquals(0, obj.min());
+		Assert.assertEquals(0, obj.min());
 	}
-	@Test(expectedExceptions = IllegalArgumentException.class)
-	public void test_Min_0() 
+	@Test(dataProvider = "Lister", groups={"min"},expectedExceptions = IllegalArgumentException.class)
+	public void test_Min_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
-		assertEquals(0, obj.min());
+		Assert.assertEquals(0, obj.min());
 	}
-	@Test
-	public void test_Min_1() 
+	@Test(dataProvider = "Lister", groups={"min"})
+	public void test_Min_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
-		assertEquals(10, obj.min());
+		Assert.assertEquals(10, obj.min());
 	}
-	@Test
-	public void test_Min_2() 
+	@Test(dataProvider = "Lister", groups={"min"})
+	public void test_Min_2(EList obj) 
 	{
 		int[] ini = {77,11};
 		obj.init(ini);
-		assertEquals(11, obj.min());
+		Assert.assertEquals(11, obj.min());
 	}
-	@Test
-	public void test_Min_many() 
+	@Test(dataProvider = "Lister", groups={"min"})
+	public void test_Min_many(EList obj) 
 	{
 		int[] ini = {11,20,77,10,24,82};
 		obj.init(ini);
-		assertEquals(10, obj.min());
+		Assert.assertEquals(10, obj.min());
 	}
 
 	//================================
 	// max
 	//================================
-	@Test (expectedExceptions=IllegalArgumentException.class)
-	public void test_Max_0() 
+	@Test(dataProvider = "Lister", groups={"max"},expectedExceptions=IllegalArgumentException.class)
+	public void test_Max_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
-		assertEquals(0, obj.max());
+		Assert.assertEquals(0, obj.max());
 	}
-	@Test
-	public void test_Max_1() 
+	@Test(dataProvider = "Lister", groups={"max"})
+	public void test_Max_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
-		assertEquals(10, obj.max());
+		Assert.assertEquals(10, obj.max());
 	}
-	@Test
-	public void test_Max_2() 
+	@Test(dataProvider = "Lister", groups={"max"})
+	public void test_Max_2(EList obj) 
 	{
 		int[] ini = {77,11};
 		obj.init(ini);
-		assertEquals(77, obj.max());
+		Assert.assertEquals(77, obj.max());
 	}
-	@Test
-	public void test_Max_many() 
+	@Test(dataProvider = "Lister", groups={"max"})
+	public void test_Max_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
-		assertEquals(82, obj.max());
+		Assert.assertEquals(82, obj.max());
 	}
 	//================================
 	// minPos
 	//================================
-	@Test(expectedExceptions=IllegalArgumentException.class)
-	public void test_MinPos_Ex() 
+	@Test(dataProvider = "Lister", groups={"minPos"},expectedExceptions=IllegalArgumentException.class)
+	public void test_MinPos_Ex(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
-		assertEquals(0, obj.minPos());
+		Assert.assertEquals(0, obj.minPos());
 	}
-	@Test(expectedExceptions=IllegalArgumentException.class)
-	public void test_MinPos_0() 
+	@Test(dataProvider = "Lister", groups={"minPos"}, expectedExceptions=IllegalArgumentException.class)
+	public void test_MinPos_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
-		assertEquals(0, obj.minPos());
+		Assert.assertEquals(0, obj.minPos());
 	}
-	@Test
-	public void test_MinPos_1() 
+	@Test(dataProvider = "Lister", groups={"minPos"})
+	public void test_MinPos_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
-		assertEquals(0, obj.minPos());
+		Assert.assertEquals(0, obj.minPos());
 	}
-	@Test
-	public void test_MinPos_2() 
+	@Test(dataProvider = "Lister", groups={"minPos"})
+	public void test_MinPos_2(EList obj) 
 	{
 		int[] ini = {77,11};
 		obj.init(ini);
-		assertEquals(1, obj.minPos());
+		Assert.assertEquals(1, obj.minPos());
 	}
-	@Test
-	public void test_MinPos_many() 
+	@Test(dataProvider = "Lister", groups={"minPos"})
+	public void test_MinPos_many(EList obj) 
 	{
 		int[] ini = {12,20,77,11,24,82};
 		obj.init(ini);
-		assertEquals(3, obj.minPos());
+		Assert.assertEquals(3, obj.minPos());
 	}
 
 	//================================
 	// maxPos
 	//================================
-	@Test(expectedExceptions=IllegalArgumentException.class)
-	public void test_MaxPos_0() 
+	@Test(dataProvider = "Lister", groups={"maxPos"}, expectedExceptions=IllegalArgumentException.class)
+	public void test_MaxPos_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
-		assertEquals(0, obj.maxPos());
+		Assert.assertEquals(0, obj.maxPos());
 	}
-	@Test
-	public void test_MaxPos_1() 
+	@Test(dataProvider = "Lister", groups={"maxPos"})
+	public void test_MaxPos_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
-		assertEquals(0, obj.maxPos());
+		Assert.assertEquals(0, obj.maxPos());
 	}
-	@Test
-	public void test_MaxPos_2() 
+	@Test(dataProvider = "Lister", groups={"maxPos"})
+	public void test_MaxPos_2(EList obj) 
 	{
 		int[] ini = {77,11};
 		obj.init(ini);
-		assertEquals(0, obj.maxPos());
+		Assert.assertEquals(0, obj.maxPos());
 	}
-	@Test
-	public void test_MaxPos_many() 
+	@Test(dataProvider = "Lister", groups={"maxPos"})
+	public void test_MaxPos_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
-		assertEquals(5, obj.maxPos());
+		Assert.assertEquals(5, obj.maxPos());
 	}
 
 	//================================
 	// revers
 	//================================
-	@Test
-	public void test_Revers_0() 
+	@Test(dataProvider = "Lister", groups={"revers"})
+	public void test_Revers_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
@@ -536,8 +551,8 @@ public class LListTestNG
 		int[] exp = {};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_Revers_1() 
+	@Test(dataProvider = "Lister", groups={"revers"})
+	public void test_Revers_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
@@ -546,8 +561,8 @@ public class LListTestNG
 		int[] exp = {10};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_Revers_2() 
+	@Test(dataProvider = "Lister", groups={"revers"})
+	public void test_Revers_2(EList obj) 
 	{
 		int[] ini = {77,11};
 		obj.init(ini);
@@ -556,8 +571,8 @@ public class LListTestNG
 		int[] exp = {11,77};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_Revers_many() 
+	@Test(dataProvider = "Lister", groups={"revers"})
+	public void test_Revers_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
@@ -569,8 +584,8 @@ public class LListTestNG
 	//================================
 	// halfRevers
 	//================================
-	@Test
-	public void test_halfRevers_0() 
+	@Test(dataProvider = "Lister", groups={"halfRevers"})
+	public void test_halfRevers_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
@@ -579,8 +594,8 @@ public class LListTestNG
 		int[] exp = {};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_halfRevers_1() 
+	@Test(dataProvider = "Lister", groups={"halfRevers"})
+	public void test_halfRevers_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
@@ -589,8 +604,8 @@ public class LListTestNG
 		int[] exp = {10};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_halfRevers_2() 
+	@Test(dataProvider = "Lister", groups={"halfRevers"})
+	public void test_halfRevers_2(EList obj) 
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
@@ -599,8 +614,8 @@ public class LListTestNG
 		int[] exp = {20,10};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_halfRevers_many() 
+	@Test(dataProvider = "Lister", groups={"halfRevers"})
+	public void test_halfRevers_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
@@ -612,46 +627,46 @@ public class LListTestNG
 	//================================
 	// get
 	//================================
-	@Test (expectedExceptions=IllegalArgumentException.class)
-	public void test_Get_0() 
+	@Test(dataProvider = "Lister", groups={"get"}, expectedExceptions=IllegalArgumentException.class)
+	public void test_Get_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
 		obj.get(0);
 	}
-	@Test
-	public void test_Get_1() 
+	@Test(dataProvider = "Lister", groups={"get"})
+	public void test_Get_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
-		assertEquals(10, obj.get(0));
+		Assert.assertEquals(10, obj.get(0));
 	}
-	@Test
-	public void test_Get_2() 
+	@Test(dataProvider = "Lister", groups={"init"})
+	public void test_Get_2(EList obj) 
 	{
 		int[] ini = {77,11};
 		obj.init(ini);
-		assertEquals(11, obj.get(1));
+		Assert.assertEquals(11, obj.get(1));
 	}
-	@Test
-	public void test_Get_many() 
+	@Test(dataProvider = "Lister", groups={"get"})
+	public void test_Get_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
-		assertEquals(77, obj.get(2));
+		Assert.assertEquals(77, obj.get(2));
 	}
 	//================================
 	// set
 	//================================
-	@Test(expectedExceptions=IllegalArgumentException.class)
-	public void test_Set_0() 
+	@Test(dataProvider = "Lister", groups={"set"},expectedExceptions=IllegalArgumentException.class)
+	public void test_Set_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
 		obj.set(0,1);
 	}
-	@Test
-	public void test_Set_1() 
+	@Test(dataProvider = "Lister", groups={"set"})
+	public void test_Set_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
@@ -660,8 +675,8 @@ public class LListTestNG
 		int[] exp = {5};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_Set_2() 
+	@Test(dataProvider = "Lister", groups={"set"})
+	public void test_Set_2(EList obj) 
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
@@ -670,8 +685,8 @@ public class LListTestNG
 		int[] exp = {10,33};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_Set_many() 
+	@Test(dataProvider = "Lister", groups={"set"})
+	public void test_Set_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
@@ -683,145 +698,145 @@ public class LListTestNG
 	//================================
 	// addPos
 	//================================
-	/**	@Test(expected=IllegalArgumentException.class)
-			public void test_addPos_Except() 
+	/**	@Test(dataProvider = "Lister", groups={"addPos"}, expected=IllegalArgumentException.class)
+			public void test_addPos_Except(EList obj) 
 			{
 				int[] ini = {};
 				obj.init(ini);
 				obj.addPos(2,100);
 			}**/
-	@Test
-	public void test_addPos_0() 
+	@Test(dataProvider = "Lister", groups={"addPos"})
+	public void test_addPos_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
 		obj.addPos(0,100);
 		int[] act = obj.toArray();
 		int[] exp = {100};
-		assertEquals(1, obj.size());
+		Assert.assertEquals(1, obj.size());
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_addPos_1() 
+	@Test(dataProvider = "Lister", groups={"addPos"})
+	public void test_addPos_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
 		obj.addPos(0,100);
 		int[] act = obj.toArray();
 		int[] exp = {100,10};
-		assertEquals(2, obj.size());
+		Assert.assertEquals(2, obj.size());
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_addPos_2() 
+	@Test(dataProvider = "Lister", groups={"addPos"})
+	public void test_addPos_2(EList obj) 
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
 		obj.addPos(1,33);
-		assertEquals(3, obj.size());
+		Assert.assertEquals(3, obj.size());
 		int[] act = obj.toArray();
 		int[] exp = {10,33,20};
-		assertEquals(3, obj.size());
+		Assert.assertEquals(3, obj.size());
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_addPos_many() 
+	@Test(dataProvider = "Lister", groups={"addPos"})
+	public void test_addPos_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
 		obj.addPos(3,55);
 		int[] act = obj.toArray();
 		int[] exp = {10,20,77,55,11,24,82};
-		assertEquals(7, obj.size());
+		Assert.assertEquals(7, obj.size());
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_addPos_many_end() 
+	@Test(dataProvider = "Lister", groups={"addPos"})
+	public void test_addPos_many_end(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
 		obj.addPos(5,55);
 		int[] act = obj.toArray();
 		int[] exp = {10,20,77,11,24,55,82};
-		assertEquals(7, obj.size());
+		Assert.assertEquals(7, obj.size());
 		assertArrayEquals(exp, act);
 	}
 	//================================
 	// DelPos
 	//================================
-	@Test(expectedExceptions=IllegalArgumentException.class)
-	public void test_DelPos_Expc() 
+	@Test(dataProvider = "Lister", groups={"DelPos"}, expectedExceptions=IllegalArgumentException.class)
+	public void test_DelPos_Expc(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
 		obj.delPos(1);
 
 	}
-	@Test(expectedExceptions=IllegalArgumentException.class)
-	public void test_DelPos_0() 
+	@Test(dataProvider = "Lister", groups={"DelPos"}, expectedExceptions=IllegalArgumentException.class)
+	public void test_DelPos_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
 		obj.delPos(0);
 		int[] act = obj.toArray();
 		int[] exp = {};
-		assertEquals(0, obj.size());
+		Assert.assertEquals(0, obj.size());
 		assertArrayEquals(exp, act);
 
 	}
-	@Test
-	public void test_DelPos_1() 
+	@Test(dataProvider = "Lister", groups={"DelPos"})
+	public void test_DelPos_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
 		int del = obj.delPos(0);
 		int[] act = obj.toArray();
 		int[] exp = {};
-		assertEquals(0, obj.size());
+		Assert.assertEquals(0, obj.size());
 		assertArrayEquals(exp, act);
-		assertEquals(10, del);
+		Assert.assertEquals(10, del);
 	}
-	@Test
-	public void test_DelPos_2() 
+	@Test(dataProvider = "Lister", groups={"DelPos"})
+	public void test_DelPos_2(EList obj) 
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
 		int del = obj.delPos(1);
 		int[] act = obj.toArray();
 		int[] exp = {10};
-		assertEquals(1, obj.size());
+		Assert.assertEquals(1, obj.size());
 		assertArrayEquals(exp, act);
-		assertEquals(20, del);
+		Assert.assertEquals(20, del);
 	}
-	@Test
-	public void test_DelPos_many() 
+	@Test(dataProvider = "Lister", groups={"DelPos"})
+	public void test_DelPos_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
 		int del = obj.delPos(3);
 		int[] act = obj.toArray();
 		int[] exp = {10,20,77,24,82};
-		assertEquals(5, obj.size());
+		Assert.assertEquals(5, obj.size());
 		assertArrayEquals(exp, act);
-		assertEquals(11, del);
+		Assert.assertEquals(11, del);
 	}
-	@Test
-	public void test_DelPos_many_end() 
+	@Test(dataProvider = "Lister", groups={"DelPos"})
+	public void test_DelPos_many_end(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
 		int del = obj.delPos(5);
 		int[] act = obj.toArray();
 		int[] exp = {10,20,77,11,24,};
-		assertEquals(5, obj.size());
+		Assert.assertEquals(5, obj.size());
 		assertArrayEquals(exp, act);
-		assertEquals(82, del);
+		Assert.assertEquals(82, del);
 	}
 	//================================
 	// DelStart
 	//================================
-	@Test(expectedExceptions=IllegalArgumentException.class)
-	public void test_DelStart_0() 
+	@Test(dataProvider = "Lister", groups={"DelStart"},expectedExceptions=IllegalArgumentException.class)
+	public void test_DelStart_0(EList obj) 
 	{
 		int[] ini = {};
 
@@ -831,8 +846,8 @@ public class LListTestNG
 		int[] exp = {};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_DelStart_1() 
+	@Test(dataProvider = "Lister", groups={"DelStart"})
+	public void test_DelStart_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
@@ -840,10 +855,10 @@ public class LListTestNG
 		int[] act = obj.toArray();
 		int[] exp = {};
 		assertArrayEquals(exp, act);
-		assertEquals(10, del);
+		Assert.assertEquals(10, del);
 	}
-	@Test
-	public void test_DelStart_2() 
+	@Test(dataProvider = "Lister", groups={"DelStart"})
+	public void test_DelStart_2(EList obj) 
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
@@ -851,10 +866,10 @@ public class LListTestNG
 		int[] act = obj.toArray();
 		int[] exp = {20};
 		assertArrayEquals(exp, act);
-		assertEquals(10, del);
+		Assert.assertEquals(10, del);
 	}
-	@Test
-	public void test_DelStart_many() 
+	@Test(dataProvider = "Lister", groups={"DelStart"})
+	public void test_DelStart_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
@@ -862,13 +877,13 @@ public class LListTestNG
 		int[] act = obj.toArray();
 		int[] exp = {20,77,11,24,82};
 		assertArrayEquals(exp, act);
-		assertEquals(10, del);
+		Assert.assertEquals(10, del);
 	}
 	//================================
 	// DelEnd
 	//================================
-	@Test(expectedExceptions=IllegalArgumentException.class)
-	public void test_DelEnd_0() 
+	@Test(dataProvider = "Lister", groups={"DelEnd"}, expectedExceptions=IllegalArgumentException.class)
+	public void test_DelEnd_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
@@ -877,8 +892,8 @@ public class LListTestNG
 		int[] exp = {};
 		assertArrayEquals(exp, act);
 	}
-	@Test
-	public void test_DelEnd_1() 
+	@Test(dataProvider = "Lister", groups={"DelEnd"})
+	public void test_DelEnd_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
@@ -886,10 +901,10 @@ public class LListTestNG
 		int[] act = obj.toArray();
 		int[] exp = {};
 		assertArrayEquals(exp, act);
-		assertEquals(10, del);
+		Assert.assertEquals(10, del);
 	}
-	@Test
-	public void test_DelEnd_2() 
+	@Test(dataProvider = "Lister", groups={"DelEnd"})
+	public void test_DelEnd_2(EList obj) 
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
@@ -897,10 +912,10 @@ public class LListTestNG
 		int[] act = obj.toArray();
 		int[] exp = {10};
 		assertArrayEquals(exp, act);
-		assertEquals(20, del);
+		Assert.assertEquals(20, del);
 	}
-	@Test
-	public void test_DelEnd_many() 
+	@Test(dataProvider = "Lister", groups={"DelEnd"})
+	public void test_DelEnd_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
@@ -908,15 +923,15 @@ public class LListTestNG
 		int[] act = obj.toArray();
 		int[] exp = {10,20,77,11,24};
 		assertArrayEquals(exp, act);
-		assertEquals(82, del);
+		Assert.assertEquals(82, del);
 	}
 
 	//================================
 	// Iterator
 	//================================
 
-	@Test
-	public void test_Iterator_0() 
+	@Test(dataProvider = "Lister", groups={"Iterator"})
+	public void test_Iterator_0(EList obj) 
 	{
 		int[] ini = {};
 		obj.init(ini);
@@ -929,13 +944,13 @@ public class LListTestNG
 			str +=( i );
 			if(j < ar.length-1)
 				str += ",";
-			assertEquals(i.intValue(), ar[j]);
+			Assert.assertEquals(i.intValue(), ar[j]);
 			j++;
 		}
-		assertEquals(str, act);
+		Assert.assertEquals(str, act);
 	}
-	@Test
-	public void test_Iterator_1() 
+	@Test(dataProvider = "Lister", groups={"Iterator"})
+	public void test_Iterator_1(EList obj) 
 	{
 		int[] ini = {10};
 		obj.init(ini);
@@ -948,13 +963,13 @@ public class LListTestNG
 			str +=( i );
 			if(j < ar.length-1)
 				str += ",";
-			assertEquals(i.intValue(), ar[j]);
+			Assert.assertEquals(i.intValue(), ar[j]);
 			j++;
 		}
-		assertEquals(str, act);
+		Assert.assertEquals(str, act);
 	}
-	@Test
-	public void test_Iterator_2() 
+	@Test(dataProvider = "Lister", groups={"Iterator"})
+	public void test_Iterator_2(EList obj) 
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
@@ -967,13 +982,13 @@ public class LListTestNG
 			str +=( i );
 			if(j < ar.length-1)
 				str += ",";
-			assertEquals(i.intValue(), ar[j]);
+			Assert.assertEquals(i.intValue(), ar[j]);
 			j++;
 		}
-		assertEquals(str, act);
+		Assert.assertEquals(str, act);
 	}
-	@Test
-	public void test_Iterator_many() 
+	@Test(dataProvider = "Lister", groups={"Iterator"})
+	public void test_Iterator_many(EList obj) 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
@@ -986,9 +1001,10 @@ public class LListTestNG
 			str +=( i );
 			if(j < ar.length-1)
 				str += ",";
-			assertEquals(i.intValue(), ar[j]);
+			Assert.assertEquals(i.intValue(), ar[j]);
 			j++;
 		}
-		assertEquals(str, act);
+		Assert.assertEquals(str, act);
 	}
+
 }

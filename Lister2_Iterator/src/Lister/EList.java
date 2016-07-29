@@ -1,6 +1,6 @@
 ﻿package Lister;
 
-interface EList extends Iterable<Integer>
+public interface EList extends Iterable<Integer>
 {
 	void  clear();
 	void  init(int[] ini);

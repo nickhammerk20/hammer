@@ -1,36 +1,14 @@
-﻿package BsTree;
+package test;
+
 import static org.junit.Assert.*;
-
-import java.util.Arrays;
-import java.util.Collection;
-
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 
-import BsTree.EBsTree;
+import BsTree.BsTree2;
 
-@RunWith(Parameterized.class)
-public class BsTreeTest_Parametrized 
+public class BsTreeTest 
 {
-	EBsTree obj = null;
-
-	@Parameters
-	public static Collection<Object[]> EBsTree()
-	{
-		return Arrays.asList(new Object[][]
-				{
-			{ new BsTree()},
-			{ new BsTree2()}, 
-				});
-	}
-
-	public BsTreeTest_Parametrized (EBsTree Paramet) 
-	{
-		obj = Paramet;
-	}
+	BsTree2 obj = new BsTree2();
 
 	@Before
 	public void start()
@@ -565,82 +543,5 @@ public class BsTreeTest_Parametrized
 		int [] exp = {};
 		assertArrayEquals(exp, act);
 	}
-
-	//================================
-	// Iterator
-	//================================
-	/** принцип тестов итератора для ХЛистов:
-				- инициализируешь объект хЛиста
-				- пройтись по объекту с помощью for each
-			варианты проверки:
-				- сравнивать поэлементно внутри for each
-				- загнать все элементы из хЛиста во временный массив, сравнить массивы **/
-
-	@Test
-	public void test_Iterator_0() 
-	{
-		int[] ini = {};
-		obj.init(ini);
-		String act = obj.toString();
-		int [] ar = obj.toArray();
-		String str = "";
-		int j = 0;
-		for(Integer i : obj)
-		{
-			str +=( i );
-			if(j < ar.length-1)
-				str += ",";
-			assertEquals(i.intValue(), ar[j]);
-			j++;
-		}
-		assertEquals(str, act);
-	}
-	@Test
-	public void test_Iterator_1() 
-	{
-		int[] ini = {10};
-		obj.init(ini);
-		String act = obj.toString();
-		int [] ar = obj.toArray();
-		String str = "";
-		int j = 0;
-		for(Integer i : obj)
-		{
-			str +=( i + ", ");
-			assertEquals(i.intValue(), ar[j++]);
-		}
-		assertEquals(str, act);
-	}
-	@Test
-	public void test_Iterator_2() 
-	{
-		int[] ini = {10,20};
-		obj.init(ini);
-		String act = obj.toString();
-		int [] ar = obj.toArray();
-		String str = "";
-		int j = 0;
-		for(Integer i : obj)
-		{
-			str +=( i + ", ");
-			assertEquals(i.intValue(), ar[j++]);
-		}
-		assertEquals(str, act);
-	}
-	@Test
-	public void test_Iterator_many() 
-	{
-		int[] ini = {10,20,77,11,24,82};
-		obj.init(ini);
-		String act = obj.toString();
-		int [] ar = obj.toArray();
-		String str = "";
-		int j = 0;
-		for(Integer i : obj)
-		{
-			str +=( i + ", ");
-			assertEquals(i.intValue(), ar[j++]);
-		}
-		assertEquals(str, act);
-	}
 }
+
