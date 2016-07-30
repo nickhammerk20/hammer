@@ -1,16 +1,16 @@
-package Lister;
+﻿package Lister_Generic;
 
 import java.util.Iterator;
 
-public class AList3_MonoIterator implements EList, Iterable<Integer>, Iterator<Integer>
+public class AList0 implements EList
 {
-	int[] ar = new int[0];
-	
+	public Object[] ar = new Object[0];
+
 	@Override
 	public String toString() 
 	{
 		String str = "";
-		
+
 		for (int i = 0; i < ar.length; i++) 
 		{
 			str += ar[i];
@@ -22,7 +22,7 @@ public class AList3_MonoIterator implements EList, Iterable<Integer>, Iterator<I
 	@Override
 	public void clear()
 	{
-		ar = new int[0];
+		ar = new Object[0];
 	}
 	@Override
 	public int size()
@@ -30,32 +30,32 @@ public class AList3_MonoIterator implements EList, Iterable<Integer>, Iterator<I
 		return ar.length;
 	}
 	@Override
-	public void init(int[] ini)
+	public void init(Object[] ini)
 	{
 		if(ini == null)
-			ini = new int[0];
-			
-		ar = new int[ini.length];
+			ini = new Object[0];
+
+		ar = new Object[ini.length];
 		for (int i = 0; i < ini.length; i++)
 		{
 			ar[i] = ini[i];
 		}
 	}
 	@Override
-	public int[] toArray()
+	public Object[] toArray()
 	{
-		int[] tmp = new int[ar.length];
+		Object[] tmp = new Object[ar.length];
 		for (int i = 0; i < ar.length; i++)
 		{
 			tmp[i] = ar[i];
 		}
 		return tmp;
 	}
-	
+
 	@Override
-	public void addStart(int val)
+	public void addStart(Object val)
 	{
-		int[] tmp = new int[ar.length+1];
+		Object[] tmp = new Object[ar.length+1];
 		for (int i = 0; i < ar.length; i++)
 		{
 			tmp[i+1] = ar[i];
@@ -64,9 +64,9 @@ public class AList3_MonoIterator implements EList, Iterable<Integer>, Iterator<I
 		ar = tmp;
 	}
 	@Override
-	public void addEnd(int val)
+	public void addEnd(Object val)
 	{
-		int[] tmp = new int[ar.length+1];
+		Object[] tmp = new Object[ar.length+1];
 		for (int i = 0; i < ar.length; i++)
 		{
 			tmp[i] = ar[i];
@@ -75,22 +75,22 @@ public class AList3_MonoIterator implements EList, Iterable<Integer>, Iterator<I
 		ar = tmp;
 	}
 	@Override
-	public void addPos(int pos, int val)
+	public void addPos(int pos, Object val)
 	{
 		if(ar == null || pos < 0 || pos > ar.length){
 			addStart(val);
 		}
-		int [] tmp = new int [ar.length+1];
-			for (int i = 0; i<pos; i++){
-				tmp[i] = ar[i];
-				}
-			for (int i = pos; i<ar.length; i++){
-				tmp[i+1] = ar[i];
-				}
-			tmp[pos]=val;
-			ar=tmp;
+		Object [] tmp = new Object [ar.length+1];
+		for (int i = 0; i<pos; i++){
+			tmp[i] = ar[i];
+		}
+		for (int i = pos; i<ar.length; i++){
+			tmp[i+1] = ar[i];
+		}
+		tmp[pos]=val;
+		ar=tmp;
 	}
-	
+
 	@Override
 	public void sort() 
 	{
@@ -98,24 +98,29 @@ public class AList3_MonoIterator implements EList, Iterable<Integer>, Iterator<I
 		{
 			for (int j = 0; j < ar.length-1; j++) 
 			{
-				if(ar[j] > ar[j+1])
+//				if(ar[j] > ar[j+1])
+				Comparable a1 = (Comparable) ar[j];
+				Comparable a2 = (Comparable) ar[j+1];
+				if( -1 == a1.compareTo(a2))
+
+//				if( -1 == ar[j].compareTo(ar[j+1]))
 				{
-					int tmp = ar[j];
+					Object tmp = ar[j];
 					ar[j]   = ar[j+1];
 					ar[j+1] = tmp;
 				}
 			}
 		}
 	}
-	
+
 	@Override
-	public int min() 
+	public Object min() 
 	{
 		return ar[minPos()];
 	}
-	
+
 	@Override
-	public int max() 
+	public Object max() 
 	{
 		return ar[maxPos()];
 	}
@@ -128,11 +133,11 @@ public class AList3_MonoIterator implements EList, Iterable<Integer>, Iterator<I
 		}
 		int ret = 0;
 		for(int i=0; i<ar.length; i++)
+		{
+//			if( ar[ret] > ar[i] )
 			{
-				if( ar[ret] > ar[i] )
-				{
-					ret = i;
-				}
+				ret = i;
+			}
 		}
 		return ret;
 	}
@@ -145,26 +150,26 @@ public class AList3_MonoIterator implements EList, Iterable<Integer>, Iterator<I
 		}
 		int ret = 0;
 		for(int i=0; i<ar.length; i++)
+		{
+//			if( ar[ret] < ar[i] )
 			{
-				if( ar[ret] < ar[i] )
-				{
-					ret = i;
-				}
+				ret = i;
+			}
 		}
 		return ret;
 	}
 	@Override
 	public void revers() 
-{
+	{
 		if (ar.length==0) {
 			return;
 		}	
 		for (int i=0; ar.length/2>i ; i++){
-			int temp = ar[i];
+			Object temp = ar[i];
 			ar[i] = ar[ar.length - i - 1];
 			ar[ar.length - i - 1] = temp;
 		}
-		
+
 	}
 	@Override
 	public void halfRevers() 
@@ -176,99 +181,72 @@ public class AList3_MonoIterator implements EList, Iterable<Integer>, Iterator<I
 		int arrlength = ar.length/2;
 		int arrhalf = ar.length - arrlength;
 		for (int i=0; arrlength>i ; i++){
-			int temp = ar[i];
+			Object temp = ar[i];
 			ar[i] = ar[arrhalf + i];
 			ar[arrhalf + i] = temp;
 		}
 	}
 	@Override
-	public int get(int pos)
+	public Object get(int pos)
 	{
 		if(ar.length == 0){
 			throw new IllegalArgumentException();
 		}
-		int ret = ar[pos];
+		Object ret = ar[pos];
 		return ret;		
 	}
 	@Override
-	public void set(int pos, int val)
+	public void set(int pos, Object val)
 	{
 		if(ar.length == 0){
 			throw new IllegalArgumentException();
 		}
 		ar[pos] = val;		
 	}
-	
+
 	@Override
-	public int delStart() 
+	public Object delStart() 
 	{
 		if( ar.length == 0){
 			throw new IllegalArgumentException();
 		}
-		int ret = ar[0];
-		int [] tmp = new int [ar.length-1];
+		Object ret = ar[0];
+		Object [] tmp = new Object [ar.length-1];
 		for (int i = 1; i<ar.length; i++){
 			tmp[i-1] = ar[i];
-			}
+		}
 		ar=tmp;
 		return ret;		
 	}
 	@Override
-	public int delEnd() 
+	public Object delEnd() 
 	{
 		if(ar == null || ar.length == 0){
 			throw new IllegalArgumentException();
 		}
-		int ret = ar[ar.length-1];
-		int [] tmp = new int [ar.length-1];
+		Object ret = ar[ar.length-1];
+		Object [] tmp = new Object [ar.length-1];
 		for (int i = 0; i<ar.length-1; i++){
 			tmp[i] = ar[i];
-			}
+		}
 		ar=tmp;
 		return ret;		
 	}
 	@Override
-	public int delPos(int pos)
+	public Object delPos(int pos)
 	{
 		if(ar == null || ar.length == 0 || pos < 0|| pos > ar.length){
 			throw new IllegalArgumentException();
 		}
-		int ret = ar[pos];
-		int [] tmp = new int [ar.length-1];
+		Object ret = ar[pos];
+		Object [] tmp = new Object [ar.length-1];
 		for (int i = 0; i<pos; i++){
 			tmp[i] = ar[i];
-			}
+		}
 		for (int i = pos; i<ar.length-1; i++){
 			tmp[i] = ar[i+1];
-			}
+		}
 		ar=tmp;
 		return ret;			
 	}
-	
-	/** 
-	 *  МОНОПРОЦЕСС
-	 * Еще один вариант Итератора, 
-	 * данный итератор нельзя использовать при многопоточности
-	 * */
-
-	@Override
-	public Iterator<Integer> iterator() 
-	{
-		i = 0;
-		return this;
-	}
-	
-	int i = 0;
-
-	@Override
-	public boolean hasNext() 
-	{
-		return i < ar.length;
-	}
-
-	@Override
-	public Integer next() 
-	{
-		return ar[i++];
-	}		
 }

@@ -4,11 +4,16 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import BsTree.BsTree;
 import BsTree.BsTree2;
+import BsTree.BsTree3_Linked;
+import BsTree.EBsTree;
 
 public class BsTreeTest 
 {
-	BsTree2 obj = new BsTree2();
+	BsTree obj = new BsTree();
+//	BsTree2 obj = new BsTree2();
+//	BsTree3_Linked obj = new BsTree3_Linked();
 
 	@Before
 	public void start()
@@ -447,7 +452,7 @@ public class BsTreeTest
 		obj.init(ini);
 		obj.del(66);
 		int [] act = obj.toArray();
-		int [] exp = {11,20,22,24,25,30,40,43,45,50,60,75,77,100};
+		int [] exp = {11,20,22,24,25,30,40,43,45,50,60,75,77,100, };
 		assertArrayEquals(exp, act);
 	}
 	@Test
@@ -461,12 +466,25 @@ public class BsTreeTest
 		assertArrayEquals(exp, act);
 	}
 	@Test
-	public void test_del_two() 
+	public void test_del_two_max_min() 
 	{
-		int[] ini = {20,77};
+		int[] ini = {77,20};
 		obj.init(ini);
 		obj.del(20);
 		int [] act = obj.toArray();
+		int [] exp = {77};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_del_two_min_max() 
+	{
+		int[] ini = {20,77};
+		obj.init(ini);
+		System.out.println("1 - "+obj.toString());
+		obj.del(20);
+		System.out.println("2 - "+obj.toString());
+		int [] act = obj.toArray();
+		System.out.println("3 - "+obj.toString());
 		int [] exp = {77};
 		assertArrayEquals(exp, act);
 	}
@@ -480,7 +498,7 @@ public class BsTreeTest
 		int [] exp = {};
 		assertArrayEquals(exp, act);
 	}
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void test_del_empty() 
 	{
 		int[] ini = {};
@@ -510,7 +528,7 @@ public class BsTreeTest
 		obj.init(ini);
 		obj.revers();
 		int [] act = obj.toArray();
-		int [] exp = {10, 11, 20, 24, 77, 82,100};
+		int [] exp = {100, 82, 77, 24, 20, 11, 10,};
 		assertArrayEquals(exp, act);
 	}
 	@Test
@@ -520,7 +538,7 @@ public class BsTreeTest
 		obj.init(ini);
 		obj.revers();
 		int [] act = obj.toArray();
-		int [] exp = {20,77};
+		int [] exp = {77,20};
 		assertArrayEquals(exp, act);
 	}
 	@Test

@@ -1,14 +1,14 @@
-﻿package BsTree;
+package BsTree;
 
 import java.util.Iterator;
 import java.util.Stack;
 
-public class BsTree2 implements EBsTree, Iterable<Integer>
+public class BsTree implements EBsTree
 {
 
 	int leftHeight = 0;
 	int rightHeight = 0;
-
+	
 	class Node 
 	{
 		int val;
@@ -22,7 +22,23 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 	}
 	protected Node root = null;
 
-	//Инициализация 
+	//Печать в консоль ++
+	@Override
+	public void print() 
+	{
+		printNode(root);
+	}
+	private void printNode(Node p) 
+	{
+		if (p == null)
+			return;
+
+		printNode(p.left);              //L
+		System.out.print(p.val + ",");  //V
+		printNode(p.right);             //R
+	}
+
+	//Инициализация ++
 	@Override
 	public void init(int[] ini) 
 	{
@@ -35,7 +51,7 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 		}
 	}
 
-	//Добавление узла со значением 
+	//Добавление узла со значением ++
 	@Override
 	public void add(int val) 
 	{
@@ -64,152 +80,70 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 		}
 	}
 
-	//Очистка дерева
+	//Очистка дерева ++
 	@Override
 	public void clear() 
 	{
 		root = null;
 	}
 
-	/****************************/
-	/**********//*NEW*//*********/
-	/****************************/
-
-	private interface Visitor
-	{
-		void action(Node p);
-	}
-
-	private void visit(Node p, Visitor v) 
-	{
-		if (p == null)
-			return;
-
-		visit (p.left, v);
-		v.action(p);
-		visit (p.right, v);
-	}
-
-	//Печать в консоль 
-	@Override
-	public void print() 
-	{
-		PrintVizitor v = new PrintVizitor();
-		visit(root, v);
-		System.out.print(v.str);
-	}
-	private class PrintVizitor implements Visitor
-	{
-		String str = "";
-		@Override
-		public void action(Node p) 
-		{
-			str += p.val+", ";
-		}		
-	}
-
-	//Получить количество всех узлов в дереве (с потомками и без) 
-	private class SizeVisitor implements Visitor
-	{
-		int count = 0;
-		@Override
-		public void action(Node p) 
-		{
-			count++;
-		}		
-	}
+	//Получить количество всех узлов в дереве (с потомками и без) ++
 	@Override
 	public int size() 
 	{
-		SizeVisitor v = new SizeVisitor();
-		visit(root, v);
-		return v.count;
+		return sizeNode( root );
+	}
+	private int sizeNode(Node p) 
+	{
+		if (p == null)
+			return 0;
+
+		return sizeNode(p.left) + 1 + sizeNode(p.right);
 	}
 
-	//Получить количество листьев
+	//Получить количество листьев++
 	@Override
 	public int leaves()
 	{
-		LeavesVisitor v = new LeavesVisitor();
-		visit(root, v);
-		return v.count;
+		return nodeLeaves(root);
 	}
-	private class LeavesVisitor implements Visitor
+	private int nodeLeaves(Node p) 
 	{
-		int count = 0;
-		@Override
-		public void action(Node p) 
-		{
-			if(p.left == null && p.right == null)
-			{
-				count++;	
-			}			
-		}		
+		if (p == null)
+			return 0;
+
+		int ret = 0;
+
+		ret += nodeLeaves(p.left);			
+		if (p.left == null && p.right == null)
+			ret++;
+		ret += nodeLeaves(p.right);
+
+		return ret;
 	}
 
-	//Получить количество узлов (хотя бы 1 потомок)	
+	//Получить количество узлов (хотя бы 1 потомок)	++
 	@Override
 	public int nodes()
 	{
-		NodeVisitor v = new NodeVisitor();
-		visit(root, v);
-		return v.count;
+		return nodeNodes(root);
 	}
-	private class NodeVisitor implements Visitor
+	private int nodeNodes(Node p) 
 	{
-		int count = 0;
-		@Override
-		public void action(Node p) 
-		{
-			if(p.left != null || p.right != null)
-			{
-				count++;	
-			}			
-		}		
-	}
+		if (p == null)
+			return 0;
 
-	//Получить String через LVR дерева
-	@Override
-	public String toString() 
-	{
-		ToStringVisitor v = new ToStringVisitor();
-		visit(root, v);
-		return v.str;
-	}
-	private class ToStringVisitor implements Visitor
-	{
-		String str = "";
-		@Override
-		public void action(Node p) 
-		{
-			str += p.val+", ";
-		}		
-	}
+		int ret = 0;
 
-	//Получить массив через LVR дерева
-	@Override
-	public int[] toArray() 
-	{
-		ToArrayVisitor v = new ToArrayVisitor();
-		visit( root , v );
-		return v.rez;
-	}
-	private class ToArrayVisitor implements Visitor
-	{
-		int[] rez = new int [size()];
-		int i = 0;
-		@Override
-		public void action(Node p) 
-		{
-			rez[i++] = p.val;	
-		}			
-	}
+		ret += nodeNodes(p.left);			
+		if (p.left != null || p.right != null)
+			ret++;
+		ret += nodeNodes(p.right);
 
-	/******************************/
-	/********OLD*******************/
-	/******************************/
-
-	//Получить количество уровней (высота дерева)
+		return ret;
+	}
+	
+	//Получить количество уровней (высота дерева)++
 	@Override
 	public int height() 
 	{
@@ -252,7 +186,45 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 			if (i>max)
 				max=i;
 		}
+
 		return max;
+	}
+
+
+	//Получить String через LVR дерева
+		@Override
+	public String toString() 
+	{
+		return toString(root);
+	}
+	private String toString(Node p) 
+	{
+		if (p == null)
+			return "";
+
+		return toString(p.left) + p.val + ", " + toString(p.right);
+	}
+
+	//Получить массив через LVR дерева
+		private class Counter
+	{
+		int index = 0;
+	}
+	@Override
+	public int[] toArray() 
+	{
+		int[] ar = new int[size()];
+		nodeToArray(root, ar, new Counter());
+		return ar;
+	}
+	private void nodeToArray(Node p, int[] ar, Counter ii) 
+	{
+		if (p == null)
+			return;
+
+		nodeToArray(p.left,  ar, ii);
+		ar[ii.index++] = p.val;
+		nodeToArray(p.right, ar, ii);
 	}
 
 	//Зеркально пересадить дерево
@@ -269,13 +241,13 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 		Node tmp = p.left;
 		p.left = p.right;
 		p.right = tmp;
-
+		
 		reverseNode(p.left);
 		reverseNode(p.right);
 	}
-
+	
 	//Удаление элемента по ключу
-	@Override
+		@Override
 	public void del(int key) 
 	{
 		Node current = root;
@@ -351,12 +323,10 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 		}
 		return successor;
 	}
-
 	/***********************/
 	/*****add Iterator******/
-	/***взято из интерент***/
 	/***********************/
-	/**
+	/*http://www.programcreek.com/2014/04/leetcode-binary-search-tree-iterator-java/*/
 	@Override
 	public Iterator<Integer> iterator() 
 	{
@@ -386,45 +356,21 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 		{
 			Node node = stack.pop();
 			int result = node.val;
+			//			if (node.right != null) 
+			//			{
+			//				node = node.right;
+			//				while (node != null) 
+			//				{
+			//					stack.push(node);
+			//					node = node.left;
+			//				}
+			//			}
 			Node child = node.right;
 			while (child != null) {
 				stack.push(child);
 				child = child.left;
 			}			
 			return result;
-		}		
-	}
-	**/
-	
-	/** 	
-	 * изначальный Итератор ни чем не отличается от LList1, 
-	 * но в этом примере используется итератор через массив как пример из AList0
-	 * */
-
-	@Override
-	public Iterator<Integer> iterator() 
-	{
-		return new MyIter(toArray());
-	}
-	class MyIter implements Iterator<Integer>
-	{
-		int[] ar;
-		int i = 0;
-
-		public MyIter(int[] ar) 
-		{
-			this.ar = ar;
-		}
-		@Override
-		public boolean hasNext() 
-		{
-			return i < ar.length;
-		}
-
-		@Override
-		public Integer next() 
-		{
-			return ar[i++];
 		}		
 	}
 }
