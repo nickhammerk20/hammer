@@ -17,6 +17,7 @@ public class PFrame extends JFrame
 		
 		add (new GenPanel ( cmd ) );
 		
+		
 		setVisible(true);
 	}
 }

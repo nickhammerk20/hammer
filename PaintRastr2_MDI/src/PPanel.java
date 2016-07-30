@@ -25,7 +25,7 @@ public class PPanel extends JPanel implements MouseListener, MouseMotionListener
 		gg.fillRect(0, 0, 1000, 500);
 
 		this.pd = cmd.pd;
-		cmd.pp = this;
+//		cmd.pp.add(this);
 
 		setComponentPopupMenu( new PContext(cmd) );
 		setLayout(null);

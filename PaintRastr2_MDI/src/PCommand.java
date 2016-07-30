@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
@@ -10,14 +11,17 @@ import javax.swing.JFileChooser;
 public class PCommand 
 {
 	PData pd = new PData();
-	PPanel pp = null;
-//	ArrayList<PPanel> pp = new ArrayList<PPanel>();
+	PTabbedPane tp = null;
+	
+	ArrayList<PPanel> pp = new ArrayList<PPanel>();
 
 	ActionFileOpen 	aOpen 	= new ActionFileOpen();
 	ActionFileSave 	aSave 	= new ActionFileSave();
 	ActionColor 	aColor 	= new ActionColor();
 	ActionWidth 	aWidth 	= new ActionWidth();
 
+	
+	
 	class ActionFileOpen implements ActionListener
 	{
 		@Override
@@ -25,11 +29,13 @@ public class PCommand
 		{
 			try 
 			{
+				int i = tp.getSelectedIndex();
+				PPanel p = pp.get(i);
 				JFileChooser fd = new JFileChooser();
-				if ( fd.showOpenDialog(pp) == JFileChooser.APPROVE_OPTION)
+				if ( fd.showOpenDialog(p) == JFileChooser.APPROVE_OPTION)
 				{
-					pp.bi = ImageIO.read(fd.getSelectedFile());
-					pp.repaint();
+					p.bi = ImageIO.read(fd.getSelectedFile());
+					p.repaint();
 				}
 			} 
 			catch (IOException e1) 
@@ -46,10 +52,12 @@ public class PCommand
 		{
 			try 
 			{
+				int i = tp.getSelectedIndex();
+				PPanel p = pp.get(i);
 				JFileChooser fd = new JFileChooser();
-				if ( fd.showSaveDialog(pp) == JFileChooser.APPROVE_OPTION)
+				if ( fd.showSaveDialog(p) == JFileChooser.APPROVE_OPTION)
 				{
-					ImageIO.write(pp.bi, "jpg", fd.getSelectedFile());
+					ImageIO.write(p.bi, "jpg", fd.getSelectedFile());
 				}
 			} 
 			catch (IOException e1) 

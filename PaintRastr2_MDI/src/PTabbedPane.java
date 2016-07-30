@@ -1,26 +1,27 @@
 ﻿import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.plaf.metal.MetalIconFactory.FolderIcon16;
 
 public class PTabbedPane extends JTabbedPane
 {
 	public PTabbedPane(PCommand cmd) 
 	{
-		int count = 1;
+		int count = 0;
 		setBounds(90, 5, 1000, 500);
 
-//		add("Paint 1", new PPanel (cmd));
-//		add("Paint 2", new PPanel (cmd));
-//		add("Paint 3", new PPanel (cmd));
-//		add("Paint 4", new PPanel (cmd));
-		
-		  String str = "Ћист " + (++count);
+		for( int i = 0 ; i < 3; i++ )
+		{
+		  String str = "Лист " + (++count);
 		  PPanel pp = new PPanel(cmd);
 		  addTab(str, pp);
 		  cmd.pp.add(pp);
-
+		}
 		
-
+		for(PPanel i : cmd.pp)
+		{
+			System.out.println(i);
+		}
 		setVisible(true);
 	}
 }

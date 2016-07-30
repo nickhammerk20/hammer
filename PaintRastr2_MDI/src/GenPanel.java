@@ -9,12 +9,17 @@ import javax.swing.JPanel;
 
 public class GenPanel extends JPanel implements MouseListener, MouseMotionListener
 {
+//	PTabbedPane tp = null;
+	
 	public GenPanel( PCommand cmd ) 
 	{
 		setLayout(null);
 		//add( new PPanel( cmd ) );
 		add( new PButton ( cmd ) );
-		add( new PTabbedPane( cmd ) );
+//		add( new PTabbedPane( cmd ) );
+		PTabbedPane tp = new PTabbedPane( cmd );
+		cmd.tp = tp;
+		add( tp );
 		
 //		JButton width1 = new JButton ("1");
 //		width1.setBounds(10, 50, 50, 20);
