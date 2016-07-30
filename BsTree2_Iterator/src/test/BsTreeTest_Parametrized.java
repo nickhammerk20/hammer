@@ -12,6 +12,7 @@ import org.junit.runners.Parameterized.Parameters;
 
 import BsTree.BsTree;
 import BsTree.BsTree2;
+import BsTree.BsTree3_Linked;
 import BsTree.EBsTree;
 
 @RunWith(Parameterized.class)
@@ -26,6 +27,7 @@ public class BsTreeTest_Parametrized
 				{
 			{ new BsTree()},
 			{ new BsTree2()}, 
+			{ new BsTree3_Linked()},
 				});
 	}
 
@@ -504,7 +506,7 @@ public class BsTreeTest_Parametrized
 		int [] exp = {};
 		assertArrayEquals(exp, act);
 	}
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void test_del_empty() 
 	{
 		int[] ini = {};
@@ -534,7 +536,7 @@ public class BsTreeTest_Parametrized
 		obj.init(ini);
 		obj.revers();
 		int [] act = obj.toArray();
-		int [] exp = {10, 11, 20, 24, 77, 82,100};
+		int [] exp = {100, 82, 77, 24, 20, 11, 10,};
 		assertArrayEquals(exp, act);
 	}
 	@Test
@@ -544,7 +546,7 @@ public class BsTreeTest_Parametrized
 		obj.init(ini);
 		obj.revers();
 		int [] act = obj.toArray();
-		int [] exp = {20,77};
+		int [] exp = {77,20};
 		assertArrayEquals(exp, act);
 	}
 	@Test

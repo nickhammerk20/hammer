@@ -1,8 +1,12 @@
 package BsTree;
 
+import java.util.Iterator;
+
+import BsTree.BsTree2.MyIter;
+
 //import java.util.Iterator;
 
-public class BsTree3_Linked
+public class BsTree3_Linked implements EBsTree
 {
 	class Link
 	{
@@ -313,5 +317,31 @@ public class BsTree3_Linked
 			pp = pp.left.node;
 		}
 		return pp;
+	}
+	@Override
+	public Iterator<Integer> iterator() 
+	{
+		return new MyIter(toArray());
+	}
+	class MyIter implements Iterator<Integer>
+	{
+		int[] ar;
+		int i = 0;
+
+		public MyIter(int[] ar) 
+		{
+			this.ar = ar;
+		}
+		@Override
+		public boolean hasNext() 
+		{
+			return i < ar.length;
+		}
+
+		@Override
+		public Integer next() 
+		{
+			return ar[i++];
+		}		
 	}
 }

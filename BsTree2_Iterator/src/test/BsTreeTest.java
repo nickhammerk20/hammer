@@ -11,9 +11,9 @@ import BsTree.EBsTree;
 
 public class BsTreeTest 
 {
-	BsTree obj = new BsTree();
+//	BsTree obj = new BsTree();
 //	BsTree2 obj = new BsTree2();
-//	BsTree3_Linked obj = new BsTree3_Linked();
+	BsTree3_Linked obj = new BsTree3_Linked();
 
 	@Before
 	public void start()
