@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import Lister.AList2;
 import Lister.EList;
+import Lister.LList2;
 
 public class EListTest 
 {
@@ -13,7 +14,7 @@ public class EListTest
 	//EList rr = new AList0();
 	//EList rr = new AList1();
 	EList rr = new AList2();
-	
+//	EList rr = new LList2();
 	
 	@Before
 	public void setUp()
