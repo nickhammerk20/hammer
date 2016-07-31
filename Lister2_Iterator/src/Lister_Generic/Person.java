@@ -1,6 +1,6 @@
 ﻿package Lister_Generic;
 
-public class Person 
+public class Person implements Comparable<Person>
 {
 	private int id;
 	private String fname;
@@ -28,5 +28,10 @@ public class Person
 	public String toString() 
 	{
 		return "Person [id=" + id + ", fname=" + fname + ", lname=" + lname + ", age=" + age + "]";
+	}
+	@Override
+	public int compareTo(Person o) 
+	{
+		return (new Integer(id)).compareTo(o.id);
 	}
 }

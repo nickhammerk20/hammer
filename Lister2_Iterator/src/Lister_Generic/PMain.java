@@ -4,9 +4,9 @@ public class PMain
 {
 	public static void main(String[] args)
 	{
-		AList0 lst = new AList0();
+		PList0 lst = new PList0();
 		lst.init( init ());
-//		print( (Person[]) lst.toArray() );
+		print( (Person[]) lst.toArray() );
 		Person p1 = new Person (10, "Vasia", 	"Pupkin", 		23);
 		lst.addStart(p1);
 		Person p = (Person) lst.get(0);
