@@ -231,208 +231,192 @@ public class LList1 implements EList, Iterable<Integer>
 	@Override
 	public void revers() 
 	{
-		//		Node reversP = null;
-		//		Node currentP = root;
-		//		while(currentP != null) 
-		//			{
-		//				Node next = currentP.next;
-		//				currentP.next = reversP;
-		//				reversP = currentP;
-		//				currentP = next;
-		//			}
-		//		
-		//		root = reversP;
+		if (root == null || root.next == null)
+			return;
 
-		Node temp = null;
+		Node curent = null;
 		Node next = null;
 		while(root != null)
 		{
-			next = root.next;
-			root.next = temp;
-			temp = root;
+			next = root.next; 
+			root.next = curent;
+			curent = root;
 			root = next;
 		}
-		root = temp;	
-
-
+		root = curent;	
 	}
 
 	@Override
 	public void halfRevers() 
 	{
+		if (root == null || root.next == null)
+			return;
+
 		Node p = root;
-		LList1 lst = new LList1();
-		for (int i = 0; i > size(); i++) 
+		LList1 lstNew = new LList1();
+		int j = 0;
+		int dx = (size() % 2==0) ? 0 : 1;
+		for ( int i = 0 ; i < size() ; i++ )
 		{
-			while(p.next != null) 
+			if ( i < size() / 2 + dx)
 			{
-				if ( i > ( size() / 2) ) 
-				{
-					lst.addStart(p.val);
-					p = p.next;
-				}
+				lstNew.addEnd(p.val);
 			}
-		}
-		for (int i = 0; i > size(); i++) 
-		{
-			while(p.next != null) 
+			else
 			{
-				if ( i < ( size() / 2) ) 
-				{
-					lst.addEnd(p.val);
-					p = p.next;
-				}
+				lstNew.addPos(j++, p.val);
 			}
+			p = p.next;
 		}
-		root = lst.root;
+		root = lstNew.root;
 	}
 
-			@Override
-			public int delStart()
+	@Override
+	public int delStart()
+	{
+		if( size() == 0){
+			throw new IllegalArgumentException();
+		} 
+		Node p = root;
+		int tmp = p.val; 
+		root = p.next;
+		return tmp;
+	}
+
+	@Override
+	public int delEnd()
+	{
+		if( size() == 0)
+		{
+			throw new IllegalArgumentException();
+		} 
+		if( size() == 1)
+		{
+			return delStart();
+		} 
+		else
+		{
+			Node p = root;
+			while (p.next != null)
 			{
-				if( size() == 0){
-					throw new IllegalArgumentException();
-				} 
-				Node p = root;
-				int tmp = p.val; 
-				root = p.next;
-				return tmp;
+				p = p.next;
 			}
-
-			@Override
-			public int delEnd()
+			int tmp = p.val;
+			p = root;
+			for (int i = 1; i < size()-1; i++)
 			{
-				if( size() == 0)
-				{
-					throw new IllegalArgumentException();
-				} 
-				if( size() == 1)
-				{
-					return delStart();
-				} 
-				else
-				{
-					Node p = root;
-					while (p.next != null)
-					{
-						p = p.next;
-					}
-					int tmp = p.val;
-					p = root;
-					for (int i = 1; i < size()-1; i++)
-					{
-						p = p.next;
-					}
-					p.next = null;
-					return tmp;
-				}
+				p = p.next;
 			}
-
-			@Override
-			public int delPos(int pos) 
-			{
-				if (root == null)
-				{
-					throw new IllegalArgumentException();
-				}
-				int ret;
-				if (pos == 0) 
-				{
-					return delStart();
-				}
-				else
-				{
-					Node prev = root;
-					int count = 1;
-					while( count < pos )
-					{
-						prev = prev.next;
-						count++;
-					}
-					Node curent = prev.next;
-					prev.next = curent.next;
-					ret = curent.val;
-
-				}
-				return ret;
-			}
-
-
-			@Override
-			public void addStart(int val) 
-			{
-				Node p = new Node (val);
-				p.next = root;
-				root = p;
-			}
-
-			@Override
-			public void addEnd(int val)
-			{
-				Node p = root;
-				if ( p == null)
-				{
-					root = new Node(val);
-				}
-				else
-				{
-					Node tmp = new Node (val);
-					while (p.next != null)
-					{
-						p = p.next;
-					}		
-					p.next = tmp;
-				}
-			}
-
-			@Override
-			public void addPos(int pos, int val) 
-			{
-				if (pos == 0) 
-				{
-					addStart(val);
-				}
-				else
-				{
-					Node newNode = new Node (val);
-					Node prev = root;
-					int count = 1;
-					while( count < pos )
-					{
-						prev = prev.next;
-						count++;
-					}
-					Node curent = prev.next;
-					newNode.next = curent;
-					prev.next = newNode;
-
-				}
-			}
-
-			@Override
-			public Iterator<Integer> iterator() 
-			{
-				return new MyIter(root);
-			}
-			class MyIter implements Iterator<Integer>
-			{
-				Node p = null;
-				public MyIter(Node p) 
-				{
-					this.p = p;
-				}
-				@Override
-				public boolean hasNext() 
-				{
-					return p != null;
-				}
-
-				@Override
-				public Integer next() 
-				{
-					int ret = p.val;
-					p = p.next;
-					return ret;
-				}		
-			}
+			p.next = null;
+			return tmp;
 		}
+	}
+
+	@Override
+	public int delPos(int pos) 
+	{
+		if (root == null)
+		{
+			throw new IllegalArgumentException();
+		}
+		int ret;
+		if (pos == 0) 
+		{
+			return delStart();
+		}
+		else
+		{
+			Node prev = root;
+			int count = 1;
+			while( count < pos )
+			{
+				prev = prev.next;
+				count++;
+			}
+			Node curent = prev.next;
+			prev.next = curent.next;
+			ret = curent.val;
+
+		}
+		return ret;
+	}
+
+
+	@Override
+	public void addStart(int val) 
+	{
+		Node p = new Node (val);
+		p.next = root;
+		root = p;
+	}
+
+	@Override
+	public void addEnd(int val)
+	{
+		Node p = root;
+		if ( p == null)
+		{
+			root = new Node(val);
+		}
+		else
+		{
+			Node tmp = new Node (val);
+			while (p.next != null)
+			{
+				p = p.next;
+			}		
+			p.next = tmp;
+		}
+	}
+
+	@Override
+	public void addPos(int pos, int val) 
+	{
+		if (pos == 0) 
+		{
+			addStart(val);
+		}
+		else
+		{
+			Node newNode = new Node (val);
+			Node prev = root;
+			int count = 1;
+			while( count < pos )
+			{
+				prev = prev.next;
+				count++;
+			}
+			Node curent = prev.next;
+			newNode.next = curent;
+			prev.next = newNode;
+
+		}
+	}
+
+	@Override
+	public Iterator<Integer> iterator() 
+	{
+		return new MyIter(root);
+	}
+	class MyIter implements Iterator<Integer>
+	{
+		Node p = null;
+		public MyIter(Node p) 
+		{
+			this.p = p;
+		}
+		@Override
+		public boolean hasNext() 
+		{
+			return p != null;
+		}
+
+		@Override
+		public Integer next() 
+		{
+			int ret = p.val;
+			p = p.next;
+			return ret;
+		}		
+	}
+}

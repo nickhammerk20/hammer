@@ -213,7 +213,7 @@ public class LList2 implements EList, Iterable<Integer>
 	@Override
 	public void revers() 
 	{
-		if(start == null)
+		if(start == null || start.next == null)
 			return;
 
 		LList2 obj = new LList2();
@@ -234,8 +234,26 @@ public class LList2 implements EList, Iterable<Integer>
 	@Override
 	public void halfRevers() 
 	{
-	
+		if (start == null || start.next == null)
+			return;
 
+		Node p = start;
+		LList2 lstNew = new LList2();
+		int j = 0;
+		int dx = (size() % 2==0) ? 0 : 1;
+		for ( int i = 0 ; i < size() ; i++ )
+		{
+			if ( i < size() / 2 + dx)
+			{
+				lstNew.addEnd(p.val);
+			}
+			else
+			{
+				lstNew.addPos(j++, p.val);
+			}
+			p = p.next;
+		}
+		start = lstNew.start;
 	}
 
 

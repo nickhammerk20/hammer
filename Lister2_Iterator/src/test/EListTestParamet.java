@@ -637,7 +637,7 @@ public class EListTestParamet
 		assertArrayEquals(exp, act);
 	}
 	@Test
-	public void test_halfRevers_many() 
+	public void test_halfRevers_many2() 
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
