@@ -240,18 +240,39 @@ public class LList2 implements EList, Iterable<Integer>
 		Node p = start;
 		LList2 lstNew = new LList2();
 		int j = 0;
-		int dx = (size() % 2==0) ? 0 : 1;
-		for ( int i = 0 ; i < size() ; i++ )
+		if ( size() % 2==0)
 		{
-			if ( i < size() / 2 + dx)
+			for ( int i = 0 ; i < size() ; i++ )
 			{
-				lstNew.addEnd(p.val);
+				if ( i < size() / 2)
+				{
+					lstNew.addEnd(p.val);
+				}
+				else
+				{
+					lstNew.addPos(j++, p.val);
+				}
+				p = p.next;
 			}
-			else
+		}
+		else
+		{
+			for ( int i = 0 ; i < size() ; i++ )
 			{
-				lstNew.addPos(j++, p.val);
+				if ( i < size() / 2)
+				{
+					lstNew.addEnd(p.val);
+				}
+				else if ( size() % 2!=0  && i == size() / 2 )
+				{
+					lstNew.addStart(p.val);
+				}
+				else if ( i > size() / 2)
+				{
+					lstNew.addPos(j++, p.val);
+				}
+				p = p.next;
 			}
-			p = p.next;
 		}
 		start = lstNew.start;
 	}
@@ -269,13 +290,13 @@ public class LList2 implements EList, Iterable<Integer>
 			clear();
 			return tmp;
 		}
-		
-//		Node p = start;
+
+		//		Node p = start;
 		tmp = start.val; 
-		
+
 		start = start.next; 
 		start.prev = null;
-		
+
 		return tmp;
 	}
 
@@ -359,7 +380,7 @@ public class LList2 implements EList, Iterable<Integer>
 	public void addEnd(int val)
 	{
 		Node tmp = new Node(val);
-		
+
 		if (end == null)
 		{
 			end = tmp;
@@ -383,7 +404,7 @@ public class LList2 implements EList, Iterable<Integer>
 		else
 		{
 			Node newNode = new Node (val);
-			
+
 			Node previus = start;
 			int count = 1;
 			while( count < pos )
@@ -391,7 +412,7 @@ public class LList2 implements EList, Iterable<Integer>
 				previus = previus.next;
 				count++;
 			}
-			
+
 			Node curent = previus.next;
 			newNode.next = curent;
 			previus.next = newNode;

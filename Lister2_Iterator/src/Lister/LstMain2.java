@@ -5,7 +5,7 @@ public class LstMain2 {
 	public static void main(String[] args) 
 	{
 //		int[] ini = {10,15,20,14,77,22,50,25,15,20,7,40,75,60,80};
-		int[] ini = {10,20,77,11,24,82,33};
+		int[] ini = {10,20,77,11,24,82};
 			
 		AList0 alst0 = new AList0();
 		alst0.init(ini);
