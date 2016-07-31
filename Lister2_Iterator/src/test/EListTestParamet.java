@@ -28,10 +28,10 @@ public class EListTestParamet
 	{
 		return Arrays.asList(new Object[][]
 				{
-//			{ new AList0()},
-//			{ new AList1()}, 
-//			{ new AList2()},
-//			{ new AList3_MonoIterator()},
+			{ new AList0()},
+			{ new AList1()}, 
+			{ new AList2()},
+			{ new AList3_MonoIterator()},
 			{ new LList1()},
 			{ new LList2()}
 				});
