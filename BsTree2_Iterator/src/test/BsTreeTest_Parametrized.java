@@ -11,7 +11,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import BsTree.BsTree;
-import BsTree.BsTree2;
+import BsTree.BsTree2_Visitor;
 import BsTree.BsTree3_Linked;
 import BsTree.EBsTree;
 
@@ -25,8 +25,8 @@ public class BsTreeTest_Parametrized
 	{
 		return Arrays.asList(new Object[][]
 				{
-			{ new BsTree()},
-			{ new BsTree2()}, 
+//			{ new BsTree()},
+//			{ new BsTree2_Visitor()}, 
 			{ new BsTree3_Linked()},
 				});
 	}
@@ -486,8 +486,70 @@ public class BsTreeTest_Parametrized
 		int [] exp = {10, 11, 20, 24, 77, 82};
 		assertArrayEquals(exp, act);
 	}
+
 	@Test
-	public void test_del_two() 
+	public void test_del_three_right_3() 
+	{
+		int[] ini = {20,77,50};
+		obj.init(ini);
+		obj.del(20);
+		int [] act = obj.toArray();
+		int [] exp = {50,77};
+		assertArrayEquals(exp, act);
+	}	
+	@Test
+	public void test_del_three_left_3() 
+	{
+		int[] ini = {20,10,15};
+		obj.init(ini);
+		obj.del(20);
+		int [] act = obj.toArray();
+		int [] exp = {10,15};
+		assertArrayEquals(exp, act);
+	}	
+
+	@Test
+	public void test_del_four_left_1() 
+	{
+		int[] ini = {20,10,77,15};
+		obj.init(ini);
+		obj.del(10);
+		int [] act = obj.toArray();
+		int [] exp = {15, 20,77};
+		assertArrayEquals(exp, act);
+	}	
+	@Test
+	public void test_del_four_right_1() 
+	{
+		int[] ini = {20,10,77,50};
+		obj.init(ini);
+		obj.del(50);
+		int [] act = obj.toArray();
+		int [] exp = {10,20,77};
+		assertArrayEquals(exp, act);
+	}	
+	@Test
+	public void test_del_three_right_1() 
+	{
+		int[] ini = {20,10,77};
+		obj.init(ini);
+		obj.del(77);
+		int [] act = obj.toArray();
+		int [] exp = {10,20};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_del_three_left_1() 
+	{
+		int[] ini = {20,10,77};
+		obj.init(ini);
+		obj.del(10);
+		int [] act = obj.toArray();
+		int [] exp = {20,77};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_del_two_right_1() 
 	{
 		int[] ini = {20,77};
 		obj.init(ini);
@@ -496,6 +558,37 @@ public class BsTreeTest_Parametrized
 		int [] exp = {77};
 		assertArrayEquals(exp, act);
 	}
+	@Test
+	public void test_del_two_right_2() 
+	{
+		int[] ini = {20,77};
+		obj.init(ini);
+		obj.del(77);
+		int [] act = obj.toArray();
+		int [] exp = {20};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_del_two_left_1() 
+	{
+		int[] ini = {77,20};
+		obj.init(ini);
+		obj.del(20);
+		int [] act = obj.toArray();
+		int [] exp = {77};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_del_two_left_2() 
+	{
+		int[] ini = {77,20};
+		obj.init(ini);
+		obj.del(77);
+		int [] act = obj.toArray();
+		int [] exp = {20};
+		assertArrayEquals(exp, act);
+	}
+
 	@Test
 	public void test_del_one() 
 	{
@@ -513,8 +606,35 @@ public class BsTreeTest_Parametrized
 		obj.init(ini);
 		obj.del(50);
 		int [] act = obj.toArray();
-		int [] exp = {50};
+		int [] exp = {};
 		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void testDel_many_v11() 
+	{
+		int[] ar2 = {55,24,5,98,45,53,12,104,111,15,4,62,84,59,91,77,70,75,71,110};
+		obj.init(ar2);
+
+		obj.del(24);
+		obj.del(15);
+
+		int[] act2 = obj.toArray();
+		int[] exp2 = {4,5,12,45,53,55,59,62,70,71,75,77,84,91,98,104,110,111};
+		assertArrayEquals(exp2,act2);
+	}
+	@Test
+	public void testDel_many_v12() 
+	{
+		int[] ar2 = {55,24,5,98,45,53,12,104,111,15,4,62,84,59,91,77,70,75,71,110};
+		obj.init(ar2);
+
+		obj.del(91);
+		obj.del(98);
+		obj.del(84);
+
+		int[] act2 = obj.toArray();
+		int[] exp2 = {4,5,12,15,24,45,53,55,59,62,70,71,75,77,104,110,111};
+		assertArrayEquals(exp2,act2);
 	}
 	//================================
 	// revers

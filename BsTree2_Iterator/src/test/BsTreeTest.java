@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import BsTree.BsTree;
-import BsTree.BsTree2;
+import BsTree.BsTree2_Visitor;
 import BsTree.BsTree3_Linked;
 import BsTree.EBsTree;
 

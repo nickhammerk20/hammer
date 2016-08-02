@@ -2,7 +2,7 @@ package BsTree;
 
 import java.util.Iterator;
 
-import BsTree.BsTree2.MyIter;
+import BsTree.BsTree2_Visitor.MyIter;
 
 //import java.util.Iterator;
 
@@ -262,7 +262,6 @@ public class BsTree3_Linked implements EBsTree
 			throw new IllegalArgumentException();
 		delNode(p);
 	}
-	
 	private Node findNode(Link p, int val) 
 	{
 		if(p.node == null)
@@ -275,8 +274,7 @@ public class BsTree3_Linked implements EBsTree
 			return findNode(p.node.left, val);
 		else  
 			return findNode(p.node.right, val);
-	}
-	
+	}	
 	private void delNode(Node old) 
 	{
 		if(old.left.node == null && old.right.node == null)
@@ -291,14 +289,16 @@ public class BsTree3_Linked implements EBsTree
 			tmp = maxLeft(old);
 			tmp.link.node = tmp.left.node;
 		}
-		else //if( old.right != null)
+		else if( old.right != null)
 		{
 			tmp = minRight(old);
 			tmp.link.node = tmp.right.node;
 		}
 		tmp.left.node = old.left.node;
 		tmp.right.node = old.right.node;
+//		tmp.link = old.link;
 		old.link.node = tmp;
+		tmp.link = old.link;
 	}
 	private Node maxLeft(Node old) 
 	{
@@ -318,6 +318,7 @@ public class BsTree3_Linked implements EBsTree
 		}
 		return pp;
 	}
+	
 	@Override
 	public Iterator<Integer> iterator() 
 	{

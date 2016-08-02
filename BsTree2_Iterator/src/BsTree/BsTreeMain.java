@@ -5,7 +5,7 @@ public class BsTreeMain
 	public static void main (String[] args)
 	{
 
-		BsTree2 tree = new BsTree2();
+		BsTree2_Visitor tree = new BsTree2_Visitor();
 
 		tree.add(10);
 		tree.add(15);

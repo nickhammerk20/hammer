@@ -8,7 +8,7 @@ public class BsTree implements EBsTree
 
 	int leftHeight = 0;
 	int rightHeight = 0;
-	
+
 	class Node 
 	{
 		int val;
@@ -142,7 +142,7 @@ public class BsTree implements EBsTree
 
 		return ret;
 	}
-	
+
 	//Получить количество уровней (высота дерева)++
 	@Override
 	public int height() 
@@ -192,7 +192,7 @@ public class BsTree implements EBsTree
 
 
 	//Получить String через LVR дерева
-		@Override
+	@Override
 	public String toString() 
 	{
 		return toString(root);
@@ -206,7 +206,7 @@ public class BsTree implements EBsTree
 	}
 
 	//Получить массив через LVR дерева
-		private class Counter
+	private class Counter
 	{
 		int index = 0;
 	}
@@ -241,23 +241,26 @@ public class BsTree implements EBsTree
 		Node tmp = p.left;
 		p.left = p.right;
 		p.right = tmp;
-		
+
 		reverseNode(p.left);
 		reverseNode(p.right);
 	}
-	
+
 	//Удаление элемента по ключу
-		@Override
+	@Override
 	public void del(int key) 
 	{
+		if( root == null)
+			throw new IllegalArgumentException();
+
 		Node current = root;
 		Node parent = root;
 		boolean isleft = true;
 
-		while (current.val != key) 
+		while (current.val != key)   /** ищем узел */
 		{
 			parent = current;
-			if (key < current.val) 
+			if (key < current.val)  /** поиск идет влево */
 			{
 				isleft = true;
 				current = current.left;
@@ -270,29 +273,33 @@ public class BsTree implements EBsTree
 			if (current == null)
 				return;
 		}
-		if (current.left == null && current.right == null) 
+		/** узел найден*/
+		/**проверяем есть ли потомки у узла*/
+		if (current.left == null && current.right == null) //потомков нет, самый простой вариант 
 		{
-			if (current == root)
+			if (current == root) 			// если в дереве один элемент, обнулили дерево
 				root = null;
-			else if (isleft)
+			else if (isleft) 				// если левый потомок, обнуляем его
 				parent.left = null;
-			else
+			else							// если правцый потомок, обнуляем его
 				parent.right = null;
 		} 
-		else if (current.right == null)
-			if (current == root)
+		/**удаление узла с одним потомком*/
+		else if (current.right == null) 	// проверяем наличие правого потомка
+			if (current == root)			// перепривязываем левый элемент вместо удаляемого
 				root = current.left;
-			else if (isleft)
-				parent.left = current.left;
+			else if (isleft)				// 
+				parent.left = current.left;	// 
 			else
 				parent.right = current.left;
-		else if (current.left == null)
-			if (current == root)
+		else if (current.left == null) 		// нет левого потомка
+			if (current == root)			// перепревязываем правый элемент вместо удаляемого
 				root = current.right;
 			else if (isleft)
 				parent.left = current.right;
 			else
 				parent.right = current.right;
+		/** удаление узла с двумя потомками*/
 		else 
 		{
 			Node successor = getSuccessor(current);
@@ -305,20 +312,21 @@ public class BsTree implements EBsTree
 			successor.left = current.left;
 		}
 	}
-	private Node getSuccessor(Node delNode) 
+	private Node getSuccessor(Node delNode) 		// поиск приемника для узла
 	{
+		// сначала спускаемся на уровень вправо, и потом ищем самый левый элемент
 		Node successorParent = delNode;
 		Node successor = delNode;
 		Node current = delNode.right;
 		while (current != null) 
 		{
-			successorParent = successor;
-			successor = current;
-			current = current.left;
+			successorParent = successor;			// 
+			successor = current;					//
+			current = current.left;					// идём налево!!!
 		}
-		if (successor != delNode.right) 
-		{
-			successorParent.left = successor.right;
+		if (successor != delNode.right) 			// если приемник не является правым 
+		{											// узлом удаляемого элемента
+			successorParent.left = successor.right;	// создаем связь между узлами
 			successor.right = delNode.right;
 		}
 		return successor;
