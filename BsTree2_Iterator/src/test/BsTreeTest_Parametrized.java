@@ -25,8 +25,8 @@ public class BsTreeTest_Parametrized
 	{
 		return Arrays.asList(new Object[][]
 				{
-//			{ new BsTree()},
-//			{ new BsTree2_Visitor()}, 
+			{ new BsTree()},
+			{ new BsTree2_Visitor()}, 
 			{ new BsTree3_Linked()},
 				});
 	}
@@ -636,6 +636,19 @@ public class BsTreeTest_Parametrized
 		int[] exp2 = {4,5,12,15,24,45,53,55,59,62,70,71,75,77,104,110,111};
 		assertArrayEquals(exp2,act2);
 	}
+	 @Test
+	 public void testDel_many_v13() 
+	 {
+	  int[] ar2 = {55,24,5,98,45,53,12,104,111,18,15,14,17,4,62,84,59,91,77,70,75,71,110};
+	  obj.init(ar2);
+
+	  obj.del(24);
+	  obj.del(15);
+	  
+	  int[] act2 = obj.toArray();
+	  int[] exp2 = {4,5,12,14,17,18,45,53,55,59,62,70,71,75,77,84,91,98,104,110,111};
+	  assertArrayEquals(exp2,act2);
+	 }
 	//================================
 	// revers
 	//================================

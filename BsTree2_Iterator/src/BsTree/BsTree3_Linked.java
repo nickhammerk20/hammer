@@ -277,26 +277,32 @@ public class BsTree3_Linked implements EBsTree
 	}	
 	private void delNode(Node old) 
 	{
-		if(old.left.node == null && old.right.node == null)
+		if(old.left.node == null && old.right.node == null) 	// если нет ни одного потомка
 		{
 			old.link.node = null;
 			return;
 		}
 		
-		Node tmp = null;
-		if( old.left.node != null)
+		Node tmp = null;										// создаем наследника
+		if( old.left.node != null)								// если есть левый наследник
 		{
-			tmp = maxLeft(old);
-			tmp.link.node = tmp.left.node;
+			tmp = maxLeft(old);									// поиска максимального левого элемента
+			tmp.link.node = tmp.left.node;						
+			if (tmp.link.node != null)
+				tmp.link.node.link = tmp.link;
 		}
 		else if( old.right != null)
 		{
 			tmp = minRight(old);
 			tmp.link.node = tmp.right.node;
+			if (tmp.link.node != null)
+				tmp.link.node.link = tmp.link;
 		}
-		tmp.left.node = old.left.node;
-		tmp.right.node = old.right.node;
-//		tmp.link = old.link;
+//		tmp.left.node = old.left.node;
+//		tmp.right.node = old.right.node;
+		tmp.left = old.left;
+		tmp.right = old.right;
+		
 		old.link.node = tmp;
 		tmp.link = old.link;
 	}
