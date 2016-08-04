@@ -329,18 +329,24 @@ public class BsTree3_Linked implements EBsTree
 	/******check***********/
 	/**проверить все связи*/
 	/**********************/
-	
 	public boolean check()
 	{
 		//проверяет соответсвие ссылок в обе стороны
-		boolean ret = false;
-		
-		
-		
-		
-		
-		return ret;
+		boolean chk = false;
+		return checkNode(root, chk);
 	}
+	private boolean checkNode(Link p, boolean chk) 
+	{
+		if (p.node == null)
+			return false;
+
+		checkNode(p.node.left, chk);						//L
+//		if 
+		System.out.println("p.node.val " + p.node.val + " - " + chk + " / p.node.left " + p.node.left +" / p.node.right "+ p.node.right +" / p.node.link "+ p.node.link);  		//V
+		checkNode(p.node.right, chk);             			//R
+		return chk;
+	}
+	
 
 	/***********************/
 	/*******Iterator********/
