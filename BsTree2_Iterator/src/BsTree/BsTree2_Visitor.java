@@ -3,7 +3,7 @@
 import java.util.Iterator;
 import java.util.Stack;
 
-public class BsTree2 implements EBsTree, Iterable<Integer>
+public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 {
 
 	int leftHeight = 0;
@@ -263,7 +263,7 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 	}
 	private void reverseNode(Node p) 
 	{
-		if (root == null)
+		if (p == null)
 			return;
 
 		Node tmp = p.left;
@@ -278,6 +278,9 @@ public class BsTree2 implements EBsTree, Iterable<Integer>
 	@Override
 	public void del(int key) 
 	{
+		if( root == null)
+			throw new IllegalArgumentException();
+		
 		Node current = root;
 		Node parent = root;
 		boolean isleft = true;

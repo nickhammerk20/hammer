@@ -1,9 +1,11 @@
-﻿package BsTree;
+package BsTree;
 
 import java.util.Iterator;
 import java.util.Stack;
 
-public class BsTree implements EBsTree
+import BsTree.BsTree3_Linked.Node;
+
+public class BsTree1_Rotation implements EBsTree
 {
 
 	int leftHeight = 0;
@@ -237,7 +239,8 @@ public class BsTree implements EBsTree
 	{
 		if (p == null)
 			return;
-				
+
+//		System.out.println(p.val);
 		Node tmp = p.left;
 		p.left = p.right;
 		p.right = tmp;
@@ -299,35 +302,49 @@ public class BsTree implements EBsTree
 				parent.left = current.right;
 			else
 				parent.right = current.right;
-		/** удаление узла с двумя потомками (подъемом)*/
+
+		/** удаление узла с двумя потомками (вращением)*/
 		else 
-		{
-			Node successor = getSuccessor(current);
-			if (current == root)
-				root = successor;
-			else if (isleft)
-				parent.left = successor;
+		{	
+			Node maxLeft = maxLeft(current);
+			maxLeft.right = current.right;
+			current = current.left;
+			if( isleft )
+			{
+				parent.left = current;
+			}
 			else
-				parent.right = successor;
-			successor.left = current.left;
+			{
+				parent.right = current;
+			}
 		}
 	}
+	private Node maxLeft(Node old) 
+	{
+		Node pp = old.left;
+		while(pp.right != null )
+		{
+			pp = pp.right;
+		}
+		return pp;
+	}
+
 	private Node getSuccessor(Node delNode) 		// поиск приемника для узла
 	{
-		// сначала спускаемся на уровень вправо, и потом ищем самый левый элемент
+		// сначала спускаемся на уровень влево, и потом ищем самый максимальный элемент у левого потомка
 		Node successorParent = delNode;
 		Node successor = delNode;
-		Node current = delNode.right;
+		Node current = delNode.left;
 		while (current != null) 
 		{
 			successorParent = successor;			// 
 			successor = current;					//
-			current = current.left;					// идём налево!!!
+			current = current.right;				// ищем максимальный элемент слева
 		}
-		if (successor != delNode.right) 			// если приемник не является правым 
+		if (successor != delNode.left) 			// если приемник не является левым 
 		{											// узлом удаляемого элемента
-			successorParent.left = successor.right;	// создаем связь между узлами
-			successor.right = delNode.right;
+			successorParent.right = successor.right;	// создаем связь между узлами
+			successor.left = delNode.left;
 		}
 		return successor;
 	}
@@ -381,21 +398,4 @@ public class BsTree implements EBsTree
 			return result;
 		}		
 	}
-	
-	/**********************/
-	/******check***********/
-	/**проверить все связи*/
-	/**********************/
-	
-	public boolean check()
-	{
-		boolean ret = false;
-		
-		
-		
-		
-		
-		return ret;
-	}
-
 }

@@ -2,7 +2,7 @@ package BsTree;
 
 import java.util.Iterator;
 
-import BsTree.BsTree2.MyIter;
+import BsTree.BsTree2_Visitor.MyIter;
 
 //import java.util.Iterator;
 
@@ -262,7 +262,6 @@ public class BsTree3_Linked implements EBsTree
 			throw new IllegalArgumentException();
 		delNode(p);
 	}
-	
 	private Node findNode(Link p, int val) 
 	{
 		if(p.node == null)
@@ -275,30 +274,37 @@ public class BsTree3_Linked implements EBsTree
 			return findNode(p.node.left, val);
 		else  
 			return findNode(p.node.right, val);
-	}
-	
+	}	
 	private void delNode(Node old) 
 	{
-		if(old.left.node == null && old.right.node == null)
+		if(old.left.node == null && old.right.node == null) 	// если нет ни одного потомка
 		{
 			old.link.node = null;
 			return;
 		}
 		
-		Node tmp = null;
-		if( old.left.node != null)
+		Node tmp = null;										// создаем наследника
+		if( old.left.node != null)								// если есть левый наследник
 		{
-			tmp = maxLeft(old);
-			tmp.link.node = tmp.left.node;
+			tmp = maxLeft(old);									// поиска максимального левого элемента
+			tmp.link.node = tmp.left.node;						
+			if (tmp.link.node != null)
+				tmp.link.node.link = tmp.link;
 		}
-		else //if( old.right != null)
+		else if( old.right != null)
 		{
 			tmp = minRight(old);
 			tmp.link.node = tmp.right.node;
+			if (tmp.link.node != null)
+				tmp.link.node.link = tmp.link;
 		}
-		tmp.left.node = old.left.node;
-		tmp.right.node = old.right.node;
+//		tmp.left.node = old.left.node;
+//		tmp.right.node = old.right.node;
+		tmp.left = old.left;
+		tmp.right = old.right;
+		
 		old.link.node = tmp;
+		tmp.link = old.link;
 	}
 	private Node maxLeft(Node old) 
 	{
@@ -318,6 +324,27 @@ public class BsTree3_Linked implements EBsTree
 		}
 		return pp;
 	}
+	
+	/**********************/
+	/******check***********/
+	/**проверить все связи*/
+	/**********************/
+	
+	public boolean check()
+	{
+		//проверяет соответсвие ссылок в обе стороны
+		boolean ret = false;
+		
+		
+		
+		
+		
+		return ret;
+	}
+
+	/***********************/
+	/*******Iterator********/
+	/***********************/	
 	@Override
 	public Iterator<Integer> iterator() 
 	{
@@ -343,5 +370,5 @@ public class BsTree3_Linked implements EBsTree
 		{
 			return ar[i++];
 		}		
-	}
+	}	
 }

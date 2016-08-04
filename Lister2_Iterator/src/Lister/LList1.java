@@ -255,41 +255,24 @@ public class LList1 implements EList, Iterable<Integer>
 		Node p = root;
 		LList1 lstNew = new LList1();
 		int j = 0;
-		if ( size() % 2==0)
+		for ( int i = 0 ; i < size() ; i++ )
 		{
-			for ( int i = 0 ; i < size() ; i++ )
+			if ( i < size() / 2 )
 			{
-				if ( i < size() / 2 )
+				lstNew.addEnd(p.val);
+			}
+			else
+			{
+				if ( size() % 2 != 0  && i == size() / 2 )
 				{
-					lstNew.addEnd(p.val);
+					lstNew.addStart(p.val);
 				}
 				else
 				{
 					lstNew.addPos(j++, p.val);
 				}
-
-				p = p.next;
 			}
-		}
-		else
-		{
-			for ( int i = 0 ; i < size() ; i++ )
-			{
-				if ( i < size() / 2 )
-				{
-					lstNew.addEnd(p.val);
-				}
-				else if ( i == size() / 2 )
-				{
-					lstNew.addStart(p.val);
-				}
-				else if ( i > size() / 2)
-				{
-					lstNew.addPos(j++, p.val);
-				}
-
-				p = p.next;
-			}
+			p = p.next;
 		}
 		root = lstNew.root;
 	}
