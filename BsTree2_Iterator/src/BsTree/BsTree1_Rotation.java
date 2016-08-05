@@ -398,4 +398,10 @@ public class BsTree1_Rotation implements EBsTree
 			return result;
 		}		
 	}
+	@Override
+	public boolean check() 
+	{
+		// реализован в BsTreeLinked, здесь не актуален. всегда true
+		return true;
+	}
 }

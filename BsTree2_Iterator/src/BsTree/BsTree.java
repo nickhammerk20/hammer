@@ -387,15 +387,11 @@ public class BsTree implements EBsTree
 	/**проверить все связи*/
 	/**********************/
 	
-	public boolean check()
+	@Override
+	public boolean check() 
 	{
-		boolean ret = false;
-		
-		
-		
-		
-		
-		return ret;
+		// реализован в BsTreeLinked, здесь не актуален. всегда true
+		return true;
 	}
 
 }

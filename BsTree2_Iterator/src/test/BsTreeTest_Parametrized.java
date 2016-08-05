@@ -139,6 +139,7 @@ public class BsTreeTest_Parametrized
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
+		assertEquals(obj.check(), true);
 		int[] act = obj.toArray();
 		int[] exp = {10,11,20,24,77,82};
 		assertArrayEquals(exp, act);
@@ -148,6 +149,7 @@ public class BsTreeTest_Parametrized
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
+		assertEquals(obj.check(), true);
 		int[] act = obj.toArray();
 		int[] exp = {10,20};
 		assertArrayEquals(exp, act);
@@ -157,6 +159,7 @@ public class BsTreeTest_Parametrized
 	{
 		int[] ini = {10};
 		obj.init(ini);
+		assertEquals(obj.check(), true);
 		int[] act = obj.toArray();
 		int[] exp = {10};
 		assertArrayEquals(exp, act);
@@ -166,6 +169,7 @@ public class BsTreeTest_Parametrized
 	{
 		int[] ini = {};
 		obj.init(ini);
+		assertEquals(obj.check(), true);
 		int[] act = obj.toArray();
 		int[] exp = {};
 		assertArrayEquals(exp, act);
@@ -175,6 +179,7 @@ public class BsTreeTest_Parametrized
 	{
 		int[] ini = null;
 		obj.init(ini);
+		assertEquals(obj.check(), true);
 		int[] act = obj.toArray();
 		int[] exp = {};
 		assertEquals(0, obj.size());
@@ -421,6 +426,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {50,25,40,20,11,24,30,75,100,60,45,22,43,77};
 		obj.init(ini);
 		obj.add(66);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {11,20,22,24,25,30,40,43,45,50,60,66,75,77,100};
 		assertArrayEquals(exp, act);
@@ -431,6 +437,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
 		obj.add(100);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {10, 11, 20, 24, 77, 82,100};
 		assertArrayEquals(exp, act);
@@ -441,6 +448,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {20,77};
 		obj.init(ini);
 		obj.add(50);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {20,50,77};
 		assertArrayEquals(exp, act);
@@ -451,6 +459,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {20};
 		obj.init(ini);
 		obj.add(50);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {20,50};
 		assertArrayEquals(exp, act);
@@ -461,6 +470,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {};
 		obj.init(ini);
 		obj.add(50);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {50};
 		assertArrayEquals(exp, act);
@@ -474,6 +484,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {50,25,40,20,11,24,30,66,75,100,60,45,22,43,77};
 		obj.init(ini);
 		obj.del(66);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {11,20,22,24,25,30,40,43,45,50,60,75,77,100};
 		assertArrayEquals(exp, act);
@@ -484,6 +495,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {10,20,77,11,100,24,82};
 		obj.init(ini);
 		obj.del(100);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {10, 11, 20, 24, 77, 82};
 		assertArrayEquals(exp, act);
@@ -495,6 +507,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {20,77,50};
 		obj.init(ini);
 		obj.del(20);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {50,77};
 		assertArrayEquals(exp, act);
@@ -505,6 +518,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {20,10,15};
 		obj.init(ini);
 		obj.del(20);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {10,15};
 		assertArrayEquals(exp, act);
@@ -516,6 +530,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {20,10,77,15};
 		obj.init(ini);
 		obj.del(10);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {15, 20,77};
 		assertArrayEquals(exp, act);
@@ -526,6 +541,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {20,10,77,50};
 		obj.init(ini);
 		obj.del(50);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {10,20,77};
 		assertArrayEquals(exp, act);
@@ -536,6 +552,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {20,10,77};
 		obj.init(ini);
 		obj.del(77);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {10,20};
 		assertArrayEquals(exp, act);
@@ -546,6 +563,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {20,10,77};
 		obj.init(ini);
 		obj.del(10);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {20,77};
 		assertArrayEquals(exp, act);
@@ -556,6 +574,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {20,77};
 		obj.init(ini);
 		obj.del(20);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {77};
 		assertArrayEquals(exp, act);
@@ -566,6 +585,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {20,77};
 		obj.init(ini);
 		obj.del(77);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {20};
 		assertArrayEquals(exp, act);
@@ -576,6 +596,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {77,20};
 		obj.init(ini);
 		obj.del(20);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {77};
 		assertArrayEquals(exp, act);
@@ -586,6 +607,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {77,20};
 		obj.init(ini);
 		obj.del(77);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {20};
 		assertArrayEquals(exp, act);
@@ -597,6 +619,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {20};
 		obj.init(ini);
 		obj.del(20);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {};
 		assertArrayEquals(exp, act);
@@ -607,6 +630,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {};
 		obj.init(ini);
 		obj.del(50);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {};
 		assertArrayEquals(exp, act);
@@ -618,7 +642,9 @@ public class BsTreeTest_Parametrized
 		obj.init(ar2);
 
 		obj.del(24);
+		assertEquals(obj.check(), true);
 		obj.del(15);
+		assertEquals(obj.check(), true);
 
 		int[] act2 = obj.toArray();
 		int[] exp2 = {4,5,12,45,53,55,59,62,70,71,75,77,84,91,98,104,110,111};
@@ -631,8 +657,11 @@ public class BsTreeTest_Parametrized
 		obj.init(ar2);
 
 		obj.del(91);
+		assertEquals(obj.check(), true);
 		obj.del(98);
+		assertEquals(obj.check(), true);
 		obj.del(84);
+		assertEquals(obj.check(), true);
 
 		int[] act2 = obj.toArray();
 		int[] exp2 = {4,5,12,15,24,45,53,55,59,62,70,71,75,77,104,110,111};
@@ -660,6 +689,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {50,25,40,20,11,24,30,66,75,100,60,45,22,43,77};
 		obj.init(ini);
 		obj.revers();
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {100,77,75,66,60,50,45,43,40,30,25,24,22,20,11};
 		assertArrayEquals(exp, act);
@@ -670,6 +700,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {10,20,77,11,100,24,82};
 		obj.init(ini);
 		obj.revers();
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {100, 82, 77, 24, 20, 11, 10,};
 		assertArrayEquals(exp, act);
@@ -680,6 +711,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {20,77};
 		obj.init(ini);
 		obj.revers();
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {77,20};
 		assertArrayEquals(exp, act);
@@ -690,6 +722,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {20};
 		obj.init(ini);
 		obj.revers();
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {20};
 		assertArrayEquals(exp, act);
@@ -700,6 +733,7 @@ public class BsTreeTest_Parametrized
 		int[] ini = {};
 		obj.init(ini);
 		obj.revers();
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {};
 		assertArrayEquals(exp, act);

@@ -18,4 +18,6 @@ public interface EBsTree extends Iterable<Integer>
 
 	public String toString(); 
 	public int [] toArray(); 
+	
+	public boolean check();
 }

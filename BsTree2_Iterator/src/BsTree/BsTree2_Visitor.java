@@ -430,4 +430,11 @@ public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 			return ar[i++];
 		}		
 	}
+
+	@Override
+	public boolean check() 
+	{
+		// реализован в BsTreeLinked, здесь не актуален. всегда true
+		return true;
+	}
 }

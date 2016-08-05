@@ -1,5 +1,7 @@
 package task;
 
+import static org.junit.Assert.assertEquals;
+
 import BsTree.BsTree3_Linked;
 
 public class BsTreeMain3 {
@@ -17,6 +19,23 @@ public class BsTreeMain3 {
 		System.out.println();
 		System.out.println(tree.check());
 		tree.print();
-
+		System.out.println();
+		tree.clear();
+		int[] ar2 = {55,24,5,98,45,53,12,104,111,15,4,62,84,59,91,77,70,75,71,110};
+		tree.init(ar2);
+		System.out.println();
+		tree.print();
+		System.out.println();
+		tree.del(91);
+		tree.print();
+		System.out.println(tree.check());
+		tree.del(98);
+		System.out.println();
+		tree.print();
+		System.out.println(tree.check());
+		tree.del(84);
+		System.out.println();
+		tree.print();
+		System.out.println(tree.check());
 	}
 }
