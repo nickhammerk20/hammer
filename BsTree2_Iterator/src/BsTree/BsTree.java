@@ -393,5 +393,10 @@ public class BsTree implements EBsTree
 		// реализован в BsTreeLinked, здесь не актуален. всегда true
 		return true;
 	}
+	@Override
+	public boolean equals() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

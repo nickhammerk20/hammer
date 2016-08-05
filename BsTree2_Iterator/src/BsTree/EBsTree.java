@@ -20,4 +20,5 @@ public interface EBsTree extends Iterable<Integer>
 	public int [] toArray(); 
 	
 	public boolean check();
+	public boolean equals();
 }

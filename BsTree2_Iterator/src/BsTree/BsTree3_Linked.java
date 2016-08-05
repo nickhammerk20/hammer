@@ -326,7 +326,7 @@ public class BsTree3_Linked implements EBsTree
 	}
 	
 	/**********************/
-	/******check***********/
+	/*****check+equals*****/
 	/**проверить все связи*/
 	/**********************/
 	public boolean check()
@@ -355,7 +355,20 @@ public class BsTree3_Linked implements EBsTree
 		return chk;
 	}
 	
-
+	@Override
+	public boolean equals() 
+	{
+		boolean chk = true;
+		return equalsTree(root, chk);
+	}	
+	private boolean equalsTree(Link p, boolean chk) 
+	{
+		
+		
+		return chk;
+	}
+	
+	
 	/***********************/
 	/*******Iterator********/
 	/***********************/	
@@ -384,5 +397,6 @@ public class BsTree3_Linked implements EBsTree
 		{
 			return ar[i++];
 		}		
-	}	
+	}
+	
 }
