@@ -5,20 +5,22 @@ import org.junit.Before;
 import org.junit.Test;
 
 import BsTree.BsTree;
+import BsTree.BsTree1_Rotation;
 import BsTree.BsTree2_Visitor;
 import BsTree.BsTree3_Linked;
 import BsTree.EBsTree;
 
 public class BsTreeTest 
 {
-//	BsTree obj = new BsTree();
-//	BsTree2 obj = new BsTree2();
-	BsTree3_Linked obj = new BsTree3_Linked();
+	/**для теста equals() нужно два объекта*/
+	BsTree1_Rotation obj = new BsTree1_Rotation();
+	BsTree1_Rotation obj2 = new BsTree1_Rotation();
 
 	@Before
 	public void start()
 	{
 		obj.clear();
+		obj2.clear();
 	}
 
 	//==================================//
@@ -116,6 +118,7 @@ public class BsTreeTest
 	{
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
+		assertEquals(obj.check(), true);
 		int[] act = obj.toArray();
 		int[] exp = {10,11,20,24,77,82};
 		assertArrayEquals(exp, act);
@@ -125,6 +128,7 @@ public class BsTreeTest
 	{
 		int[] ini = {10,20};
 		obj.init(ini);
+		assertEquals(obj.check(), true);
 		int[] act = obj.toArray();
 		int[] exp = {10,20};
 		assertArrayEquals(exp, act);
@@ -134,6 +138,7 @@ public class BsTreeTest
 	{
 		int[] ini = {10};
 		obj.init(ini);
+		assertEquals(obj.check(), true);
 		int[] act = obj.toArray();
 		int[] exp = {10};
 		assertArrayEquals(exp, act);
@@ -143,6 +148,7 @@ public class BsTreeTest
 	{
 		int[] ini = {};
 		obj.init(ini);
+		assertEquals(obj.check(), true);
 		int[] act = obj.toArray();
 		int[] exp = {};
 		assertArrayEquals(exp, act);
@@ -152,6 +158,7 @@ public class BsTreeTest
 	{
 		int[] ini = null;
 		obj.init(ini);
+		assertEquals(obj.check(), true);
 		int[] act = obj.toArray();
 		int[] exp = {};
 		assertEquals(0, obj.size());
@@ -398,6 +405,7 @@ public class BsTreeTest
 		int[] ini = {50,25,40,20,11,24,30,75,100,60,45,22,43,77};
 		obj.init(ini);
 		obj.add(66);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {11,20,22,24,25,30,40,43,45,50,60,66,75,77,100};
 		assertArrayEquals(exp, act);
@@ -408,6 +416,7 @@ public class BsTreeTest
 		int[] ini = {10,20,77,11,24,82};
 		obj.init(ini);
 		obj.add(100);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {10, 11, 20, 24, 77, 82,100};
 		assertArrayEquals(exp, act);
@@ -418,6 +427,7 @@ public class BsTreeTest
 		int[] ini = {20,77};
 		obj.init(ini);
 		obj.add(50);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {20,50,77};
 		assertArrayEquals(exp, act);
@@ -428,6 +438,7 @@ public class BsTreeTest
 		int[] ini = {20};
 		obj.init(ini);
 		obj.add(50);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {20,50};
 		assertArrayEquals(exp, act);
@@ -438,6 +449,7 @@ public class BsTreeTest
 		int[] ini = {};
 		obj.init(ini);
 		obj.add(50);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {50};
 		assertArrayEquals(exp, act);
@@ -451,8 +463,9 @@ public class BsTreeTest
 		int[] ini = {50,25,40,20,11,24,30,66,75,100,60,45,22,43,77};
 		obj.init(ini);
 		obj.del(66);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
-		int [] exp = {11,20,22,24,25,30,40,43,45,50,60,75,77,100, };
+		int [] exp = {11,20,22,24,25,30,40,43,45,50,60,75,77,100};
 		assertArrayEquals(exp, act);
 	}
 	@Test
@@ -461,39 +474,131 @@ public class BsTreeTest
 		int[] ini = {10,20,77,11,100,24,82};
 		obj.init(ini);
 		obj.del(100);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {10, 11, 20, 24, 77, 82};
 		assertArrayEquals(exp, act);
 	}
+
 	@Test
-	public void test_del_two_max_min() 
+	public void test_del_three_right_3() 
+	{
+		int[] ini = {20,77,50};
+		obj.init(ini);
+		obj.del(20);
+		assertEquals(obj.check(), true);
+		int [] act = obj.toArray();
+		int [] exp = {50,77};
+		assertArrayEquals(exp, act);
+	}	
+	@Test
+	public void test_del_three_left_3() 
+	{
+		int[] ini = {20,10,15};
+		obj.init(ini);
+		obj.del(20);
+		assertEquals(obj.check(), true);
+		int [] act = obj.toArray();
+		int [] exp = {10,15};
+		assertArrayEquals(exp, act);
+	}	
+
+	@Test
+	public void test_del_four_left_1() 
+	{
+		int[] ini = {20,10,77,15};
+		obj.init(ini);
+		obj.del(10);
+		assertEquals(obj.check(), true);
+		int [] act = obj.toArray();
+		int [] exp = {15, 20,77};
+		assertArrayEquals(exp, act);
+	}	
+	@Test
+	public void test_del_four_right_1() 
+	{
+		int[] ini = {20,10,77,50};
+		obj.init(ini);
+		obj.del(50);
+		assertEquals(obj.check(), true);
+		int [] act = obj.toArray();
+		int [] exp = {10,20,77};
+		assertArrayEquals(exp, act);
+	}	
+	@Test
+	public void test_del_three_right_1() 
+	{
+		int[] ini = {20,10,77};
+		obj.init(ini);
+		obj.del(77);
+		assertEquals(obj.check(), true);
+		int [] act = obj.toArray();
+		int [] exp = {10,20};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_del_three_left_1() 
+	{
+		int[] ini = {20,10,77};
+		obj.init(ini);
+		obj.del(10);
+		assertEquals(obj.check(), true);
+		int [] act = obj.toArray();
+		int [] exp = {20,77};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_del_two_right_1() 
+	{
+		int[] ini = {20,77};
+		obj.init(ini);
+		obj.del(20);
+		assertEquals(obj.check(), true);
+		int [] act = obj.toArray();
+		int [] exp = {77};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_del_two_right_2() 
+	{
+		int[] ini = {20,77};
+		obj.init(ini);
+		obj.del(77);
+		assertEquals(obj.check(), true);
+		int [] act = obj.toArray();
+		int [] exp = {20};
+		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void test_del_two_left_1() 
 	{
 		int[] ini = {77,20};
 		obj.init(ini);
 		obj.del(20);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {77};
 		assertArrayEquals(exp, act);
 	}
 	@Test
-	public void test_del_two_min_max() 
+	public void test_del_two_left_2() 
 	{
-		int[] ini = {20,77};
+		int[] ini = {77,20};
 		obj.init(ini);
-		System.out.println("1 - "+obj.toString());
-		obj.del(20);
-		System.out.println("2 - "+obj.toString());
+		obj.del(77);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
-		System.out.println("3 - "+obj.toString());
-		int [] exp = {77};
+		int [] exp = {20};
 		assertArrayEquals(exp, act);
 	}
+
 	@Test
 	public void test_del_one() 
 	{
 		int[] ini = {20};
 		obj.init(ini);
 		obj.del(20);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {};
 		assertArrayEquals(exp, act);
@@ -504,9 +609,55 @@ public class BsTreeTest
 		int[] ini = {};
 		obj.init(ini);
 		obj.del(50);
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
-		int [] exp = {50};
+		int [] exp = {};
 		assertArrayEquals(exp, act);
+	}
+	@Test
+	public void testDel_many_v11() 
+	{
+		int[] ar2 = {55,24,5,98,45,53,12,104,111,15,4,62,84,59,91,77,70,75,71,110};
+		obj.init(ar2);
+
+		obj.del(24);
+		assertEquals(obj.check(), true);
+		obj.del(15);
+		assertEquals(obj.check(), true);
+
+		int[] act2 = obj.toArray();
+		int[] exp2 = {4,5,12,45,53,55,59,62,70,71,75,77,84,91,98,104,110,111};
+		assertArrayEquals(exp2,act2);
+	}
+	@Test
+	public void testDel_many_v12() 
+	{
+		int[] ar2 = {55,24,5,98,45,53,12,104,111,15,4,62,84,59,91,77,70,75,71,110};
+		obj.init(ar2);
+
+		obj.del(91);
+		assertEquals(obj.check(), true);
+		obj.del(98);
+		assertEquals(obj.check(), true);
+		obj.del(84);
+		assertEquals(obj.check(), true);
+
+		int[] act2 = obj.toArray();
+		int[] exp2 = {4,5,12,15,24,45,53,55,59,62,70,71,75,77,104,110,111};
+		assertArrayEquals(exp2,act2);
+	}
+	@Test
+	public void testDel_many_v13() 
+	{
+		int[] ar2 = {55,24,5,98,45,53,12,104,111,18,15,14,17,4,62,84,59,91,77,70,75,71,110};
+		obj.init(ar2);
+
+		obj.del(24);
+		obj.del(15);
+
+		int[] act2 = obj.toArray();
+		int[] exp2 = {4,5,12,14,17,18,45,53,55,59,62,70,71,75,77,84,91,98,104,110,111};
+		assertArrayEquals(exp2,act2);
 	}
 	//================================
 	// revers
@@ -517,6 +668,7 @@ public class BsTreeTest
 		int[] ini = {50,25,40,20,11,24,30,66,75,100,60,45,22,43,77};
 		obj.init(ini);
 		obj.revers();
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {100,77,75,66,60,50,45,43,40,30,25,24,22,20,11};
 		assertArrayEquals(exp, act);
@@ -527,6 +679,7 @@ public class BsTreeTest
 		int[] ini = {10,20,77,11,100,24,82};
 		obj.init(ini);
 		obj.revers();
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {100, 82, 77, 24, 20, 11, 10,};
 		assertArrayEquals(exp, act);
@@ -537,6 +690,7 @@ public class BsTreeTest
 		int[] ini = {20,77};
 		obj.init(ini);
 		obj.revers();
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {77,20};
 		assertArrayEquals(exp, act);
@@ -547,6 +701,7 @@ public class BsTreeTest
 		int[] ini = {20};
 		obj.init(ini);
 		obj.revers();
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {20};
 		assertArrayEquals(exp, act);
@@ -557,9 +712,211 @@ public class BsTreeTest
 		int[] ini = {};
 		obj.init(ini);
 		obj.revers();
+		assertEquals(obj.check(), true);
 		int [] act = obj.toArray();
 		int [] exp = {};
 		assertArrayEquals(exp, act);
+	}
+	//================================
+	// Iterator
+	//================================
+	/** принцип тестов итератора для ХЛистов:
+					- инициализируешь объект хЛиста
+					- пройтись по объекту с помощью for each
+				варианты проверки:
+					- сравнивать поэлементно внутри for each
+					- загнать все элементы из хЛиста во временный массив, сравнить массивы **/
+
+	@Test
+	public void test_Iterator_0() 
+	{
+		int[] ini = {};
+		obj.init(ini);
+		String act = obj.toString();
+		int [] ar = obj.toArray();
+		String str = "";
+		int j = 0;
+		for(Integer i : obj)
+		{
+			str +=( i );
+			if(j < ar.length-1)
+				str += ",";
+			assertEquals(i.intValue(), ar[j]);
+			j++;
+		}
+		assertEquals(str, act);
+	}
+	@Test
+	public void test_Iterator_1() 
+	{
+		int[] ini = {10};
+		obj.init(ini);
+		String act = obj.toString();
+		int [] ar = obj.toArray();
+		String str = "";
+		int j = 0;
+		for(Integer i : obj)
+		{
+			str +=( i + ", ");
+			assertEquals(i.intValue(), ar[j++]);
+		}
+		assertEquals(str, act);
+	}
+	@Test
+	public void test_Iterator_2() 
+	{
+		int[] ini = {10,20};
+		obj.init(ini);
+		String act = obj.toString();
+		int [] ar = obj.toArray();
+		String str = "";
+		int j = 0;
+		for(Integer i : obj)
+		{
+			str +=( i + ", ");
+			assertEquals(i.intValue(), ar[j++]);
+		}
+		assertEquals(str, act);
+	}
+	@Test
+	public void test_Iterator_many() 
+	{
+		int[] ini = {10,20,77,11,24,82};
+		obj.init(ini);
+		String act = obj.toString();
+		int [] ar = obj.toArray();
+		String str = "";
+		int j = 0;
+		for(Integer i : obj)
+		{
+			str +=( i + ", ");
+			assertEquals(i.intValue(), ar[j++]);
+		}
+		assertEquals(str, act);
+	}
+	//================================
+	// equals
+	//================================
+	@Test
+	public void test_equals_many1() 
+	{
+		int[] ini = {50,25,40,20,11,24,30,66,75,100,60,45,22,43,77};
+		obj.init(ini);
+
+		int[] ini2 = {50,25,40,20,11,24,30,66,75,100,60,45,22,43,77};
+		obj2.init(ini2);
+
+		assertEquals(obj.equals(obj2), true);
+	}
+	@Test
+	public void test_equals_many2() 
+	{
+		int[] ini = {50,25,40,20,11,24};
+		obj.init(ini);
+
+		int[] ini2 = {50,25,40,20,11,24};
+		obj2.init(ini2);
+
+		assertEquals(obj.equals(obj2), true);
+	}
+	@Test
+	public void test_equals_many3() 
+	{
+		int[] ini = {50,25,40,20,11};
+		obj.init(ini);
+
+		int[] ini2 = {50,25,40,20,11};
+		obj2.init(ini2);
+
+		assertEquals(obj.equals(obj2), true);
+	}
+	@Test
+	public void test_equals_many_bad1() 
+	{
+		int[] ini = {50,25,40,20,11,24,30,66,75,100,60,45,22,43,77};
+		obj.init(ini);
+
+		int[] ini2 = {50,25,40,20,11,24,30,66,75,100,60,45,22,43,78};
+		obj2.init(ini2);
+
+		assertEquals(obj.equals(obj2), false);
+	}
+	@Test
+	public void test_equals_many_bad2() 
+	{
+		int[] ini = {50,25,40,20,11,23};
+		obj.init(ini);
+
+		int[] ini2 = {50,25,40,20,11,24};
+		obj2.init(ini2);
+
+		assertEquals(obj.equals(obj2), false);
+	}
+	@Test
+	public void test_equals_many_bad3() 
+	{
+		int[] ini = {50,25,40,20,10};
+		obj.init(ini);
+
+		int[] ini2 = {50,25,40,20,11};
+		obj2.init(ini2);
+
+		assertEquals(obj.equals(obj2), false);
+	}
+	@Test
+	public void test_equals_two1() 
+	{
+		int[] ini = {50,77};
+		obj.init(ini);
+
+		int[] ini2 = {50,77};
+		obj2.init(ini2);
+
+		assertEquals(obj.equals(obj2), true);
+	}
+	@Test
+	public void test_equals_two_bad1() 
+	{
+		int[] ini = {50,77};
+		obj.init(ini);
+
+		int[] ini2 = {50,78};
+		obj2.init(ini2);
+
+		assertEquals(obj.equals(obj2), false);
+	}
+	@Test
+	public void test_equals_one1() 
+	{
+		int[] ini = {77};
+		obj.init(ini);
+
+		int[] ini2 = {77};
+		obj2.init(ini2);
+
+		assertEquals(obj.equals(obj2), true);
+	}
+	@Test
+	public void test_equals_one_bad1() 
+	{
+		int[] ini = {77};
+		obj.init(ini);
+
+		int[] ini2 = {78};
+		obj2.init(ini2);
+
+		assertEquals(obj.equals(obj2), false);
+	}
+	@Test
+	public void test_equals_empty1() 
+	{
+		int[] ini = {};
+		obj.init(ini);
+
+		int[] ini2 = {};
+		obj2.init(ini2);
+
+		assertEquals(obj.equals(obj2), true);
 	}
 }
 

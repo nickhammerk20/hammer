@@ -1,5 +1,7 @@
 ﻿package BsTree;
 
+import BsTree.BsTree1_Rotation.Node;
+
 public interface EBsTree extends Iterable<Integer>
 {
 	public void init(int[] in); 
@@ -20,5 +22,5 @@ public interface EBsTree extends Iterable<Integer>
 	public int [] toArray(); 
 	
 	public boolean check();
-	public boolean equals();
+//	public boolean equals(Node tree2);
 }

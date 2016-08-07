@@ -3,6 +3,8 @@
 import java.util.Iterator;
 import java.util.Stack;
 
+import BsTree.BsTree1_Rotation.Node;
+
 public class BsTree implements EBsTree
 {
 
@@ -393,10 +395,4 @@ public class BsTree implements EBsTree
 		// реализован в BsTreeLinked, здесь не актуален. всегда true
 		return true;
 	}
-	@Override
-	public boolean equals() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

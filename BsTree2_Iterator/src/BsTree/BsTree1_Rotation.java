@@ -3,8 +3,6 @@ package BsTree;
 import java.util.Iterator;
 import java.util.Stack;
 
-import BsTree.BsTree3_Linked.Node;
-
 public class BsTree1_Rotation implements EBsTree
 {
 
@@ -240,7 +238,7 @@ public class BsTree1_Rotation implements EBsTree
 		if (p == null)
 			return;
 
-//		System.out.println(p.val);
+		//		System.out.println(p.val);
 		Node tmp = p.left;
 		p.left = p.right;
 		p.right = tmp;
@@ -329,25 +327,6 @@ public class BsTree1_Rotation implements EBsTree
 		return pp;
 	}
 
-	private Node getSuccessor(Node delNode) 		// поиск приемника для узла
-	{
-		// сначала спускаемся на уровень влево, и потом ищем самый максимальный элемент у левого потомка
-		Node successorParent = delNode;
-		Node successor = delNode;
-		Node current = delNode.left;
-		while (current != null) 
-		{
-			successorParent = successor;			// 
-			successor = current;					//
-			current = current.right;				// ищем максимальный элемент слева
-		}
-		if (successor != delNode.left) 			// если приемник не является левым 
-		{											// узлом удаляемого элемента
-			successorParent.right = successor.right;	// создаем связь между узлами
-			successor.left = delNode.left;
-		}
-		return successor;
-	}
 	/***********************/
 	/*****add Iterator******/
 	/***********************/
@@ -404,9 +383,30 @@ public class BsTree1_Rotation implements EBsTree
 		// реализован в BsTreeLinked, здесь не актуален. всегда true
 		return true;
 	}
-	@Override
-	public boolean equals() {
-		// TODO Auto-generated method stub
-		return false;
+
+	//	@Override
+	public boolean equals(BsTree1_Rotation tree2) 
+	{
+		return equalsTree(root, tree2.root);
+	}
+	private boolean equalsTree(Node tree1, Node tree2) 
+	{
+		if (tree1 == null && tree2 == null)
+			return true;
+		
+		if (tree1 == null || tree2 == null)
+			return false;
+
+		if ( tree1.val != tree2.val )									//V
+		{
+			return equalsTree(tree1.left, tree2.left) && equalsTree(tree1.right, tree2.right);
+		}
+		else
+			{
+			return false;
+			}
+//		equalsTree(tree1.left, tree2.left);						//L
+//		equalsTree(tree1.right, tree2.right);             			//R
+//		return true;
 	}
 }

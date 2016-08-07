@@ -2,6 +2,7 @@ package BsTree;
 
 import java.util.Iterator;
 
+import BsTree.BsTree1_Rotation.Node;
 import BsTree.BsTree2_Visitor.MyIter;
 
 //import java.util.Iterator;
@@ -298,11 +299,8 @@ public class BsTree3_Linked implements EBsTree
 			if (tmp.link.node != null)
 				tmp.link.node.link = tmp.link;
 		}
-//		tmp.left.node = old.left.node;
-//		tmp.right.node = old.right.node;
 		tmp.left = old.left;
 		tmp.right = old.right;
-		
 		old.link.node = tmp;
 		tmp.link = old.link;
 	}
@@ -337,16 +335,16 @@ public class BsTree3_Linked implements EBsTree
 	}
 	private boolean checkNode(Link p, boolean chk) 
 	{
-		if (p.node == null || chk == false)
+		if ( p.node == null )
 			return true;
 		
-		if (chk == false)
+		if ( chk == false )
 			return false;
 
 		checkNode(p.node.left, chk);						//L
 		if ( p.node != p.node.link.node )					//V
 			chk = false;
-		
+		System.out.println(""+p.node + p.node.link.node + chk);
 //		System.out.println("p.node.val = " + p.node.val + " - " + chk + " \n p.node.left = " + p.node.left +" \n p.node.right = "+ p.node.right +" \n p.node.link = "+ p.node.link + " \n p.node.link.node = " + p.node.link.node);  		//V
 //		System.out.println("2 элемент (p.node) = " + p.node);
 //		System.out.println("2 элемент (p.node.link.node) = " + p.node);
@@ -355,20 +353,8 @@ public class BsTree3_Linked implements EBsTree
 		return chk;
 	}
 	
-	@Override
-	public boolean equals() 
-	{
-		boolean chk = true;
-		return equalsTree(root, chk);
-	}	
-	private boolean equalsTree(Link p, boolean chk) 
-	{
-		
-		
-		return chk;
-	}
 	
-	
+		
 	/***********************/
 	/*******Iterator********/
 	/***********************/	
@@ -398,5 +384,5 @@ public class BsTree3_Linked implements EBsTree
 			return ar[i++];
 		}		
 	}
-	
+		
 }
