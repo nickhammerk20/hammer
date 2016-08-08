@@ -393,20 +393,17 @@ public class BsTree1_Rotation implements EBsTree
 	{
 		if (tree1 == null && tree2 == null)
 			return true;
-		
+
 		if (tree1 == null || tree2 == null)
 			return false;
 
-		if ( tree1.val != tree2.val )									//V
+		if ( tree1.val == tree2.val )
 		{
 			return equalsTree(tree1.left, tree2.left) && equalsTree(tree1.right, tree2.right);
 		}
 		else
-			{
+		{
 			return false;
-			}
-//		equalsTree(tree1.left, tree2.left);						//L
-//		equalsTree(tree1.right, tree2.right);             			//R
-//		return true;
+		}
 	}
 }

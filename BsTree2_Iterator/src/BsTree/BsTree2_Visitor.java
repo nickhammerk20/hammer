@@ -3,8 +3,6 @@
 import java.util.Iterator;
 import java.util.Stack;
 
-import BsTree.BsTree1_Rotation.Node;
-
 public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 {
 
@@ -357,6 +355,28 @@ public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 		return successor;
 	}
 
+//	@Override
+	public boolean equals(BsTree2_Visitor tree2) 
+	{
+		return equalsTree(root, tree2.root);
+	}
+	private boolean equalsTree(Node tree1, Node tree2) 
+	{
+		if (tree1 == null && tree2 == null)
+			return true;
+
+		if (tree1 == null || tree2 == null)
+			return false;
+
+		if ( tree1.val == tree2.val )
+		{
+			return equalsTree(tree1.left, tree2.left) && equalsTree(tree1.right, tree2.right);
+		}
+		else
+		{
+			return false;
+		}
+	}
 	/***********************/
 	/*****add Iterator******/
 	/***взято из интерент***/

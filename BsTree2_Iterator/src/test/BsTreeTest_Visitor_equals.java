@@ -10,11 +10,11 @@ import BsTree.BsTree2_Visitor;
 import BsTree.BsTree3_Linked;
 import BsTree.EBsTree;
 
-public class BsTreeTest 
+public class BsTreeTest_Visitor_equals 
 {
 	/**для теста equals() нужно два объекта*/
-	BsTree1_Rotation obj = new BsTree1_Rotation();
-	BsTree1_Rotation obj2 = new BsTree1_Rotation();
+	BsTree2_Visitor obj = new BsTree2_Visitor();
+	BsTree2_Visitor obj2 = new BsTree2_Visitor();
 
 	@Before
 	public void start()

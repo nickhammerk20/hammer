@@ -341,15 +341,21 @@ public class BsTree3_Linked implements EBsTree
 		if ( chk == false )
 			return false;
 
-		checkNode(p.node.left, chk);						//L
+		
+		
 		if ( p.node != p.node.link.node )					//V
+		{
 			chk = false;
-		System.out.println(""+p.node + p.node.link.node + chk);
+		}
+		else
+		{	
+//		System.out.println(""+p.node + p.node.link.node + chk);
 //		System.out.println("p.node.val = " + p.node.val + " - " + chk + " \n p.node.left = " + p.node.left +" \n p.node.right = "+ p.node.right +" \n p.node.link = "+ p.node.link + " \n p.node.link.node = " + p.node.link.node);  		//V
 //		System.out.println("2 элемент (p.node) = " + p.node);
 //		System.out.println("2 элемент (p.node.link.node) = " + p.node);
-		
+		checkNode(p.node.left, chk);						//L
 		checkNode(p.node.right, chk);             			//R
+		}
 		return chk;
 	}
 	
