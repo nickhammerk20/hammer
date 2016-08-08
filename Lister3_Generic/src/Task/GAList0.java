@@ -1,8 +1,8 @@
-﻿package Lister_Generic;
+﻿package Task;
 
 import java.util.Iterator;
 
-public class GList0<T> implements GList<T>
+public class GAList0<T> implements GList<T>
 {
 	public Object[] ar = new Comparable[0];
 
@@ -247,5 +247,10 @@ public class GList0<T> implements GList<T>
 		}
 		ar=tmp;
 		return ret;			
+	}
+	@Override
+	public Iterator<T> iterator() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
