@@ -3,7 +3,7 @@
 import java.awt.Graphics2D;
 
 
-public class BsTreeGUI extends BsTree2_Visitor 
+public class BsTreeGUI extends BsTree4_AVL_Visitor 
 {
 	public void printGUI(Graphics2D grap, int right) 
 	{

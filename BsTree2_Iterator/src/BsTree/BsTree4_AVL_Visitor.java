@@ -7,104 +7,132 @@ public class BsTree4_AVL_Visitor implements EBsTree, Iterable<Integer>
 	class Node 
 	{
 		int val;
-		int heigh;
-		int balance;
+		byte height;
 		Node left;
 		Node right;
-		Node parent;
 
 		public Node(int val) 
 		{
 			this.val = val;
-			this.parent = parent;			
+			this.left = null;
+			this.right = null;
+			this.height = 1;			
 		}
-		public Node next()
-		{
-			return getHigherNode(this.val);
-		}
-		public Node previus()
-		{
-			return getLowerNode(this.val);
-		}
-
 	}	
 	protected Node root = null;
 
-	private Node getHigherNode(int val) 
+	private byte height (Node p)
 	{
-		Node p = root;
-		while (p != null) 
-		{
-			int cmp = val-p.val;
-			if (cmp < 0) 
-			{
-				if (p.left != null)
-					p = p.left;
-				else
-					return p;
-			} 
-			else 
-			{
-				if (p.right != null) 
-				{
-					p = p.right;
-				}
-				else 
-				{
-					Node parent = p.parent;
-					Node ch = p;
-					while (parent != null && ch == parent.right) 
-					{
-						ch = parent;
-						parent = parent.parent;
-					}
-					return parent;
-				}
-			}
-		}
-		return null;
+		return p != null ? p.height : 0 ;
 	}
-	private Node getLowerNode(int val) 
+	private int bFactor (Node p)
 	{
-		Node p = root;
-		while (p != null) 
-		{
-			int cmp = val-p.val;
-			if (cmp > 0) 
-			{
-				if (p.right != null)
-					p = p.right;
-				else
-					return p;
-			}
-			else 
-			{
-				if (p.left != null) 
-				{
-					p = p.left;
-				} 
-				else 
-				{
-					Node parent = p.parent;
-					Node ch = p;
-					while (parent != null && ch == parent.left) 
-					{
-						ch = parent;
-						parent = parent.parent;
-					}
-					return parent;
-				}
-			}
-		}
-		return null;
+		return height(p.right)-height(p.left);
 	}
-
-
-
-
-
-
-
+	private void fixHeight (Node p)
+	{
+		byte hl = height(p.left);
+		byte hr = height(p.right);
+		p.height = (byte) ((hl > hr ? hl : hr) + 1);
+	}
+	private Node rotateRight (Node p) // поворот вокруг элемента ВПРАВО
+	{
+		Node tmp = p.left;
+		p.left = tmp.right;
+		tmp.right = p;
+		fixHeight(p);
+		fixHeight(tmp);	
+		return tmp;
+	}
+	private Node rotateLeft (Node p) // поворот вокруг элемента ВЛЕВО
+	{
+		Node tmp = p.right;
+		p.right = tmp.left;
+		tmp.left = p;
+		fixHeight(p);
+		fixHeight(tmp);	
+		return tmp;
+	}
+	private Node balance (Node p) //балансировка узла
+	{
+		fixHeight(p);
+		if( bFactor(p) == 2)
+		{
+			if( bFactor(p.right)< 0 )
+			{
+				p.right = rotateRight(p.right);
+			}
+			return rotateLeft(p);
+		}
+		if( bFactor(p) == -2)
+		{
+			if( bFactor(p.left)> 0 )
+			{
+				p.left = rotateLeft(p.left);
+			}
+			return rotateRight(p);
+		}
+		return p;
+	}
+	private Node insert(Node p, int val) // вставка элемента
+	{
+		if( p == null )
+		{ 
+			return new Node(val);
+		}
+		if( val < p.val )
+		{
+			p.left = insert(p.left, val);
+		}
+		else
+		{
+			p.right = insert(p.right,val);
+		}
+		return balance(p);
+	}
+	private Node findMin(Node p)
+	{
+		return p.left != null ? findMin(p.left) : p ;
+	}
+	private Node removeMin (Node p)
+	{
+		if ( p.left == null)
+		{
+			return p.right;
+		}
+		p.left = removeMin(p.left);
+		return balance(p);
+	}
+	private Node remove (Node p, int val)
+	{
+		if ( p == null )
+		{
+			return null;
+		}
+		if (val < p.val)
+		{
+			p.left = remove (p.left, val);
+		}
+		else if ( val > p.val)
+		{
+			p.right = remove (p.right, val);
+		}
+		else // k == p.val
+		{
+			Node q = p.left;
+			Node r = p.right;
+///////////////////////////////////////////////delete p; // подстава!!!!
+			if ( r == null)
+			{
+				return q;
+			}
+			Node min = findMin(r);
+			min.right = removeMin(r);
+			min.left = q;
+			return balance(min);
+		}
+		return balance(p);
+	}
 
 	@Override
 	public void init(int[] ini) //Инициализация 
