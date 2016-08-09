@@ -1,29 +1,113 @@
-﻿package BsTree;
+package BsTree;
 
 import java.util.Iterator;
 
-public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
+public class BsTree4_AVL_Visitor implements EBsTree, Iterable<Integer>
 {
-
-	int leftHeight = 0;
-	int rightHeight = 0;
-
 	class Node 
 	{
 		int val;
+		int heigh;
+		int balance;
 		Node left;
 		Node right;
-		
+		Node parent;
+
 		public Node(int val) 
 		{
 			this.val = val;
+			this.parent = parent;			
 		}
-	}
+		public Node next()
+		{
+			return getHigherNode(this.val);
+		}
+		public Node previus()
+		{
+			return getLowerNode(this.val);
+		}
+
+	}	
 	protected Node root = null;
 
-	//Инициализация 
+	private Node getHigherNode(int val) 
+	{
+		Node p = root;
+		while (p != null) 
+		{
+			int cmp = val-p.val;
+			if (cmp < 0) 
+			{
+				if (p.left != null)
+					p = p.left;
+				else
+					return p;
+			} 
+			else 
+			{
+				if (p.right != null) 
+				{
+					p = p.right;
+				}
+				else 
+				{
+					Node parent = p.parent;
+					Node ch = p;
+					while (parent != null && ch == parent.right) 
+					{
+						ch = parent;
+						parent = parent.parent;
+					}
+					return parent;
+				}
+			}
+		}
+		return null;
+	}
+	private Node getLowerNode(int val) 
+	{
+		Node p = root;
+		while (p != null) 
+		{
+			int cmp = val-p.val;
+			if (cmp > 0) 
+			{
+				if (p.right != null)
+					p = p.right;
+				else
+					return p;
+			}
+			else 
+			{
+				if (p.left != null) 
+				{
+					p = p.left;
+				} 
+				else 
+				{
+					Node parent = p.parent;
+					Node ch = p;
+					while (parent != null && ch == parent.left) 
+					{
+						ch = parent;
+						parent = parent.parent;
+					}
+					return parent;
+				}
+			}
+		}
+		return null;
+	}
+
+
+
+
+
+
+
+
 	@Override
-	public void init(int[] ini) 
+	public void init(int[] ini) //Инициализация 
 	{
 		if (ini == null)
 			ini = new int[0];
@@ -34,9 +118,8 @@ public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 		}
 	}
 
-	//Добавление узла со значением 
 	@Override
-	public void add(int val) 
+	public void add(int val) //Добавление узла со значением 
 	{
 		if (root == null) 
 		{
@@ -63,16 +146,11 @@ public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 		}
 	}
 
-	//Очистка дерева
 	@Override
-	public void clear() 
+	public void clear()  //Очистка дерева
 	{
 		root = null;
 	}
-
-	/****************************/
-	/**********//*NEW*//*********/
-	/****************************/
 
 	private interface Visitor
 	{
@@ -89,9 +167,8 @@ public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 		visit (p.right, v);
 	}
 
-	//Печать в консоль 
 	@Override
-	public void print() 
+	public void print() //Печать в консоль 
 	{
 		PrintVizitor v = new PrintVizitor();
 		visit(root, v);
@@ -107,8 +184,7 @@ public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 		}		
 	}
 
-	//Получить количество всех узлов в дереве (с потомками и без) 
-	private class SizeVisitor implements Visitor
+	private class SizeVisitor implements Visitor  //Получить количество всех узлов в дереве (с потомками и без) 
 	{
 		int count = 0;
 		@Override
@@ -125,9 +201,8 @@ public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 		return v.count;
 	}
 
-	//Получить количество листьев
 	@Override
-	public int leaves()
+	public int leaves()  //Получить количество листьев
 	{
 		LeavesVisitor v = new LeavesVisitor();
 		visit(root, v);
@@ -146,9 +221,8 @@ public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 		}		
 	}
 
-	//Получить количество узлов (хотя бы 1 потомок)	
 	@Override
-	public int nodes()
+	public int nodes()  //Получить количество узлов (хотя бы 1 потомок)	
 	{
 		NodeVisitor v = new NodeVisitor();
 		visit(root, v);
@@ -167,9 +241,8 @@ public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 		}		
 	}
 
-	//Получить String через LVR дерева
 	@Override
-	public String toString() 
+	public String toString()  //Получить String через LVR дерева
 	{
 		ToStringVisitor v = new ToStringVisitor();
 		visit(root, v);
@@ -185,9 +258,8 @@ public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 		}		
 	}
 
-	//Получить массив через LVR дерева
 	@Override
-	public int[] toArray() 
+	public int[] toArray()  //Получить массив через LVR дерева
 	{
 		ToArrayVisitor v = new ToArrayVisitor();
 		visit( root , v );
@@ -204,13 +276,8 @@ public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 		}			
 	}
 
-	/******************************/
-	/********OLD*******************/
-	/******************************/
-
-	//Получить количество уровней (высота дерева)
 	@Override
-	public int height() 
+	public int height() //Получить количество уровней (высота дерева)
 	{
 		return nodeHeight(root);
 	}
@@ -222,9 +289,8 @@ public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 		return 1 + Math.max(nodeHeight(p.left), nodeHeight(p.right));
 	}
 
-	//Ширина дерева (максимальное количество узлов на любом уровне)	
 	@Override
-	public int width() 
+	public int width() //Ширина дерева (максимальное количество узлов на любом уровне)	
 	{
 		if (size() == 0)
 			return 0;
@@ -254,9 +320,8 @@ public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 		return max;
 	}
 
-	//Зеркально пересадить дерево
 	@Override
-	public void revers()
+	public void revers()  //Зеркально пересадить дерево
 	{
 		reverseNode(root);
 	}
@@ -273,13 +338,12 @@ public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 		reverseNode(p.right);
 	}
 
-	//Удаление элемента по ключу
 	@Override
-	public void del(int key) 
+	public void del(int key) //Удаление элемента по ключу
 	{
 		if( root == null)
 			throw new IllegalArgumentException();
-		
+
 		Node current = root;
 		Node parent = root;
 		boolean isleft = true;
@@ -354,8 +418,8 @@ public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 		return successor;
 	}
 
-//	@Override
-	public boolean equals(BsTree2_Visitor tree2) 
+	//	@Override
+	public boolean equals(BsTree4_AVL_Visitor tree2) 
 	{
 		return equalsTree(root, tree2.root);
 	}
@@ -375,56 +439,7 @@ public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 		{
 			return false;
 		}
-	}
-	/***********************/
-	/*****add Iterator******/
-	/***взято из интерент***/
-	/***********************/
-	/**
-	@Override
-	public Iterator<Integer> iterator() 
-	{
-		return new MyIter(root);
-	}
-	class MyIter implements Iterator<Integer>
-	{
-		Stack<Node> stack;
-		public MyIter(Node root) 
-		{
-			stack = new Stack<Node>();
-			while (root != null) 
-			{
-				stack.push(root);
-				root = root.left;
-			}
-		}
-
-		@Override
-		public boolean hasNext() 
-		{
-			return !stack.isEmpty();
-		}
-
-		@Override
-		public Integer next() 
-		{
-			Node node = stack.pop();
-			int result = node.val;
-			Node child = node.right;
-			while (child != null) {
-				stack.push(child);
-				child = child.left;
-			}			
-			return result;
-		}		
-	}
-	**/
-	
-	/** 	
-	 * изначальный Итератор ни чем не отличается от LList1, 
-	 * но в этом примере используется итератор через массив как пример из AList0
-	 * */
-
+	}	
 	@Override
 	public Iterator<Integer> iterator() 
 	{
@@ -453,9 +468,8 @@ public class BsTree2_Visitor implements EBsTree, Iterable<Integer>
 	}
 
 	@Override
-	public boolean check() 
-	{
-		// реализован в BsTreeLinked, здесь не актуален. всегда true
+	public boolean check() // реализован в BsTreeLinked, здесь не актуален. всегда true
+	{		
 		return true;
 	}
 }
