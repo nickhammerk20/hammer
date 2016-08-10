@@ -14,8 +14,7 @@ public class BsTree4_AVL_Visitor implements EBsTree, Iterable<Integer>
 		public Node(int val) 
 		{
 			this.val = val;
-			this.left = null;
-			this.right = null;
+			this.left = this.right = null;
 			this.height = 1;			
 		}
 	}	
@@ -74,7 +73,17 @@ public class BsTree4_AVL_Visitor implements EBsTree, Iterable<Integer>
 		}
 		return p;
 	}
-	private Node insert(Node p, int val) // вставка элемента
+	@Override
+	public void add(int val) //Добавление узла со значением 
+	{
+		if (root == null) 
+		{
+			root = new Node(val);
+			return;
+		}
+		insertNode(root, val);
+	}
+	private Node insertNode(Node p, int val) // вставка элемента
 	{
 		if( p == null )
 		{ 
@@ -82,11 +91,11 @@ public class BsTree4_AVL_Visitor implements EBsTree, Iterable<Integer>
 		}
 		if( val < p.val )
 		{
-			p.left = insert(p.left, val);
+			p.left = insertNode(p.left, val);
 		}
 		else
 		{
-			p.right = insert(p.right,val);
+			p.right = insertNode(p.right,val);
 		}
 		return balance(p);
 	}
@@ -103,7 +112,15 @@ public class BsTree4_AVL_Visitor implements EBsTree, Iterable<Integer>
 		p.left = removeMin(p.left);
 		return balance(p);
 	}
-	private Node remove (Node p, int val)
+	public void remove (int val)
+	{
+		if (root == null) 
+		{
+			return;
+		}
+		removeNode(root, val);
+	}
+	private Node removeNode (Node p, int val)
 	{
 		if ( p == null )
 		{
@@ -111,11 +128,11 @@ public class BsTree4_AVL_Visitor implements EBsTree, Iterable<Integer>
 		}
 		if (val < p.val)
 		{
-			p.left = remove (p.left, val);
+			p.left = removeNode (p.left, val);
 		}
 		else if ( val > p.val)
 		{
-			p.right = remove (p.right, val);
+			p.right = removeNode (p.right, val);
 		}
 		else // k == p.val
 		{
@@ -146,8 +163,8 @@ public class BsTree4_AVL_Visitor implements EBsTree, Iterable<Integer>
 		}
 	}
 
-	@Override
-	public void add(int val) //Добавление узла со значением 
+//	@Override
+	public void addOld(int val) //Добавление узла со значением 
 	{
 		if (root == null) 
 		{
