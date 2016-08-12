@@ -24,15 +24,19 @@ public class Person implements Comparable<Person>
 		this.age   = age;
 	}
 	
+	public String getFname() 
+	{
+        return fname+" "+lname;
+	}
+	
 	@Override
 	public int hashCode()
 	{
 		String str = fname + lname;
 		int ret = 1;
-		char simb = ' ';
 		for(int i=0 ; i < str.length(); i++)
 		{
-			simb = str.charAt(i);
+			char simb = str.charAt(i);
 			ret = ret + ( simb * i );
 		}
 		return ret;

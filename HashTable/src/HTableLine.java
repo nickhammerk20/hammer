@@ -39,7 +39,8 @@ public class HTableLine implements Iterable<Integer>
 	{
 		int xz = p.hashCode();
 		int i = xz % size;
-		
+		System.out.println("Person " + p.getFname() +", xz " + xz + ", i " + i);
+		ar[i] = p;
 	}
 	
 	public int size()
@@ -57,6 +58,32 @@ public class HTableLine implements Iterable<Integer>
 		return tmp;
 	}
 	
+//	@Override
+//	public Iterator<Integer> iterator() 
+//	{
+//		return new MyIter(toArray());
+//	}
+//	class MyIter implements Iterator<Integer>
+//	{
+//		Person[] ar;
+//		int i = 0;
+//
+//		public MyIter(Person[] ar) 
+//		{
+//			this.ar = ar;
+//		}
+//		@Override
+//		public boolean hasNext() 
+//		{
+//			return i < ar.length;
+//		}
+//
+//		@Override
+//		public Integer next() 
+//		{
+//			return i++;
+//		}		
+//	}
 
 	@Override
 	public Iterator<Integer> iterator() 
@@ -72,8 +99,7 @@ public class HTableLine implements Iterable<Integer>
 		public MyIter(Person[] ar, int index)
 		{
 			this.ar = ar;
-			this.index = index;
-			
+			this.index = index;			
 		}
 		@Override
 		public boolean hasNext() 
@@ -84,8 +110,7 @@ public class HTableLine implements Iterable<Integer>
 		@Override
 		public Integer next() 
 		{
-			return 0;//ar[i++];
-		}
-		
+			return i++;
+		}		
 	}
 }

@@ -130,7 +130,7 @@ public class HTableChane implements Iterable<Integer>
 		public Integer next() 
 		{
 
-			return 0;
+			return i++;
 		}		
 	}
 }
