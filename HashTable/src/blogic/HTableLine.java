@@ -3,6 +3,8 @@
 
 import java.util.Iterator;
 
+import blogic.HTableChane.Node;
+
 public class HTableLine
 {
 	int size = 97;
@@ -42,9 +44,17 @@ public class HTableLine
 	{
 		int xz = p.hashCode();
 		int i = xz % size;
-		System.out.println("Person " + p.getFname() +", xz " + xz + ", i " + i);
-		ar[i] = p;
-		count++;
+//		System.out.println("Person " + p.getFname() +", xz " + xz + ", i " + i);
+		for( ; i < size ; )
+		{
+			if ( ar[i] == null )
+			{
+				ar[i] = p;
+				count++;
+				break;
+			}
+			i++;
+		}
 	}
 
 	public int size()
@@ -56,6 +66,31 @@ public class HTableLine
 		double z = (int) ( (double) size() / (double) size * 10000);
 		double rez = (double) z / 100;
 		return rez;
+	}
+	public Person get(Person p)
+	{
+		if( count == 0 )
+			throw new IllegalArgumentException();
+
+		return get(p.hashCode());
+	}
+	public Person get(int xz)
+	{
+		Person ret = null;
+
+		return ret;
+	}
+
+	public void del(Person p)
+	{
+		if(count == 0)
+			throw new IllegalArgumentException();
+
+		del(p.hashCode());
+	}
+	public void del(int xz)
+	{
+
 	}
 
 	public Person[] toArray()
@@ -74,32 +109,32 @@ public class HTableLine
 	}
 
 
-	//	@Override
-	public Iterator<Integer> iterator() 
-	{
-		return new MyIter(ar, size);
-	}
-	class MyIter implements Iterator<Integer>
-	{
-		Person[] ar;
-		int i;
-		int index;
-
-		public MyIter(Person[] ar, int index)
-		{
-			this.ar = ar;
-			this.index = index;			
-		}
-		@Override
-		public boolean hasNext() 
-		{
-			return i < index;
-		}
-
-		@Override
-		public Integer next() 
-		{
-			return i++;
-		}		
-	}
+	//	//	@Override
+	//	public Iterator<Integer> iterator() 
+	//	{
+	//		return new MyIter(ar, size);
+	//	}
+	//	class MyIter implements Iterator<Integer>
+	//	{
+	//		Person[] ar;
+	//		int i;
+	//		int index;
+	//
+	//		public MyIter(Person[] ar, int index)
+	//		{
+	//			this.ar = ar;
+	//			this.index = index;			
+	//		}
+	//		@Override
+	//		public boolean hasNext() 
+	//		{
+	//			return i < index;
+	//		}
+	//
+	//		@Override
+	//		public Integer next() 
+	//		{
+	//			return i++;
+	//		}		
+	//	}
 }

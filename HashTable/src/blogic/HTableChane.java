@@ -16,6 +16,7 @@ public class HTableChane implements Iterable<Integer>
 	}
 	int size = 97;
 	private Node[] ar;
+	private int count = 0;
 
 	public HTableChane()
 	{
@@ -30,8 +31,8 @@ public class HTableChane implements Iterable<Integer>
 	public void clear()
 	{
 		ar = new Node[size];
+		count = 0;
 	}
-
 
 	public void init(Person[] ini)
 	{
@@ -52,6 +53,7 @@ public class HTableChane implements Iterable<Integer>
 		Node np = new Node(p);
 		np.next = ar[i];
 		ar[i] = np;
+		count++;
 	}
 
 	public Person get(int xz)
@@ -69,22 +71,24 @@ public class HTableChane implements Iterable<Integer>
 		}		
 		return ret;
 	}
-
 	public Person get(Person p)
 	{
+		if (count == 0 )
+			throw new IllegalArgumentException();
+		
 		return get(p.hashCode());
 	}
-	public int pow()
+	
+	public double pow()
 	{
-		int ret = 0;
-
-
-		return ret;		
+		double z = (int) ( (double) size() / (double) size * 10000);
+		double rez = (double) z / 100;
+		return rez;		
 	}
 
 	public int size()
 	{
-		return size;
+		return count;
 	}
 
 	public boolean equals()

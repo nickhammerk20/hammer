@@ -1,10 +1,13 @@
 package task;
 
+import blogic.Person;
+
 public class mainHashCode {
 
 	public static void main(String[] args) 
 	{
-		String[] str = {"Vasia","Visaa","Vbsia","Pupkin", "Zubkin", "dubkin", "Lupkin","lupkin"};
+//		String[] str = {"Vasia","Visaa","Vbsia","Pupkin", "Zubkin", "dubkin", "Lupkin","lupkin"};
+		String[] str = {"VasiaPupkin", "KasiaLupkin", "MasiaGupkin", "GasiaHupkin","LasiaJupkin","AndreyPetrishe","VolodyaKovalevskij","SergeyShevchenko","AlekseyAbrosimov","EvgeniiLopateckii","AntonKobilko","borisTkachuk"};
 		int ret = 1;
 		char simb = ' ';
 		for(int j = 0 ; j< str.length; j++)

@@ -24,21 +24,14 @@ public class mainHashTable
     	
     	hashTable.init(ini);
     	
-//    	hashTable.add( new Person(10, "Vasia", 		"Pupkin", 		23) );
-//    	hashTable.add( new Person(14, "Kasia", 		"Lupkin", 		27) );
-//    	hashTable.add( new Person(17, "Masia",		"Gupkin",		19) );
-//    	hashTable.add( new Person(33, "Gasia", 		"Hupkin", 		56) );
-//    	hashTable.add( new Person(60, "Lasia", 		"Jupkin", 		99) );
-//    	hashTable.add( new Person(71, "Andrey",		"Petrishe",  	12) );
-//    	hashTable.add( new Person(12, "Volodya",	"Kovalevskij", 	23) );
-//    	hashTable.add( new Person(34, "Sergey",		"Shevchenko", 	25) );
-
     	System.out.println(hashTable.size());
     	System.out.println(hashTable.pow());
     	
-//        for (Integer p : hashTable)
-//        {        	
-//			System.out.println(p.toString());
-//		}
+    	Person[] print = hashTable.toArray();
+    	
+    	for ( int i = 0 ; i < print.length ; i++ )
+    	{
+    		System.out.println(print[i]);
+    	}
     }
 }
