@@ -1,3 +1,7 @@
+package task;
+import blogic.HTableLine;
+import blogic.Person;
+
 public class mainHashTable
 {
     public static void main(String[] args)
@@ -29,9 +33,12 @@ public class mainHashTable
 //    	hashTable.add( new Person(12, "Volodya",	"Kovalevskij", 	23) );
 //    	hashTable.add( new Person(34, "Sergey",		"Shevchenko", 	25) );
 
-        for (Integer p : hashTable)
-        {        	
-			System.out.println(p.toString());
-		}
+    	System.out.println(hashTable.size());
+    	System.out.println(hashTable.pow());
+    	
+//        for (Integer p : hashTable)
+//        {        	
+//			System.out.println(p.toString());
+//		}
     }
 }

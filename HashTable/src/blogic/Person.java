@@ -1,4 +1,5 @@
-﻿
+﻿package blogic;
+
 
 public class Person implements Comparable<Person>
 {
