@@ -101,7 +101,7 @@ public class HTableChane implements Iterable<Integer>
 	//	@Override
 	public Node[] toArray()
 	{
-		Node[] tmp = new Node[size];
+		Node[] tmp = new Node[count];
 		for (int i = 0; i < size; i++)
 		{
 			tmp[i] = ar[i];
