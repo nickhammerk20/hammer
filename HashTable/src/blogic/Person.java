@@ -40,6 +40,7 @@ public class Person implements Comparable<Person>
 			char simb = str.charAt(i);
 			ret = ret + ( simb * i );
 		}
+		ret = ret * id;
 		return ret;
 	}
 

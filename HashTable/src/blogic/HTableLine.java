@@ -1,11 +1,9 @@
 ﻿package blogic;
 
-
+import java.util.Arrays;
 import java.util.Iterator;
 
-import blogic.HTableChane.Node;
-
-public class HTableLine
+public class HTableLine implements Iterable<Person> 
 {
 	int size = 97;
 	private Person[] ar;
@@ -15,20 +13,20 @@ public class HTableLine
 	{
 		ar = new Person[size];
 	}
-	public HTableLine(int size)
+	public HTableLine(int size) 
 	{
 		this.size=size;
 		ar = new Person[size];
 	}
 
-	public void clear()
+	public void clear() // очистка таблицы
 	{
 		ar = new Person[size];
 		count = 0;
 	}
 
 
-	public void init(Person[] ini)
+	public void init(Person[] ini) // инициализация ХэшТаблицы
 	{
 		if(ini == null)
 		{
@@ -40,33 +38,29 @@ public class HTableLine
 		}
 	}
 
-	public void add(Person p)
+	public void add(Person p) // добавить элемент
 	{
 		int xz = p.hashCode();
 		int i = xz % size;
-//		System.out.println("Person " + p.getFname() +", xz " + xz + ", i " + i);
-		for( ; i < size ; )
-		{
+		System.out.println("Person " + p.getFname() +", xz " + xz + ", i " + i);
+		int j = size;
+		for( ; i < size ; i++ )
+		{			
 			if ( ar[i] == null )
 			{
 				ar[i] = p;
 				count++;
 				break;
 			}
-			i++;
+			if (i == size-1)
+				i = 0;
+
+			if (j == 0 )
+				break;
+			j--;
 		}
 	}
 
-	public int size()
-	{
-		return count;
-	}
-	public double pow()
-	{
-		double z = (int) ( (double) size() / (double) size * 10000);
-		double rez = (double) z / 100;
-		return rez;
-	}
 	public Person get(Person p)
 	{
 		if( count == 0 )
@@ -74,11 +68,29 @@ public class HTableLine
 
 		return get(p.hashCode());
 	}
-	public Person get(int xz)
+	public Person get(int xz) // получить элемент по ХэшКоду
 	{
+		int j = size;
+		int i = xz % size;
 		Person ret = null;
-
-		return ret;
+		for( ; i < size ; i++ )
+		{
+			if ( xz == ar[i].hashCode())
+			{
+				ret = ar[i];
+				return ret;
+			}
+			else
+			{ 
+				i++;
+				j--;
+			}
+			if (j == 0 )
+			{
+				break;
+			}
+		}
+		return ret ; // ar[xz % size];
 	}
 
 	public void del(Person p)
@@ -88,12 +100,22 @@ public class HTableLine
 
 		del(p.hashCode());
 	}
-	public void del(int xz)
+	public void del(int xz) // удаление п ХэшКоду
 	{
-
+		ar[xz % size] = null;
+		count--;
 	}
-
-	public Person[] toArray()
+	public int size()  //размер таблицы
+	{
+		return count;
+	}
+	public double pow()  // коэфициент заполненности таблицы
+	{
+		double z = (int) ( (double) size() / (double) size * 10000);
+		double rez = (double) z / 100;
+		return rez;
+	}
+	public Person[] toArray()  // элементы из таблицы в массив
 	{
 		Person[] tmp = new Person[count];
 		int j = 0;
@@ -109,32 +131,77 @@ public class HTableLine
 	}
 
 
-	//	//	@Override
-	//	public Iterator<Integer> iterator() 
-	//	{
-	//		return new MyIter(ar, size);
-	//	}
-	//	class MyIter implements Iterator<Integer>
-	//	{
-	//		Person[] ar;
-	//		int i;
-	//		int index;
-	//
-	//		public MyIter(Person[] ar, int index)
-	//		{
-	//			this.ar = ar;
-	//			this.index = index;			
-	//		}
-	//		@Override
-	//		public boolean hasNext() 
-	//		{
-	//			return i < index;
-	//		}
-	//
-	//		@Override
-	//		public Integer next() 
-	//		{
-	//			return i++;
-	//		}		
-	//	}
+
+	public boolean equals(Person[] arnew) 
+	{
+		for ( int i = 0 ; i < size ; i++ )
+		{
+			if ( ar[i] == null && arnew[i] == null)
+				return true;
+			else if ( ar[i] == null || arnew[i] == null)
+				return false;
+			else if ( ar[i] == arnew[i] )
+				return true;
+			else
+				return false;
+		}
+		return true;
+	}
+
+
+	@Override
+	public Iterator<Person> iterator() 
+	{
+		return (Iterator<Person>) new MyIter(ar, count, size);
+	}
+	class MyIter implements Iterator<Person>
+	{
+		Person ar[];
+		int count;
+		int size;
+		int i;
+		int returned;
+
+		public MyIter(Person[] ar, int count, int size)
+		{
+			this.ar = ar;
+			this.count = count;		
+			this.size = size;	
+		}
+		@Override
+		public boolean hasNext() 
+		{
+			//			return returned < count;
+			return i < size;
+		}	
+		@Override
+		public Person next() 
+		{
+			//			Person ret = ar[i];
+			//			if( ret == null)
+			//			{
+			//				i++;
+			//			}
+			//			else
+			//			{
+			//			returned++;
+			//			ret = ar[i];
+			//			}
+
+			Person ret; 
+			if ( ar[i] == null)
+			{
+				i++;
+			}
+			else 
+			{
+				ret = ar[i];
+				i++;
+			}			
+
+			//			Person ret = ar[i];
+			//			i++;
+			return ret;
+		}		
+	}
 }
