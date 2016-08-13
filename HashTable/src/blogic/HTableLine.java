@@ -1,6 +1,5 @@
 ﻿package blogic;
 
-import java.util.Arrays;
 import java.util.Iterator;
 
 public class HTableLine implements Iterable<Person> 
@@ -90,7 +89,7 @@ public class HTableLine implements Iterable<Person>
 				break;
 			}
 		}
-		return ret ; // ar[xz % size];
+		return ret ; 
 	}
 
 	public void del(Person p)
@@ -131,21 +130,33 @@ public class HTableLine implements Iterable<Person>
 	}
 
 
-
-	public boolean equals(Person[] arnew) 
+	@Override
+	public boolean equals(Object obj) 
 	{
-		for ( int i = 0 ; i < size ; i++ )
+		HTableLine arnew = (HTableLine) obj; 
+		return equalsHashTable(arnew);
+	}
+	private boolean equalsHashTable (HTableLine arnew)
+	{
+		if ( ar.length != arnew.ar.length)
 		{
-			if ( ar[i] == null && arnew[i] == null)
-				return true;
-			else if ( ar[i] == null || arnew[i] == null)
-				return false;
-			else if ( ar[i] == arnew[i] )
-				return true;
-			else
-				return false;
+			return false;
 		}
-		return true;
+		boolean ret = true;
+		for ( int i = 0 ; i < size ; i ++)
+		{
+			if ( ar[i] == null && arnew.ar[i] != null)
+				ret = false;
+			else if ( ar[i] != null && arnew.ar[i] == null)
+				ret = false;
+//			else if ( ar[i] == null || arnew.ar[i] == null)
+//				ret = false;
+			else if ( ar[i] != arnew.ar[i] )
+				ret = false;
+//			else
+//				ret = false;
+		}
+		return ret;
 	}
 
 
@@ -159,8 +170,8 @@ public class HTableLine implements Iterable<Person>
 		Person ar[];
 		int count;
 		int size;
-		int i;
-		int returned;
+		int i = 0;
+		int returned = 0;
 
 		public MyIter(Person[] ar, int count, int size)
 		{
@@ -171,36 +182,26 @@ public class HTableLine implements Iterable<Person>
 		@Override
 		public boolean hasNext() 
 		{
-			//			return returned < count;
-			return i < size;
+			return returned < count;
 		}	
 		@Override
 		public Person next() 
 		{
-			//			Person ret = ar[i];
-			//			if( ret == null)
-			//			{
-			//				i++;
-			//			}
-			//			else
-			//			{
-			//			returned++;
-			//			ret = ar[i];
-			//			}
-
-			Person ret; 
-			if ( ar[i] == null)
+			Person ret = null;
+			for ( ; i < size ; i++)
 			{
-				i++;
+				if ( ar[i] == null)
+				{
+					continue;
+				}
+				else 
+				{
+					ret = ar[i];
+					i++;
+					returned++;
+					break;
+				}
 			}
-			else 
-			{
-				ret = ar[i];
-				i++;
-			}			
-
-			//			Person ret = ar[i];
-			//			i++;
 			return ret;
 		}		
 	}
