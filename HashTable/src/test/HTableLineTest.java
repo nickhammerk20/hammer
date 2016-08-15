@@ -2,6 +2,8 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.util.Iterator;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,6 +13,7 @@ import blogic.Person;
 public class HTableLineTest 
 {
 	HTableLine obj = new HTableLine();
+	HTableLine obj2 = new HTableLine();
 	Person[] ini_many = {
 			new Person(10, "Vasia", 	"Pupkin", 		23),
 			new Person(14, "Kasia", 	"Lupkin", 		27),
@@ -24,42 +27,43 @@ public class HTableLineTest
 			new Person(18, "Evgenii",	"Lopateckii", 	75),
 			new Person(62, "Anton",		"Kobilko", 		82),
 			new Person(51, "boris",		"Tkachuk", 		17),
-			};
+	};
 	Person[] ini_two = {
 			new Person(10, "Vasia", 	"Pupkin", 		23),
 			new Person(14, "Kasia", 	"Lupkin", 		27),
-			};
+	};
 	Person[] ini_one = {
 			new Person(10, "Vasia", 	"Pupkin", 		23),
-			};
+	};
 	Person[] ini_null = {};
-	
+
 	@Before
 	public void start()
 	{
 		obj.clear();
+		obj2.clear();
 	};
-	
-	
+
+
 	@Test
 	public void test_init_many() 
 	{
 		obj.init(ini_many);
 		Person[] act = obj.toArray();
 		Person[] exp = {
-				new Person (12, "Volodya", "Kovalevskij", 23),
 				new Person (51, "boris", "Tkachuk", 17),
-				new Person (17, "Masia", "Gupkin", 19),
+				new Person (60, "Lasia", "Jupkin", 99),
+				new Person (22, "Aleksey", "Abrosimov", 62),
+				new Person (12, "Volodya", "Kovalevskij", 23),
+				new Person (34, "Sergey", "Shevchenko", 25),
+				new Person (18, "Evgenii", "Lopateckii", 75),
+				new Person (71, "Andrey", "Petrishe", 12),
 				new Person (33, "Gasia", "Hupkin", 56),
 				new Person (62, "Anton", "Kobilko", 82),
-				new Person (22, "Aleksey", "Abrosimov", 62),
-				new Person (60, "Lasia", "Jupkin", 99),
-				new Person (34, "Sergey", "Shevchenko", 25),
-				new Person (14, "Kasia", "Lupkin", 27),
-				new Person (71, "Andrey", "Petrishe", 12),
-				new Person (18, "Evgenii", "Lopateckii", 75),
-				new Person (10, "Vasia", "Pupkin", 23)
-				};
+				new Person (17, "Masia", "Gupkin", 19),
+				new Person (10, "Vasia", "Pupkin", 23),
+				new Person (14, "Kasia", "Lupkin", 27)
+		};
 		assertArrayEquals(exp, act);
 	}
 	@Test
@@ -68,9 +72,9 @@ public class HTableLineTest
 		obj.init(ini_two);
 		Person[] act = obj.toArray();
 		Person[] exp = {
-				new Person(14, "Kasia", 	"Lupkin", 		27),
-				new Person(10, "Vasia", 	"Pupkin", 		23)
-				};
+				new Person(10, "Vasia", 	"Pupkin", 		23),
+				new Person(14, "Kasia", 	"Lupkin", 		27)
+		};
 		assertArrayEquals(exp, act);
 	}
 	@Test
@@ -89,7 +93,7 @@ public class HTableLineTest
 		Person[] exp = ini_null;
 		assertArrayEquals(exp, act);
 	}
-	
+
 	@Test
 	public void test_del_many() 
 	{
@@ -108,7 +112,7 @@ public class HTableLineTest
 				new Person (71, "Andrey", "Petrishe", 12),
 				new Person (18, "Evgenii", "Lopateckii", 75),
 				new Person (10, "Vasia", "Pupkin", 23)
-				};
+		};
 		assertArrayEquals(exp, act);
 	}
 	@Test
@@ -119,7 +123,7 @@ public class HTableLineTest
 		Person[] act = obj.toArray();
 		Person[] exp = {
 				new Person(10, "Vasia", 	"Pupkin", 		23)
-				};
+		};
 		assertArrayEquals(exp, act);
 	}
 	@Test
@@ -137,24 +141,27 @@ public class HTableLineTest
 		obj.init(ini_null);
 		obj.del(new Person(10, "Vasia", 	"Pupkin", 		23));
 	}
-	
+
 	@Test
 	public void test_get_many() 
 	{
 		obj.init(ini_many);
-		assertEquals(11, obj.get(new Person(10, "Vasia", 	"Pupkin", 		23)));
+		Person exp = new Person(10, "Vasia", 	"Pupkin", 		23);
+		assertEquals(exp, obj.get(58180));
 	}
 	@Test
 	public void test_get_two() 
 	{
 		obj.init(ini_two);
-		assertEquals(11, obj.get(new Person(10, "Vasia", 	"Pupkin", 		23)));
+		Person exp = new Person(10, "Vasia", 	"Pupkin", 		23);
+		assertEquals(exp, obj.get(58180));
 	}
 	@Test
 	public void test_get_one() 
 	{
 		obj.init(ini_one);
-		assertEquals(11, obj.get(new Person(10, "Vasia", 	"Pupkin", 		23)));
+		Person exp = new Person(10, "Vasia", 	"Pupkin", 		23);
+		assertEquals(exp, obj.get(58180));
 	}
 	@Test(expected=IllegalArgumentException.class)
 	public void test_get_null() 
@@ -162,7 +169,7 @@ public class HTableLineTest
 		obj.init(ini_null);
 		obj.get(new Person(10, "Vasia", 	"Pupkin", 		23));
 	}
-	
+
 	@Test
 	public void test_add_many() 
 	{
@@ -189,7 +196,7 @@ public class HTableLineTest
 				new Person(91, "Anna", 		"trembach",			30),
 				new Person(74, "Sveta",		"Gavrilenko",		31),
 				new Person(86, "nastja",	"Hitraja",			30)
-				};
+		};
 		assertArrayEquals(exp, act);
 	}
 	@Test
@@ -202,7 +209,7 @@ public class HTableLineTest
 				new Person(14, "Kasia", 		"Lupkin", 		27),
 				new Person(10, "Vasia", 		"Pupkin", 		23),
 				new Person(86, "nastja",		"Hitraja",		30)
-				};
+		};
 		assertArrayEquals(exp, act);
 	}
 	@Test
@@ -214,7 +221,7 @@ public class HTableLineTest
 		Person[] exp = {
 				new Person(10, "Vasia", 		"Pupkin", 		23),
 				new Person(86, "nastja",		"Hitraja",		30)
-				};
+		};
 		assertArrayEquals(exp, act);
 	}
 	@Test
@@ -225,7 +232,7 @@ public class HTableLineTest
 		Person[] act = obj.toArray();
 		Person[] exp = {
 				new Person(86, "nastja",		"Hitraja",		30)
-				};
+		};
 		assertArrayEquals(exp, act);
 	}
 	@Test
@@ -237,8 +244,8 @@ public class HTableLineTest
 		Person[] exp = ini_null;
 		assertArrayEquals(exp, act);
 	}
-	
-	
+
+
 	@Test
 	public void test_clear_many() 
 	{
@@ -271,8 +278,8 @@ public class HTableLineTest
 		int exp = obj.size();
 		assertEquals(exp, 0);
 	}
-	
-	
+
+
 	@Test
 	public void test_size_many() 
 	{
@@ -305,7 +312,7 @@ public class HTableLineTest
 		int act = 0;
 		assertEquals(exp, act);
 	}
-	
+
 	@Test
 	public void test_pow_many() 
 	{
@@ -337,5 +344,106 @@ public class HTableLineTest
 		double exp = obj.pow();
 		double act = 0;
 		assertEquals(exp, act, 0.01);
+	}
+
+	@Test
+	public void test_equals_many() 
+	{
+		obj.init(ini_many);
+		obj2.init(ini_many);
+		assertEquals(obj.equals(obj2), true);
+	}
+	@Test
+	public void test_equals_two() 
+	{
+		obj.init(ini_two);
+		obj2.init(ini_two);
+		assertEquals(obj.equals(obj2), true);
+	}
+	@Test
+	public void test_equals_one() 
+	{
+		obj.init(ini_one);
+		obj2.init(ini_one);
+		assertEquals(obj.equals(obj2), true);
+	}
+	@Test
+	public void test_equals_null() 
+	{
+		obj.init(ini_null);
+		obj2.init(ini_null);
+		assertEquals(obj.equals(obj2), true);
+	}
+
+	@Test
+	public void test_iterator_many() 
+	{
+		obj.init(ini_many);
+		Person[] exp = {
+				new Person (51, "boris", "Tkachuk", 17),
+				new Person (60, "Lasia", "Jupkin", 99),
+				new Person (22, "Aleksey", "Abrosimov", 62),
+				new Person (12, "Volodya", "Kovalevskij", 23),
+				new Person (34, "Sergey", "Shevchenko", 25),
+				new Person (18, "Evgenii", "Lopateckii", 75),
+				new Person (71, "Andrey", "Petrishe", 12),
+				new Person (33, "Gasia", "Hupkin", 56),
+				new Person (62, "Anton", "Kobilko", 82),
+				new Person (17, "Masia", "Gupkin", 19),
+				new Person (10, "Vasia", "Pupkin", 23),
+				new Person (14, "Kasia", "Lupkin", 27)
+		};
+		int i = 0;
+		for (Person p : obj) 
+		{
+			assertEquals(p, exp[i++]);
+		}
+
+		assertEquals(obj.equals(obj2), true);
+	}
+	@Test
+	public void test_iterator_two() 
+	{
+		obj.init(ini_two);
+		Person[] exp = {
+				new Person (10, "Vasia", "Pupkin", 23),
+				new Person (14, "Kasia", "Lupkin", 27)
+		};
+		int i = 0;
+		for (Person p : obj) 
+		{
+			assertEquals(p, exp[i++]);
+		}
+
+		assertEquals(obj.equals(obj2), true);
+	}
+	@Test
+	public void test_iterator_one() 
+	{
+		obj.init(ini_one);
+		Person[] exp = {
+				new Person (10, "Vasia", "Pupkin", 23)
+		};
+		int i = 0;
+		for (Person p : obj) 
+		{
+			assertEquals(p, exp[i++]);
+		}
+
+		assertEquals(obj.equals(obj2), true);
+	}
+	@Test
+	public void test_iterator_null() 
+	{
+		obj.init(ini_null);
+		Person[] exp = {
+		};
+		int i = 0;
+		for (Person p : obj) 
+		{
+			assertEquals(p, exp[i++]);
+		}
+
+		assertEquals(obj.equals(obj2), true);
 	}
 }
