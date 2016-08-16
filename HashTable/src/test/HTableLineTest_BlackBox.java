@@ -10,7 +10,7 @@ import org.junit.Test;
 import blogic.HTableLine;
 import blogic.Person;
 
-public class HTableLineTest 
+public class HTableLineTest_BlackBox 
 {
 	HTableLine obj = new HTableLine();
 	HTableLine obj2 = new HTableLine();
