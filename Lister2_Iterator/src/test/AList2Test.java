@@ -1,14 +1,14 @@
-﻿package test;
+package test;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import Lister.AList1;
+import Lister.AList2;
 
-public class AList1Test 
+public class AList2Test 
 {
-	AList1 obj = new AList1();
+	AList2 obj = new AList2();
 	
 	@Before
 	public void start()
@@ -40,10 +40,10 @@ public class AList1Test
 		assertEquals(19, obj.size());
 		assertEquals(20, obj.sizeAr());
 		obj.addPos(7, 88);
-		assertEquals(20, obj.size());
-		assertEquals(20, obj.sizeAr());
-		obj.addPos(15, 99);
 		assertEquals(21, obj.size());
+		assertEquals(26, obj.sizeAr());
+		obj.addPos(15, 99);
+		assertEquals(22, obj.size());
 		assertEquals(26, obj.sizeAr());
 	}
 	@Test
@@ -54,10 +54,10 @@ public class AList1Test
 		assertEquals(19, obj.size());
 		assertEquals(20, obj.sizeAr());
 		obj.addStart(88);
-		assertEquals(20, obj.size());
-		assertEquals(20, obj.sizeAr());
-		obj.addStart(99);
 		assertEquals(21, obj.size());
+		assertEquals(26, obj.sizeAr());
+		obj.addStart(99);
+		assertEquals(22, obj.size());
 		assertEquals(26, obj.sizeAr());
 	}
 	@Test
@@ -68,12 +68,13 @@ public class AList1Test
 		assertEquals(19, obj.size());
 		assertEquals(20, obj.sizeAr());
 		obj.addEnd(88);
-		assertEquals(20, obj.size());
-		assertEquals(20, obj.sizeAr());
-		obj.addEnd(99);
 		assertEquals(21, obj.size());
 		assertEquals(26, obj.sizeAr());
+		obj.addEnd(99);
+		assertEquals(22, obj.size());
+		assertEquals(26, obj.sizeAr());
 	}
+	
 	
 	//================================
 	// size

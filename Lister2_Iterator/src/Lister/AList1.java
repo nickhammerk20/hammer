@@ -31,11 +31,33 @@ public class AList1 implements EList, Iterable<Integer>
 	{
 		return index;
 	}
+	
+	public int sizeAr()
+	{
+		return ar.length;
+	}
+	
+	private void reSize()
+	{
+		int newSize = (int)((double) size() * (double) 1.3) ;
+		int[] tmp = new int[newSize];
+		for (int i = 0; i < ar.length; i++)
+		{
+			tmp[i] = ar[i];
+		}
+		ar = tmp;
+	}
+	
 	@Override
 	public void init(int[] ini)
 	{
 		if(ini == null)
 			ini = new int[0];
+		
+		if( ini.length >= ar.length)
+		{
+			reSize();
+		}	
 			
 		for (int i = 0; i < ini.length; i++)
 		{
@@ -57,6 +79,10 @@ public class AList1 implements EList, Iterable<Integer>
 	@Override
 	public void addStart(int val)
 	{
+		if( ar.length == index)
+		{
+			reSize();
+		}	
 		for (int i = index; i >	0; i--)
 		{
 			ar[i] = ar[i-1];
@@ -67,16 +93,26 @@ public class AList1 implements EList, Iterable<Integer>
 	@Override
 	public void addEnd(int val)
 	{
+		if( ar.length == index)
+		{
+			reSize();
+		}	
 		ar[index++] = val;
 //		index++;
 	}
 	@Override
 	public void addPos(int pos, int val)
 	{
-		if(pos < 0 || pos > index){
+		if(pos < 0 || pos > index)
+		{
 			addStart(val);
 		}
-		for (int i = index++; i>pos; i--){
+		if( ar.length == index)
+		{
+			reSize();
+		}	
+		for (int i = index++; i>pos; i--)
+		{
 				ar[i] = ar[i-1];
 				}
 			ar[pos]=val;

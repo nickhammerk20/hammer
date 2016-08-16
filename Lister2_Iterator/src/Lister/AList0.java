@@ -29,6 +29,7 @@ public class AList0 implements EList, Iterable<Integer>
 	{
 		return ar.length;
 	}
+	
 	@Override
 	public void init(int[] ini)
 	{

@@ -2,8 +2,6 @@
 
 import java.util.Iterator;
 
-import Lister.LList1.Node;
-
 public class LList2 implements EList, Iterable<Integer>
 {
 	class Node
@@ -50,6 +48,24 @@ public class LList2 implements EList, Iterable<Integer>
 			p = p.prev;
 		}
 		return count;
+	}
+
+	public boolean check()
+	{
+		if (start == null )
+		{
+			return true;
+		}
+		Node p = start;
+		while (p.next!= null)
+		{
+			if ( p.val != p.next.prev.val)
+			{
+				return false;
+			}
+			p = p.next;
+		}
+		return true;		
 	}
 
 	@Override

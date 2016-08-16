@@ -6,17 +6,17 @@ import Lister.AList1.MyIter;
 
 public class AList2 implements EList, Iterable<Integer>
 {
-	int[] ar = new int[30];
+	int[] ar = new int[20];
 	int start = ar.length/2;
 	int end = ar.length/2;
-	
-	
-	
+
+
+
 	@Override
 	public String toString() 
 	{
 		String str = "";
-		
+
 		for (int i = start; i < end; i++) 
 		{
 			str += ar[i];
@@ -25,7 +25,7 @@ public class AList2 implements EList, Iterable<Integer>
 		}
 		return str;
 	}
-	
+
 	@Override
 	public void clear() 
 	{
@@ -44,6 +44,24 @@ public class AList2 implements EList, Iterable<Integer>
 		return ret;
 	}
 
+	public int sizeAr()
+	{
+		return ar.length;
+	}
+	private void reSize()
+	{
+		int newSize = (int)((double) ar.length * (double) 1.3) ;
+		int[] tmp = new int[newSize];
+		int newStart = tmp.length / 2 - ar.length / 2;
+		end = newStart + ar.length;
+		for (int i = 0; i < ar.length; i++)
+		{
+			tmp[newStart + i] = ar[i];
+		}
+		ar = tmp;
+		start = newStart;		
+	}
+
 	@Override
 	public void init(int[] ini) 
 	{
@@ -51,9 +69,9 @@ public class AList2 implements EList, Iterable<Integer>
 		{
 			ini = new int[0];
 		}			
-//		int dx = ((ini.length % 2 == 0) ? 0 : 1);
-//		start =start - (ini.length/2) - dx;
-//		end = end + (ini.length/2);
+		//		int dx = ((ini.length % 2 == 0) ? 0 : 1);
+		//		start =start - (ini.length/2) - dx;
+		//		end = end + (ini.length/2);
 		start = ar.length / 2 - ini.length / 2;
 		end = start + ini.length;
 		for (int i = 0; i < ini.length; i++)
@@ -101,7 +119,7 @@ public class AList2 implements EList, Iterable<Integer>
 	@Override
 	public int max() 
 	{
-		
+
 		return ar[maxPos()+start];
 	}
 
@@ -156,7 +174,7 @@ public class AList2 implements EList, Iterable<Integer>
 				}
 			}
 		}
-		
+
 	}
 
 	@Override
@@ -170,7 +188,7 @@ public class AList2 implements EList, Iterable<Integer>
 			ar[i+start] = ar[end - i - 1];
 			ar[end - i - 1] = temp;
 		}
-		
+
 	}
 
 	@Override
@@ -206,21 +224,21 @@ public class AList2 implements EList, Iterable<Integer>
 		{
 			throw new IllegalArgumentException();
 		}
-//		String str = "";
-//		for (int i = 0; i < ar.length; i++) 
-//		{
-//			str += ar[i];
-//			if(i < ar.length-1)
-//				str += ",";
-//		}
-//		System.out.println(str);
-//		System.out.println(toString());
-//		System.out.println(size());
-//		System.out.println(end+" data "+ar[end]);
+		//		String str = "";
+		//		for (int i = 0; i < ar.length; i++) 
+		//		{
+		//			str += ar[i];
+		//			if(i < ar.length-1)
+		//				str += ",";
+		//		}
+		//		System.out.println(str);
+		//		System.out.println(toString());
+		//		System.out.println(size());
+		//		System.out.println(end+" data "+ar[end]);
 		int ret = ar[end-1];
 		end--;
-//		System.out.println(end+" data "+ar[end]);
-//		System.out.println(toString());
+		//		System.out.println(end+" data "+ar[end]);
+		//		System.out.println(toString());
 		return ret;
 	}
 
@@ -232,10 +250,10 @@ public class AList2 implements EList, Iterable<Integer>
 			throw new	IllegalArgumentException();
 		}
 		int ret = ar[start+pos]; 
-		
+
 		for (int i = (start+pos); i<end-1; i++){
 			ar[i] = ar[i+1];
-			}
+		}
 		end--;
 		return ret;
 	}
@@ -243,14 +261,22 @@ public class AList2 implements EList, Iterable<Integer>
 	@Override
 	public void addStart(int val) 
 	{
+		if( start <= 1 )
+		{
+			reSize();
+		}	
 		ar[--start]=val;
 	}
 
 	@Override
 	public void addEnd(int val) 
 	{
+		if(end >= ar.length-1)
+		{
+			reSize();
+		}
 		ar[end++]=val;
-		
+
 	}
 
 	@Override
@@ -260,14 +286,18 @@ public class AList2 implements EList, Iterable<Integer>
 		{
 			addStart(val);
 		}
+		if( start <= 1 && end >= ar.length-1)
+		{
+			reSize();
+		}
 		for (int i = end; i>start+pos; i--)
 		{
 			ar[i] = ar[i-1];
-//			ar[i+1] = ar[i];
-			}
+			//			ar[i+1] = ar[i];
+		}
 		end++;
 		ar[start+pos]=val;
-		
+
 	}
 
 	/***********************/
@@ -283,7 +313,7 @@ public class AList2 implements EList, Iterable<Integer>
 		int[] ar = null;
 		int start;
 		int end;
-		
+
 		public MyIter(int[] ar, int start, int end)
 		{
 			this.ar = ar;
@@ -301,6 +331,6 @@ public class AList2 implements EList, Iterable<Integer>
 		{
 			return ar[start++];
 		}
-		
+
 	}
 }
