@@ -20,17 +20,17 @@ public class GraphMain
 		String str = gr.toString();
 		System.out.println(str);
 		
-		System.out.println("**********del edge********");
-		gr.delEdge("Dnipro", "Lviv");
-		System.out.println("**********del edge********");
-		str = gr.toString();
-		System.out.println(str);
-		
-//		System.out.println("**********del vertex********");
-//		gr.delVertex("Dnipro");
-//		System.out.println("**********del vertex********");
+//		System.out.println("**********del edge********");
+//		gr.delEdge("Dnipro", "KR");
+//		System.out.println("**********del edge********");
 //		str = gr.toString();
 //		System.out.println(str);
+		
+		System.out.println("**********del vertex********");
+		gr.delVertex("Kyiv");
+		System.out.println("**********del vertex********");
+		str = gr.toString();
+		System.out.println(str);
 	}
 
 }
