@@ -1,4 +1,4 @@
-package task;
+package graph;
 
 
 public class Graph 
@@ -82,6 +82,62 @@ public class Graph
 		v1.root = eg;
 	}
 
+	public void delVertex(String val)
+	{
+		Vertex vr = root;
+		
+		while(vr != null)
+		{
+			
+			if(vr.root.link.equals(val))
+			{
+//				System.out.println( "нашли вершину в удалении ребра => "+ vr.val);
+				break;
+			}
+			vr = vr.next;
+		}
+	}
+
+	public void delEdge(String from, String to)
+	{
+		System.out.println(from+" "+ to);
+
+		Vertex vr = root;
+		while(vr != null)
+		{
+			if(vr.val.equals(from))
+			{
+//				System.out.println( "нашли вершину в удалении ребра => "+ vr.val);
+				break;
+			}
+			vr = vr.next;
+		}
+		if(vr.root.link.val.equals(to))
+		{
+//			System.out.println("случай первого элемента. Удаляем ребро " + from + " => " + to);
+			vr.root = vr.root.next;
+		}
+		else
+		{
+//			System.out.println("случай второго элемента. Удаляем ребро " + from + " => " + to);
+			delEdgeIn( to, vr.root);			
+		}
+	}	
+
+	private void delEdgeIn(String to, Edge eg)
+	{
+		while(eg.next != null)
+		{
+			if(eg.next.link.val.equals(to))
+			{
+				//				System.out.println( "нашли нашли ребро в удалении ребра => "+ eg.link.val + " eg.link.next.val " + eg.link.next.val);
+				eg.next = eg.next.next;
+				break;
+			}
+			eg = eg.next;
+		}
+	}
+
 	private Vertex findVertex(String val)
 	{
 		Vertex ret = null;
@@ -104,7 +160,6 @@ public class Graph
 		{
 			ret = vr;
 		}
-
 		return ret;
 	}
 }
