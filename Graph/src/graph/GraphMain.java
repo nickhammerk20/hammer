@@ -3,7 +3,7 @@ package graph;
 
 public class GraphMain 
 {
-	public static void main(String[] args)
+	public static void main(String[] args) throws CloneNotSupportedException
 	{
 		Graph gr = new Graph();
 		gr.addVertex("Dnipro");
@@ -19,6 +19,12 @@ public class GraphMain
 		
 		String str = gr.toString();
 		System.out.println(str);
+				
+		System.out.println("**********Clone*******");
+		Graph grC = (Graph) gr.clone();
+		String strC = grC.toString();
+		System.out.println(strC);
+		System.out.println("**********Clone*******");
 		
 //		System.out.println("**********del edge********");
 //		gr.delEdge("Dnipro", "KR");
@@ -31,6 +37,13 @@ public class GraphMain
 		System.out.println("**********del vertex********");
 		str = gr.toString();
 		System.out.println(str);
+		
+		System.out.println("**********Clone*******");
+		strC = grC.toString();
+		System.out.println(strC);
+		System.out.println("**********Clone*******");
 	}
+	
+	
 
 }

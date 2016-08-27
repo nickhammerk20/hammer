@@ -1,9 +1,9 @@
 package graph;
 
 
-public class Graph 
+public class Graph implements Cloneable
 {
-	class Vertex
+	class Vertex 
 	{
 		String val;
 		Vertex next;
@@ -111,7 +111,7 @@ public class Graph
 		Vertex vrCurrent = vrPrev.next;
 		vrPrev.next = vrCurrent.next;
 	}
-	
+
 	public void delEdge(String from, String to)
 	{
 		Vertex vr = root;
@@ -136,14 +136,14 @@ public class Graph
 	private void delEdgeIn(String to, Edge eg)
 	{
 		while(eg.next != null)
+		{
+			if(eg.next.link.val.equals(to))
 			{
-				if(eg.next.link.val.equals(to))
-				{
-					eg.next = eg.next.next;
-					break;
-				}
-				eg = eg.next;
+				eg.next = eg.next.next;
+				break;
 			}
+			eg = eg.next;
+		}
 	}
 
 	private Vertex findVertex(String val)
@@ -167,6 +167,32 @@ public class Graph
 		else
 		{
 			ret = vr;
+		}
+		return ret;
+	}
+	@Override
+	protected Object clone() throws CloneNotSupportedException 
+	{
+		if(root == null)
+	        return null;
+		
+		Graph ret = new Graph();
+		Vertex vr = root;
+		while(vr != null)
+		{
+			ret.addVertex(vr.val); 
+			vr = vr.next;
+		}
+		vr = root;
+		while(vr != null)
+		{
+			Edge eg = vr.root;
+			while(eg != null)
+			{
+				ret.addEdge(vr.val, eg.link.val, eg.val);
+				eg = eg.next;
+			}
+			vr = vr.next;
 		}
 		return ret;
 	}

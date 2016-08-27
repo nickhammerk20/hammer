@@ -4,9 +4,10 @@ public class Fridge implements Cloneable
 {
 	boolean[][] bb = new boolean [4][4];
 	ArrayList<Integer> lst = new ArrayList<Integer>();
+
 	public void turn(int pos) // диапазон от 1 до 16 
 	{
-		lst.add(pos);
+		lst.add( pos );
 		pos--;
 		int i = pos / 4;
 		int j = pos % 4;
@@ -24,17 +25,17 @@ public class Fridge implements Cloneable
 	{
 		boolean flag = true;
 		m1:
-		for (int i = 0; i < 4; i++) 
-		{
-			for (int j = 0; j < 4; j++) 
+			for (int i = 0; i < 4; i++) 
 			{
-				if(bb[i][j])
+				for (int j = 0; j < 4; j++) 
 				{
-					flag = false;
-					break m1;
+					if(bb[i][j])
+					{
+						flag = false;
+						break m1;
+					}
 				}
 			}
-		}		
 		return flag;
 	}
 	public void init(boolean[][] bb)
@@ -60,6 +61,10 @@ public class Fridge implements Cloneable
 	{
 		Fridge ret = new Fridge();
 		ret.bb = bb.clone();
+		for (int i = 0; i < 4; i++) 
+		{
+			ret.bb[i] = bb[i].clone();
+		}
 		ret.lst = (ArrayList<Integer>) lst.clone();
 		return ret;
 	}
