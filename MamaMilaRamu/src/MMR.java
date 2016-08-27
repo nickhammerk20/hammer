@@ -28,8 +28,7 @@ public class MMR
 				f(n+1, visit, lst);
 				lst.remove(lst.size()-1);
 				visit[i]=false;
-			}
-			
+			}			
 		}
 	}
 	private void printAll(ArrayList<Integer> lst)

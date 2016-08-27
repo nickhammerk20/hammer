@@ -1,5 +1,6 @@
 package graph;
 
+import java.util.ArrayList;
 
 public class Graph implements Cloneable
 {
@@ -92,7 +93,6 @@ public class Graph implements Cloneable
 			{
 				if(eg.link.val.equals(val))
 				{
-					System.out.println( "нашли ссылку на вершину в удалении Вершины => "+ eg.link.val);
 					delEdge(vr.val , val);
 				}
 				eg = eg.next;

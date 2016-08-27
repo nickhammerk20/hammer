@@ -9,13 +9,17 @@ public class GraphMain
 		gr.addVertex("Dnipro");
 		gr.addVertex("Kyiv");
 		gr.addVertex("Lviv");
+		gr.addVertex("Kirovograd");
+		gr.addVertex("Odessa");
+		gr.addVertex("Kharkiv");
+		
 		
 		gr.addEdge("Dnipro", "Lviv", 1100);
 		gr.addEdge("Dnipro", "Kyiv", 590);
 		gr.addEdge("Dnipro", "Dnipro", 0);
-		gr.addEdge("Dnipro", "KR", 190);
+		gr.addEdge("Dnipro", "KRig", 190);
 		gr.addEdge("Lviv", "Dnipro", 1100);
-		gr.addEdge("KR","Dnipro", 190);
+		gr.addEdge("KRig","Dnipro", 190);
 		
 		String str = gr.toString();
 		System.out.println(str);
@@ -34,9 +38,9 @@ public class GraphMain
 		
 		System.out.println("**********del vertex********");
 		gr.delVertex("Kyiv");
-		System.out.println("**********del vertex********");
 		str = gr.toString();
 		System.out.println(str);
+		System.out.println("**********del vertex********");
 		
 		System.out.println("**********Clone*******");
 		strC = grC.toString();
