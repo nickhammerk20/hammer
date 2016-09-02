@@ -13,7 +13,7 @@ public class BsTree3_Linked implements EBsTree
 	{
 		Node node;
 	}
-		
+		//lsakdnflskanfv;laskmdv;lsmd
 	class Node 
 	{
 		int val;
