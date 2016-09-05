@@ -54,4 +54,9 @@ public class Person implements Comparable<Person>
 	{
 		return (new Integer(id)).compareTo(o.id);
 	}
+//	@Override
+//	public boolean equals(Object o) 
+//	{
+//		return (new Integer(id)).equals(id);
+//	}
 }
