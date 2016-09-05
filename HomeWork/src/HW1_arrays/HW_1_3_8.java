@@ -29,8 +29,8 @@ public class HW_1_3_8{
 				}
 			}
 		}
-		
-		
+
+
 		return ret;
 	}
 	public static int fArrSortSelect(int [] a){
@@ -39,16 +39,16 @@ public class HW_1_3_8{
 		}
 		int ret=0;
 		for (int i = 0; i < a.length - 1; i++) {
-		        int min_i = i;
-			    for (int j = i + 1; j < a.length; j++) { 
-			       	if (a[j] < a[min_i]) {
-			       		min_i = j;
-			       	}
-			    }
-		        int tmp = a[i]; 
-			    a[i] = a[min_i];
-			    a[min_i] = tmp;
-		    }
+			int min_i = i;
+			for (int j = i + 1; j < a.length; j++) { 
+				if (a[j] < a[min_i]) {
+					min_i = j;
+				}
+			}
+			int tmp = a[i]; 
+			a[i] = a[min_i];
+			a[min_i] = tmp;
+		}
 		return ret;
 	}
 	public static int fArrSortInsert(int [] a){
@@ -57,14 +57,14 @@ public class HW_1_3_8{
 		}
 		int j, ret=0;
 		for(int i = 1; i < a.length; i++)
-	    {
-	        int tmp = a[i];
-	        for ( j = i - 1; j >= 0 && a[j] > tmp; j--)
-	        {
-	            a[j + 1] = a[j];
-	        }
-	        a[j + 1] = tmp;
-	    }
+		{
+			int tmp = a[i];
+			for ( j = i - 1; j >= 0 && a[j] > tmp; j--)
+			{
+				a[j + 1] = a[j];
+			}
+			a[j + 1] = tmp;
+		}
 		return ret;
 	}
 }
