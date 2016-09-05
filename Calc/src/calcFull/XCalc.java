@@ -4,46 +4,45 @@ import javax.swing.JTextField;
 
 public class XCalc {
 
-	
-	
-	public static int calc(int a, int b, int op)
+	private static int number1;
+	private static char operator; 
+
+	public static int calc(int a, int b, char op)
 	{
-		int res = 555;
+		int res = 123456789;
 		switch (op)
 		{
-			case '+': res = a + b;	break;
-			case '-': res = a - b;	break;
-			case '*': res = a * b; 	break;
-			case '/': res = a / b; 	break;
+		case '+': res = a + b;	break;
+		case '-': res = a - b;	break;
+		case '*': res = a * b; 	break;
+		case '/': res = a / b; 	break;
 		}
+		number1 = 0;
+		operator = ' ';
 		return res;
 	}
-		
-	public static String fOper(String num) 
+
+	public static String fOper(String num, String oper) 
 	{
-		int num1 = 0;
-		int oper = 0;
-		String input = ""; 
-		if (num == "=")
+		String ret = ""; 
+		if (oper == "=")
 		{
-			int a = Integer.parseInt(num);	
-			int b = Integer.parseInt(input);	
-			input = ("" + calc (a, b, oper));
+			int b = Integer.parseInt(num);	
+			ret = ("" + calc (number1, b, operator));
 		}
 		else
 		{
-//			num1 = input;
-//			oper = num;
-			input = "";
+			number1 = Integer.parseInt(num);
+			operator = oper.charAt(0);;
+			ret = "";
 		}		
-		return input;
+		return ret;
 	}
 
 	public static String fPress(String a, String actionCommand) {
 		String res = a + actionCommand;
-		System.out.println("input " + a + " num " + actionCommand + " res "+ res);
 		return res;
-	
+
 	}
 
 }
