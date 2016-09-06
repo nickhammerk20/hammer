@@ -22,9 +22,6 @@ public class CPanelFirst extends JPanel implements MouseListener, MouseMotionLis
 	int i;
 	ArrayList<JPanel> obj = new ArrayList<JPanel>();
 	JPanel p = null;
-	//	JPanel panelSmal;
-	//	JPanel panelMidle;
-	//	JPanel panelBig;
 
 	public CPanelFirst()
 	{
@@ -35,35 +32,6 @@ public class CPanelFirst extends JPanel implements MouseListener, MouseMotionLis
 
 		addMouseListener(this);
 		addMouseMotionListener(this);
-
-		//		panelSmal = new JPanel();
-		//		panelMidle = new JPanel();
-		//		panelBig = new JPanel();		
-		//			
-		//		panelSmal.setOpaque(true);
-		//		panelMidle.setOpaque(true);
-		//		panelBig.setOpaque(true);
-		//		
-		//		panelSmal.setBackground(Color.BLUE);
-		//		panelMidle.setBackground(Color.BLUE);
-		//		panelBig.setBackground(Color.BLUE);
-		//		
-		//		MoveListener ml = new MoveListener();
-		//		panelSmal.addMouseListener(ml);
-		//		panelMidle.addMouseListener(ml);
-		//		panelBig.addMouseListener(ml);
-		//		
-		//		panelSmal.addMouseMotionListener(ml);
-		//		panelMidle.addMouseMotionListener(ml);
-		//		panelBig.addMouseMotionListener(ml);
-		//		
-		//		panelSmal.setSize(new Dimension(50, 500));
-		//		panelMidle.setSize(new Dimension(100, 100));
-		//		panelBig.setSize(new Dimension(200, 200));
-		//
-		//		this.add(panelSmal);
-		//		this.add(panelMidle);
-		//		this.add(panelBig);
 
 		setVisible(true);				
 	}
@@ -111,10 +79,6 @@ public class CPanelFirst extends JPanel implements MouseListener, MouseMotionLis
 				JPanel p = obj.get(i);
 				p.setLocation(p.getX() + e.getX() - (int)old.getX(), p.getY() + e.getY() - (int)old.getY());
 			}
-
-			//			panelSmal.setLocation(panelSmal.getX() + e.getX() - (int)old.getX(), panelSmal.getY() + e.getY() - (int)old.getY());
-			//			panelMidle.setLocation(panelMidle.getX() + e.getX() - (int)old.getX(), panelMidle.getY() + e.getY() - (int)old.getY());
-			//			panelBig.setLocation(panelBig.getX() + e.getX() - (int)old.getX(), panelBig.getY() + e.getY() - (int)old.getY());
 		}
 	}
 
@@ -142,7 +106,7 @@ public class CPanelFirst extends JPanel implements MouseListener, MouseMotionLis
 	@Override
 	public void focusLost(FocusEvent e) 
 	{
-		i = -1;
+		i = 1;
 	}
 
 }
