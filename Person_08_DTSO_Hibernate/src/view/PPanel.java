@@ -9,6 +9,7 @@ import javax.swing.JTable;
 
 import blogic.PersonDM;
 import dal.PersonDAO_CSV;
+import dal.PersonDAO_MySQL;
 
 public class PPanel extends JPanel 
 {
@@ -22,7 +23,7 @@ public class PPanel extends JPanel
 		
 		PersonDM dm = new PersonDM(this);
 		
-		PersonDAO_CSV DAO = new PersonDAO_CSV();
+//		PersonDAO_MySQL DAO = new PersonDAO_MySQL();
 		
 		tbl = new JTable(dm);
 		tbl.addMouseListener(new MouseAdapter() 

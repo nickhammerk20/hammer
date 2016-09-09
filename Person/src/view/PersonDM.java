@@ -7,6 +7,7 @@ import javax.swing.table.AbstractTableModel;
 import blogic.Person;
 import dal.PersonDAO;
 import dal.PersonDAO_Mock;
+import dal.PersonDAO_MySQL;
 
 public class PersonDM extends AbstractTableModel
 {
@@ -15,7 +16,7 @@ public class PersonDM extends AbstractTableModel
 
 	public PersonDM() 
 	{
-		pd = new PersonDAO_Mock();
+		pd = new PersonDAO_MySQL();
 		pp = pd.read();
 	}
 
