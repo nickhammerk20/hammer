@@ -146,7 +146,8 @@ public class HTableLine implements Iterable<Person>
 		for ( int i = 0 ; i < size ; i ++)
 		{
 			if ( ar[i] == null && arnew.ar[i] != null)
-				ret = false;
+				continue;
+//				ret = false;
 			else if ( ar[i] != null && arnew.ar[i] == null)
 				ret = false;
 //			else if ( ar[i] == null || arnew.ar[i] == null)

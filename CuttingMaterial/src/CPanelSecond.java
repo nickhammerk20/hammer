@@ -8,7 +8,7 @@ public class CPanelSecond extends JPanel
 	public CPanelSecond()
 	{
 		setLayout(null);
-		setBounds(520, 10, 500, 500);
+		setBounds(520, 40, 500, 470);
 		setBackground(Color.WHITE);
 		setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 		setVisible(true);	

@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -10,10 +9,7 @@ import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import org.omg.PortableInterceptor.RequestInfo;
 
 public class CPanelFirst extends JPanel implements MouseListener, MouseMotionListener, FocusListener
 {
@@ -26,7 +22,7 @@ public class CPanelFirst extends JPanel implements MouseListener, MouseMotionLis
 	public CPanelFirst()
 	{
 		setLayout(null);
-		setBounds(10, 10, 500, 500);
+		setBounds(10, 40, 500, 470);
 		setBackground(Color.WHITE);
 		setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 
@@ -74,7 +70,7 @@ public class CPanelFirst extends JPanel implements MouseListener, MouseMotionLis
 		{
 			super.mouseDragged(e);
 			//			int i = requestFocus();//getSelectedIndex();
-			if (i >= 0 )
+			if (i == 0 )
 			{
 				JPanel p = obj.get(i);
 				p.setLocation(p.getX() + e.getX() - (int)old.getX(), p.getY() + e.getY() - (int)old.getY());
