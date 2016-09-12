@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Field
 {
 	int[][] ar = null;
-	
+
 	public String toString() 
 	{
 		String str = "";
@@ -25,7 +25,7 @@ public class Field
 	{
 		if (ini == null)
 			return;
-		
+
 		ar = new int[ini.length][ini[0].length];
 		for (int j = 0 ; j < ini.length; j++)
 		{
@@ -43,7 +43,7 @@ public class Field
 	{
 		return ar.length;
 	}
-	
+
 	public int simple()
 	{
 		int count = 0;
@@ -80,10 +80,50 @@ public class Field
 		}		
 		return count;		
 	}
-	
+
 	public int arrayOfCheck()
 	{
-		
-		return 0;
+		boolean[][] arCheck = new boolean [ar.length][ar[0].length];
+		return arrayOfCheckR(arCheck,0, 0);
+	}
+	private int arrayOfCheckR(boolean[][] arCheck, int j, int i)
+	{
+		System.out.println("новая рекурсия j="+j+" i="+i);
+
+		if( j == ar.length )
+			return 0;
+
+		int count = 0;
+		if(arCheck[j][i] != true && ar[j][i] == 0)
+		{
+			arCheck[j][i] = true;
+			i++;
+		}
+		else if ( ar[j][i] == 1 )
+		{
+			arCheck[j][i] = true;
+			count++;
+			kill(arCheck,j, i);
+			i++;			
+		}
+
+		if(i == ar[0].length)
+		{
+			i = 0;
+			j++;
+		}
+		System.out.println(" j="+j + " i="+i);
+
+		count += arrayOfCheckR(arCheck, j, i);
+
+		return count;
+	}	
+	private void kill(boolean[][] arCheck,int j, int i)
+	{
+		killR(arCheck,j, i);
+	}
+	private void killR (boolean[][] arCheck,int j, int i)
+	{
+		System.out.println("=kill=");
 	}
 }
