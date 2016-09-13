@@ -29,9 +29,9 @@ public class SeaMain
 		sea.init(ini);
 		System.out.println(sea.toString());
 		System.out.println();
-		System.out.println(sea.simple());
+		System.out.println(" simple() ==>> "+sea.simple());
 		System.out.println();
-		System.out.println("   ==>> "+sea.arrayOfCheck());
+		System.out.println(" arrayOfCheck() ==>> "+sea.arrayOfCheck());
 		
 	}
 }
