@@ -88,8 +88,6 @@ public class Field
 	}
 	private int arrayOfCheckR(boolean[][] arCheck, int j, int i)
 	{
-//		System.out.print("новая рекурсия j="+j+" i="+i);
-
 		if( j == ar.length )
 			return 0;
 		
@@ -97,7 +95,6 @@ public class Field
 		if (arCheck[j][i] != true && ar[j][i] == 1 )
 		{
 			count++;
-//			System.out.print(" count = " + count);
 			kill(arCheck,j, i);
 		}
 		i++;
@@ -106,8 +103,6 @@ public class Field
 			i = 0;
 			j++;
 		}
-//		System.out.println(" переход на => j="+j + " i="+i);
-
 		count += arrayOfCheckR(arCheck, j, i);
 		return count;
 	}	
@@ -117,7 +112,6 @@ public class Field
 	}
 	private void killRight (boolean[][] arCheck,int j, int i)
 	{
-//		System.out.print(" kill=> j="+j+" i="+ i);
 		if(i+1 == ar[0].length || arCheck[j][i] == true) 
 			return;
 				
