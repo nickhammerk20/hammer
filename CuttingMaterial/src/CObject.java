@@ -35,27 +35,21 @@ public class CObject extends JPanel implements MouseListener, FocusListener, Mou
 	{
 		setBackground(Color.BLACK);
 	}
-
 	@Override
-	public void mouseClicked(MouseEvent arg0) 
+	public void mousePressed(MouseEvent arg0) 
 	{
 		requestFocus();
 	}
-	
+	@Override
+	public void mouseClicked(MouseEvent arg0) {}
 	@Override
 	public void mouseDragged(MouseEvent arg0) {}
-
 	@Override
 	public void mouseMoved(MouseEvent arg0) {}
 	@Override
-	public void mousePressed(MouseEvent arg0) {}
-
-	@Override
 	public void mouseEntered(MouseEvent arg0) {}
-
 	@Override
 	public void mouseExited(MouseEvent arg0) {}	
-
 	@Override
 	public void mouseReleased(MouseEvent arg0) {}
 }

@@ -12,9 +12,9 @@ public class PCommand
 {
 	PData pd = new PData();
 	PTabbedPane tp = null;
-	
 	ArrayList<PPanel> pp = new ArrayList<PPanel>();
 
+	
 	ActionFileOpen 	aOpen 	= new ActionFileOpen();
 	ActionFileSave 	aSave 	= new ActionFileSave();
 	ActionColor 	aColor 	= new ActionColor();
