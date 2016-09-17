@@ -27,7 +27,8 @@ public class CFrame extends JFrame implements DragGestureListener
 		txt2.setBounds(520, 10, 600, 30);
 		
 //		add (new CPanelFirst(cmd) );
-		add (new CPanelFirst_OneObject(cmd) );
+//		add (new CPanelFirst_OneObject(cmd) );
+		add (new CPanelFirst_DnDObject(cmd) );
 		add (new CPanelSecond(cmd) );
 		
 

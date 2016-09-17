@@ -12,8 +12,10 @@ public class PanelLeft extends JPanel
 		setBackground(Color.WHITE);
 		setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 		
-		DnDObject dd = new DnDObject(100, 100, 300, 300);
-		add(dd);		
+		DnDObject d = new DnDObject(100, 100, 300, 300);
+		add(d);	
+		DnDObject dd = new DnDObject(5, 5, 50, 50);
+		add(dd);	
 		
 		setVisible(true);				
 	}	

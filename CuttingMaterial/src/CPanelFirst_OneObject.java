@@ -33,15 +33,15 @@ DragSourceListener		// Для обработки событий источник
 		setBackground(Color.WHITE);
 		setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 
-		addMouseListener(this);
-		addMouseMotionListener(this);
+//		addMouseListener(this);
+//		addMouseMotionListener(this);
 		
 		DragSource ds = new DragSource();
-		ds.createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_COPY, this);
+//		ds.createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_COPY, this);
 		
 		p = new CObject(100, 100, 150, 150);
-		p.addMouseListener(this);
-		p.addMouseMotionListener(this);
+//		p.addMouseListener(this);
+//		p.addMouseMotionListener(this);
 	
 		add(p);
 		cmd.p = p;
@@ -62,7 +62,7 @@ DragSourceListener		// Для обработки событий источник
 	@Override
 	public void mousePressed(MouseEvent e) 
 	{
-		old = e.getPoint();		
+//		old = e.getPoint();		
 	}
 
 	@Override
@@ -84,7 +84,7 @@ DragSourceListener		// Для обработки событий источник
 	@Override
 	public void mouseDragged(MouseEvent e) 
 	{
-		p.setLocation(p.getX() + e.getX() - (int)old.getX(), p.getY() + e.getY() - (int)old.getY());
+//		p.setLocation(p.getX() + e.getX() - (int)old.getX(), p.getY() + e.getY() - (int)old.getY());
 	}
 
 	@Override
