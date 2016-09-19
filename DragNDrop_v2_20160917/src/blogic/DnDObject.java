@@ -1,3 +1,4 @@
+package blogic;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -15,12 +16,16 @@ import javax.swing.JPanel;
 
 public class DnDObject extends JPanel implements MouseListener, MouseMotionListener, FocusListener
 {
+	DnDData data = null;
+	
 	int x, y;
 	int flag, flag2; 
-	public DnDObject (int x, int y, int x2, int y2)
+	public DnDObject (int x, int y, int x2, int y2, DnDCommand cmd)
 	{
+		this.data = cmd.data;
+		
 		setBounds(x, y, x2-x, y2-y);
-		setBackground(Color.GRAY);
+		setBackground(data.color);
 		setBorder(BorderFactory.createCompoundBorder(
 				BorderFactory.createLineBorder(Color.BLACK), 
 				BorderFactory.createLineBorder(Color.WHITE)));
@@ -66,6 +71,8 @@ public class DnDObject extends JPanel implements MouseListener, MouseMotionListe
 		x = e.getX();
 		y = e.getY();
 		flag = 0;
+		if( x < 0 && x > getWidth() && y < 0 && y > getHeight())
+			lostFocus(null, getBackground());
 		if( x >= getWidth() - 20 && y > 20 && y < getHeight() - 20 ) 	// right
 		{
 			flag = 1;
@@ -242,6 +249,6 @@ public class DnDObject extends JPanel implements MouseListener, MouseMotionListe
 	public void focusLost(FocusEvent e) 
 	{
 		flag2 = 0;
-		setBackground(Color.GRAY);
+		setBackground(data.color);
 	}
 }
