@@ -26,13 +26,13 @@ public class CPanelSecond extends JPanel
 		setBackground(Color.WHITE);
 		setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 
-		DnDObject p = new DnDObject(100, 100, 150, 150);
+		CObject p = new CObject(100, 100, 150, 150);
 		add(p);
 				
-		DnDObject p2 = new DnDObject(200, 200, 350, 250);
+		CObject p2 = new CObject(200, 200, 350, 250);
 		add(p2);
 				
-		DnDObject p3 = new DnDObject(300, 300, 400, 450);
+		CObject p3 = new CObject(300, 300, 400, 450);
 		add(p3);
 		
 		setLayout(new FlowLayout(FlowLayout.LEFT));

@@ -16,13 +16,14 @@ import javax.swing.JPanel;
 
 public class DnDObject extends JPanel implements MouseListener, MouseMotionListener, FocusListener
 {
-	DnDData data = null;
+	DnDData data = new DnDData();
 	
 	int x, y;
 	int flag, flag2; 
-	public DnDObject (int x, int y, int x2, int y2, DnDCommand cmd)
+	
+	public DnDObject (int x, int y, int x2, int y2)//, DnDCommand cmd)
 	{
-		this.data = cmd.data;
+//		this.data = cmd.data;
 		
 		setBounds(x, y, x2-x, y2-y);
 		setBackground(data.color);
