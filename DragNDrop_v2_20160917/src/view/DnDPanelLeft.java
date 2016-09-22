@@ -43,6 +43,7 @@ public class DnDPanelLeft extends JPanel implements MouseListener, MouseMotionLi
 	@Override
 	public void mousePressed(MouseEvent e) 
 	{
+		requestFocus();
 		x = e.getX();
 		y = e.getY();
 	}
