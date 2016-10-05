@@ -22,7 +22,7 @@ public class BPanel extends JPanel implements MouseListener
 		t.start();
 
 		setLayout(null);
-		setBounds(10, 10, 560, 540);
+		setBounds(10, 10, 540, 540);
 		setBackground(Color.WHITE);
 
 		addMouseListener(this);
