@@ -9,8 +9,6 @@ import java.util.Random;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import bubble.BPanel.xt;
-
 public class BBubble extends JPanel
 {
 	final Random random = new Random();
@@ -31,10 +29,13 @@ public class BBubble extends JPanel
 		this.bp = bp;
 		r = ( random.nextInt( 20 ) + 5 ) ;
 		
+		Timer t = new Timer(50, new xt());
+		t.start();
+		
 		setLayout(null);
 		setBounds(x, y, r, r);
 		setBackground(Color.BLACK);
-		setVisible(true);
+		setVisible(false);
 	}
 	public void moveBubble()
 	{
@@ -53,5 +54,15 @@ public class BBubble extends JPanel
 			Graphics2D gr = (Graphics2D) g;
 			gr.setColor(colors[pos]);
 			gr.fillOval(x, y, r, r);
+	}
+	
+	class xt implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent e) 
+		{
+			moveBubble();
+			repaint();
+		}		
 	}
 }

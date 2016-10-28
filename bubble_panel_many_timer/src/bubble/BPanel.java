@@ -15,26 +15,23 @@ import javax.swing.Timer;
 public class BPanel extends JPanel implements MouseListener
 {
 	ArrayList<BBubble> bb = new ArrayList<BBubble>();
-	Timer t = null;
-	
+		
 	public BPanel()
 	{
-		t = new Timer(50, new xt());
-		t.start();
-
 		setLayout(null);
 		setBounds(10, 10, 540, 540);
 		setBackground(Color.WHITE);
-		
+		Timer t = new Timer(50, new xt());
+		t.start();
 		addMouseListener(this);
-		setVisible(true);				
+		setVisible(true);
 	}
 	@Override
 	public void mousePressed(MouseEvent e) 
 	{
-		BBubble newBb = new BBubble(e.getX(), e.getY(), this);
-		add(newBb);
-		bb.add(newBb);
+		BBubble b = new BBubble(e.getX(), e.getY(), this);
+		add(b);
+		bb.add(b);
 		repaint();
 	}
 	@Override
@@ -56,16 +53,13 @@ public class BPanel extends JPanel implements MouseListener
 	public void mouseEntered(MouseEvent e) {}
 	@Override
 	public void mouseExited(MouseEvent e) {}	
-	class xt implements ActionListener
-	{
+	
+	class xt implements ActionListener {
+
 		@Override
 		public void actionPerformed(ActionEvent e) 
 		{
-			for (BBubble b : bb) 
-			{
-				b.moveBubble();
-			}
 			repaint();
-		}		
+		}
 	}
 }
