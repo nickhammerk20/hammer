@@ -31,10 +31,8 @@ public class BBubble extends JPanel
 		this.bp = bp;
 		r = ( random.nextInt( 20 ) + 5 ) ;
 		
-		setLayout(null);
 		setBounds(x, y, r, r);
 		setBackground(Color.BLACK);
-		setVisible(true);
 	}
 	public void moveBubble()
 	{
@@ -45,13 +43,14 @@ public class BBubble extends JPanel
 		
 		x += dx;
 		y += dy;
+		setLocation(x, y);
 	}
-
-	public void paint(Graphics2D g) 
+	@Override
+	public void paint(Graphics g) 
 	{
-			setLocation(x, y);
+		super.paint(g);
 			Graphics2D gr = (Graphics2D) g;
 			gr.setColor(colors[pos]);
-			gr.fillOval(x, y, r, r);
+			gr.fillOval(1, 1, r-2, r-2);
 	}
 }

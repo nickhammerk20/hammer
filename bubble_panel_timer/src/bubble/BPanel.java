@@ -27,7 +27,7 @@ public class BPanel extends JPanel implements MouseListener
 		setBackground(Color.WHITE);
 		
 		addMouseListener(this);
-		setVisible(true);				
+		//setVisible(true);				
 	}
 	@Override
 	public void mousePressed(MouseEvent e) 
@@ -35,18 +35,7 @@ public class BPanel extends JPanel implements MouseListener
 		BBubble newBb = new BBubble(e.getX(), e.getY(), this);
 		add(newBb);
 		bb.add(newBb);
-		repaint();
-	}
-	@Override
-	public void paint(Graphics g) 
-	{
-		super.paint(g);
-		Graphics2D g2 = (Graphics2D) g;
-		for (BBubble b : bb) 
-		{
-			b.paint(g2);
-		}
-
+		//repaint();
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {}	
@@ -65,7 +54,6 @@ public class BPanel extends JPanel implements MouseListener
 			{
 				b.moveBubble();
 			}
-			repaint();
 		}		
 	}
 }

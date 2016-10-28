@@ -36,7 +36,7 @@ public class BBubble
 		x += dx;
 		y += dy;
 	}
-
+	
 	public void paint(Graphics2D g) 
 	{
 			Graphics2D gr = (Graphics2D) g;

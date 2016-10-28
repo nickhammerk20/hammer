@@ -6,9 +6,7 @@ import java.util.Random;
 
 import javax.swing.JPanel;
 
-import bubble.BPanel.xt;
-
-public class BBubble
+public class BBubble extends JPanel
 {
 	final Random random = new Random();
 	int x;
@@ -29,6 +27,9 @@ public class BBubble
 		r = ( random.nextInt( 20 ) + 5 ) ;
 		xt t = new xt();
 		t.start();
+		setLayout(null);
+		setBounds(x, y, r, r);
+		setBackground(Color.BLACK);
 		
 	}
 	public void moveBubble()
@@ -40,13 +41,15 @@ public class BBubble
 		
 		x += dx;
 		y += dy;
+		setLocation(x, y);
 	}
-
-	public void paint(Graphics2D g) 
+	@Override
+	public void paint(Graphics g) 
 	{
+		super.paint(g);
 			Graphics2D gr = (Graphics2D) g;
 			gr.setColor(colors[pos]);
-			gr.fillOval(x, y, r, r);
+			gr.fillOval(1, 1, r-2, r-2);
 	}
 	
 	class xt extends Thread
@@ -58,7 +61,7 @@ public class BBubble
 				while(true)
 				{
 					moveBubble();
-					Thread.sleep(50);					
+					Thread.sleep(50);
 				}
 			}
 			catch (InterruptedException e) 
