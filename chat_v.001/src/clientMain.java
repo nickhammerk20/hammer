@@ -12,7 +12,7 @@ public class clientMain
 	{
 		try
 		{
-			Socket cs = new Socket("localhost", 777);
+			Socket cs = new Socket("127.0.0.1", 777);
 			InputStream in = cs.getInputStream();
 			OutputStream out = cs.getOutputStream();
 			Scanner cc = new Scanner(System.in);
@@ -23,7 +23,7 @@ public class clientMain
 				DataInputStream r = new DataInputStream(in);
 				DataOutputStream w = new DataOutputStream(out);
 				w.writeUTF(str);
-				//w.flush();
+				w.flush();
 
 				System.out.println(r.readUTF());
 			}
