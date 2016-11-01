@@ -1,0 +1,16 @@
+import javax.swing.JFrame;
+
+public class BFrame extends JFrame
+{
+	public BFrame()
+	{
+		setTitle("Balls");
+		int w = 1200, h = 700;//размеры фрейма
+		setBounds(50, 15, w, h); 
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		add(new BPanel());
+		
+		setVisible(true);
+	}
+}
