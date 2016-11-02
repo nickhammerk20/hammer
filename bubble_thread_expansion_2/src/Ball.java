@@ -64,26 +64,42 @@ public class Ball
 	public void expansion(String direction)
 	{
 		System.out.println("****************"+direction);
-		if (direction == "north")
-		{
-			System.out.println(direction);
-//			dx = -dx;
-		}		
-		if (direction == "east")
-		{
-			System.out.println(direction);
-//			dy = -dy;
-		}
-		if (direction == "west")
-		{
-			System.out.println(direction);
-//			dx = -dx;
-		}		
-		if (direction == "south")
-		{
-			System.out.println(direction);
-//			dy = -dy;
-		}
+		if(dx > 0 && dy > 0)
+			dx = -dx;
+		if(dx < 0 && dy > 0)
+			;
+		if(dx < 0 && dy < 0)
+			;
+		if(dx > 0 && dy < 0)
+			;
+		if(dx == 0 && dy > 0)
+			;
+		if(dx < 0 && dy == 0)
+			;
+		if(dx == 0 && dy < 0)
+			;
+		if(dx > 0 && dy == 0)
+			;
+//		if (direction == "north")
+//		{
+//			System.out.println(direction);
+////			dx = -dx;
+//		}		
+//		if (direction == "east")
+//		{
+//			System.out.println(direction);
+////			dy = -dy;
+//		}
+//		if (direction == "west")
+//		{
+//			System.out.println(direction);
+////			dx = -dx;
+//		}		
+//		if (direction == "south")
+//		{
+//			System.out.println(direction);
+////			dy = -dy;
+//		}
 	}
 	
 	
