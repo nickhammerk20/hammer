@@ -61,48 +61,33 @@ public class Ball
 		return ret;
 	}
 	
-	public void expansion(String direction)
+	public boolean collision(Ball bb)
 	{
-		System.out.println("****************"+direction);
-		
-//		if(dx > 0 && dy > 0)
-//			dx = -dx;
-//		if(dx < 0 && dy > 0)
-//			;
-//		if(dx < 0 && dy < 0)
-//			;
-//		if(dx > 0 && dy < 0)
-//			;
-//		if(dx == 0 && dy > 0)
-//			d = -dx;;
-//		if(dx < 0 && dy == 0)
-//			;
-//		if(dx == 0 && dy < 0)
-//			;
-//		if(dx > 0 && dy == 0)
-//			;
-//		if (direction == "north")
-//		{
-//			System.out.println(direction);
-////			dx = -dx;
-//		}		
-//		if (direction == "east")
-//		{
-//			System.out.println(direction);
-////			dy = -dy;
-//		}
-//		if (direction == "west")
-//		{
-//			System.out.println(direction);
-////			dx = -dx;
-//		}		
-//		if (direction == "south")
-//		{
-//			System.out.println(direction);
-////			dy = -dy;
-//		}
+//		System.out.println("**************** "+dirExp+" ***** " +bb);
+		float xd = x - bb.x;
+	    float yd = y - bb.y;
+	    
+	    float sumRadius = getRadius() + bb.getRadius();
+	    float sqrRadius = sumRadius * sumRadius;
+	    
+	    float distSqr = (xd * xd) + (yd * yd);
+	    
+	    if (distSqr <= sqrRadius)
+	    {
+	        return true;
+	    }
+
+	    return false;
 	}
-	
+	public void expansion(Ball bb) 
+	{
+		float r = getRadius() + bb.getRadius();
+		//float dist2 = delta.dot(delta);
+
+	}
+	public float getRadius() {
+		return wh/2;
+	} 
 	
 	public void paint(Graphics2D gg) 
 	{

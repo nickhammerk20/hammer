@@ -1,5 +1,6 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -15,12 +16,12 @@ public class BPanel extends JPanel implements MouseListener
 
 	public BPanel()
 	{
-		Timer tm = new Timer( 50, new XT() );
+		Timer tm = new Timer( 20, new XT() );
 		tm.start();
-		
+
 		addMouseListener(this);
 	}
-	
+
 	class XT implements ActionListener
 	{
 		@Override
@@ -29,21 +30,28 @@ public class BPanel extends JPanel implements MouseListener
 			for (Ball b : pp) 
 			{
 				b.move(getWidth(), getHeight());
-				//System.out.println("Bubble = "+b + " pos.x = " + b.x + " pos.y = " + b.y + " dx = " + b.dx + " dy = " + b.dy + " direction " + b.dirExp);
 				for (Ball bb : pp)
 				{
 					if(cgeckExpansion(b, bb))
-						expansion(cgeckExpansion(b, bb ));
+					{
+						System.out.print("cgeckExpansion + " );
+						if(b.collision(bb))
+						{
+							System.out.print("collision + " );
+							b.expansion(bb);
+							System.out.println("expansion");
+						}
+					}
 				}
 			}
 			repaint();
 		}
-		
+
 		private boolean cgeckExpansion(Ball b1, Ball b2)
 		{
 			if (b1 == b2)
 				return false;
-			
+
 			int r1 = b1.wh/2;
 			int r2 = b2.wh/2;
 			int cx1 = b1.x + r1;
@@ -52,14 +60,16 @@ public class BPanel extends JPanel implements MouseListener
 			int cy2 = b2.y + r2;
 			return ( (Math.pow(r1 + r2, 2)) > (Math.pow(cx1 - cx2, 2) + Math.pow(cy1 - cy2, 2) )) ? true : false;
 		}
-		public void expansion(boolean bool)
+		public void expansion(Ball b1, Ball b2)
 		{
-			System.out.println("*****=>"+bool);
+			System.out.println("*****=>"+b1.dirExp + "  " + b2.dirExp);
+
+
 		}
 	}
-	
-	
-	
+
+
+
 	@Override
 	public void mouseReleased(MouseEvent e) 
 	{
