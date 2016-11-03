@@ -18,9 +18,9 @@ public class Ball
 		Random rr = new Random();
 		this.x = x;
 		this.y = y;
-		wh = rr.nextInt(50) + 20;
-		dx = rr.nextInt(10) - 5;
-		dy = rr.nextInt(10) - 5;
+		wh = rr.nextInt(100) + 50;
+		dx = rr.nextInt(20) - 10;
+		dy = rr.nextInt(20) - 10;
 		col = new Color(rr.nextInt(256),rr.nextInt(256),rr.nextInt(256));
 	}
 	
@@ -64,22 +64,23 @@ public class Ball
 	public void expansion(String direction)
 	{
 		System.out.println("****************"+direction);
-		if(dx > 0 && dy > 0)
-			dx = -dx;
-		if(dx < 0 && dy > 0)
-			;
-		if(dx < 0 && dy < 0)
-			;
-		if(dx > 0 && dy < 0)
-			;
-		if(dx == 0 && dy > 0)
-			;
-		if(dx < 0 && dy == 0)
-			;
-		if(dx == 0 && dy < 0)
-			;
-		if(dx > 0 && dy == 0)
-			;
+		
+//		if(dx > 0 && dy > 0)
+//			dx = -dx;
+//		if(dx < 0 && dy > 0)
+//			;
+//		if(dx < 0 && dy < 0)
+//			;
+//		if(dx > 0 && dy < 0)
+//			;
+//		if(dx == 0 && dy > 0)
+//			d = -dx;;
+//		if(dx < 0 && dy == 0)
+//			;
+//		if(dx == 0 && dy < 0)
+//			;
+//		if(dx > 0 && dy == 0)
+//			;
 //		if (direction == "north")
 //		{
 //			System.out.println(direction);
