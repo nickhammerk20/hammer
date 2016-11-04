@@ -1,5 +1,5 @@
-import java.awt.*;
-import java.awt.geom.AffineTransform;
+import java.awt.Color;
+import java.awt.Graphics2D;
 
 public class Ball implements Comparable<Ball>{
 

@@ -1,17 +1,12 @@
 package bubble;
 
-import java.applet.Applet;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 public class BPanel extends JPanel implements MouseListener
 {
@@ -19,23 +14,15 @@ public class BPanel extends JPanel implements MouseListener
 
 	public BPanel()
 	{
-		//		Timer t = new Timer(50, new xt());
-		//		t.start();
 		xt t = new xt();
 		t.start();
 
-		setLayout(null);
-		setBounds(10, 10, 540, 540);
-		setBackground(Color.WHITE);
-
 		addMouseListener(this);
-		setVisible(true);				
 	}
 	@Override
 	public void mousePressed(MouseEvent e) 
 	{
 		bb.add(new BBubble(e.getX(), e.getY(), this));
-		repaint();
 	}
 	@Override
 	public void paint(Graphics g) 
@@ -68,7 +55,23 @@ public class BPanel extends JPanel implements MouseListener
 					for (BBubble b : bb) 
 					{
 						b.moveBubble();
+						for (BBubble b2 : bb)
+						{
+							if( b != b2)
+							{
+								if(b.checkExpansion(b2))
+								{
+									System.out.println("+ expansion" );
+									b.eat(b2);
+								}
+							}
+						}
 					}
+//					for (BBubble b : bb) 
+//					{
+//						if(b.kill)
+//							bb.remove(b);
+//					}
 					repaint();
 					Thread.sleep(50);					
 				}
@@ -76,9 +79,8 @@ public class BPanel extends JPanel implements MouseListener
 			catch (InterruptedException e) 
 			{
 				e.printStackTrace();
-				//		repaint();
 			}	
-			
+
 		}
 	}
 }

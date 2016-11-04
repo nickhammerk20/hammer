@@ -1,6 +1,5 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -45,29 +44,27 @@ public class BPanel extends JPanel implements MouseListener
 				}
 			}
 			repaint();
-		}
-
-		private boolean cgeckExpansion(Ball b1, Ball b2)
-		{
-			if (b1 == b2)
-				return false;
-
-			int r1 = b1.wh/2;
-			int r2 = b2.wh/2;
-			int cx1 = b1.x + r1;
-			int cy1 = b1.y + r1;
-			int cx2 = b2.x + r2;
-			int cy2 = b2.y + r2;
-			return ( (Math.pow(r1 + r2, 2)) > (Math.pow(cx1 - cx2, 2) + Math.pow(cy1 - cy2, 2) )) ? true : false;
-		}
-		public void expansion(Ball b1, Ball b2)
-		{
-			System.out.println("*****=>"+b1.dirExp + "  " + b2.dirExp);
-
-
-		}
+		}		
 	}
+	private boolean cgeckExpansion(Ball b1, Ball b2)
+	{
+		if (b1 == b2)
+			return false;
 
+		int r1 = b1.wh/2;
+		int r2 = b2.wh/2;
+		int cx1 = b1.x + r1;
+		int cy1 = b1.y + r1;
+		int cx2 = b2.x + r2;
+		int cy2 = b2.y + r2;
+		return ( (Math.pow(r1 + r2, 2)) > (Math.pow(cx1 - cx2, 2) + Math.pow(cy1 - cy2, 2) )) ? true : false;
+	}
+	public void expansion(Ball b1, Ball b2)
+	{
+		System.out.println("*****=>"+b1.dirExp + "  " + b2.dirExp);
+
+
+	}
 
 
 	@Override
