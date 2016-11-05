@@ -1,4 +1,4 @@
-package chat_thread_in_out;
+package chat_thread_in_out_Queue;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,15 +9,15 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Queue;
+import java.util.concurrent.PriorityBlockingQueue;
 
 import javax.swing.Timer;
 
 public class ServerJob 
 {
 	ArrayList<ClientCon> cc = new ArrayList<ClientCon>();
-	ArrayList<String> message = new ArrayList<String>();
 	
-//	Queue<String> message = new Queue<String>();
+	Queue<String> message = new PriorityBlockingQueue<String>();
 	
 	public ServerJob() throws IOException
 	{
@@ -27,8 +27,6 @@ public class ServerJob
 		irr.start();
 		OutputWright oww = new OutputWright();
 		oww.start();
-		//		Timer timerPrBuf = new Timer(10000, new PrintBuffer() );
-		//		timerPrBuf.start();
 
 		while(true)
 		{
@@ -58,13 +56,13 @@ public class ServerJob
 				{
 					for( int i = 0 ; i < message.size(); i++)
 					{
-						String str = message.get(i);
+						String str = message.remove();
 						for (int j = 0; j < cc.size(); j++)
 						{						
 							cc.get(j).out.writeUTF( "from Server => " + str);
 							cc.get(j).out.flush();
 						}
-						message.remove(i);
+//						message.remove();
 					}
 					Thread.sleep(50);
 				}
