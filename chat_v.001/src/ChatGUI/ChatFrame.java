@@ -1,5 +1,6 @@
 package ChatGUI;
 
-public class ChatFrame {
-
+public class ChatFrame 
+{
+	
 }
