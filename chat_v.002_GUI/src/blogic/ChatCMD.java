@@ -2,11 +2,34 @@ package blogic;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.UnknownHostException;
 
 import ChatGUI.ChatLogin;
+import ChatGUI.ChatPanel;
+import chatIO_login_msg_exit.ChatIO;
 
 public class ChatCMD
 {
+	ChatIO cio = null;
+	ChatPanel cp = null;
+	
+	public ChatCMD(ChatPanel chatPanel)
+	{
+		try 
+		{			
+			this.cp = chatPanel;
+			cio = new ChatIO();			
+		} 
+		catch (UnknownHostException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+	}
 
 	public ActionLogin aLogin = new ActionLogin();
 	public ActionSend aSend = new ActionSend();
@@ -38,6 +61,15 @@ public class ChatCMD
 		public void actionPerformed(ActionEvent arg0) 
 		{
 			System.out.println("start MSG send");
+			try
+			{
+				System.out.println(cp.getMsg());
+				cio.send(cp.getMsg());
+			} 
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
 		}
 		
 	}
@@ -48,6 +80,15 @@ public class ChatCMD
 		public void actionPerformed(ActionEvent arg0) 
 		{
 			System.out.println("start close Chat. Exit.");
+			try
+			{
+				cio.exit();
+			} 
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
 		}
 	}
+
 }
