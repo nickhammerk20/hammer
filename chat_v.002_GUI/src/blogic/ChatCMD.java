@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
+import javax.swing.JOptionPane;
+
 import ChatGUI.ChatLogin;
 import ChatGUI.ChatPanel;
 import chatIO_login_msg_exit.ChatIO;
@@ -14,11 +16,13 @@ public class ChatCMD
 	ChatIO cio = null;
 	ChatPanel cp = null;
 	
+	
+	
 	public ChatCMD(ChatPanel chatPanel)
 	{
 		try 
 		{			
-			this.cp = chatPanel;
+			this.cp = chatPanel;			
 			cio = new ChatIO();			
 		} 
 		catch (UnknownHostException e) 

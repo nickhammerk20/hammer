@@ -1,6 +1,7 @@
 package ChatGUI;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class ChatFrame extends JFrame 
 {

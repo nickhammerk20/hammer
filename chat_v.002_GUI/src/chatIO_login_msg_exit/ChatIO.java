@@ -9,6 +9,8 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 
 public class ChatIO 
 {
@@ -28,6 +30,9 @@ public class ChatIO
 		
 		irr = new InputRead();
 		irr.start();
+		
+		String Name = JOptionPane.showInputDialog("enter your name");
+		login(Name);
 	}
 	public void login(String str) throws IOException
 	{

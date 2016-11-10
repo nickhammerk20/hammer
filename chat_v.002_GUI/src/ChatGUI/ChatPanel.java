@@ -1,14 +1,18 @@
 package ChatGUI;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 import blogic.ChatCMD;
 
-public class ChatPanel extends JPanel 
+public class ChatPanel extends JPanel implements Observer
 {
 	private JTextArea textArea;
 	private JTextField textMsg = null;
@@ -20,7 +24,7 @@ public class ChatPanel extends JPanel
 		setLayout(null);
 		
 		ChatCMD cmd = new ChatCMD(this);
-					
+
 		JScrollPane scr = new JScrollPane(textArea);
 		scr.setBounds(10, 10, 360, 480);
 		add( scr );		
@@ -43,7 +47,22 @@ public class ChatPanel extends JPanel
 	public String getMsg()
 	{
 		String ret = textMsg.getText();
-		System.out.println(ret);
+		textMsg.setText("");		
 		return ret;
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) 
+	{
+		 final Object finalArg = arg1;
+         SwingUtilities.invokeLater(new Runnable() 
+         {
+             public void run() 
+             {
+            	 System.out.println(finalArg);
+                 textArea.append(finalArg.toString());
+                 textArea.append("\n");
+             }
+         });
 	}
 }
