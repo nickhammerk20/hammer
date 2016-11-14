@@ -16,7 +16,6 @@ public class ClientJob
 		ChatIO io = new ChatIO();
 		io.addReceiveListener(new ActionListener() 
 		{
-
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{

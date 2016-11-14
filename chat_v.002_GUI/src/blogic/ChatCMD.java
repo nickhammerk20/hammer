@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
+import javax.swing.Action;
 import javax.swing.JOptionPane;
 
 import ChatGUI.ChatLogin;
@@ -38,11 +39,19 @@ public class ChatCMD
 	public ActionLogin aLogin = new ActionLogin();
 	public ActionSend aSend = new ActionSend();
 	public ActionExit aExit = new ActionExit();
+	public ActionUpdateMsg uMSG = new ActionUpdateMsg();  
 	
+	class ActionUpdateMsg implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent e) 
+		{
+			System.out.println( e.getActionCommand() );			
+		}		
+	}
 	
 	class ActionLogin implements ActionListener
 	{
-
 		@Override
 		public void actionPerformed(ActionEvent arg0) 
 		{
@@ -55,12 +64,10 @@ public class ChatCMD
 			{
 				System.out.println("start OK - Login");
 			}
-		}
-		
+		}		
 	}
 	class ActionSend implements ActionListener
 	{
-
 		@Override
 		public void actionPerformed(ActionEvent arg0) 
 		{
@@ -74,12 +81,10 @@ public class ChatCMD
 			{
 				e.printStackTrace();
 			}
-		}
-		
+		}		
 	}
 	class ActionExit implements ActionListener
 	{
-
 		@Override
 		public void actionPerformed(ActionEvent arg0) 
 		{
@@ -94,5 +99,4 @@ public class ChatCMD
 			}
 		}
 	}
-
 }

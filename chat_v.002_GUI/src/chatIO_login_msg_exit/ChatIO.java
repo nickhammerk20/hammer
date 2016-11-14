@@ -44,8 +44,7 @@ public class ChatIO
 	{
 		out.writeUTF("exit:");
 		out.flush();
-		
-		
+				
 		out.close();
 		in.close();
 		cs.close();
