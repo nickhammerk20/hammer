@@ -19,21 +19,10 @@ public class ChatCMD
 	
 	
 	
-	public ChatCMD(ChatPanel chatPanel)
-	{
-		try 
-		{			
+	public ChatCMD(ChatPanel chatPanel, ChatIO io)
+	{		
 			this.cp = chatPanel;			
-			cio = new ChatIO();			
-		} 
-		catch (UnknownHostException e) 
-		{
-			e.printStackTrace();
-		} 
-		catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
+			this.cio = io;
 	}
 
 	public ActionLogin aLogin = new ActionLogin();
@@ -71,11 +60,11 @@ public class ChatCMD
 		@Override
 		public void actionPerformed(ActionEvent arg0) 
 		{
-			System.out.println("start MSG send");
+//			System.out.println("start MSG send");
 			try
 			{
-				System.out.println(cp.getMsg());
-				cio.send(cp.getMsg());
+				String str = cp.getMsg();
+				cio.send(str);
 			} 
 			catch (IOException e) 
 			{
@@ -88,9 +77,10 @@ public class ChatCMD
 		@Override
 		public void actionPerformed(ActionEvent arg0) 
 		{
-			System.out.println("start close Chat. Exit.");
+//			System.out.println("start close Chat. Exit.");
 			try
 			{
+				
 				cio.exit();
 			} 
 			catch (IOException e) 

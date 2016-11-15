@@ -25,8 +25,9 @@ public class ClientJob
 
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("Please enter your name: ");
-		io.login(sc.nextLine());
+//		Необходимо при консольном чате
+//		System.out.println("Please enter your name: ");
+//		io.login(sc.nextLine());
 
 		while(sc.hasNext())
 		{

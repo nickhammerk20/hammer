@@ -31,8 +31,8 @@ public class ChatIO
 		irr = new InputRead();
 		irr.start();
 		
-		String Name = JOptionPane.showInputDialog("enter your name");
-		login(Name);
+		String name = JOptionPane.showInputDialog("enter your name");
+		login(name);
 	}
 	public void login(String str) throws IOException
 	{

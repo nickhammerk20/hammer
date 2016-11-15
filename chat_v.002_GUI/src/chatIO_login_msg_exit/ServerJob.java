@@ -23,9 +23,6 @@ public class ServerJob
 			cc.add( new ClientCon(ss.accept()) );
 		}
 	}
-
-
-
 	class InputRead extends Thread
 	{
 		@Override

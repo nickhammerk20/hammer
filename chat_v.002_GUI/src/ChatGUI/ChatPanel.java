@@ -1,5 +1,11 @@
 package ChatGUI;
 
+import java.awt.TextArea;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.UnknownHostException;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -7,6 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import blogic.ChatCMD;
+import chatIO_login_msg_exit.ChatIO;
 
 public class ChatPanel extends JPanel
 {
@@ -15,20 +22,21 @@ public class ChatPanel extends JPanel
 	private JButton btnSendMSG;
 	private JButton btnExit;
 
-	public ChatPanel() 
+	public ChatPanel() throws UnknownHostException, IOException 
 	{
 		setLayout(null);
-
-		ChatCMD cmd = new ChatCMD(this);
-
+		
+		ChatIO io = new ChatIO();
+		ChatCMD cmd = new ChatCMD(this, io);
+		
+		textArea = new JTextArea("", 20, 50);
+		textArea.setEditable(false);
+		textArea.setLineWrap(true);		
+		
 		JScrollPane scr = new JScrollPane(textArea);
 		scr.setBounds(10, 10, 360, 480);
 		add( scr );		
-
-		textArea = new JTextArea(20, 50);
-		textArea.setEditable(false);
-		textArea.setLineWrap(true);		
-
+		
 		textMsg = new JTextField();
 		textMsg.setBounds(10, 500, 260, 55);
 		add(textMsg);
@@ -43,8 +51,14 @@ public class ChatPanel extends JPanel
 		add(btnExit);
 		btnExit.addActionListener(cmd.aExit);
 
-		xt t = new xt();
-		t.start();		
+		io.addReceiveListener(new ActionListener() 
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				updateMSG(e.getActionCommand());
+			}
+		} );
 	}
 
 	public String getMsg()
@@ -53,30 +67,9 @@ public class ChatPanel extends JPanel
 		textMsg.setText("");		
 		return ret;
 	}
-	public void updateMSG ()
+	public void updateMSG (String str)
 	{
-		textArea.append("55");
+		textArea.append(str);
 		textArea.append("\n");
-	}
-
-	class xt extends Thread
-	{
-		@Override
-		public void run() 
-		{
-			try 
-			{
-				while(true)
-				{
-					updateMSG();
-					Thread.sleep(50);
-				}	
-			} 
-			catch (InterruptedException e) 
-			{
-				e.printStackTrace();
-			}
-
-		}
-	}
+	}	
 }
