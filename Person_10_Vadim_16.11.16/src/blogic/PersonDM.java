@@ -10,6 +10,7 @@ import javax.swing.table.AbstractTableModel;
 import dal.PersonDAO;
 import dal.PersonDAO_Mock;
 import dal.PersonDAO_NetClient;
+import dal.PersonDAO_NetClient2;
 import view.PDialog;
 import view.PPanel;
 
@@ -118,7 +119,7 @@ public class PersonDM extends AbstractTableModel
 
 	public PersonDM(PPanel pPanel) 
 	{
-		pd = new PersonDAO_NetClient();
+		pd = new PersonDAO_NetClient2();
 		pp = pd.read();
 	}
 
