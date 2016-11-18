@@ -19,6 +19,7 @@ public class Envelop
 	{
 		pp = lst;
 	}
+	
 	public String cmd = "";
 	public Person p = null;
 	public ArrayList<Person> pp = null;
