@@ -102,15 +102,15 @@ public class PDialog extends JDialog
 	{
 		public void check(JTextField textID, JTextField textFName, JTextField textLName, JTextField textAge)
 		{
-			System.out.print("start = "+textID.getText()+" / "+textFName.getText()+" / "+textLName.getText()+" / "+textAge.getText()+ " = " );
+//			System.out.print("start = "+textID.getText()+" / "+textFName.getText()+" / "+textLName.getText()+" / "+textAge.getText()+ " = " );
 			if (textID.getText().equals("") || textFName.getText().equals("") ||  textLName.getText().equals("") ||  textAge.getText().equals(""))
 			{
-				System.out.println("visible = false;");
+//				System.out.println("visible = false;");
 				btnOk.setEnabled(false);
 			}
 			else 
 			{
-				System.out.println("visible = true;");
+//				System.out.println("visible = true;");
 				btnOk.setEnabled(true);
 			}
 		}
