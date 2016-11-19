@@ -6,6 +6,7 @@ public class Server
 {
 	public static void main(String[] args) throws IOException, InterruptedException 
 	{
-		new ServerJob2();
+		new ServerJob();
+//		new ServerJob2();
 	}
 }

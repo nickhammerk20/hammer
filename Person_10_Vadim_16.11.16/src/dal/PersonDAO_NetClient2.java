@@ -38,6 +38,8 @@ public class PersonDAO_NetClient2 implements PersonDAO
 	@Override
 	public void create(Person p) 
 	{		
+		
+		
 		try 
 		{
 			out.writeUTF( gs.toJson( new Envelop("create", p) ) );

@@ -48,7 +48,7 @@ public class ServerJob
 				case "create":	pd.create(gs.fromJson(data, Person.class));
 				                break;
 				case "read":	out.writeUTF(gs.toJson(pd.read()));
-				                out.flush();
+								out.flush();
 				                break;
 				case "update":	pd.update(gs.fromJson(data, Person.class));
 				                break;

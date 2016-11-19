@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
 
 import dal.PersonDAO;
+import dal.PersonDAO_HTTP;
 import dal.PersonDAO_Mock;
 import dal.PersonDAO_NetClient;
 import dal.PersonDAO_NetClient2;
@@ -119,7 +120,9 @@ public class PersonDM extends AbstractTableModel
 
 	public PersonDM(PPanel pPanel) 
 	{
-		pd = new PersonDAO_NetClient2();
+//		pd = new PersonDAO_NetClient();
+//		pd = new PersonDAO_NetClient2();
+		pd = new PersonDAO_HTTP();
 		pp = pd.read();
 	}
 

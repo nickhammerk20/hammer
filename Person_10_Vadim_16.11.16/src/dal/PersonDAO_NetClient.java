@@ -57,7 +57,9 @@ public class PersonDAO_NetClient implements PersonDAO
 			out.writeUTF("read:");
 			out.flush();
 			String str = in.readUTF();
+			System.out.println("json_vadim=> "+str);
 			pp = gs.fromJson(str, new TypeToken<ArrayList<Person>>(){}.getType());
+			
 		} 
 		catch (IOException e) 
 		{
