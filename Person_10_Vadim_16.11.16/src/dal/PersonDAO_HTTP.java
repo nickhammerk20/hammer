@@ -11,6 +11,7 @@ import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import com.google.gson.Gson;
@@ -78,10 +79,44 @@ public class PersonDAO_HTTP implements PersonDAO
 	@Override
 	public void update(Person p) 
 	{
+		try
+		{
+			HttpClient client = HttpClientBuilder.create().build();
+
+			String url = "http://localhost/myPERSON/personUpdate_java_php.php?id=" + 
+					p.id + "&fname=" + p.fname + "&lname=" 
+					+ p.lname + "&age=" + p.age;
+			
+			HttpGet request = new HttpGet(url);
+
+			HttpResponse response;
+			
+			response = client.execute(request);
+
+			System.out.println("Response Code : "
+					+ response.getStatusLine().getStatusCode());
+		}
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void delete(Person p) 
 	{
+		try
+		{
+			HttpClient client = HttpClientBuilder.create().build();
+
+			String url = "http://localhost/myPERSON/personDelete_java_php.php?id=" + p.id;
+			
+			HttpGet request = new HttpGet(url);
+			client.execute(request);
+		}
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 }
