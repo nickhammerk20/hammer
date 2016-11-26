@@ -1,4 +1,4 @@
-﻿package client;
+﻿package view;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -6,6 +6,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+import blogic.PersonDM;
 
 public class PPanel extends JPanel 
 {

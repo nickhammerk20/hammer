@@ -2,6 +2,8 @@ package client;
 
 import java.util.ArrayList;
 
+import blogic.Person;
+
 
 public class Envelop 
 {

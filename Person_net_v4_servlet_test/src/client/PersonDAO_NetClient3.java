@@ -14,6 +14,8 @@ import com.google.gson.Gson;
 
 import com.google.gson.reflect.TypeToken;
 
+import blogic.Person;
+
 // запрос методом GET
 public class PersonDAO_NetClient3 implements PersonDAO
 {

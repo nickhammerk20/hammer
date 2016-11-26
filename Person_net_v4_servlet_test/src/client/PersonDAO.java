@@ -2,6 +2,8 @@
 
 import java.util.ArrayList;
 
+import blogic.Person;
+
 public interface PersonDAO 
 {
 	void create(Person p);

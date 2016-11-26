@@ -1,4 +1,4 @@
-﻿package client;
+﻿package blogic;
 
 public class Person 
 {

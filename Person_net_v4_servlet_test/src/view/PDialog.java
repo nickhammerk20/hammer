@@ -1,4 +1,4 @@
-﻿package client;
+﻿package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+
+import blogic.Person;
+import blogic.PersonDM;
 
 
 public class PDialog extends JDialog

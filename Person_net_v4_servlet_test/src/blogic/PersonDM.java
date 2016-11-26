@@ -1,10 +1,15 @@
-﻿package client;
+﻿package blogic;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
+
+import client.PersonDAO;
+import client.PersonDAO_NetClient3;
+import view.PDialog;
+import view.PPanel;
 
 
 public class PersonDM extends AbstractTableModel
