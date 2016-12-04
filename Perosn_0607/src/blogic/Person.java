@@ -2,11 +2,11 @@
 
 public class Person 
 {
-	private int id;
-	private String fname;
-	private String lname;
-	private int age;
-	private String telNumber;
+	public int id;
+	public String fname;
+	public String lname;
+	public int age;
+	public String telNumber;
 
 	public Person()
 	{
