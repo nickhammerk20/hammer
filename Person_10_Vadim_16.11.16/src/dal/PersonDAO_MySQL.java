@@ -18,9 +18,9 @@ public class PersonDAO_MySQL implements PersonDAO
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydbtest?autoReconnect=true&useSSL=false", "root" ,"1225");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/larisa?autoReconnect=true&useSSL=false", "root" ,"");
 			Statement st = con.createStatement();
-			st.executeUpdate("INSERT INTO `mydbtest`.`person` " + "VALUES ('" + p.id + "','" + p.fname + "','" + p.lname + "','" + p.age + "')");
+			st.executeUpdate("INSERT INTO `larisa`.`person` " + "VALUES ('" + p.id + "','" + p.fname + "','" + p.lname + "','" + p.age + "')");
 		}
 		catch (ClassNotFoundException | SQLException e)
 		{
@@ -37,7 +37,7 @@ public class PersonDAO_MySQL implements PersonDAO
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydbtest?autoReconnect=true&useSSL=false", "root" ,"1225");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/larisa?autoReconnect=true&useSSL=false", "root" ,"");
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM PERSON");
 			while (rs.next() )
@@ -58,7 +58,7 @@ public class PersonDAO_MySQL implements PersonDAO
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydbtest?autoReconnect=true&useSSL=false", "root" ,"1225");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/larisa?autoReconnect=true&useSSL=false", "root" ,"");
 			Statement st = con.createStatement();
 			st.executeUpdate("UPDATE Person SET Age = " + p.age + " WHERE id =" +p.id);
 		}
@@ -74,7 +74,7 @@ public class PersonDAO_MySQL implements PersonDAO
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydbtest?autoReconnect=true&useSSL=false", "root" ,"1225");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/larisa?autoReconnect=true&useSSL=false", "root" ,"");
 			Statement st = con.createStatement();
 			st.executeUpdate("delete from person where id=" + p.id);
 		}
