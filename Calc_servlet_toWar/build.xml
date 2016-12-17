@@ -8,6 +8,7 @@
 	<property name="dir.env" value="./env"/>
     <property name="assembled.properties" value="${dir.build}/assembled.properties"/>
 	<property name="file.jar" value="${dir.build}/main.module.jar"/>
+	<property name="file.php" value="calc.php"/>
     <property name="name.application" value="calcServletFromWar"/>
     <property name="file.war" value="${dir.build}/${name.application}.war"/>
 	
@@ -45,7 +46,7 @@
 	</target>
 
     <target name="compile" depends = "init">
-        <javac srcdir="${dir.src.java}" destdir="${dir.classes}">
+        <javac srcdir="${dir.src.java}" destdir="${dir.classes}" includeantruntime="false">
             <classpath>
             	<path refid="libs.main.module"/>
             </classpath>
@@ -67,11 +68,14 @@
 	        <copy todir="${dir.war.content}/WEB-INF/lib" preservelastmodified="true">
 	            <path refid="libs.main.module"/>
 	        </copy>
-
 	        <copy todir="${dir.war.content}/WEB-INF/lib"
 	              preservelastmodified="true"
 	              file="${file.jar}">
 	        </copy>
+			<copy todir="${dir.war.content}"
+			              preservelastmodified="true"
+			              file="${file.php}">
+			</copy>
 
 	        <replace dir="${dir.war.content}/WEB-INF/"
 	                 propertyfile="${assembled.properties}">
@@ -94,7 +98,8 @@
 	</target>
 	
 	<target name="deploy"
-			depends="build.war,do.undeploy.war,do.deploy.war">
+			depends="build.war">
+		<!--depends="build.war,do.undeploy.war,do.deploy.war">-->
 	</target>
 	
 	 <target name="do.undeploy.war" depends="init">
@@ -133,5 +138,5 @@
 	            </exec>
 	        </sequential>
 	</macrodef>
-
+	
 </project>
