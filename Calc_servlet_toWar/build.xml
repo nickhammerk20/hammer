@@ -1,25 +1,137 @@
 <project name="calcServletToWar" default="compile">
 
 	<property name="dir.build" value=".build"/>
-
 	<property name="dir.classes" value="${dir.build}/classes"/>
-
-	<property name="dir.src.java" value="/src"/>
-
+	<property name="dir.src.java" value="./src"/>
+	<property name="dir.lib" value="./lib"/>
+	<property name="dir.war.content" value="${dir.build}/war.content"/>
+	<property name="dir.env" value="./env"/>
+    <property name="assembled.properties" value="${dir.build}/assembled.properties"/>
+	<property name="file.jar" value="${dir.build}/main.module.jar"/>
+    <property name="name.application" value="calcServletToWar"/>
+    <property name="file.war" value="${dir.build}/${name.application}.war"/>
+	
+	
+    <path id="libs.gson">
+        <fileset dir="${dir.lib}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+	
+    <path id="libs.main.module">
+        <path refid="libs.gson"/>
+    </path>
+	
 	<target name="clean">
-	     <delete dir="${dir.build}"/>
+	    <delete dir="${dir.build}"/>
 	</target>
 
 	<target name="mkdirs">
-	        <mkdir dir="${dir.classes}"/>
+		<mkdir dir="${dir.build}"/>
+		<mkdir dir="${dir.classes}"/>
+		<mkdir dir="${dir.war.content}"/>
+	</target>
+	
+	<target name="init" depends="mkdirs">
+	        <property name="env" value="${user.name}"/>
+	        <echo level="info" message="env=${env}"/>
+	        <available file="${dir.env}/${env}.properties" property="env.props.available"/>
+	        <fail unless="env.props.available"
+	              message="No such file: ${dir.env}/${env}.properties"/>
+	        <property file="${dir.env}/${env}.properties"/>
+	        <property file="${dir.env}/default.properties"/>
+	        <echoproperties destfile="${assembled.properties}"/>
+	        <filter filtersfile="${assembled.properties}"/>
 	</target>
 
-
-    <target name="compile">
-        <mkdir dir="../.build/classes"/>
-        <javac srcdir="../src" destdir="../.build/classes">
-            <classpath location="../lib/gson/gson-1.4.jar"/>
+    <target name="compile" depends = "init">
+        <javac srcdir="${dir.src.java}" destdir="${dir.classes}">
+            <classpath>
+            	<path refid="libs.main.module"/>
+            </classpath>
         </javac>
     </target>
+	
+	<target name="build.jar" depends="compile">
+	        <jar destfile="${file.jar}"
+	             basedir="${dir.classes}"
+	             compress="false"
+	             index="true">
+	        </jar>
+	</target>
+	
+	<target name="build.war.content" depends="build.jar">
+	        <copy todir="${dir.war.content}" preservelastmodified="true" overwrite="true">
+	            <fileset dir="./web"/>
+	        </copy>
+	        <copy todir="${dir.war.content}/WEB-INF/lib" preservelastmodified="true">
+	            <path refid="libs.main.module"/>
+	        </copy>
+
+	        <copy todir="${dir.war.content}/WEB-INF/lib"
+	              preservelastmodified="true"
+	              file="${file.jar}">
+	        </copy>
+
+	        <replace dir="${dir.war.content}/WEB-INF/"
+	                 propertyfile="${assembled.properties}">
+	            <include name="*.xml"/>
+
+	            <replacefilter token="@welcome.file@" property="welcome.file"/>
+
+	        </replace>
+	</target>
+	
+	<target name="build.war" depends="build.war.content">
+	        <delete file="${file.war}"/>
+	        <war
+	                compress="true"
+	                encoding="utf-8"
+	                warfile="${file.war}"
+	                webxml="${dir.war.content}/WEB-INF/web.xml">
+	            <fileset dir="${dir.war.content}" excludes="WEB-INF/web.xml"/>
+	        </war>
+	</target>
+	
+	<target name="deploy"
+			depends="build.war,do.undeploy.war,do.deploy.war">
+	</target>
+	
+	 <target name="do.undeploy.war" depends="init">
+	        <service.stop.win32 service.name="${tomcat.service.name}"/>
+	        <delete file="${tomcat.home}/webapps/${name.application}.war" failonerror="false"/>
+	        <delete dir="${tomcat.home}/webapps/${name.application}" failonerror="false"/>
+	</target>
+	
+	<target name="do.deploy.war" depends="init">
+	        <copy todir="${tomcat.home}/webapps" failonerror="yes">
+	            <fileset file="${file.war}"/>
+	        </copy>
+	        <service.start.win32 service.name="${tomcat.service.name}"/>
+	</target>
+	
+	<!-- macro -->
+
+	<macrodef name="service.stop.win32">
+	        <attribute name="service.name"/>
+	        <sequential>
+	            <echo>Stoping service: @{service.name}</echo>
+	            <exec executable="net" outputproperty="whatsRunning">
+	                <arg value="stop"/>
+	                <arg value="@{service.name}"/>
+	            </exec>
+	        </sequential>
+	</macrodef>
+
+	<macrodef name="service.start.win32">
+	        <attribute name="service.name"/>
+	        <sequential>
+	            <echo>Starting service: @{service.name}</echo>
+	            <exec executable="net" failonerror="yes">
+	                <arg value="start"/>
+	                <arg value="@{service.name}"/>
+	            </exec>
+	        </sequential>
+	</macrodef>
 
 </project>
