@@ -8,7 +8,7 @@
 	<property name="dir.env" value="./env"/>
     <property name="assembled.properties" value="${dir.build}/assembled.properties"/>
 	<property name="file.jar" value="${dir.build}/main.module.jar"/>
-    <property name="name.application" value="calcServletToWar"/>
+    <property name="name.application" value="calcServletFromWar"/>
     <property name="file.war" value="${dir.build}/${name.application}.war"/>
 	
 	
@@ -117,7 +117,7 @@
 	        <sequential>
 	            <echo>Stoping service: @{service.name}</echo>
 	            <exec executable="net" outputproperty="whatsRunning">
-	                <arg value="stop"/>
+	                <arg value="stop555"/>
 	                <arg value="@{service.name}"/>
 	            </exec>
 	        </sequential>
