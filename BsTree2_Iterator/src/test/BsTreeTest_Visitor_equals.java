@@ -23,6 +23,7 @@ public class BsTreeTest_Visitor_equals
 		obj2.clear();
 	}
 
+		
 	//==================================//
 	// toString							//
 	//==================================//

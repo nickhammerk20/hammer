@@ -1,0 +1,25 @@
+<project name="calcServletToWar" default="compile">
+
+	<property name="dir.build" value=".build"/>
+
+	<property name="dir.classes" value="${dir.build}/classes"/>
+
+	<property name="dir.src.java" value="/src"/>
+
+	<target name="clean">
+	     <delete dir="${dir.build}"/>
+	</target>
+
+	<target name="mkdirs">
+	        <mkdir dir="${dir.classes}"/>
+	</target>
+
+
+    <target name="compile">
+        <mkdir dir="../.build/classes"/>
+        <javac srcdir="../src" destdir="../.build/classes">
+            <classpath location="../lib/gson/gson-1.4.jar"/>
+        </javac>
+    </target>
+
+</project>

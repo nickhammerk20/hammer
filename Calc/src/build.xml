@@ -1,0 +1,32 @@
+<project name="calc_mini" default="clear" >
+
+        <description>This is a project which uses dependancies</description>
+
+        <target name="make.dirs" description="Make a dir">
+      		<mkdir dir="build"/>
+        	<mkdir dir="build/class"/>
+        </target>
+        
+		<target name="compile" description="compile java"  depends="make.dirs">
+			<javac destdir="build/class" includeantruntime="false">
+				 <src path="calc_mini"/>
+			</javac>
+	    </target>
+	
+		<target name="calc.jar" description="make jar file" depends="compile">
+	       <jar destfile="calc.jar">
+	       	<fileset dir="build/class">
+	    		<include name="**/*.class"/>
+	      	</fileset>
+	       	<manifest>
+	       		<attribute name = "Main-Class" value = "calc_mini/XMain"/>
+	       	</manifest>
+	       </jar>
+	    </target>
+	
+	 	<target name="clear" description="Do the build"  depends="calc.jar">
+			<delete dir="build"/>
+		    <echo>I'm building my software</echo>
+		</target>
+        
+  </project>
