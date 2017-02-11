@@ -6,6 +6,7 @@ import java.awt.*;
 public class Application1 {
   boolean packFrame = false;
 
+  
   /**Construct the application*/
   public Application1() {
     MenuExample frame = new MenuExample();
